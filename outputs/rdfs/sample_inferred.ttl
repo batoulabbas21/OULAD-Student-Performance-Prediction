@@ -1,0 +1,343 @@
+@prefix edu: <https://example.org/oulad/schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+edu:Assessment a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:label "Assessment" ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:Assessment .
+
+edu:AssessmentRecord a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:comment "Recorded assessment result; may be banked from a previous presentation. Not necessarily a new submission." ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:AssessmentRecord .
+
+edu:ComputerMarkedAssessment a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:Assessment,
+        edu:ComputerMarkedAssessment .
+
+edu:CourseOffering a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:label "Module presentation (course offering)" ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:CourseOffering .
+
+edu:DailyInteraction a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:comment "Daily aggregate of clicks, not an individual click or study duration." ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:DailyInteraction .
+
+edu:Enrollment a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:label "Student enrollment in one offering" ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:Enrollment .
+
+edu:Exam a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:Assessment,
+        edu:Exam .
+
+edu:LearningResource a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:LearningResource .
+
+edu:Module a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:label "Module" ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:Module .
+
+edu:Person a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:label "Person" ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:Person .
+
+edu:Student a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:label "Student" ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:Person,
+        edu:Student .
+
+edu:TutorMarkedAssessment a rdfs:Class,
+        rdfs:Resource ;
+    rdfs:subClassOf rdfs:Resource,
+        edu:Assessment,
+        edu:TutorMarkedAssessment .
+
+<https://example.org/oulad/id/assessment/1752> a rdfs:Resource,
+        edu:Assessment,
+        edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:deadlineDay 19 ;
+    edu:weightPercent 10.0 .
+
+<https://example.org/oulad/id/assessment/1753> a rdfs:Resource,
+        edu:Assessment,
+        edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:deadlineDay 54 ;
+    edu:weightPercent 20.0 .
+
+<https://example.org/oulad/id/assessment/1754> a rdfs:Resource,
+        edu:Assessment,
+        edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:deadlineDay 117 ;
+    edu:weightPercent 20.0 .
+
+<https://example.org/oulad/id/student/100893> a rdfs:Resource,
+        edu:Person,
+        edu:Student ;
+    edu:studentId "100893" .
+
+<https://example.org/oulad/id/student/101116> a rdfs:Resource,
+        edu:Person,
+        edu:Student ;
+    edu:studentId "101116" .
+
+rdf:type a rdf:Property ;
+    rdfs:subPropertyOf rdf:type .
+
+rdfs:comment a rdf:Property ;
+    rdfs:subPropertyOf rdfs:comment .
+
+rdfs:domain a rdf:Property ;
+    rdfs:subPropertyOf rdfs:domain .
+
+rdfs:label a rdf:Property ;
+    rdfs:subPropertyOf rdfs:label .
+
+rdfs:range a rdf:Property ;
+    rdfs:subPropertyOf rdfs:range .
+
+rdfs:subClassOf a rdf:Property ;
+    rdfs:subPropertyOf rdfs:subClassOf .
+
+rdfs:subPropertyOf a rdf:Property ;
+    rdfs:subPropertyOf rdfs:subPropertyOf .
+
+xsd:boolean a rdfs:Resource .
+
+edu:activityType a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:LearningResource ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf edu:activityType .
+
+edu:ageBand a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf edu:ageBand .
+
+edu:assessmentInOffering a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Assessment ;
+    rdfs:range edu:CourseOffering ;
+    rdfs:subPropertyOf edu:assessmentInOffering .
+
+edu:clickCount a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:DailyInteraction ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf edu:clickCount .
+
+edu:deadlineDay a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Assessment ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf edu:deadlineDay .
+
+edu:finalResult a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf edu:finalResult .
+
+edu:forAssessment a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:AssessmentRecord ;
+    rdfs:range edu:Assessment ;
+    rdfs:subPropertyOf edu:forAssessment .
+
+edu:hasStudent a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range edu:Student ;
+    rdfs:subPropertyOf edu:hasStudent .
+
+edu:highestEducation a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf edu:highestEducation .
+
+edu:inOffering a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range edu:CourseOffering ;
+    rdfs:subPropertyOf edu:inOffering .
+
+edu:interactionDay a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:DailyInteraction ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf edu:interactionDay .
+
+edu:interactionForEnrollment a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:DailyInteraction ;
+    rdfs:range edu:Enrollment ;
+    rdfs:subPropertyOf edu:interactionForEnrollment .
+
+edu:isBanked a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:AssessmentRecord ;
+    rdfs:range xsd:boolean ;
+    rdfs:subPropertyOf edu:isBanked .
+
+edu:lengthDays a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:CourseOffering ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf edu:lengthDays .
+
+edu:offeringOf a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:CourseOffering ;
+    rdfs:range edu:Module ;
+    rdfs:subPropertyOf edu:offeringOf .
+
+edu:presentationCode a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:CourseOffering ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf edu:presentationCode .
+
+edu:previousAttempts a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf edu:previousAttempts .
+
+edu:recordForEnrollment a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:AssessmentRecord ;
+    rdfs:range edu:Enrollment ;
+    rdfs:subPropertyOf edu:recordForEnrollment .
+
+edu:region a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf edu:region .
+
+edu:registrationDay a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf edu:registrationDay .
+
+edu:resourceInOffering a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:LearningResource ;
+    rdfs:range edu:CourseOffering ;
+    rdfs:subPropertyOf edu:resourceInOffering .
+
+edu:score a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:AssessmentRecord ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf edu:score .
+
+edu:studentId a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Student ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf edu:studentId .
+
+edu:submissionDay a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:AssessmentRecord ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf edu:submissionDay .
+
+edu:unregistrationDay a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:integer ;
+    rdfs:subPropertyOf edu:unregistrationDay .
+
+edu:weightPercent a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:Assessment ;
+    rdfs:range xsd:decimal ;
+    rdfs:subPropertyOf edu:weightPercent .
+
+edu:withResource a rdf:Property,
+        rdfs:Resource ;
+    rdfs:domain edu:DailyInteraction ;
+    rdfs:range edu:LearningResource ;
+    rdfs:subPropertyOf edu:withResource .
+
+10.0 a rdfs:Resource,
+        xsd:decimal .
+
+19 a rdfs:Resource,
+        xsd:integer .
+
+54 a rdfs:Resource,
+        xsd:integer .
+
+117 a rdfs:Resource,
+        xsd:integer .
+
+"100893" a rdfs:Resource,
+        xsd:string .
+
+"101116" a rdfs:Resource,
+        xsd:string .
+
+"Assessment" a rdfs:Resource .
+
+"Daily aggregate of clicks, not an individual click or study duration." a rdfs:Resource .
+
+"Module" a rdfs:Resource .
+
+"Module presentation (course offering)" a rdfs:Resource .
+
+"Person" a rdfs:Resource .
+
+"Recorded assessment result; may be banked from a previous presentation. Not necessarily a new submission." a rdfs:Resource .
+
+"Student" a rdfs:Resource .
+
+"Student enrollment in one offering" a rdfs:Resource .
+
+20.0 a rdfs:Resource,
+        xsd:decimal .
+
+<https://example.org/oulad/id/offering/AAA/2013J> a rdfs:Resource,
+        edu:CourseOffering .
+
+xsd:decimal a rdfs:Resource .
+
+xsd:string a rdfs:Resource .
+
+xsd:integer a rdfs:Resource .
+
+rdfs:Class a rdfs:Resource .
+
+rdf:Property a rdfs:Resource .
+

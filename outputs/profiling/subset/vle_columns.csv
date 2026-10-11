@@ -1,0 +1,7 @@
+,dtype,missing,missing_pct,distinct_nonmissing
+id_site,int64,0,0.0,413
+code_module,object,0,0.0,1
+code_presentation,object,0,0.0,2
+activity_type,object,0,0.0,9
+week_from,float64,407,98.55,2
+week_to,float64,407,98.55,2

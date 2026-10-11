@@ -1,0 +1,10 @@
+PREFIX edu: <https://example.org/oulad/schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# Property path works without pre-materializing the RDFS closure.
+SELECT ?offering ?assessment ?type ?deadline ?weight
+WHERE {
+  ?assessment a ?type ; edu:assessmentInOffering ?offering .
+  ?type rdfs:subClassOf* edu:Assessment .
+  OPTIONAL { ?assessment edu:deadlineDay ?deadline }
+  OPTIONAL { ?assessment edu:weightPercent ?weight }
+} ORDER BY ?offering ?assessment

@@ -1,0 +1,29 @@
+{
+  "snapshot": "c87470abc5b822ca",
+  "nodes": 5037,
+  "relationships": 8221,
+  "node_groups": {
+    "AssessmentRecord": 3149,
+    "Assessment,TutorMarkedAssessment": 10,
+    "Assessment,Exam": 2,
+    "Enrollment": 748,
+    "Module": 1,
+    "CourseOffering": 2,
+    "LearningResource": 413,
+    "Person,Student": 712
+  },
+  "relationship_types": {
+    "FOR_ASSESSMENT": 3149,
+    "RECORD_FOR_ENROLLMENT": 3149,
+    "ASSESSMENT_IN_OFFERING": 12,
+    "HAS_STUDENT": 748,
+    "IN_OFFERING": 748,
+    "OFFERING_OF": 2,
+    "RESOURCE_IN_OFFERING": 413
+  },
+  "source": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\data\\processed\\oulad.ttl",
+  "status": "loaded-and-verified",
+  "cypher_late_records": 815,
+  "neo4j_nodes": 5037,
+  "neo4j_relationships": 8221
+}

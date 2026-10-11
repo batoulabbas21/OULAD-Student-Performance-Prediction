@@ -1,0 +1,9 @@
+PREFIX edu: <https://example.org/oulad/schema#>
+# Operational definition: strictly after the recorded deadline; banked results excluded.
+SELECT ?enrollment ?assessment ?submitted ?deadline (?submitted - ?deadline AS ?daysLate)
+WHERE {
+  ?record edu:recordForEnrollment ?enrollment ; edu:forAssessment ?assessment ;
+          edu:isBanked false ; edu:submissionDay ?submitted .
+  ?assessment edu:deadlineDay ?deadline .
+  FILTER (?submitted > ?deadline)
+} ORDER BY DESC(?daysLate) ?enrollment ?assessment

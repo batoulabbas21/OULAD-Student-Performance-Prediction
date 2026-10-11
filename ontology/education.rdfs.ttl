@@ -1,0 +1,48 @@
+@prefix edu: <https://example.org/oulad/schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# Project-defined schema. These IRIs are identifiers, not a deployed website.
+edu:Person a rdfs:Class ; rdfs:label "Person" .
+edu:Student a rdfs:Class ; rdfs:subClassOf edu:Person ; rdfs:label "Student" .
+edu:Module a rdfs:Class ; rdfs:label "Module" .
+edu:CourseOffering a rdfs:Class ; rdfs:label "Module presentation (course offering)" .
+edu:Enrollment a rdfs:Class ; rdfs:label "Student enrollment in one offering" .
+edu:Assessment a rdfs:Class ; rdfs:label "Assessment" .
+edu:TutorMarkedAssessment a rdfs:Class ; rdfs:subClassOf edu:Assessment .
+edu:ComputerMarkedAssessment a rdfs:Class ; rdfs:subClassOf edu:Assessment .
+edu:Exam a rdfs:Class ; rdfs:subClassOf edu:Assessment .
+edu:AssessmentRecord a rdfs:Class ;
+    rdfs:comment "Recorded assessment result; may be banked from a previous presentation. Not necessarily a new submission." .
+edu:LearningResource a rdfs:Class .
+edu:DailyInteraction a rdfs:Class ; rdfs:comment "Daily aggregate of clicks, not an individual click or study duration." .
+
+edu:offeringOf a rdf:Property ; rdfs:domain edu:CourseOffering ; rdfs:range edu:Module .
+edu:hasStudent a rdf:Property ; rdfs:domain edu:Enrollment ; rdfs:range edu:Student .
+edu:inOffering a rdf:Property ; rdfs:domain edu:Enrollment ; rdfs:range edu:CourseOffering .
+edu:assessmentInOffering a rdf:Property ; rdfs:domain edu:Assessment ; rdfs:range edu:CourseOffering .
+edu:recordForEnrollment a rdf:Property ; rdfs:domain edu:AssessmentRecord ; rdfs:range edu:Enrollment .
+edu:forAssessment a rdf:Property ; rdfs:domain edu:AssessmentRecord ; rdfs:range edu:Assessment .
+edu:resourceInOffering a rdf:Property ; rdfs:domain edu:LearningResource ; rdfs:range edu:CourseOffering .
+edu:interactionForEnrollment a rdf:Property ; rdfs:domain edu:DailyInteraction ; rdfs:range edu:Enrollment .
+edu:withResource a rdf:Property ; rdfs:domain edu:DailyInteraction ; rdfs:range edu:LearningResource .
+
+edu:studentId a rdf:Property ; rdfs:domain edu:Student ; rdfs:range xsd:string .
+edu:presentationCode a rdf:Property ; rdfs:domain edu:CourseOffering ; rdfs:range xsd:string .
+edu:lengthDays a rdf:Property ; rdfs:domain edu:CourseOffering ; rdfs:range xsd:integer .
+edu:finalResult a rdf:Property ; rdfs:domain edu:Enrollment ; rdfs:range xsd:string .
+edu:previousAttempts a rdf:Property ; rdfs:domain edu:Enrollment ; rdfs:range xsd:integer .
+edu:ageBand a rdf:Property ; rdfs:domain edu:Enrollment ; rdfs:range xsd:string .
+edu:region a rdf:Property ; rdfs:domain edu:Enrollment ; rdfs:range xsd:string .
+edu:highestEducation a rdf:Property ; rdfs:domain edu:Enrollment ; rdfs:range xsd:string .
+edu:registrationDay a rdf:Property ; rdfs:domain edu:Enrollment ; rdfs:range xsd:integer .
+edu:unregistrationDay a rdf:Property ; rdfs:domain edu:Enrollment ; rdfs:range xsd:integer .
+edu:deadlineDay a rdf:Property ; rdfs:domain edu:Assessment ; rdfs:range xsd:integer .
+edu:weightPercent a rdf:Property ; rdfs:domain edu:Assessment ; rdfs:range xsd:decimal .
+edu:submissionDay a rdf:Property ; rdfs:domain edu:AssessmentRecord ; rdfs:range xsd:integer .
+edu:isBanked a rdf:Property ; rdfs:domain edu:AssessmentRecord ; rdfs:range xsd:boolean .
+edu:score a rdf:Property ; rdfs:domain edu:AssessmentRecord ; rdfs:range xsd:decimal .
+edu:activityType a rdf:Property ; rdfs:domain edu:LearningResource ; rdfs:range xsd:string .
+edu:interactionDay a rdf:Property ; rdfs:domain edu:DailyInteraction ; rdfs:range xsd:integer .
+edu:clickCount a rdf:Property ; rdfs:domain edu:DailyInteraction ; rdfs:range xsd:integer .

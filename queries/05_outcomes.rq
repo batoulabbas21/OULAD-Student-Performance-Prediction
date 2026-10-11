@@ -1,0 +1,4 @@
+PREFIX edu: <https://example.org/oulad/schema#>
+SELECT ?offering ?outcome (COUNT(DISTINCT ?enrollment) AS ?count)
+WHERE { ?enrollment edu:inOffering ?offering ; edu:finalResult ?outcome }
+GROUP BY ?offering ?outcome ORDER BY ?offering ?outcome

@@ -1,0 +1,6 @@
+,dtype,missing,missing_pct,distinct_nonmissing
+code_module,object,0,0.0,7
+code_presentation,object,0,0.0,4
+id_student,int64,0,0.0,28785
+date_registration,float64,45,0.14,332
+date_unregistration,float64,22521,69.1,416

@@ -1,0 +1,7 @@
+PREFIX edu: <https://example.org/oulad/schema#>
+# Absence here describes the loaded extract, not an OWL/RDFS assertion of nonexistence.
+SELECT ?record ?enrollment ?assessment
+WHERE {
+  ?record a edu:AssessmentRecord ; edu:recordForEnrollment ?enrollment ; edu:forAssessment ?assessment .
+  FILTER NOT EXISTS { ?record edu:score ?score }
+} ORDER BY ?record

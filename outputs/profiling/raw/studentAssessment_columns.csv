@@ -1,0 +1,6 @@
+,dtype,missing,missing_pct,distinct_nonmissing
+id_assessment,int64,0,0.0,188
+id_student,int64,0,0.0,23369
+date_submitted,int64,0,0.0,312
+is_banked,int64,0,0.0,2
+score,float64,173,0.1,101

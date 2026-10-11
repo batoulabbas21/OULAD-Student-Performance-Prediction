@@ -1,0 +1,317 @@
+{
+  "tables": {
+    "courses": {
+      "rows": 2,
+      "columns": 3
+    },
+    "assessments": {
+      "rows": 12,
+      "columns": 6
+    },
+    "studentInfo": {
+      "rows": 748,
+      "columns": 12
+    },
+    "studentRegistration": {
+      "rows": 748,
+      "columns": 5
+    },
+    "studentAssessment": {
+      "rows": 3149,
+      "columns": 5
+    },
+    "vle": {
+      "rows": 413,
+      "columns": 6
+    }
+  },
+  "checks": [
+    {
+      "rule": "required_key_components",
+      "table": "courses",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "duplicate_key_rows",
+      "table": "courses",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "required_key_components",
+      "table": "assessments",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "duplicate_key_rows",
+      "table": "assessments",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "required_key_components",
+      "table": "studentInfo",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "duplicate_key_rows",
+      "table": "studentInfo",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "required_key_components",
+      "table": "studentRegistration",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "duplicate_key_rows",
+      "table": "studentRegistration",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "required_key_components",
+      "table": "studentAssessment",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "duplicate_key_rows",
+      "table": "studentAssessment",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "required_key_components",
+      "table": "vle",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "duplicate_key_rows",
+      "table": "vle",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "offering_exists",
+      "table": "assessments",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "offering_exists",
+      "table": "studentInfo",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "offering_exists",
+      "table": "studentRegistration",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "offering_exists",
+      "table": "vle",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "registration_has_enrollment",
+      "table": "studentRegistration",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "enrollment_has_registration",
+      "table": "studentInfo",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "assessment_exists",
+      "table": "studentAssessment",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "assessment_record_has_matching_enrollment",
+      "table": "studentAssessment",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "score_in_0_100_when_present",
+      "table": "studentAssessment",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "missing_score_review",
+      "table": "studentAssessment",
+      "severity": "warning",
+      "count": 3,
+      "explanation": "Unknown is not zero."
+    },
+    {
+      "rule": "banked_flag_is_0_or_1",
+      "table": "studentAssessment",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "submission_day_present",
+      "table": "studentAssessment",
+      "severity": "warning",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "assessment_type_vocabulary",
+      "table": "assessments",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "weight_in_0_100_when_present",
+      "table": "assessments",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "missing_deadline_review",
+      "table": "assessments",
+      "severity": "warning",
+      "count": 2,
+      "explanation": "Do not invent an exact exam deadline."
+    },
+    {
+      "rule": "final_result_vocabulary",
+      "table": "studentInfo",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "num_of_prev_attempts_integer_when_present",
+      "table": "studentInfo",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "studied_credits_integer_when_present",
+      "table": "studentInfo",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "date_submitted_integer_when_present",
+      "table": "studentAssessment",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "date_integer_when_present",
+      "table": "assessments",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "date_registration_integer_when_present",
+      "table": "studentRegistration",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "date_unregistration_integer_when_present",
+      "table": "studentRegistration",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "num_of_prev_attempts_nonnegative",
+      "table": "studentInfo",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "studied_credits_nonnegative",
+      "table": "studentInfo",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "offering_length_positive_integer",
+      "table": "courses",
+      "severity": "error",
+      "count": 0,
+      "explanation": ""
+    },
+    {
+      "rule": "missing_registration_day_review",
+      "table": "studentRegistration",
+      "severity": "warning",
+      "count": 0,
+      "explanation": "Preserve unknown registration days; do not replace them with course start."
+    },
+    {
+      "rule": "unregistration_before_registration_review",
+      "table": "studentRegistration",
+      "severity": "warning",
+      "count": 0,
+      "explanation": "Review rather than silently remove."
+    },
+    {
+      "rule": "withdrawal_status_date_disagreement",
+      "table": "studentInfo",
+      "severity": "warning",
+      "count": 0,
+      "explanation": "Review source completeness; missing is not a fabricated date."
+    },
+    {
+      "rule": "resource_week_order_when_known",
+      "table": "vle",
+      "severity": "warning",
+      "count": 0,
+      "explanation": ""
+    }
+  ]
+}

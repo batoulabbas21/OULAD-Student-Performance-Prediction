@@ -1,0 +1,58 @@
+[
+  {
+    "check": "Student node count",
+    "status": "passed"
+  },
+  {
+    "check": "Enrollment node count",
+    "status": "passed"
+  },
+  {
+    "check": "CourseOffering node count",
+    "status": "passed"
+  },
+  {
+    "check": "AssessmentRecord node count",
+    "status": "passed"
+  },
+  {
+    "check": "LearningResource node count",
+    "status": "passed"
+  },
+  {
+    "check": "enrollment counts by offering",
+    "status": "passed"
+  },
+  {
+    "check": "all assessment subtypes included",
+    "status": "passed"
+  },
+  {
+    "check": "late record identities and days (SQL vs SPARQL)",
+    "status": "passed"
+  },
+  {
+    "check": "low scores",
+    "status": "passed"
+  },
+  {
+    "check": "unknown scores retained as records",
+    "status": "passed"
+  },
+  {
+    "check": "outcomes by offering",
+    "status": "passed"
+  },
+  {
+    "check": "no invented nan literals",
+    "status": "passed"
+  },
+  {
+    "check": "same-day and banked boundary cases",
+    "status": "passed"
+  },
+  {
+    "check": "RDFS subclass/domain demonstration",
+    "status": "passed"
+  }
+]

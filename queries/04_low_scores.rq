@@ -1,0 +1,7 @@
+PREFIX edu: <https://example.org/oulad/schema#>
+SELECT ?enrollment ?assessment ?score ?banked
+WHERE {
+  ?record edu:recordForEnrollment ?enrollment ; edu:forAssessment ?assessment ;
+          edu:score ?score ; edu:isBanked ?banked .
+  FILTER (?score < 40)
+} ORDER BY ?score ?enrollment

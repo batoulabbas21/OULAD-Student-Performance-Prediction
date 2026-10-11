@@ -1,0 +1,30 @@
+{
+  "01_enrollments": {
+    "status": "answered",
+    "rows": 2
+  },
+  "02_assessments": {
+    "status": "answered",
+    "rows": 12
+  },
+  "03_late_records": {
+    "status": "answered",
+    "rows": 815
+  },
+  "04_low_scores": {
+    "status": "answered",
+    "rows": 90
+  },
+  "05_outcomes": {
+    "status": "answered",
+    "rows": 8
+  },
+  "06_unknown_scores": {
+    "status": "answered",
+    "rows": 3
+  },
+  "07_early_activity": {
+    "status": "unavailable",
+    "reason": "Daily activity was not loaded."
+  }
+}
