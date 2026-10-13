@@ -1,0 +1,185 @@
+@prefix edu: <https://example.org/oulad/schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/oulad/base> a owl:Ontology ;
+    rdfs:label "OULAD base declarations from the RDFS schema" .
+
+edu:ComputerMarkedAssessment a owl:Class ;
+    rdfs:label "ComputerMarkedAssessment" ;
+    rdfs:subClassOf edu:Assessment .
+
+edu:Exam a owl:Class ;
+    rdfs:label "Exam" ;
+    rdfs:subClassOf edu:Assessment .
+
+edu:TutorMarkedAssessment a owl:Class ;
+    rdfs:label "TutorMarkedAssessment" ;
+    rdfs:subClassOf edu:Assessment .
+
+edu:activityType a owl:DatatypeProperty ;
+    rdfs:label "activityType" ;
+    rdfs:domain edu:LearningResource ;
+    rdfs:range xsd:string .
+
+edu:ageBand a owl:DatatypeProperty ;
+    rdfs:label "ageBand" ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:string .
+
+edu:assessmentInOffering a owl:ObjectProperty ;
+    rdfs:label "assessmentInOffering" ;
+    rdfs:domain edu:Assessment ;
+    rdfs:range edu:CourseOffering .
+
+edu:clickCount a owl:DatatypeProperty ;
+    rdfs:label "clickCount" ;
+    rdfs:domain edu:DailyInteraction ;
+    rdfs:range xsd:integer .
+
+edu:deadlineDay a owl:DatatypeProperty ;
+    rdfs:label "deadlineDay" ;
+    rdfs:domain edu:Assessment ;
+    rdfs:range xsd:integer .
+
+edu:finalResult a owl:DatatypeProperty ;
+    rdfs:label "finalResult" ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:string .
+
+edu:forAssessment a owl:ObjectProperty ;
+    rdfs:label "forAssessment" ;
+    rdfs:domain edu:AssessmentRecord ;
+    rdfs:range edu:Assessment .
+
+edu:hasStudent a owl:ObjectProperty ;
+    rdfs:label "hasStudent" ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range edu:Student .
+
+edu:highestEducation a owl:DatatypeProperty ;
+    rdfs:label "highestEducation" ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:string .
+
+edu:inOffering a owl:ObjectProperty ;
+    rdfs:label "inOffering" ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range edu:CourseOffering .
+
+edu:interactionDay a owl:DatatypeProperty ;
+    rdfs:label "interactionDay" ;
+    rdfs:domain edu:DailyInteraction ;
+    rdfs:range xsd:integer .
+
+edu:interactionForEnrollment a owl:ObjectProperty ;
+    rdfs:label "interactionForEnrollment" ;
+    rdfs:domain edu:DailyInteraction ;
+    rdfs:range edu:Enrollment .
+
+edu:isBanked a owl:DatatypeProperty ;
+    rdfs:label "isBanked" ;
+    rdfs:domain edu:AssessmentRecord ;
+    rdfs:range xsd:boolean .
+
+edu:lengthDays a owl:DatatypeProperty ;
+    rdfs:label "lengthDays" ;
+    rdfs:domain edu:CourseOffering ;
+    rdfs:range xsd:integer .
+
+edu:offeringOf a owl:ObjectProperty ;
+    rdfs:label "offeringOf" ;
+    rdfs:domain edu:CourseOffering ;
+    rdfs:range edu:Module .
+
+edu:presentationCode a owl:DatatypeProperty ;
+    rdfs:label "presentationCode" ;
+    rdfs:domain edu:CourseOffering ;
+    rdfs:range xsd:string .
+
+edu:previousAttempts a owl:DatatypeProperty ;
+    rdfs:label "previousAttempts" ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:integer .
+
+edu:recordForEnrollment a owl:ObjectProperty ;
+    rdfs:label "recordForEnrollment" ;
+    rdfs:domain edu:AssessmentRecord ;
+    rdfs:range edu:Enrollment .
+
+edu:region a owl:DatatypeProperty ;
+    rdfs:label "region" ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:string .
+
+edu:registrationDay a owl:DatatypeProperty ;
+    rdfs:label "registrationDay" ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:integer .
+
+edu:resourceInOffering a owl:ObjectProperty ;
+    rdfs:label "resourceInOffering" ;
+    rdfs:domain edu:LearningResource ;
+    rdfs:range edu:CourseOffering .
+
+edu:score a owl:DatatypeProperty ;
+    rdfs:label "score" ;
+    rdfs:domain edu:AssessmentRecord ;
+    rdfs:range xsd:decimal .
+
+edu:studentId a owl:DatatypeProperty ;
+    rdfs:label "studentId" ;
+    rdfs:domain edu:Student ;
+    rdfs:range xsd:string .
+
+edu:submissionDay a owl:DatatypeProperty ;
+    rdfs:label "submissionDay" ;
+    rdfs:domain edu:AssessmentRecord ;
+    rdfs:range xsd:integer .
+
+edu:unregistrationDay a owl:DatatypeProperty ;
+    rdfs:label "unregistrationDay" ;
+    rdfs:domain edu:Enrollment ;
+    rdfs:range xsd:integer .
+
+edu:weightPercent a owl:DatatypeProperty ;
+    rdfs:label "weightPercent" ;
+    rdfs:domain edu:Assessment ;
+    rdfs:range xsd:decimal .
+
+edu:withResource a owl:ObjectProperty ;
+    rdfs:label "withResource" ;
+    rdfs:domain edu:DailyInteraction ;
+    rdfs:range edu:LearningResource .
+
+edu:Module a owl:Class ;
+    rdfs:label "Module" .
+
+edu:Person a owl:Class ;
+    rdfs:label "OULADPerson" .
+
+edu:Student a owl:Class ;
+    rdfs:label "Student" ;
+    rdfs:subClassOf edu:Person .
+
+edu:LearningResource a owl:Class ;
+    rdfs:label "LearningResource" .
+
+edu:DailyInteraction a owl:Class ;
+    rdfs:label "DailyInteraction" ;
+    rdfs:comment "Daily aggregate of clicks, not an individual click or study duration." .
+
+edu:AssessmentRecord a owl:Class ;
+    rdfs:label "AssessmentRecord" ;
+    rdfs:comment "Recorded assessment result; may be banked from a previous presentation. Not necessarily a new submission." .
+
+edu:CourseOffering a owl:Class ;
+    rdfs:label "CourseOffering" .
+
+edu:Assessment a owl:Class ;
+    rdfs:label "Assessment" .
+
+edu:Enrollment a owl:Class ;
+    rdfs:label "Enrollment" .
+

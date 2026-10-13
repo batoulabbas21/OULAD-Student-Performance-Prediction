@@ -1,0 +1,109 @@
+@prefix edu: <https://example.org/oulad/schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<https://example.org/oulad/ontology> a owl:Ontology ;
+    owl:versionInfo "0.1.0 - Session 3 teaching ontology" ;
+    rdfs:label "OULAD education ontology" ;
+    rdfs:comment "Definitions, not validation shapes. Prepare the local import catalog before opening in Protege." ;
+    owl:imports <https://example.org/oulad/base>,
+                <https://example.org/oulad/imports/foaf-person> .
+
+edu:answersCQ a owl:AnnotationProperty .
+edu:definition a owl:AnnotationProperty .
+
+# These annotations explain why the existing RDFS classes earn their place.
+edu:Person rdfs:subClassOf foaf:Person ;
+    edu:answersCQ "Q1: Which distinct people participate?" .
+edu:Student edu:answersCQ "Q1: Which students have enrollments?" .
+edu:Module edu:answersCQ "Q1: Which module groups the offerings?" .
+edu:CourseOffering edu:answersCQ "Q1/Q2: Which presentation contains these enrollments and assessments?" .
+edu:Enrollment edu:answersCQ "Q1/Q5/Q9: What participation, outcome and registration belongs to this offering?" .
+edu:Assessment edu:answersCQ "Q2: Which assessments belong to the offering?" .
+edu:TutorMarkedAssessment edu:answersCQ "Q2: Which assessments are tutor marked?" .
+edu:ComputerMarkedAssessment edu:answersCQ "Q2: Which assessments are computer marked?" .
+edu:Exam edu:answersCQ "Q2: Which assessments are exams?" .
+edu:AssessmentRecord edu:answersCQ "Q3/Q4/Q6: What recorded assessment result exists, including banked results?" .
+edu:LearningResource edu:answersCQ "Q7: Which learning resources are described?" .
+edu:DailyInteraction edu:answersCQ "Q8: What daily resource activity was recorded?" .
+
+# Modeling decision: a person, an enrollment, and an assessment record are different kinds of thing.
+[] a owl:AllDisjointClasses ; owl:members
+   (edu:Person edu:Module edu:CourseOffering edu:Enrollment edu:Assessment
+    edu:AssessmentRecord edu:LearningResource edu:DailyInteraction) .
+[] a owl:AllDisjointClasses ; owl:members
+   (edu:TutorMarkedAssessment edu:ComputerMarkedAssessment edu:Exam) .
+
+# Necessary conditions. Missing explicit links are NOT validation failures in OWL.
+edu:Enrollment rdfs:subClassOf
+    [ a owl:Restriction ; owl:onProperty edu:hasStudent ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass edu:Student ],
+    [ a owl:Restriction ; owl:onProperty edu:inOffering ;
+      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass edu:CourseOffering ] .
+
+edu:hasAssessmentRecord a owl:ObjectProperty ;
+    rdfs:label "hasAssessmentRecord" ;
+    rdfs:domain edu:Enrollment ; rdfs:range edu:AssessmentRecord ;
+    owl:inverseOf edu:recordForEnrollment .
+
+# Outcome, score and banked flag are single-valued for one contextual record.
+edu:finalResult a owl:FunctionalProperty .
+edu:score a owl:FunctionalProperty .
+edu:isBanked a owl:FunctionalProperty .
+
+edu:SuccessfulEnrollment a owl:Class ; rdfs:label "SuccessfulEnrollment" ;
+    edu:answersCQ "Q5: Which enrollments ended in Pass or Distinction?" ;
+    edu:definition "An enrollment with a recorded final outcome Pass or Distinction; not a prediction." ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf (
+        edu:Enrollment
+        [ a owl:Class ; owl:unionOf (
+            [ a owl:Restriction ; owl:onProperty edu:finalResult ; owl:hasValue "Pass" ]
+            [ a owl:Restriction ; owl:onProperty edu:finalResult ; owl:hasValue "Distinction" ]
+        ) ]
+    ) ] .
+
+edu:WithdrawnEnrollment a owl:Class ; rdfs:label "WithdrawnEnrollment" ;
+    edu:answersCQ "Q5/Q9: Which enrollments have the recorded outcome Withdrawn?" ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf (
+        edu:Enrollment
+        [ a owl:Restriction ; owl:onProperty edu:finalResult ; owl:hasValue "Withdrawn" ]
+    ) ] .
+
+edu:LowScoreAssessmentRecord a owl:Class ; rdfs:label "LowScoreAssessmentRecord" ;
+    edu:answersCQ "Q4: Which assessment records have a known score below 40?" ;
+    edu:definition "A present score below 40; this does not imply final Fail for the enrollment." ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf (
+        edu:AssessmentRecord
+        [ a owl:Restriction ; owl:onProperty edu:score ; owl:someValuesFrom
+            [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+              owl:withRestrictions ( [ xsd:maxExclusive "40"^^xsd:decimal ] ) ] ]
+    ) ] .
+
+edu:BankedAssessmentRecord a owl:Class ; rdfs:label "BankedAssessmentRecord" ;
+    edu:answersCQ "Q3/Q4: Which results were banked from a previous presentation?" ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf (
+        edu:AssessmentRecord
+        [ a owl:Restriction ; owl:onProperty edu:isBanked ; owl:hasValue true ]
+    ) ] .
+
+edu:NonBankedAssessmentRecord a owl:Class ; rdfs:label "NonBankedAssessmentRecord" ;
+    edu:answersCQ "Q3: Which records are eligible for the nonbanked lateness comparison?" ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf (
+        edu:AssessmentRecord
+        [ a owl:Restriction ; owl:onProperty edu:isBanked ; owl:hasValue false ]
+    ) ] .
+
+edu:EnrollmentWithLowScore a owl:Class ; rdfs:label "EnrollmentWithLowScore" ;
+    edu:answersCQ "Q4 follow-up: Which enrollments have at least one low-score record?" ;
+    owl:equivalentClass [ a owl:Class ; owl:intersectionOf (
+        edu:Enrollment
+        [ a owl:Restriction ; owl:onProperty edu:hasAssessmentRecord ;
+          owl:someValuesFrom edu:LowScoreAssessmentRecord ]
+    ) ] .
+
+# Deliberately no LateRecord definition: comparing two data-property values
+# (submissionDay > deadlineDay) remains in SPARQL/Python.
+# No MissingScore class from absence: OWL uses the open-world assumption.

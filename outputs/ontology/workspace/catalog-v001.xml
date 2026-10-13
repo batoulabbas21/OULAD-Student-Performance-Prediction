@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
+  <uri name="https://example.org/oulad/base" uri="education-base.owl.ttl" />
+  <uri name="https://example.org/oulad/imports/foaf-person" uri="foaf-person.ttl" />
+  <uri name="https://example.org/oulad/ontology" uri="education.owl.ttl" />
+  <uri name="https://example.org/oulad/domain-error" uri="domain-error.ttl" />
+</catalog>

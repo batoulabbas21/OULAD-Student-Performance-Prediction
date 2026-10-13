@@ -1,0 +1,13 @@
+# Combine with the course demos/docker-compose.yml using start-fuseki.ps1.
+# The course file supplies the image, localhost port and existing data volume.
+services:
+  fuseki:
+    volumes:
+      - type: bind
+        source: ${OULAD_PROJECT_ROOT:?Run start-fuseki.ps1}/config/fuseki.ttl
+        target: /etc/fuseki/oulad-config.ttl
+        read_only: true
+    command:
+      - sh
+      - -c
+      - mkdir -p /data/kr /data/oulad && exec java -jar /opt/fuseki/fuseki-server.jar --port=3030 --config=/etc/fuseki/oulad-config.ttl

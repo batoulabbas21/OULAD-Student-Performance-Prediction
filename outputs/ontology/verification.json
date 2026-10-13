@@ -1,0 +1,172 @@
+{
+  "verified_at_utc": "2026-10-13T10:01:38.486767+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "check": "Full ontology and data are consistent and coherent",
+      "passed": true,
+      "detail": "No unsatisfiable named class in the clean ontology plus all loaded OULAD facts."
+    },
+    {
+      "check": "SuccessfulEnrollment matches CSV-derived identities",
+      "passed": true,
+      "detail": {
+        "expected": 531,
+        "inferred": 531,
+        "missing": [],
+        "unexpected": []
+      }
+    },
+    {
+      "check": "WithdrawnEnrollment matches CSV-derived identities",
+      "passed": true,
+      "detail": {
+        "expected": 126,
+        "inferred": 126,
+        "missing": [],
+        "unexpected": []
+      }
+    },
+    {
+      "check": "LowScoreAssessmentRecord matches CSV-derived identities",
+      "passed": true,
+      "detail": {
+        "expected": 90,
+        "inferred": 90,
+        "missing": [],
+        "unexpected": []
+      }
+    },
+    {
+      "check": "BankedAssessmentRecord matches CSV-derived identities",
+      "passed": true,
+      "detail": {
+        "expected": 42,
+        "inferred": 42,
+        "missing": [],
+        "unexpected": []
+      }
+    },
+    {
+      "check": "NonBankedAssessmentRecord matches CSV-derived identities",
+      "passed": true,
+      "detail": {
+        "expected": 3107,
+        "inferred": 3107,
+        "missing": [],
+        "unexpected": []
+      }
+    },
+    {
+      "check": "EnrollmentWithLowScore matches CSV-derived identities",
+      "passed": true,
+      "detail": {
+        "expected": 75,
+        "inferred": 75,
+        "missing": [],
+        "unexpected": []
+      }
+    },
+    {
+      "check": "Published Person class is inferred for the observed students",
+      "passed": true,
+      "detail": {
+        "expected_people": 712
+      }
+    },
+    {
+      "check": "Teaching sample preserves real facts and all four outcomes",
+      "passed": true,
+      "detail": {
+        "source_triples": 276,
+        "outcomes": [
+          "Distinction",
+          "Fail",
+          "Pass",
+          "Withdrawn"
+        ]
+      }
+    },
+    {
+      "check": "Wrong property domain makes two empty classes unsatisfiable",
+      "passed": true,
+      "detail": [
+        "https://example.org/oulad/teaching#StudentUsingEnrollmentProperty",
+        "https://example.org/oulad/teaching#StudentWithExactlyOneStudent"
+      ]
+    },
+    {
+      "check": "Instantiating an impossible class makes the ontology inconsistent",
+      "passed": true,
+      "detail": "Synthetic individuals only; the real source graph is unchanged."
+    },
+    {
+      "check": "Exactly one allows an unstated filler under the open world assumption",
+      "passed": true,
+      "detail": "No hasStudent or inOffering triple is asserted for the synthetic enrollment."
+    },
+    {
+      "check": "Two student names need not denote different people",
+      "passed": true,
+      "detail": "The maximum cardinality permits equality; OWL has no unique-name assumption."
+    },
+    {
+      "check": "Two explicitly different students violate exactly one",
+      "passed": true,
+      "detail": "The same example becomes inconsistent after differentFrom is asserted."
+    },
+    {
+      "check": "Low-score boundary is strictly below 40; unknown remains unclassified",
+      "passed": true,
+      "detail": "Known 39 is inferred low; 40, 41 and an unknown score are not inferred low."
+    },
+    {
+      "check": "SubClassOf alone does not classify successful enrollments from their outcomes",
+      "passed": true,
+      "detail": "Only the SuccessfulEnrollment equivalence is changed, in memory."
+    },
+    {
+      "check": "Only does not assert existence; some does",
+      "passed": true,
+      "detail": "Only-low records alone does not entail any record. Some-and-only entails a low-score record exists."
+    }
+  ],
+  "inferred_counts": [
+    {
+      "class": "SuccessfulEnrollment",
+      "csv_expected": 531,
+      "owl_inferred": 531
+    },
+    {
+      "class": "WithdrawnEnrollment",
+      "csv_expected": 126,
+      "owl_inferred": 126
+    },
+    {
+      "class": "LowScoreAssessmentRecord",
+      "csv_expected": 90,
+      "owl_inferred": 90
+    },
+    {
+      "class": "BankedAssessmentRecord",
+      "csv_expected": 42,
+      "owl_inferred": 42
+    },
+    {
+      "class": "NonBankedAssessmentRecord",
+      "csv_expected": 3107,
+      "owl_inferred": 3107
+    },
+    {
+      "class": "EnrollmentWithLowScore",
+      "csv_expected": 75,
+      "owl_inferred": 75
+    }
+  ],
+  "source_sha256": {
+    "data/processed/oulad.ttl": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5",
+    "ontology/education.owl.ttl": "54c2ec0e79cc1f138859dfdced499e1ccc3939819c15928f6f1a8d3b40788a29",
+    "ontology/education.rdfs.ttl": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+    "ontology/imports/foaf.rdf": "3d859b5d92a2c3d041545d014fa826f682ca06d056af8c7b31e32d930abf2bc5"
+  }
+}

@@ -1,0 +1,25 @@
+@prefix edu: <https://example.org/oulad/schema#> .
+@prefix demo: <https://example.org/oulad/teaching#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/oulad/domain-error> a owl:Ontology ;
+    owl:imports <https://example.org/oulad/ontology> ;
+    rdfs:comment "Intentional synthetic mistakes for Session 3. Never load into the project databases." .
+
+# hasStudent starts at an Enrollment, not at a Student.
+# Each class below is both Person (via Student) and Enrollment (via domain).
+# Person and Enrollment are disjoint, so neither class can have an instance.
+demo:StudentUsingEnrollmentProperty a owl:Class ;
+    rdfs:label "StudentUsingEnrollmentProperty" ;
+    rdfs:subClassOf edu:Student,
+        [ a owl:Restriction ; owl:onProperty edu:hasStudent ; owl:someValuesFrom edu:Student ] .
+
+demo:StudentWithExactlyOneStudent a owl:Class ;
+    rdfs:label "StudentWithExactlyOneStudent" ;
+    rdfs:subClassOf edu:Student,
+        [ a owl:Restriction ; owl:onProperty edu:hasStudent ;
+          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ; owl:onClass edu:Student ] .
+
+# An impossible class alone need not make the whole ontology inconsistent.

@@ -1,0 +1,7 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+<https://example.org/oulad/inconsistent-example> a owl:Ontology ;
+    owl:imports <https://example.org/oulad/domain-error> .
+
+<https://example.org/oulad/teaching#fictionalStudent> a <https://example.org/oulad/teaching#StudentUsingEnrollmentProperty> .
+

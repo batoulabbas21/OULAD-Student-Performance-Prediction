@@ -1,0 +1,18 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+foaf:Person a owl:Class ;
+    rdfs:label "Person" ;
+    rdfs:comment "A person." ;
+    rdfs:subClassOf foaf:Agent .
+
+<https://example.org/oulad/imports/foaf-person> a owl:Ontology ;
+    rdfs:label "Selected FOAF Person/Agent fragment" ;
+    rdfs:comment "Selected by the OULAD project from FOAF 0.99. Dan Brickley and Libby Miller; CC BY 1.0. Not a complete FOAF import." ;
+    rdfs:isDefinedBy <https://xmlns.com/foaf/spec/> .
+
+foaf:Agent a owl:Class ;
+    rdfs:label "Agent" ;
+    rdfs:comment "An agent (eg. person, group, software or physical artifact)." .
+

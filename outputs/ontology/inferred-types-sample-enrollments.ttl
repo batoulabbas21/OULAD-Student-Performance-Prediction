@@ -1,0 +1,115 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<https://example.org/oulad/id/assessment-record/100893/1752> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/100893/1753> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/100893/1754> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/100893/1755> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/100893/1756> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/106247/1752> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/106247/1753> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/106247/1754> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/106577/1752> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/106577/1753> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/106577/1754> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/106577/1755> a <https://example.org/oulad/schema#LowScoreAssessmentRecord>,
+        <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/106577/1756> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/129955/1758> a <https://example.org/oulad/schema#BankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/129955/1759> a <https://example.org/oulad/schema#BankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/129955/1760> a <https://example.org/oulad/schema#BankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/134143/1752> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/134143/1753> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/134143/1754> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/134143/1755> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/134143/1756> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/1401935/1752> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/1401935/1753> a <https://example.org/oulad/schema#LowScoreAssessmentRecord>,
+        <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/260355/1752> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/260355/1753> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment-record/260355/1754> a <https://example.org/oulad/schema#NonBankedAssessmentRecord> .
+
+<https://example.org/oulad/id/assessment/1752> a <https://example.org/oulad/schema#Assessment> .
+
+<https://example.org/oulad/id/assessment/1753> a <https://example.org/oulad/schema#Assessment> .
+
+<https://example.org/oulad/id/assessment/1754> a <https://example.org/oulad/schema#Assessment> .
+
+<https://example.org/oulad/id/assessment/1755> a <https://example.org/oulad/schema#Assessment> .
+
+<https://example.org/oulad/id/assessment/1756> a <https://example.org/oulad/schema#Assessment> .
+
+<https://example.org/oulad/id/assessment/1758> a <https://example.org/oulad/schema#Assessment> .
+
+<https://example.org/oulad/id/assessment/1759> a <https://example.org/oulad/schema#Assessment> .
+
+<https://example.org/oulad/id/assessment/1760> a <https://example.org/oulad/schema#Assessment> .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/100893> a <https://example.org/oulad/schema#SuccessfulEnrollment> .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/106247> a <https://example.org/oulad/schema#WithdrawnEnrollment> .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/106577> a <https://example.org/oulad/schema#EnrollmentWithLowScore>,
+        <https://example.org/oulad/schema#SuccessfulEnrollment> .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/134143> a <https://example.org/oulad/schema#SuccessfulEnrollment> .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/1401935> a <https://example.org/oulad/schema#EnrollmentWithLowScore> .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/260355> a <https://example.org/oulad/schema#WithdrawnEnrollment> .
+
+<https://example.org/oulad/id/enrollment/AAA/2014J/129955> a <https://example.org/oulad/schema#WithdrawnEnrollment> .
+
+<https://example.org/oulad/id/student/100893> a foaf:Agent,
+        foaf:Person,
+        <https://example.org/oulad/schema#Person> .
+
+<https://example.org/oulad/id/student/106247> a foaf:Agent,
+        foaf:Person,
+        <https://example.org/oulad/schema#Person> .
+
+<https://example.org/oulad/id/student/106577> a foaf:Agent,
+        foaf:Person,
+        <https://example.org/oulad/schema#Person> .
+
+<https://example.org/oulad/id/student/129955> a foaf:Agent,
+        foaf:Person,
+        <https://example.org/oulad/schema#Person> .
+
+<https://example.org/oulad/id/student/134143> a foaf:Agent,
+        foaf:Person,
+        <https://example.org/oulad/schema#Person> .
+
+<https://example.org/oulad/id/student/1401935> a foaf:Agent,
+        foaf:Person,
+        <https://example.org/oulad/schema#Person> .
+
+<https://example.org/oulad/id/student/260355> a foaf:Agent,
+        foaf:Person,
+        <https://example.org/oulad/schema#Person> .
+

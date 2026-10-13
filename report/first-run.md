@@ -9,7 +9,7 @@ No environment or course-lab files changed.
 Selected module AAA, both available offerings. Core tables and resource metadata only.
 
 | Measure | Observed |
-|---|---:|
+| --- | ---: |
 | Offerings | 2 |
 | Enrollments | 748 |
 | Assessments | 12 |
@@ -50,3 +50,67 @@ matching SPARQL. Its 712 Student nodes represent distinct IDs, separate from the
 No graph deletion was performed. The importer retains old snapshots and points queries at the current one.
 Neo4j's displayed general class labels are added explicitly by the importer from the RDFS subclass hierarchy;
 the server is not being treated as an RDFS reasoner.
+
+## Fuseki extension verified on 2026-10-12
+
+The project Compose override reuses the course's Fuseki 5.5.0 image, port 3030, and persistent
+data volume. The startup configuration keeps `/kr` at `/data/kr` and adds `/oulad` at `/data/oulad`.
+Course source files and the Conda environment were not changed.
+
+The OULAD default graph contains 28,575 triples: 28,470 RDF facts and 105 RDFS schema triples.
+The loader fetched the uploaded graph and checked graph equivalence with the local graph.
+All six available SPARQL query result sets matched RDFLib, ignoring row order but retaining duplicates:
+
+| Query | Returned rows |
+| --- | ---: |
+| Enrollments by offering | 2 |
+| Assessments | 12 |
+| Late records | 815 |
+| Low scores | 90 |
+| Outcomes by offering | 8 |
+| Unknown scores | 3 |
+
+The activity query is marked unavailable for this core build. No automatic RDFS inference is enabled.
+An identical second load reported `unchanged`. After restarting the container, `--check-only`
+passed again and the Fuseki UI returned HTTP 200. The lab `/kr` count was 135,841 before the
+project setup, after import, and after restart.
+
+Reproduction commands and browser queries are in README section 10. The most recent verification
+record and live query CSVs are in `outputs/fuseki/`. Changed default-graph imports are designed to
+save the prior nonempty graph there before replacement; that replacement path was not exercised
+on the unchanged core data.
+
+## OWL ontology extension verified on 2026-10-13
+
+Session 3 was adapted using RDFLib, Owlready2 0.51 and its HermiT reasoner with the existing
+M2ENV and JDK 21. No Protégé setup, package installation or course-source change was needed.
+
+The authored OWL extension retains the project's IRIs and imports generated OWL declarations
+from the existing RDFS schema plus a documented FOAF Person/Agent fragment. The unchanged
+official FOAF snapshot and its attribution are stored under `ontology/imports/`. This fragment
+is not the full FOAF ontology and does not claim a BFO alignment.
+
+The clean ontology plus all 28,470 asserted AAA data triples is consistent, with no unsatisfiable
+named class. The run classified 5,037 named individuals and exported 6,119 new named type assertions.
+This is a limited type export, not the entire OWL closure. Exact inferred identities were reconciled
+against the selected CSV records:
+
+| Derived class | Named individuals |
+| --- | ---: |
+| SuccessfulEnrollment | 531 |
+| WithdrawnEnrollment | 126 |
+| LowScoreAssessmentRecord | 90 |
+| BankedAssessmentRecord | 42 |
+| NonBankedAssessmentRecord | 3,107 |
+| EnrollmentWithLowScore | 75 |
+
+All 17 checks in `evaluation/verify_ontology.py` passed, including the full-data identities,
+published Person typing, real-sample fidelity, domain mistakes, unsatisfiable versus inconsistent,
+missing links, identity/cardinality, the 39/40/41/missing score boundary, EquivalentTo versus
+SubClassOf, and some versus only. Synthetic cases stay separate from real source facts.
+
+The selected teaching sample contains 7 enrollments, 51 individuals and 279 retained source triples.
+Its own reasoning run adds 65 named type assertions. The executed results notebook and its HTML
+export show both real examples and the semantic test outcomes. The notebook reads existing
+reasoner evidence, checks source hashes and runs local SPARQL; it does not rerun HermiT or update
+the database services. See README section 11 for reproduction and modeling details.

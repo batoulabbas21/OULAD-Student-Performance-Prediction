@@ -1,0 +1,47 @@
+{
+  "verified_at_utc": "2026-10-12T06:38:19.696093+00:00",
+  "dataset": "http://localhost:3030/oulad",
+  "query_endpoint": "http://localhost:3030/oulad/sparql",
+  "mode": "check-only",
+  "source_triples": {
+    "data/processed/oulad.ttl": 28470,
+    "ontology/education.rdfs.ttl": 105
+  },
+  "default_graph_triples": 28575,
+  "source_sha256": {
+    "data/processed/oulad.ttl": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5",
+    "ontology/education.rdfs.ttl": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766"
+  },
+  "rdfs_inference": false,
+  "previous_graph_backup": null,
+  "queries": {
+    "07_early_activity.rq": {
+      "status": "unavailable",
+      "reason": "Activity was not included in this RDF build."
+    },
+    "01_enrollments.rq": {
+      "status": "passed",
+      "rows": 2
+    },
+    "02_assessments.rq": {
+      "status": "passed",
+      "rows": 12
+    },
+    "03_late_records.rq": {
+      "status": "passed",
+      "rows": 815
+    },
+    "04_low_scores.rq": {
+      "status": "passed",
+      "rows": 90
+    },
+    "05_outcomes.rq": {
+      "status": "passed",
+      "rows": 8
+    },
+    "06_unknown_scores.rq": {
+      "status": "passed",
+      "rows": 3
+    }
+  }
+}

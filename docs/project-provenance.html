@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OULAD project provenance | Origins, transformations and evidence</title>
+<meta name="description" content="A readable provenance guide for the AAA OULAD knowledge representation project, with a verified source-to-inference example.">
+<style>
+:root { color-scheme: light; --ink:#172e35; --muted:#516970; --line:#dce6e5; --accent:#087064; --paper:#fff; --wash:#f3f7f5; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:24px; }
+body { margin:0; background:var(--wash); color:var(--ink); font:16px/1.7 "Segoe UI",Arial,sans-serif; }
+a { color:var(--accent); text-underline-offset:3px; overflow-wrap:anywhere; }
+a:hover { color:#034b43; }
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible { outline:3px solid #cf9143; outline-offset:4px; }
+.top { background:var(--ink); color:white; padding:18px max(24px,calc((100vw - 1260px)/2)); display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.brand { font-size:12px; letter-spacing:.15em; text-transform:uppercase; font-weight:700; }
+.actions { display:flex; align-items:center; gap:22px; font-size:13px; }
+.actions a { color:white; }
+button { background:transparent; border:1px solid #98b4b9; border-radius:5px; color:white; font:inherit; padding:6px 12px; cursor:pointer; }
+.layout { max-width:1308px; padding:42px 24px 70px; margin:auto; display:grid; grid-template-columns:244px minmax(0,1fr); gap:34px; align-items:start; }
+nav { position:sticky; top:24px; font-size:13px; line-height:1.5; }
+nav strong { display:block; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 13px 12px; }
+nav a { display:block; padding:8px 12px; border-left:2px solid #ccddda; color:var(--muted); text-decoration:none; }
+nav a:hover { background:#e8f0ed; border-left-color:var(--accent); }
+.scope { margin-top:24px; padding:15px; border:1px solid var(--line); border-radius:7px; font-size:12px; color:var(--muted); }
+.scope b { display:block; color:var(--ink); margin-bottom:4px; }
+main { min-width:0; background:var(--paper); padding:44px 48px; border:1px solid var(--line); border-radius:10px; box-shadow:0 8px 28px #172e3505; }
+h1 { font-size:40px; line-height:1.13; letter-spacing:-.035em; font-weight:650; margin:0 0 18px; }
+h1 + p { color:var(--muted); font-size:19px; line-height:1.5; }
+h1 + p strong { font-weight:400; }
+h2 { font-size:23px; line-height:1.3; letter-spacing:-.02em; margin:48px 0 18px; padding-top:27px; border-top:1px solid var(--line); }
+h3 { font-size:17px; line-height:1.4; margin:27px 0 10px; }
+p { margin:0 0 17px; }
+blockquote { margin:26px 0; padding:19px 22px; border-left:4px solid var(--accent); background:#eef7f3; border-radius:0 7px 7px 0; }
+blockquote p { margin:0; }
+ul,ol { padding-left:25px; margin:16px 0 22px; }
+li { padding-left:4px; margin:0 0 11px; }
+.table-wrap { overflow-x:auto; margin:21px 0 24px; border:1px solid var(--line); border-radius:7px; }
+table { border-collapse:collapse; width:100%; font-size:14px; line-height:1.6; }
+th { padding:12px 14px; background:#edf4f1; text-align:left; font-weight:650; vertical-align:top; }
+td { padding:12px 14px; vertical-align:top; border-top:1px solid var(--line); }
+tr:nth-child(even) td { background:#fafcfb; }
+td:first-child { font-weight:550; }
+code { font: .87em/1.5 Consolas,"Courier New",monospace; background:#eff3f2; border-radius:4px; padding:2px 4px; overflow-wrap:anywhere; }
+pre { background:#18373d; color:#edf8f2; padding:22px; border-radius:7px; white-space:pre-wrap; overflow-wrap:anywhere; font-size:13px; line-height:1.65; }
+pre code { background:none; color:inherit; padding:0; font-size:inherit; }
+.footer { border-top:1px solid var(--line); padding-top:22px; margin-top:40px; font-size:12px; color:var(--muted); }
+@media(max-width:1040px) { .layout { grid-template-columns:200px minmax(0,1fr); gap:22px; } main { padding:35px 30px; } }
+@media(max-width:800px) { .layout { display:block; padding:20px 14px 40px; } nav { position:static; margin:0 0 24px; } nav .toc { display:grid; grid-template-columns:1fr 1fr; } .scope { display:none; } main { padding:30px 24px; } h1 { font-size:33px; } }
+@media(max-width:500px) { nav .toc { display:block; } .top { padding:15px; align-items:flex-start; } .actions { gap:12px; flex-wrap:wrap; justify-content:flex-end; } main { padding:26px 18px; } h1 { font-size:30px; } th,td { padding:10px; } }
+@media print { @page { size:A4; margin:15mm; } body { background:white; font-size:10pt; line-height:1.5; } .top,nav { display:none; } .layout { display:block; padding:0; max-width:none; } main { border:0; padding:0; box-shadow:none; } h1 { font-size:26pt; } h2 { font-size:15pt; margin-top:24px; padding-top:15px; } h3 { font-size:12pt; } h1,h2,h3 { break-after:avoid; } p,li { orphans:3; widows:3; } table { font-size:9pt; } tr { break-inside:avoid; } .table-wrap { overflow:visible; } pre { background:#f4f7f5; color:#172e35; font-size:8pt; break-inside:avoid; } a { color:#174e47; } }
+</style></head><body>
+<header class="top"><span class="brand">KRR / OULAD · Project record</span><div class="actions"><a href="project-provenance.md">Editable version</a><button type="button" onclick="window.print()">Print / save PDF</button></div></header>
+<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-the-project-in-one-minute">1. The project in one minute</a><a href="#2-original-sources-and-credit">2. Original sources and credit</a><a href="#3-the-journey-from-csvs-to-answers">3. The journey from CSVs to answers</a><a href="#4-choices-that-affect-the-meaning">4. Choices that affect the meaning</a><a href="#5-a-real-result-traced-all-the-way-back">5. A real result, traced all the way back</a><a href="#6-four-kinds-of-information-to-keep-separate">6. Four kinds of information to keep separate</a><a href="#7-what-the-saved-checks-establish">7. What the saved checks establish</a><a href="#8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</a><a href="#9-dates-fingerprints-and-reproducibility">9. Dates, fingerprints and reproducibility</a><a href="#10-connection-to-the-course-provenance-lesson">10. Connection to the course provenance lesson</a><a href="#11-what-this-record-cannot-establish">11. What this record cannot establish</a></div><div class="scope"><b>Evidence snapshot</b>13 October 2026<br>AAA · 2013J + 2014J<br>Read-only audit of saved files.<br><a href="provenance-snapshot.json">Inspect fingerprints and checks</a></div></nav>
+<main><h1>OULAD project provenance</h1>
+<p><strong>Where the data came from, what we changed, and why the results can be traced.</strong></p>
+<p>Prepared on <strong>13 October 2026</strong> for the <code>kr-oulad</code> project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the <a href="../README.md">README</a> for commands.</p>
+<blockquote>
+<p><strong>Provenance means the history behind a result.</strong> For this project, it connects an original CSV row to its RDF representation, the ontology definition applied to it, and the resulting answer.</p>
+</blockquote>
+<h2 id="1-the-project-in-one-minute">1. The project in one minute</h2>
+<p>The project turns a small, understandable part of OULAD into a knowledge graph. It keeps student identity separate from enrollment in a particular offering, answers questions with SPARQL, and uses OWL reasoning to classify records.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Current scope</th>
+<th>Recorded result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Selected module</td>
+<td>AAA, across offerings 2013J and 2014J</td>
+</tr>
+<tr>
+<td>People and participation</td>
+<td>712 distinct student IDs; 748 enrollments</td>
+</tr>
+<tr>
+<td>Assessment data</td>
+<td>12 assessments; 3,149 assessment records</td>
+</tr>
+<tr>
+<td>Learning resources</td>
+<td>413 resource descriptions</td>
+</tr>
+<tr>
+<td>Asserted RDF</td>
+<td>28,470 data triples, with a separate 105-triple RDFS schema</td>
+</tr>
+<tr>
+<td>OWL results</td>
+<td>6,119 additional named type assertions</td>
+</tr>
+<tr>
+<td>Saved verification</td>
+<td>14 core checks and 17 ontology checks passed</td>
+</tr>
+</tbody>
+</table></div>
+<p>The current build excludes daily activity from <code>studentVle.csv</code>. An activity question is therefore marked <strong>unavailable</strong>; omitted activity does not mean that students made zero clicks.</p>
+<h2 id="2-original-sources-and-credit">2. Original sources and credit</h2>
+<h3>Dataset: OULAD</h3>
+<p>The source is the <strong>Open University Learning Analytics Dataset</strong>, by <strong>Jakub Kuzilek, Martin Hlosta and Zdenek Zdrahal</strong>, distributed through the <a href="https://archive.ics.uci.edu/dataset/349/open+university+learning+analytics+dataset" rel="noreferrer">UCI dataset page</a> under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noreferrer">CC BY 4.0</a>.</p>
+<p>Dataset citation: Kuzilek, J., Hlosta, M., &amp; Zdrahal, Z. (2015). <em>Open University Learning Analytics dataset</em> [Dataset]. UCI Machine Learning Repository. <a href="https://doi.org/10.24432/C5KK69" rel="noreferrer">Dataset DOI: 10.24432/C5KK69</a>.</p>
+<p>The project's download manifest also cites their 2017 dataset paper, <em>Scientific Data</em>, 4, 170171: <a href="https://doi.org/10.1038/sdata.2017.171" rel="noreferrer">article DOI: 10.1038/sdata.2017.171</a>. The dataset DOI and article DOI identify different publications.</p>
+<p>The <a href="../data/raw/manifest.json">download manifest</a> records the source archive URL, file sizes and SHA-256 fingerprints. The originals remain in <code>data/raw/</code>; the selected and transformed data are stored separately.</p>
+<h3>Vocabulary: a selected FOAF fragment</h3>
+<p>The ontology reuses <code>foaf:Person</code> and <code>foaf:Agent</code> from the <a href="https://xmlns.com/foaf/spec/" rel="noreferrer">FOAF Vocabulary Specification 0.99</a>, by <strong>Dan Brickley and Libby Miller</strong>, copyright 2000–2014. Its accompanying RDF is licensed under <a href="https://creativecommons.org/licenses/by/1.0/" rel="noreferrer">CC BY 1.0</a>.</p>
+<p>The complete downloaded RDF is retained in <a href="../ontology/imports/foaf.rdf">ontology/imports/foaf.rdf</a>. The preparation step extracts the two class declarations, their labels and comments, and the source relationship <code>foaf:Person rdfs:subClassOf foaf:Agent</code>, with a project header. The project adds <code>edu:Person rdfs:subClassOf foaf:Person</code>.</p>
+<p>Reasoning uses this <strong>documented fragment</strong>, not the full FOAF vocabulary. See the <a href="../ontology/imports/README.md">reuse and attribution notes</a> for the selection and its limits.</p>
+<h3>Course methods and project development</h3>
+<p>The workflow adapts the local KRR labs: Session 1 for profiling, Session 2 for RDF/RDFS, SPARQL and graph access, and Session 3 for ontology imports and reasoning. Session 3 references include <a href="../../KRR/demos/session-03-ontology/local_reasoner.py">local_reasoner.py</a>, <a href="../../KRR/demos/session-03-ontology/check_my_axioms.py">check_my_axioms.py</a>, and <a href="../../KRR/demos/session-03-ontology/realize_sample.py">realize_sample.py</a>.</p>
+<p>The OULAD model, scripts and explanations were developed for this project with Codex assistance. The education classes and rules are project modeling choices; the source dataset does not supply this ontology. A project-wide code license has not been established. The dataset and FOAF licenses apply to their respective material.</p>
+<h2 id="3-the-journey-from-csvs-to-answers">3. The journey from CSVs to answers</h2>
+<p><strong>Download → select AAA → profile → create RDF → add ontology definitions → reason → inspect and verify.</strong></p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>What happens</th>
+<th>Main evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Download</td>
+<td><code>fetch_data.py</code> retrieves the seven original CSV tables and records their fingerprints.</td>
+<td><a href="../data/raw/manifest.json">Raw manifest</a></td>
+</tr>
+<tr>
+<td>Select</td>
+<td><code>select_subset.py</code> keeps AAA's two offerings and their related rows. Assessment records are selected through assessment IDs.</td>
+<td><a href="../data/interim/selection.json">Selection settings and counts</a></td>
+</tr>
+<tr>
+<td>Profile</td>
+<td><code>profiling.py</code> reports distributions, missing values, keys and relationships for the selected scope.</td>
+<td><a href="../outputs/profiling/subset/profile.html">Subset profile</a></td>
+</tr>
+<tr>
+<td>Convert</td>
+<td><code>convert_to_rdf.py</code> maps selected rows to stable identifiers, links and typed values using the authored RDFS vocabulary.</td>
+<td><a href="../data/processed/oulad.ttl">RDF facts</a> and <a href="../data/processed/graph_summary.json">graph summary</a></td>
+</tr>
+<tr>
+<td>Query</td>
+<td><code>run_queries.py</code> executes the competency questions and records answer availability.</td>
+<td><a href="../outputs/answers/status.json">Answer status</a></td>
+</tr>
+<tr>
+<td>Prepare OWL</td>
+<td><code>prepare_ontology.py</code> prepares the RDFS-based OWL declarations, local imports, FOAF fragment and a small example dataset.</td>
+<td><a href="../outputs/ontology/preparation.json">Preparation record</a></td>
+</tr>
+<tr>
+<td>Reason</td>
+<td><code>owl_reasoner.py --full-data</code> uses HermiT through Owlready2 to check consistency and classify the full graph.</td>
+<td><a href="../outputs/ontology/reasoned-full.json">Reasoner report</a> and <a href="../outputs/ontology/inferred-types-full.ttl">inferred types</a></td>
+</tr>
+<tr>
+<td>Verify and explain</td>
+<td>Verification compares results with source-derived expectations; the notebook displays saved results.</td>
+<td><a href="../outputs/verification.json">Core checks</a>, <a href="../outputs/ontology/verification.json">ontology checks</a>, <a href="../outputs/ontology/ontology-results.html">results notebook as HTML</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>The preparation and conversion entry scripts share logic in <a href="../src/common/pipeline.py">src/common/pipeline.py</a>. Their folder names follow this project's structure while preserving the lab workflow.</p>
+<h3>Which table contributes what?</h3>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Original table</th>
+<th>Contribution to this build</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>courses.csv</code></td>
+<td>Module offerings and their lengths</td>
+</tr>
+<tr>
+<td><code>studentInfo.csv</code></td>
+<td>Student IDs, contextual enrollment attributes and recorded final outcomes</td>
+</tr>
+<tr>
+<td><code>studentRegistration.csv</code></td>
+<td>Registration and withdrawal day offsets linked to enrollments</td>
+</tr>
+<tr>
+<td><code>assessments.csv</code></td>
+<td>Assessment type, weight, offering and known deadline</td>
+</tr>
+<tr>
+<td><code>studentAssessment.csv</code></td>
+<td>Assessment record, recorded score, submission day and banked flag</td>
+</tr>
+<tr>
+<td><code>vle.csv</code></td>
+<td>Learning resource descriptions linked to offerings</td>
+</tr>
+<tr>
+<td><code>studentVle.csv</code></td>
+<td>Downloaded and retained; excluded from this core build</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="4-choices-that-affect-the-meaning">4. Choices that affect the meaning</h2>
+<p>These decisions explain how the source becomes a graph. Full notes are in <a href="decisions.md">modeling decisions</a> and <a href="questions-and-rules.md">questions and rules</a>.</p>
+<ul>
+<li><strong>One person can have several enrollments.</strong> Student IDs identify people; the module, offering and student ID together identify an enrollment. Final outcome belongs to that enrollment.</li>
+<li><strong>Unknown values stay unknown.</strong> The reader interprets <code>?</code> as missing. Optional missing values produce absent RDF properties. Three unknown scores and two unknown deadlines remain unresolved.</li>
+<li><strong>Days remain offsets.</strong> Negative values can refer to days before the offering starts. The project does not fabricate calendar dates.</li>
+<li><strong>An assessment record may be banked.</strong> A transferred result is not necessarily a new submission. This motivates the name <code>AssessmentRecord</code>.</li>
+<li><strong>“Late” is an operational query definition.</strong> A record must be explicitly nonbanked, have both recorded dates, and have submission day greater than deadline day. This does not establish misconduct or account for individual extensions.</li>
+<li><strong>“Low score” means a known score below 40.</strong> It does not establish failure of the whole module. “Successful enrollment” means a recorded outcome of Pass or Distinction.</li>
+<li><strong>Ontology axioms and data checks have different jobs.</strong> RDFS domains/ranges infer types. OWL uses open-world reasoning: a missing link alone is not a required-field violation. Python checks assess the supplied records; SHACL validation remains a later stage.</li>
+</ul>
+<p>The identifiers beginning <code>https://example.org/oulad/</code> are project identifiers. Their spelling does not imply that an online service publishes those resources.</p>
+<h2 id="5-a-real-result-traced-all-the-way-back">5. A real result, traced all the way back</h2>
+<p><strong>Question: Why is enrollment <code>AAA / 2013J / 100893</code> classified as successful?</strong></p>
+<ol>
+<li><strong>Original evidence.</strong> In <a href="../data/raw/studentInfo.csv">raw studentInfo.csv</a>, the row with <code>code_module=AAA</code>, <code>code_presentation=2013J</code> and <code>id_student=100893</code> has <code>final_result=Pass</code>. It is physical line 26, including the header, in this audited file.</li>
+<li><strong>Selection.</strong> The same key and outcome appear in <a href="../data/interim/studentInfo.csv">selected studentInfo.csv</a>. This row is retained because it belongs to AAA.</li>
+<li><strong>Representation.</strong> The converter creates the enrollment identifier and records its type and outcome in <a href="../data/processed/oulad.ttl">oulad.ttl</a>:</li>
+</ol>
+<pre><code class="language-turtle">@prefix edu: &lt;https://example.org/oulad/schema#&gt; .
+
+&lt;https://example.org/oulad/id/enrollment/AAA/2013J/100893&gt;
+    a edu:Enrollment ;
+    edu:finalResult "Pass" .
+</code></pre>
+<ol start="4">
+<li><strong>Authored definition.</strong> <a href="../ontology/education.owl.ttl">education.owl.ttl</a> defines <code>SuccessfulEnrollment</code> as equivalent to an enrollment with outcome Pass or Distinction. This definition is the project's interpretation of success.</li>
+<li><strong>Derived conclusion.</strong> The saved HermiT result adds the following assertion to <a href="../outputs/ontology/inferred-types-full.ttl">inferred-types-full.ttl</a>:</li>
+</ol>
+<pre><code class="language-turtle">@prefix edu: &lt;https://example.org/oulad/schema#&gt; .
+
+&lt;https://example.org/oulad/id/enrollment/AAA/2013J/100893&gt;
+    a edu:SuccessfulEnrollment .
+</code></pre>
+<p>The successful type is absent from the asserted RDF and present in the inferred file. This is a classification of a recorded outcome, not a prediction of future performance. The <a href="provenance-snapshot.json">provenance snapshot</a> records this trace and the source fingerprints checked for it.</p>
+<h2 id="6-four-kinds-of-information-to-keep-separate">6. Four kinds of information to keep separate</h2>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Example</th>
+<th>Where it originates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source fact</td>
+<td>An enrollment has recorded outcome Pass.</td>
+<td>An OULAD CSV row</td>
+</tr>
+<tr>
+<td>Project definition</td>
+<td>Pass or Distinction qualifies as a successful enrollment.</td>
+<td>The authored OWL ontology</td>
+</tr>
+<tr>
+<td>Inferred fact</td>
+<td>That enrollment is a <code>SuccessfulEnrollment</code>.</td>
+<td>Source facts plus the definition, processed by HermiT</td>
+</tr>
+<tr>
+<td>Teaching example</td>
+<td>A fictional individual makes an intentionally faulty ontology inconsistent.</td>
+<td>Isolated files in <code>ontology/exercises/</code> and the generated ontology workspace</td>
+</tr>
+</tbody>
+</table></div>
+<p>The small ontology sample selects seven real enrollments and their related facts. Synthetic error demonstrations use the separate <code>https://example.org/oulad/teaching#</code> namespace. They are not evidence about OULAD students and are not loaded as real data into the project databases.</p>
+<h2 id="7-what-the-saved-checks-establish">7. What the saved checks establish</h2>
+<p>The core verification records <strong>14 passed checks</strong>, including source-versus-graph counts, outcome answers, late-record identities and preservation of unknown scores. The ontology verification records <strong>17 passed checks</strong>, including consistency, inferred identities, sample fidelity and controlled examples of OWL semantics.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Inferred class</th>
+<th style="text-align:right">Expected from CSVs</th>
+<th style="text-align:right">Inferred by OWL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SuccessfulEnrollment</td>
+<td style="text-align:right">531</td>
+<td style="text-align:right">531</td>
+</tr>
+<tr>
+<td>WithdrawnEnrollment</td>
+<td style="text-align:right">126</td>
+<td style="text-align:right">126</td>
+</tr>
+<tr>
+<td>LowScoreAssessmentRecord</td>
+<td style="text-align:right">90</td>
+<td style="text-align:right">90</td>
+</tr>
+<tr>
+<td>BankedAssessmentRecord</td>
+<td style="text-align:right">42</td>
+<td style="text-align:right">42</td>
+</tr>
+<tr>
+<td>NonBankedAssessmentRecord</td>
+<td style="text-align:right">3,107</td>
+<td style="text-align:right">3,107</td>
+</tr>
+<tr>
+<td>EnrollmentWithLowScore</td>
+<td style="text-align:right">75</td>
+<td style="text-align:right">75</td>
+</tr>
+</tbody>
+</table></div>
+<p>Evidence: <a href="../outputs/ontology/inferred-class-counts.csv">class counts</a> and <a href="../outputs/ontology/verification.json">identity comparisons</a>. The clean ontology and loaded data are consistent, with no unsatisfiable named classes in the saved run. That finding concerns the supplied axioms and data; it does not prove that the data describe the world perfectly.</p>
+<p>The exported 6,119 assertions are <strong>additional named class memberships</strong>, not the complete set of all possible OWL conclusions. The notebook's seven saved code cells have executed outputs and no error outputs.</p>
+<h2 id="8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</h2>
+<p>All three views ultimately use the project data; they do not introduce another original dataset.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>View</th>
+<th>What the saved evidence describes</th>
+<th>Meaning of its results</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Neo4j</td>
+<td>5,037 project nodes and 8,221 relationships in snapshot <code>c87470abc5b822ca</code>; 815 late records matched. <a href="../outputs/neo4j/import-summary.json">Import report</a>.</td>
+<td>A property-graph projection, with selected superclass labels. It is not a full OWL reasoning service.</td>
+</tr>
+<tr>
+<td>Fuseki</td>
+<td>28,575 triples: 28,470 facts plus 105 RDFS triples. Six available queries passed. <a href="../outputs/fuseki/import-summary.json">Verification report</a>.</td>
+<td>SPARQL over the stored graph. Automatic RDFS inference is disabled in this configuration.</td>
+</tr>
+<tr>
+<td>Ontology notebook</td>
+<td>Saved reasoner results, graph queries, inferred class counts and explanations. <a href="../outputs/ontology/ontology-results.html">Open the report</a>.</td>
+<td>Shows the OWL results, including comparisons between asserted and inferred types.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The OWL type export is separate; it is not automatically loaded into Neo4j or Fuseki. These import reports document saved checks. This provenance audit did not contact either server or establish whether it is currently running.</p>
+<h2 id="9-dates-fingerprints-and-reproducibility">9. Dates, fingerprints and reproducibility</h2>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Recorded event</th>
+<th>UTC time</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw manifest</td>
+<td>10 October 2026, 19:30:38</td>
+<td>Retrieval <strong>or re-verification</strong>, as named in the manifest; not the original research collection date</td>
+</tr>
+<tr>
+<td>Fuseki verification</td>
+<td>12 October 2026, 06:38:19</td>
+<td>Check of the already loaded graph</td>
+</tr>
+<tr>
+<td>Ontology preparation</td>
+<td>13 October 2026, 08:00:00</td>
+<td>Generated local imports and sample</td>
+</tr>
+<tr>
+<td>Full reasoner report</td>
+<td>13 October 2026, 09:58:55</td>
+<td>Saved classification report timestamp</td>
+</tr>
+<tr>
+<td>Ontology verification</td>
+<td>13 October 2026, 10:01:38</td>
+<td>Saved test report timestamp</td>
+</tr>
+<tr>
+<td>This provenance audit</td>
+<td>13 October 2026, 13:05:14</td>
+<td>Read-only inspection and fingerprint comparisons</td>
+</tr>
+</tbody>
+</table></div>
+<p>The audit checked <strong>all seven raw CSVs</strong> against the manifest. It also checked the four input fingerprints stored by the full reasoner report, and the two stored by the Fuseki report. All matched the current files.</p>
+<p>The accompanying <a href="provenance-snapshot.json">provenance-snapshot.json</a> records full SHA-256 fingerprints for 72 selected data, code, ontology and result files. A fingerprint helps detect file changes; these local fingerprints are not publisher-authenticated signatures. They capture the files inspected now, not an independently archived history of every earlier run.</p>
+<p>The current environment is the existing Conda <strong>M2ENV</strong>: Python 3.12.15, pandas 2.3.3, RDFLib 7.6.0, owlrl 7.6.2 and Owlready2 0.51. The snapshot includes additional notebook and profiling package versions. This inventory describes the environment inspected now. The <a href="../README.md">README</a> contains the execution order, Java requirement, ontology steps and optional database instructions.</p>
+<p>After changing data, mappings or axioms, regenerate their dependent outputs and verification reports before updating this guide. Reordered Turtle serialization can change a file's fingerprint even when its RDF meaning is unchanged.</p>
+<h2 id="10-connection-to-the-course-provenance-lesson">10. Connection to the course provenance lesson</h2>
+<p>The <a href="https://www.w3.org/TR/prov-o/" rel="noreferrer">W3C PROV-O model</a> describes provenance using entities, activities and agents. Here is how those ideas fit this project:</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>PROV idea</th>
+<th>Plain meaning</th>
+<th>Project example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entity</td>
+<td>An input or output</td>
+<td>A CSV, the RDF graph, an ontology file or an answer table</td>
+</tr>
+<tr>
+<td>Activity</td>
+<td>Work that uses or produces entities</td>
+<td>Subsetting, conversion, querying or reasoning</td>
+</tr>
+<tr>
+<td>Agent</td>
+<td>A person, organization or program responsible for work</td>
+<td>Dataset authors, the project modeler or the conversion program</td>
+</tr>
+<tr>
+<td>Derivation</td>
+<td>An output depends on an input</td>
+<td>The inferred types depend on the asserted RDF and ontology</td>
+</tr>
+</tbody>
+</table></div>
+<p>This guide and its snapshot provide <strong>documented file-level provenance</strong>, plus one checked row-to-inference example. They do not add <code>prov:wasDerivedFrom</code> annotations to every RDF fact or create a complete machine-queryable run history.</p>
+<p>The course's <a href="../../KRR/demos/session-04-shacl/add_provenance.py">Session 4 add_provenance.py</a> demonstrates a separate PROV-O graph. Extending this project in that direction would require explicit run identifiers and links between source entities, transformations and outputs. That extension has not been implemented by writing this guide.</p>
+<h2 id="11-what-this-record-cannot-establish">11. What this record cannot establish</h2>
+<p>The selected AAA offerings are a teaching scope. Results do not describe all university students, reveal the real module title, or establish causal explanations of performance. Missing activity and unknown values remain limits on the questions that can be answered.</p>
+<p>The project has not recorded a complete immutable history of each past code version, exact execution start/end times, or provenance for every triple. Some stages have only saved reports and current source files. This guide states those limits so its evidence can be used at the level actually supported.</p>
+<p><strong>To explain the project aloud:</strong> “We obtained OULAD from UCI, preserved the originals, selected AAA and checked its tables. We mapped the selected records into RDF, authored an education ontology with a small attributed FOAF fragment, and used HermiT to derive classifications. We compared the graph answers and inferred identities with the CSVs. The manifests, source files and verification reports let us trace those results back to their inputs.”</p>
+<div class="footer">Source: the accompanying Markdown guide and the project's saved evidence. This document works offline; external reference links require a connection. Counts describe the recorded AAA build.</div></main></div></body></html>

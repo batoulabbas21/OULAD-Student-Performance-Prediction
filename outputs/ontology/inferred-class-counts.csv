@@ -1,0 +1,7 @@
+class,csv_expected,owl_inferred
+SuccessfulEnrollment,531,531
+WithdrawnEnrollment,126,126
+LowScoreAssessmentRecord,90,90
+BankedAssessmentRecord,42,42
+NonBankedAssessmentRecord,3107,3107
+EnrollmentWithLowScore,75,75
