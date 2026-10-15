@@ -6,6 +6,7 @@ It reuses the lab techniques and the existing Conda environment; it does not mod
 No Docker service, API key, LLM, package upgrade, or new environment is needed for the RDF/RDFS core.
 The optional Neo4j visualization and Fuseki SPARQL server below use the existing lab Docker services.
 For the OWL ontology, terminal reasoner, and results notebook, follow **section 11**. Protégé is not required.
+For SHACL graph validation, triage, the gate and run provenance, follow **section 12**.
 
 **What is AAA?** An anonymized Social Sciences module with two October offerings (2013J and 2014J).
 Our extract has 748 enrollments but 712 distinct student IDs. Read [the AAA explanation](docs/aaa-module.md)
@@ -13,13 +14,15 @@ for the offering lengths, assessment schedule, outcomes, and limitations of the 
 
 **Project provenance:** Read the [provenance guide](docs/project-provenance.html) for data sources, transformations, modeling choices and verification evidence. An [editable Markdown copy](docs/project-provenance.md) and a [file fingerprint snapshot](docs/provenance-snapshot.json) accompany it.
 
+**Understand the project:** Read the [detailed walkthrough](docs/project-walkthrough.html) for what we built, result interpretation, documented challenges, actual fixes and deliberate teaching errors. An [editable version](docs/project-walkthrough.md) is included.
+
 ## Run it, step by step
 
 Open an Anaconda Prompt or a PowerShell terminal configured for Conda. Run from the project root.
 
 ```powershell
 conda activate M2ENV
-Set-Location 'C:\Users\user\OneDrive\Desktop\M2\kr-oulad'
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
 
 # 1. Download once; existing original files are verified on later runs.
 python src/preparation/fetch_data.py
@@ -36,13 +39,16 @@ python src/preparation/profiling.py
 # 5. Convert the selected tables to RDF using the supplied RDFS vocabulary.
 python src/graph/convert_to_rdf.py
 
-# 6. Run the competency questions.
+# 6. Validate the asserted graph. Warnings are visible; violations stop the gate.
+python src/validation/validate.py
+
+# 7. Run the competency questions.
 python src/graph/run_queries.py
 
-# 7. Demonstrate RDFS inference on a small real-data sample.
+# 8. Demonstrate RDFS inference on a small real-data sample.
 python src/graph/rdfs_entailment_demo.py
 
-# 8. Compare CSV/SQL answers with RDF/SPARQL answers.
+# 9. Compare CSV/SQL answers with RDF/SPARQL answers.
 python evaluation/verify.py
 ```
 
@@ -107,8 +113,13 @@ kr-oulad/
       prepare_ontology.py
       owl_reasoner.py
       build_ontology_notebook.py
+    validation/                  SHACL validator, examples and provenance query
     learning/                    Later
     access/                      Later
+  run-shacl.ps1                  Complete Session 4 demonstration
+  evaluation/verify_shacl.py      Graph fault tests and full CSV warning reconciliation
+  evaluation/fixtures/shacl/      Real and deliberately broken samples for CI
+  .github/workflows/shacl-gate.yml  Local workflow definition for the repository
   evaluation/verify.py            CSV/SQL vs RDF reconciliation
   evaluation/verify_ontology.py   CSV vs OWL inference and semantic boundary tests
   outputs/
@@ -121,7 +132,7 @@ kr-oulad/
     verification.json
   report/                        Recorded execution evidence
   mappings/                      Later
-  shapes/                        Later
+  shapes/oulad-shapes.ttl         Session 4 graph validation policies
 ```
 
 The entry scripts delegate to shared functions so paths, keys, and meanings have one definition.
@@ -149,7 +160,7 @@ Use your own lab environment name if it differs.
 
 ```powershell
 conda activate M2ENV
-Set-Location 'C:\Users\user\OneDrive\Desktop\M2\kr-oulad'
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
 python -c "import sys; print(sys.executable)"
 python -c "import pandas, rdflib, owlrl; print('Core dependencies available')"
 ```
@@ -287,7 +298,7 @@ The wrong assertion is never added to the project graph.
 
 RDFS can infer subclasses, superproperties, and subject/object types. It cannot enforce unique keys,
 mandatory properties, value ranges, cardinality, or lateness comparisons. Use Python checks now;
-translate suitable checks into SHACL later. Follow the explicit distinction in docs/questions-and-rules.md.
+validate the mapped graph with the Session 4 SHACL shapes in section 12. Follow the explicit distinction in docs/questions-and-rules.md.
 
 ## 8. Optional resource-activity extension
 
@@ -318,8 +329,8 @@ and does not install packages. Use the individual commands for a different selec
 
 ## What comes next
 
-The shapes/, mappings/, src/learning/, and src/access/ directories are reserved for later stages.
-There are no trained models, SHACL shapes, R2RML mappings, or natural-language interface yet.
+The mappings/, src/learning/, and src/access/ directories are reserved for later stages.
+SHACL shapes and a validation gate are implemented in section 12. There are no trained models, R2RML mappings, or natural-language interface yet.
 Preserve this historical graph. Later build a separate prediction graph constrained to the chosen
 information cutoff; the historical graph includes final outcomes and future events.
 
@@ -335,7 +346,7 @@ In PowerShell:
 
 ```powershell
 docker desktop start
-docker compose -f 'C:\Users\user\OneDrive\Desktop\M2\KRR\demos\docker-compose.yml' up -d neo4j
+docker compose -f 'D:\DESKTOP\M2\KRR\demos\docker-compose.yml' up -d neo4j
 ```
 
 Wait until Docker Desktop's engine is running. If `docker desktop` is unavailable, open Docker
@@ -425,7 +436,7 @@ Open **PowerShell**, activate the same environment, and run:
 
 ```powershell
 conda activate M2ENV
-Set-Location 'C:\Users\user\OneDrive\Desktop\M2\kr-oulad'
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
 docker desktop start
 .\start-fuseki.ps1
 ```
@@ -569,7 +580,7 @@ First complete the core RDF steps if `data/processed/oulad.ttl` is missing. Then
 
 ```powershell
 conda activate M2ENV
-Set-Location 'C:\Users\user\OneDrive\Desktop\M2\kr-oulad'
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
 
 # 1. Prepare OWL declarations, locally resolved imports, and a small real-data sample.
 python src/graph/prepare_ontology.py
@@ -738,7 +749,7 @@ documented errors. The clean workflow above should return success at every step.
 - **Unknown score:** the existing SPARQL absence query describes the loaded extract. We do not
   invent an OWL MissingScore type from a missing triple.
 - **Mandatory fields, keys and source ranges:** keep the existing Python quality checks;
-  Session 4 SHACL is the next step for explicit graph validation.
+  Session 4 SHACL now validates the explicit graph requirements; follow section 12.
 - **Database use:** the current Fuseki and Neo4j loaders still use their original RDF/RDFS inputs.
   Merely uploading an OWL file to Fuseki would not run HermiT. This stage exports additional named
   type assertions separately and demonstrates queries over facts plus those types in the notebook.
@@ -760,6 +771,145 @@ independent CSV checks. Course source files remain unchanged.
 Further reference: [OWL 2 Primer](https://www.w3.org/TR/owl2-primer/) and
 [FOAF specification](https://xmlns.com/foaf/spec/).
 
+## 12. Session 4 — SHACL validation, triage and gate
+
+Session 3 asks **what the ontology entails**. Session 4 asks **whether the supplied graph meets explicit requirements**. For example, OWL's open-world semantics can allow an enrollment whose Student link is not stated; a SHACL `sh:minCount 1` check flags that missing link. SHACL does not repair the graph or run the OWL reasoner.
+
+This extension follows `KRR/demos/session-04-shacl/validate.py`, the triaged Brunel shapes and the lab's good/broken sample pattern. The lab files were available locally; no additional PDF is needed. The existing **M2ENV** already contains **pySHACL 0.40.1** and **RDFLib 7.6.0**. No environment replacement or package upgrade was needed.
+
+### Step 1 — activate the existing environment
+
+```powershell
+conda activate M2ENV
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
+python -c "import pyshacl, rdflib; print(pyshacl.__version__, rdflib.__version__)"
+```
+
+On another machine only, if pySHACL is missing, install the lab version in the already activated environment with `python -m pip install pyshacl==0.40.1`. Do not create another environment just for SHACL.
+
+### Step 2 — prepare the asserted RDF if needed
+
+The current working copy already contains `data/processed/oulad.ttl`. If rebuilding from the selected CSVs:
+
+```powershell
+python src/graph/convert_to_rdf.py
+```
+
+The validator reads this file plus `ontology/education.rdfs.ttl` and `shapes/oulad-shapes.ttl`. It uses the class hierarchy for SHACL class checks but keeps inference set to `none`. It does not load the OWL inferred types or the deliberate ontology-error files. Neither Neo4j nor Fuseki has to be running.
+
+### Step 3 — validate the full graph
+
+```powershell
+python src/validation/validate.py
+```
+
+Allow several minutes for the full graph; the cross-record SPARQL constraints are slower than core constraints. First read the printed **focus-node counts**. Expected structural coverage for the current AAA build: 712 Students, 748 Enrollments, 2 Offerings, 1 Module, 12 Assessments, 3,149 AssessmentRecords and 413 LearningResources. All 14 target-bearing shapes are reported; only optional activity has zero nodes.
+
+Expected current result: **0 Violations, 5 Warnings, strict SHACL conforms False, GATE PASS, exit code 0**. The warnings are three unknown scores and two unknown exam deadlines. The existing facts are retained.
+
+Open [the full validation report](outputs/shacl/full/report.html). Each run writes:
+
+| File under `outputs/shacl/full/` | Purpose |
+|---|---|
+| `report.html` | Readable results, focus counts and input fingerprints |
+| `report.ttl` | Standard SHACL validation report |
+| `report.txt` | pySHACL's detailed text report |
+| `results.csv` | One row per result, including focus, path, severity and message |
+| `summary.json` | Gate decision, strict conformance, run ID, versions, timestamps and hashes |
+| `provenance.ttl` | PROV-O record of this actual validation activity and its inputs/outputs |
+
+Strict conformance and the project gate answer different questions. With these validator settings, warnings make SHACL conformance false, but the gate permits documented warnings. **Exit 1** blocks on violations, unknown severities or empty required targets. **Exit 2** means a parsing, dependency, shape or execution error. Neither should be treated as success.
+
+### Step 4 — build the small real-data and broken examples
+
+```powershell
+python src/validation/prepare_examples.py
+python src/validation/validate.py --data evaluation/fixtures/shacl/valid.ttl --out outputs/shacl/sample
+python src/validation/validate.py --data evaluation/fixtures/shacl/broken.ttl --out outputs/shacl/broken
+```
+
+The valid example has 299 unchanged source triples and seven selected enrollments. It should give **0 Violations, 3 Warnings and gate PASS**. The broken example changes one Student link to an untyped identifier. It should give **1 Violation, 3 Warnings and gate FAIL (exit 1)**. That last failure is intentional. Real data are not changed.
+
+`evaluation/fixtures/shacl/selection.json` records the selected enrollments, source fingerprint, fixture fingerprints and exact changed triple. The fixtures are stored outside the ignored `data/` folder so they can be committed and used by CI without downloading OULAD.
+
+### Step 5 — see why triage matters
+
+```powershell
+python src/validation/validate.py --data evaluation/fixtures/shacl/valid.ttl --shapes outputs/shacl/examples/oulad-shapes-v0.ttl --out outputs/shacl/draft
+```
+
+This intentionally naive draft treats unknown scores and deadlines as blocking errors. Expect **3 Violations, 0 Warnings, gate FAIL (exit 1)** on the small sample. Compare it with the sample report from Step 4: the same three absences become visible warnings after reviewing source completeness. We change the policy, not the data.
+
+Read [SHACL rules and triage decisions](docs/shacl-triage.md) for rule coverage, the five actual warning identities, and why missing is not zero. Late submissions and low scores are observed events, not automatic data-quality violations. Studied credits and resource week ranges are not mapped to RDF, so their checks stay in Python profiling.
+
+### Step 6 — verify that good and bad cases behave correctly
+
+```powershell
+python evaluation/verify_shacl.py
+```
+
+Run this after a full validation with the current shapes and validator. It checks real sample fidelity, source-versus-target counts, exact warning identities against CSVs, score boundaries, required links, wrong datatypes, key duplicates, cross-offering links, signed dates, optional activity and the zero-focus trap. It also rejects stale full-run fingerprints. See `outputs/shacl/verification.json` for the recorded checks.
+
+For a quick run requiring only the committed fixture and schema:
+
+```powershell
+python evaluation/verify_shacl.py --sample-only
+```
+
+This writes `outputs/shacl/verification-sample.json`. The full CSV reconciliation is deliberately omitted in this mode.
+
+### Step 7 — run the complete Session 4 demonstration
+
+Instead of repeating Steps 3–6 manually:
+
+```powershell
+.\run-shacl.ps1
+```
+
+The helper prepares the examples, validates the full graph and both fixtures, runs the draft, and verifies the results. It explicitly expects exit 1 for the two deliberate failure demonstrations and stops on any unexpected exit code. The main `run-core.ps1` now also runs the **full SHACL gate immediately after RDF conversion**, before answering questions.
+
+### Step 8 — understand the automatic gate and CI status
+
+**CI is implemented as a local GitHub Actions workflow, but a successful GitHub run has not been verified.** On 15 October 2026, the workflow and SHACL implementation files were still uncommitted in this project.
+
+| Run | What it covers | Status |
+|---|---|---|
+| Full local verification | 37 checks, including full CSV/report/provenance comparisons | Saved 14 October result: all passed |
+| GitHub Actions workflow | Validate the real fixture, run 31 shared checks with `--sample-only`, and require exit 1 from the deliberately broken fixture | Prepared locally; remote run unverified |
+
+The workflow is [`.github/workflows/shacl-gate.yml`](.github/workflows/shacl-gate.yml), named **OULAD SHACL gate**, with job ID `validate`. It runs on pushes and pull requests affecting the listed SHACL paths, and supports a manual trigger. README-only changes do not trigger it automatically. It uses Python 3.12, pySHACL 0.40.1 and RDFLib 7.6.0 on an Ubuntu runner; your local Conda environment is unchanged.
+
+To run the same 31-check verification locally, from the project root in M2ENV:
+
+```powershell
+python evaluation/verify_shacl.py --sample-only
+```
+
+That writes `outputs/shacl/verification-sample.json`. It is a local check, not a GitHub run. The six extra full-data checks remain local because the raw data are gitignored; the fixtures can be committed without downloading OULAD on the runner.
+
+For remote execution, commit the workflow and its shapes, RDFS schema, validation scripts, verifier and fixture files, then push to the intended repository with Actions enabled. Once the workflow is on the default branch, you can also select **Actions → OULAD SHACL gate → Run workflow**. Retain the run URL, commit SHA and result as evidence. This documentation update did not commit, push or run GitHub Actions.
+
+Making a failure block merging requires a separate branch-protection/ruleset setting. Before requiring this workflow for every pull request, adjust its workflow-level path filters so unrelated changes do not leave the required check pending. See [GitHub's explanation](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks). No merge protection was configured by this task.
+
+The [provenance guide's SHACL and CI section](docs/project-provenance.html#shacl-and-ci-what-is-implemented-and-what-has-run) explains the exact checks, expected failures and remaining remote setup. The present workflow does not upload report artifacts; inspect its logs for the run result.
+
+### Step 9 — inspect provenance and maintain the shapes
+
+The [project provenance guide](docs/project-provenance.html) now includes Session 4. Unlike the earlier file-level narrative alone, each SHACL run also creates a machine-readable provenance record for the actual validation activity. Its data, schema and shapes entities have SHA-256 identifiers, and its software agent identifies the validator code/version.
+
+To inspect the run record locally without a server:
+
+```powershell
+python src/validation/show_provenance.py
+```
+
+Edit `shapes/oulad-shapes.ttl` to change policies. Rerun the full validator and `verify_shacl.py`; regenerate the examples when their source data or draft shapes change. Reports within each output folder are overwritten on rerun, so copy a folder first if retaining that previous run matters. Update the dated guide observations when the scope or expected counts change.
+
+The shapes use **SHACL Core** for cardinality, datatype, vocabulary, ranges, forbidden fields and same-node date order. They use **SHACL-SPARQL** where a rule compares different records or linked paths. They add no new RDF facts and do not alter the OWL ontology or database imports.
+
+References: [W3C SHACL](https://www.w3.org/TR/shacl/), [pySHACL](https://github.com/RDFLib/pySHACL), [W3C PROV-O](https://www.w3.org/TR/prov-o/).
+
+
 ## Sources and reuse
 
 - Official dictionary: https://research.stem.open.ac.uk/ouanalyse/open-dataset-more/
@@ -769,7 +919,7 @@ Further reference: [OWL 2 Primer](https://www.w3.org/TR/owl2-primer/) and
 - Local course patterns: Session 1 profiling.py; Session 2 RDFLib conversion, SPARQL, and rdfs_entailment_demo.py.
 
 Tested environment: Python 3.12.15, pandas 2.3.3, RDFLib 7.6.0, owlrl 7.6.2,
-ydata-profiling 4.18.4. No package installation or version changes were made.
+ydata-profiling 4.18.4, pySHACL 0.40.1. No package installation or version changes were made.
 
 Raw data are gitignored; generated evidence is organized under outputs/. Commit scripts, schema,
 queries, docs, and selected final evidence. Keep secrets out of commits.

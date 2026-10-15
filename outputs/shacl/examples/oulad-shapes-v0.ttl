@@ -1,0 +1,308 @@
+@prefix edu: <https://example.org/oulad/schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix shape: <https://example.org/oulad/shapes#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+shape:AssessmentShape a sh:NodeShape ;
+    rdfs:label "Assessment structure and subtype" ;
+    sh:class edu:Assessment ;
+    sh:message "An assessment has exactly one supported subtype: TMA, CMA or Exam." ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:class edu:CourseOffering ;
+            sh:maxCount 1 ;
+            sh:message "An assessment belongs to one offering." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path edu:assessmentInOffering ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:message "A known deadline is a signed integer offset." ;
+            sh:path edu:deadlineDay ],
+        [ sh:datatype xsd:decimal ;
+            sh:maxCount 1 ;
+            sh:maxInclusive 100 ;
+            sh:message "A known weight is a decimal between 0 and 100." ;
+            sh:minInclusive 0 ;
+            sh:path edu:weightPercent ] ;
+    sh:targetClass edu:Assessment ;
+    sh:targetSubjectsOf edu:assessmentInOffering ;
+    sh:xone ( [ sh:class edu:TutorMarkedAssessment ] [ sh:class edu:ComputerMarkedAssessment ] [ sh:class edu:Exam ] ) .
+
+shape:DeadlinePresenceShape a sh:NodeShape ;
+    rdfs:label "Review unknown deadlines" ;
+    sh:property shape:DeadlinePresence ;
+    sh:targetClass edu:Assessment .
+
+shape:EnrollmentShape a sh:NodeShape ;
+    rdfs:label "Enrollment structure and key" ;
+    sh:class edu:Enrollment ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:message "A known previous-attempt count is a nonnegative integer." ;
+            sh:minInclusive 0 ;
+            sh:path edu:previousAttempts ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:message "A known registration day is a signed integer offset." ;
+            sh:path edu:registrationDay ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:message "A known withdrawal day is a signed integer offset." ;
+            sh:path edu:unregistrationDay ],
+        [ sh:class edu:CourseOffering ;
+            sh:maxCount 1 ;
+            sh:message "An enrollment links to one CourseOffering." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path edu:inOffering ],
+        [ sh:datatype xsd:string ;
+            sh:in ( "Pass" "Distinction" "Fail" "Withdrawn" ) ;
+            sh:maxCount 1 ;
+            sh:message "Final outcome is one of Pass, Distinction, Fail, Withdrawn." ;
+            sh:minCount 1 ;
+            sh:path edu:finalResult ],
+        shape:EnrollmentStudent ;
+    sh:sparql [ sh:message "Another enrollment links the same student to the same offering." ;
+            sh:select """
+        PREFIX edu: <https://example.org/oulad/schema#>
+        SELECT DISTINCT $this WHERE {
+            $this edu:hasStudent ?student ; edu:inOffering ?offering .
+            ?other edu:hasStudent ?student ; edu:inOffering ?offering . FILTER(?other != $this)
+        }""" ] ;
+    sh:targetClass edu:Enrollment ;
+    sh:targetObjectsOf edu:recordForEnrollment ;
+    sh:targetSubjectsOf edu:hasStudent .
+
+shape:InteractionShape a sh:NodeShape ;
+    rdfs:label "Optional daily activity" ;
+    sh:class edu:DailyInteraction ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:class edu:Enrollment ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path edu:interactionForEnrollment ],
+        [ sh:class edu:LearningResource ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path edu:withResource ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path edu:interactionDay ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:minInclusive 0 ;
+            sh:path edu:clickCount ] ;
+    sh:sparql [ sh:message "The interaction's enrollment and resource belong to different offerings." ;
+            sh:select """
+        PREFIX edu: <https://example.org/oulad/schema#>
+        SELECT DISTINCT $this WHERE {
+            $this edu:interactionForEnrollment/edu:inOffering ?enrollmentOffering ;
+                  edu:withResource/edu:resourceInOffering ?resourceOffering .
+            FILTER(?enrollmentOffering != ?resourceOffering)
+        }""" ] ;
+    sh:targetClass edu:DailyInteraction ;
+    sh:targetSubjectsOf edu:withResource ;
+    shape:optionalTarget true .
+
+shape:ModuleShape a sh:NodeShape ;
+    rdfs:label "Module identity" ;
+    sh:class edu:Module ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass edu:Module ;
+    sh:targetObjectsOf edu:offeringOf .
+
+shape:OfferingShape a sh:NodeShape ;
+    rdfs:label "Offering structure and key" ;
+    sh:class edu:CourseOffering ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:class edu:Module ;
+            sh:maxCount 1 ;
+            sh:message "An offering links to one Module." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path edu:offeringOf ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:message "An offering has one presentation code, such as 2013J." ;
+            sh:minCount 1 ;
+            sh:path edu:presentationCode ;
+            sh:pattern "^[0-9]{4}[BJ]$" ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:message "Offering length is one positive integer." ;
+            sh:minCount 1 ;
+            sh:minExclusive 0 ;
+            sh:path edu:lengthDays ] ;
+    sh:sparql [ sh:message "Another offering has the same module and presentation code." ;
+            sh:select """
+        PREFIX edu: <https://example.org/oulad/schema#>
+        SELECT DISTINCT $this WHERE {
+            $this edu:offeringOf ?module ; edu:presentationCode ?code .
+            ?other edu:offeringOf ?module ; edu:presentationCode ?code . FILTER(?other != $this)
+        }""" ] ;
+    sh:targetClass edu:CourseOffering ;
+    sh:targetSubjectsOf edu:offeringOf .
+
+shape:RecordOfferingShape a sh:NodeShape ;
+    rdfs:label "Record and enrollment use the same offering" ;
+    sh:sparql [ sh:message "The assessment and enrollment belong to different offerings." ;
+            sh:select """
+        PREFIX edu: <https://example.org/oulad/schema#>
+        SELECT DISTINCT $this WHERE {
+            $this edu:recordForEnrollment/edu:inOffering ?enrollmentOffering ;
+                  edu:forAssessment/edu:assessmentInOffering ?assessmentOffering .
+            FILTER(?enrollmentOffering != ?assessmentOffering)
+        }""" ] ;
+    sh:targetClass edu:AssessmentRecord .
+
+shape:RecordShape a sh:NodeShape ;
+    rdfs:label "Assessment record structure, score and key" ;
+    sh:class edu:AssessmentRecord ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:class edu:Enrollment ;
+            sh:maxCount 1 ;
+            sh:message "An assessment record links to one Enrollment." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path edu:recordForEnrollment ],
+        [ sh:class edu:Assessment ;
+            sh:maxCount 1 ;
+            sh:message "An assessment record links to one Assessment." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path edu:forAssessment ],
+        [ sh:datatype xsd:boolean ;
+            sh:maxCount 1 ;
+            sh:message "The banked flag is one explicit Boolean, not a string or integer." ;
+            sh:minCount 1 ;
+            sh:path edu:isBanked ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:message "A known submission day is a signed integer offset." ;
+            sh:path edu:submissionDay ],
+        shape:ScoreValue ;
+    sh:sparql [ sh:message "Another record has the same enrollment and assessment." ;
+            sh:select """
+        PREFIX edu: <https://example.org/oulad/schema#>
+        SELECT DISTINCT $this WHERE {
+            $this edu:recordForEnrollment ?enrollment ; edu:forAssessment ?assessment .
+            ?other edu:recordForEnrollment ?enrollment ; edu:forAssessment ?assessment . FILTER(?other != $this)
+        }""" ] ;
+    sh:targetClass edu:AssessmentRecord ;
+    sh:targetSubjectsOf edu:forAssessment,
+        edu:recordForEnrollment .
+
+shape:RegistrationReviewShape a sh:NodeShape ;
+    rdfs:label "Review registration dates" ;
+    sh:property [ sh:message "Registration day is unknown; do not substitute day zero." ;
+            sh:minCount 1 ;
+            sh:path edu:registrationDay ;
+            sh:severity sh:Warning ],
+        [ sh:lessThanOrEquals edu:unregistrationDay ;
+            sh:message "Registration is after withdrawal; review both source dates." ;
+            sh:path edu:registrationDay ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass edu:Enrollment .
+
+shape:ResourceShape a sh:NodeShape ;
+    rdfs:label "Learning resource structure" ;
+    sh:class edu:LearningResource ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:class edu:CourseOffering ;
+            sh:maxCount 1 ;
+            sh:message "A resource belongs to one offering." ;
+            sh:minCount 1 ;
+            sh:nodeKind sh:IRI ;
+            sh:path edu:resourceInOffering ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:message "A resource has one nonempty activity type." ;
+            sh:minCount 1 ;
+            sh:minLength 1 ;
+            sh:path edu:activityType ] ;
+    sh:targetClass edu:LearningResource ;
+    sh:targetSubjectsOf edu:resourceInOffering .
+
+shape:ScorePresenceShape a sh:NodeShape ;
+    rdfs:label "Review unknown scores" ;
+    sh:property shape:ScorePresence ;
+    sh:targetClass edu:AssessmentRecord .
+
+shape:StudentShape a sh:NodeShape ;
+    rdfs:label "Student identity" ;
+    sh:class edu:Student ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:message "A student has one string identifier containing digits." ;
+            sh:minCount 1 ;
+            sh:path edu:studentId ;
+            sh:pattern "^[0-9]+$" ],
+        [ sh:maxCount 0 ;
+            sh:message "Put the final outcome on the contextual Enrollment, not Student." ;
+            sh:path edu:finalResult ] ;
+    sh:sparql [ sh:message "Another Student has the same studentId." ;
+            sh:select """
+        PREFIX edu: <https://example.org/oulad/schema#>
+        SELECT DISTINCT $this WHERE {
+            $this edu:studentId ?id . ?other edu:studentId ?id . FILTER(?other != $this)
+        }""" ] ;
+    sh:targetClass edu:Student ;
+    sh:targetSubjectsOf edu:studentId .
+
+shape:SubmissionPresenceShape a sh:NodeShape ;
+    rdfs:label "Review unknown submission days" ;
+    sh:property [ sh:message "Submission day is unknown; a lateness comparison cannot use this record." ;
+            sh:minCount 1 ;
+            sh:path edu:submissionDay ;
+            sh:severity sh:Warning ] ;
+    sh:targetClass edu:AssessmentRecord .
+
+shape:WithdrawalReviewShape a sh:NodeShape ;
+    rdfs:label "Review withdrawal status versus date" ;
+    sh:severity sh:Warning ;
+    sh:sparql [ sh:message "Outcome and presence of a withdrawal day disagree; review source completeness." ;
+            sh:select """
+        PREFIX edu: <https://example.org/oulad/schema#>
+        SELECT DISTINCT $this WHERE {
+            $this edu:finalResult ?outcome .
+            FILTER ((?outcome = "Withdrawn" && NOT EXISTS { $this edu:unregistrationDay ?day }) ||
+                    (?outcome != "Withdrawn" && EXISTS { $this edu:unregistrationDay ?day }))
+        }""" ] ;
+    sh:targetClass edu:Enrollment .
+
+shape:DeadlinePresence a sh:PropertyShape ;
+    sh:message "Deadline is unknown: preserve the absence, including unknown exam dates." ;
+    sh:minCount 1 ;
+    sh:path edu:deadlineDay ;
+    sh:severity sh:Violation .
+
+shape:EnrollmentStudent a sh:PropertyShape ;
+    sh:class edu:Student ;
+    sh:maxCount 1 ;
+    sh:message "An enrollment has exactly one explicit Student link, to a typed Student." ;
+    sh:minCount 1 ;
+    sh:nodeKind sh:IRI ;
+    sh:path edu:hasStudent .
+
+shape:ScorePresence a sh:PropertyShape ;
+    sh:message "Score is unknown: retain the record and review source completeness; do not replace with zero." ;
+    sh:minCount 1 ;
+    sh:path edu:score ;
+    sh:severity sh:Violation .
+
+shape:ScoreValue a sh:PropertyShape ;
+    sh:datatype xsd:decimal ;
+    sh:maxCount 1 ;
+    sh:maxInclusive 100 ;
+    sh:message "A present score is one decimal in [0,100]; unknown is not zero." ;
+    sh:minInclusive 0 ;
+    sh:path edu:score .
+

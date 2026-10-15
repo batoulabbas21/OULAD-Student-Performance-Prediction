@@ -9,7 +9,7 @@
 7. Missing optional values produce absent triples, not zeros, false flags, or "nan" strings.
 8. Unknown exam deadlines remain unknown; the source's approximate end-of-week description is not an exact date.
 9. Late-record query excludes banked results and requires both recorded dates.
-10. RDFS entailment is distinct from validation. Python checks precede conversion; SHACL is a later stage.
+10. RDFS entailment is distinct from validation. Python checks precede conversion; Session 4 SHACL validates the asserted RDF afterward. Violations and empty required targets block the gate; documented warnings remain visible.
 11. The lightweight profile checks relationships. Optional ydata HTML follows the Session 1 lab pattern.
 12. Daily activity is optional. A core build marks its activity question unavailable in status.json.
 13. Generated reports reflect their recorded scope; no all-university or causal claims follow from one module.

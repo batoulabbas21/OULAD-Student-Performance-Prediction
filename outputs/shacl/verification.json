@@ -1,0 +1,212 @@
+{
+  "verified_at_utc": "2026-10-15T02:51:53.178880+00:00",
+  "sample_only": false,
+  "passed": true,
+  "checks": [
+    {
+      "check": "Real sample: 0 violations, 3 visible warnings, gate passes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "All 12 assessment subtypes are targeted without RDFS materialization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Only the optional activity target is empty in the real sample",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Broken fixture changes exactly one Student link",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Broken Student reference blocks the gate at the expected focus node",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Missing Student link is a SHACL minCount violation (OWL open-world contrast)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Two distinct Student IRIs violate maxCount without OWL identity merging",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Score boundary -1: gate fails",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Score boundary 0: gate passes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Score boundary 100: gate passes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Score boundary 101: gate fails",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Zero offering length fails and its zero value is retained in the report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Numeric-looking string is not an xsd:decimal score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Removing a known score adds a warning, preserves the record and passes the gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Integer banked flag is rejected after the mapping to Boolean",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "A valid Assessment from the wrong offering is caught by SHACL-SPARQL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Duplicate contextual enrollment key is caught across distinct nodes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Duplicate assessment-record key is caught across distinct nodes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Unexpected outcome is a vocabulary violation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Negative previous-attempt count is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Negative day offsets remain permitted",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Pass with a withdrawal date is a review warning, not a silent repair",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Reversed dates produce a core property-pair warning",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Outcome on Student is forbidden by maxCount zero",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Assessment without a supported subtype is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "A record missing its type is still selected through its properties",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Optional activity validates when present, including zero clicks",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Negative click count is rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Activity cannot link to a resource in another offering",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Zero-focus trap: SHACL conforms True, project gate fails",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "An empty data graph cannot pass the coverage gate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Saved full run matches current data, schema, shapes and validator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Every real sample triple is an unchanged source triple",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Full structural focus counts match all seven CSV-derived entity counts",
+      "passed": true,
+      "detail": {
+        "StudentShape": 712,
+        "EnrollmentShape": 748,
+        "OfferingShape": 2,
+        "ModuleShape": 1,
+        "AssessmentShape": 12,
+        "RecordShape": 3149,
+        "ResourceShape": 413
+      }
+    },
+    {
+      "check": "Full warning identities match the missing score/deadline CSV rows",
+      "passed": true,
+      "detail": {
+        "expected_warning_identities": 5,
+        "observed_warning_identities": 5
+      }
+    },
+    {
+      "check": "Full graph gate passes with no violations and visible warnings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PROV-O input and output fingerprints match the actual validation run",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "source_sha256": {
+    "shapes/oulad-shapes.ttl": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0",
+    "ontology/education.rdfs.ttl": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+    "evaluation/fixtures/shacl/valid.ttl": "27de5ce0df7c18af2a911cc9ed0407c5aef8e025a94dc1d7a1f8895d3708d0dc",
+    "evaluation/fixtures/shacl/broken.ttl": "058732cedbbb45d50f91e8e7060ff1a6b0e0741d521168f1a627422197552178",
+    "src/validation/validate.py": "c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d",
+    "evaluation/verify_shacl.py": "238c4cf042e54d0c213b976eacd3c16cdc69883987746428a159eec705b7b7b0",
+    "outputs/shacl/full/summary.json": "d372166586ef94a714f6ad267e1ad7854c88b714f3df2a6ba8e57ad2e777570f"
+  }
+}

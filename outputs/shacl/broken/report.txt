@@ -1,0 +1,28 @@
+Validation Report
+Conforms: False
+Results (4):
+Constraint Violation in ClassConstraintComponent (http://www.w3.org/ns/shacl#ClassConstraintComponent):
+	Severity: sh:Violation
+	Source Shape: shape:EnrollmentStudent
+	Focus Node: <https://example.org/oulad/id/enrollment/AAA/2013J/100893>
+	Value Node: <https://example.org/oulad/teaching#untyped-student-typo>
+	Result Path: edu:hasStudent
+	Message: An enrollment has exactly one explicit Student link, to a typed Student.
+Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: shape:DeadlinePresence
+	Focus Node: <https://example.org/oulad/id/assessment/1757>
+	Result Path: edu:deadlineDay
+	Message: Deadline is unknown: preserve the absence, including unknown exam dates.
+Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: shape:DeadlinePresence
+	Focus Node: <https://example.org/oulad/id/assessment/1763>
+	Result Path: edu:deadlineDay
+	Message: Deadline is unknown: preserve the absence, including unknown exam dates.
+Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: shape:ScorePresence
+	Focus Node: <https://example.org/oulad/id/assessment-record/260355/1754>
+	Result Path: edu:score
+	Message: Score is unknown: retain the record and review source completeness; do not replace with zero.

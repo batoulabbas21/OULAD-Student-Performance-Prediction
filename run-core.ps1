@@ -10,6 +10,7 @@ try {
         @{ Script = 'src/preparation/select_subset.py'; Args = @('--module', 'AAA') }
         @{ Script = 'src/preparation/profiling.py'; Args = @() }
         @{ Script = 'src/graph/convert_to_rdf.py'; Args = @() }
+        @{ Script = 'src/validation/validate.py'; Args = @() }
         @{ Script = 'src/graph/run_queries.py'; Args = @() }
         @{ Script = 'src/graph/rdfs_entailment_demo.py'; Args = @() }
         @{ Script = 'evaluation/verify.py'; Args = @() }

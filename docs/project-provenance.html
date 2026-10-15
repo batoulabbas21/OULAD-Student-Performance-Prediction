@@ -1,7 +1,8 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>OULAD project provenance | Origins, transformations and evidence</title>
-<meta name="description" content="A readable provenance guide for the AAA OULAD knowledge representation project, with a verified source-to-inference example.">
+<meta content="OULAD provenance through SHACL: saved validation runs, results, input/output fingerprints, and the distinction between local verification and prepared GitHub CI." name="description"/>
 <style>
 :root { color-scheme: light; --ink:#172e35; --muted:#516970; --line:#dce6e5; --accent:#087064; --paper:#fff; --wash:#f3f7f5; }
 * { box-sizing:border-box; }
@@ -47,17 +48,18 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 @media(max-width:800px) { .layout { display:block; padding:20px 14px 40px; } nav { position:static; margin:0 0 24px; } nav .toc { display:grid; grid-template-columns:1fr 1fr; } .scope { display:none; } main { padding:30px 24px; } h1 { font-size:33px; } }
 @media(max-width:500px) { nav .toc { display:block; } .top { padding:15px; align-items:flex-start; } .actions { gap:12px; flex-wrap:wrap; justify-content:flex-end; } main { padding:26px 18px; } h1 { font-size:30px; } th,td { padding:10px; } }
 @media print { @page { size:A4; margin:15mm; } body { background:white; font-size:10pt; line-height:1.5; } .top,nav { display:none; } .layout { display:block; padding:0; max-width:none; } main { border:0; padding:0; box-shadow:none; } h1 { font-size:26pt; } h2 { font-size:15pt; margin-top:24px; padding-top:15px; } h3 { font-size:12pt; } h1,h2,h3 { break-after:avoid; } p,li { orphans:3; widows:3; } table { font-size:9pt; } tr { break-inside:avoid; } .table-wrap { overflow:visible; } pre { background:#f4f7f5; color:#172e35; font-size:8pt; break-inside:avoid; } a { color:#174e47; } }
-</style></head><body>
-<header class="top"><span class="brand">KRR / OULAD · Project record</span><div class="actions"><a href="project-provenance.md">Editable version</a><button type="button" onclick="window.print()">Print / save PDF</button></div></header>
-<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-the-project-in-one-minute">1. The project in one minute</a><a href="#2-original-sources-and-credit">2. Original sources and credit</a><a href="#3-the-journey-from-csvs-to-answers">3. The journey from CSVs to answers</a><a href="#4-choices-that-affect-the-meaning">4. Choices that affect the meaning</a><a href="#5-a-real-result-traced-all-the-way-back">5. A real result, traced all the way back</a><a href="#6-four-kinds-of-information-to-keep-separate">6. Four kinds of information to keep separate</a><a href="#7-what-the-saved-checks-establish">7. What the saved checks establish</a><a href="#8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</a><a href="#9-dates-fingerprints-and-reproducibility">9. Dates, fingerprints and reproducibility</a><a href="#10-connection-to-the-course-provenance-lesson">10. Connection to the course provenance lesson</a><a href="#11-what-this-record-cannot-establish">11. What this record cannot establish</a></div><div class="scope"><b>Evidence snapshot</b>13 October 2026<br>AAA · 2013J + 2014J<br>Read-only audit of saved files.<br><a href="provenance-snapshot.json">Inspect fingerprints and checks</a></div></nav>
+
+nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{max-height:none;overflow:visible;}}</style></head><body>
+<header class="top"><span class="brand">KRR / OULAD · Project record</span><div class="actions"><a href="project-provenance.md">Editable version</a><button onclick="window.print()" type="button">Print / save PDF</button></div></header>
+<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-the-project-in-one-minute">1. The project in one minute</a><a href="#2-original-sources-and-credit">2. Original sources and credit</a><a href="#3-the-journey-from-csvs-to-answers">3. The journey from CSVs to answers</a><a href="#4-choices-that-affect-the-meaning">4. Choices that affect the meaning</a><a href="#5-a-real-result-traced-all-the-way-back">5. A real result, traced all the way back</a><a href="#6-four-kinds-of-information-to-keep-separate">6. Four kinds of information to keep separate</a><a href="#7-what-the-saved-checks-establish">7. What the saved checks establish</a><a href="#session-4-validation-evidence">Session 4 validation evidence</a><a href="#shacl-and-ci-what-is-implemented-and-what-has-run">SHACL and CI: what is implemented and what has run</a><a href="#8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</a><a href="#9-dates-fingerprints-and-reproducibility">9. Dates, fingerprints and reproducibility</a><a href="#10-connection-to-the-course-provenance-lesson">10. Connection to the course provenance lesson</a><a href="#11-what-this-record-cannot-establish">11. What this record cannot establish</a></div><div class="scope"><b>SHACL and CI provenance</b>15 October 2026<br/>37 local checks passed<br/>31 CI checks configured<br/>GitHub execution unverified<br/><a href="provenance-snapshot.json">Inspect the evidence snapshot</a></div></nav>
 <main><h1>OULAD project provenance</h1>
 <p><strong>Where the data came from, what we changed, and why the results can be traced.</strong></p>
-<p>Prepared on <strong>13 October 2026</strong> for the <code>kr-oulad</code> project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the <a href="../README.md">README</a> for commands.</p>
+<p>Prepared on <strong>13 October 2026</strong>, updated for Session 4 and CI on <strong>15 October 2026</strong> for the <code>kr-oulad</code> project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the <a href="../README.md">README</a> for commands. Jump to <a href="#session-4-validation-evidence">SHACL evidence</a>, <a href="#shacl-and-ci-what-is-implemented-and-what-has-run">SHACL and CI</a>, or <a href="#10-connection-to-the-course-provenance-lesson">validation-run provenance</a>.</p>
 <blockquote>
 <p><strong>Provenance means the history behind a result.</strong> For this project, it connects an original CSV row to its RDF representation, the ontology definition applied to it, and the resulting answer.</p>
 </blockquote>
 <h2 id="1-the-project-in-one-minute">1. The project in one minute</h2>
-<p>The project turns a small, understandable part of OULAD into a knowledge graph. It keeps student identity separate from enrollment in a particular offering, answers questions with SPARQL, and uses OWL reasoning to classify records.</p>
+<p>The project turns a small, understandable part of OULAD into a knowledge graph. It keeps student identity separate from enrollment in a particular offering, answers questions with SPARQL, uses OWL reasoning to classify records, and applies SHACL rules to validate the supplied graph.</p>
 <div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
@@ -92,26 +94,34 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 </tr>
 <tr>
 <td>Saved verification</td>
-<td>14 core checks and 17 ontology checks passed</td>
+<td>14 core checks, 17 ontology checks and 37 SHACL checks passed</td>
+</tr>
+<tr>
+<td>SHACL gate</td>
+<td>0 violations, 5 visible warnings; gate passes</td>
+</tr>
+<tr>
+<td>CI status</td>
+<td>GitHub Actions workflow prepared locally; 31 sample checks configured; remote execution unverified</td>
 </tr>
 </tbody>
 </table></div>
 <p>The current build excludes daily activity from <code>studentVle.csv</code>. An activity question is therefore marked <strong>unavailable</strong>; omitted activity does not mean that students made zero clicks.</p>
 <h2 id="2-original-sources-and-credit">2. Original sources and credit</h2>
-<h3>Dataset: OULAD</h3>
-<p>The source is the <strong>Open University Learning Analytics Dataset</strong>, by <strong>Jakub Kuzilek, Martin Hlosta and Zdenek Zdrahal</strong>, distributed through the <a href="https://archive.ics.uci.edu/dataset/349/open+university+learning+analytics+dataset" rel="noreferrer">UCI dataset page</a> under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noreferrer">CC BY 4.0</a>.</p>
-<p>Dataset citation: Kuzilek, J., Hlosta, M., &amp; Zdrahal, Z. (2015). <em>Open University Learning Analytics dataset</em> [Dataset]. UCI Machine Learning Repository. <a href="https://doi.org/10.24432/C5KK69" rel="noreferrer">Dataset DOI: 10.24432/C5KK69</a>.</p>
-<p>The project's download manifest also cites their 2017 dataset paper, <em>Scientific Data</em>, 4, 170171: <a href="https://doi.org/10.1038/sdata.2017.171" rel="noreferrer">article DOI: 10.1038/sdata.2017.171</a>. The dataset DOI and article DOI identify different publications.</p>
+<h3 id="dataset-oulad">Dataset: OULAD</h3>
+<p>The source is the <strong>Open University Learning Analytics Dataset</strong>, by <strong>Jakub Kuzilek, Martin Hlosta and Zdenek Zdrahal</strong>, distributed through the <a href="https://archive.ics.uci.edu/dataset/349/open+university+learning+analytics+dataset">UCI dataset page</a> under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+<p>Dataset citation: Kuzilek, J., Hlosta, M., &amp; Zdrahal, Z. (2015). <em>Open University Learning Analytics dataset</em> [Dataset]. UCI Machine Learning Repository. <a href="https://doi.org/10.24432/C5KK69">Dataset DOI: 10.24432/C5KK69</a>.</p>
+<p>The project's download manifest also cites their 2017 dataset paper, <em>Scientific Data</em>, 4, 170171: <a href="https://doi.org/10.1038/sdata.2017.171">article DOI: 10.1038/sdata.2017.171</a>. The dataset DOI and article DOI identify different publications.</p>
 <p>The <a href="../data/raw/manifest.json">download manifest</a> records the source archive URL, file sizes and SHA-256 fingerprints. The originals remain in <code>data/raw/</code>; the selected and transformed data are stored separately.</p>
-<h3>Vocabulary: a selected FOAF fragment</h3>
-<p>The ontology reuses <code>foaf:Person</code> and <code>foaf:Agent</code> from the <a href="https://xmlns.com/foaf/spec/" rel="noreferrer">FOAF Vocabulary Specification 0.99</a>, by <strong>Dan Brickley and Libby Miller</strong>, copyright 2000–2014. Its accompanying RDF is licensed under <a href="https://creativecommons.org/licenses/by/1.0/" rel="noreferrer">CC BY 1.0</a>.</p>
+<h3 id="vocabulary-a-selected-foaf-fragment">Vocabulary: a selected FOAF fragment</h3>
+<p>The ontology reuses <code>foaf:Person</code> and <code>foaf:Agent</code> from the <a href="https://xmlns.com/foaf/spec/">FOAF Vocabulary Specification 0.99</a>, by <strong>Dan Brickley and Libby Miller</strong>, copyright 2000–2014. Its accompanying RDF is licensed under <a href="https://creativecommons.org/licenses/by/1.0/">CC BY 1.0</a>.</p>
 <p>The complete downloaded RDF is retained in <a href="../ontology/imports/foaf.rdf">ontology/imports/foaf.rdf</a>. The preparation step extracts the two class declarations, their labels and comments, and the source relationship <code>foaf:Person rdfs:subClassOf foaf:Agent</code>, with a project header. The project adds <code>edu:Person rdfs:subClassOf foaf:Person</code>.</p>
 <p>Reasoning uses this <strong>documented fragment</strong>, not the full FOAF vocabulary. See the <a href="../ontology/imports/README.md">reuse and attribution notes</a> for the selection and its limits.</p>
-<h3>Course methods and project development</h3>
-<p>The workflow adapts the local KRR labs: Session 1 for profiling, Session 2 for RDF/RDFS, SPARQL and graph access, and Session 3 for ontology imports and reasoning. Session 3 references include <a href="../../KRR/demos/session-03-ontology/local_reasoner.py">local_reasoner.py</a>, <a href="../../KRR/demos/session-03-ontology/check_my_axioms.py">check_my_axioms.py</a>, and <a href="../../KRR/demos/session-03-ontology/realize_sample.py">realize_sample.py</a>.</p>
+<h3 id="course-methods-and-project-development">Course methods and project development</h3>
+<p>The workflow adapts the local KRR labs: Session 1 for profiling, Session 2 for RDF/RDFS, SPARQL and graph access, Session 3 for ontology imports and reasoning, and Session 4 for SHACL validation, triage and a severity-based gate. Session 3 references include <a href="../../KRR/demos/session-03-ontology/local_reasoner.py">local_reasoner.py</a>, <a href="../../KRR/demos/session-03-ontology/check_my_axioms.py">check_my_axioms.py</a>, and <a href="../../KRR/demos/session-03-ontology/realize_sample.py">realize_sample.py</a>.</p>
 <p>The OULAD model, scripts and explanations were developed for this project with Codex assistance. The education classes and rules are project modeling choices; the source dataset does not supply this ontology. A project-wide code license has not been established. The dataset and FOAF licenses apply to their respective material.</p>
 <h2 id="3-the-journey-from-csvs-to-answers">3. The journey from CSVs to answers</h2>
-<p><strong>Download → select AAA → profile → create RDF → add ontology definitions → reason → inspect and verify.</strong></p>
+<p><strong>Download → select AAA → profile → create RDF → validate with SHACL → query and reason → inspect and verify.</strong></p>
 <div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
@@ -142,6 +152,11 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 <td><a href="../data/processed/oulad.ttl">RDF facts</a> and <a href="../data/processed/graph_summary.json">graph summary</a></td>
 </tr>
 <tr>
+<td>Validate</td>
+<td><code>src/validation/validate.py</code> checks asserted facts using shapes and the RDFS class hierarchy. It writes a report and actual-run provenance.</td>
+<td><a href="../outputs/shacl/full/report.html">SHACL report</a> and <a href="../outputs/shacl/full/provenance.ttl">PROV-O record</a></td>
+</tr>
+<tr>
 <td>Query</td>
 <td><code>run_queries.py</code> executes the competency questions and records answer availability.</td>
 <td><a href="../outputs/answers/status.json">Answer status</a></td>
@@ -164,7 +179,7 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 </tbody>
 </table></div>
 <p>The preparation and conversion entry scripts share logic in <a href="../src/common/pipeline.py">src/common/pipeline.py</a>. Their folder names follow this project's structure while preserving the lab workflow.</p>
-<h3>Which table contributes what?</h3>
+<h3 id="which-table-contributes-what">Which table contributes what?</h3>
 <div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
@@ -212,7 +227,7 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 <li><strong>An assessment record may be banked.</strong> A transferred result is not necessarily a new submission. This motivates the name <code>AssessmentRecord</code>.</li>
 <li><strong>“Late” is an operational query definition.</strong> A record must be explicitly nonbanked, have both recorded dates, and have submission day greater than deadline day. This does not establish misconduct or account for individual extensions.</li>
 <li><strong>“Low score” means a known score below 40.</strong> It does not establish failure of the whole module. “Successful enrollment” means a recorded outcome of Pass or Distinction.</li>
-<li><strong>Ontology axioms and data checks have different jobs.</strong> RDFS domains/ranges infer types. OWL uses open-world reasoning: a missing link alone is not a required-field violation. Python checks assess the supplied records; SHACL validation remains a later stage.</li>
+<li><strong>Ontology axioms and data checks have different jobs.</strong> RDFS domains/ranges infer types. OWL uses open-world reasoning: a missing link alone is not a required-field violation. Python checks assess the supplied tables; Session 4 SHACL checks the explicit graph requirements after conversion. Warnings remain visible, while violations and empty required targets block the project gate.</li>
 </ul>
 <p>The identifiers beginning <code>https://example.org/oulad/</code> are project identifiers. Their spelling does not imply that an online service publishes those resources.</p>
 <h2 id="5-a-real-result-traced-all-the-way-back">5. A real result, traced all the way back</h2>
@@ -316,6 +331,46 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 </table></div>
 <p>Evidence: <a href="../outputs/ontology/inferred-class-counts.csv">class counts</a> and <a href="../outputs/ontology/verification.json">identity comparisons</a>. The clean ontology and loaded data are consistent, with no unsatisfiable named classes in the saved run. That finding concerns the supplied axioms and data; it does not prove that the data describe the world perfectly.</p>
 <p>The exported 6,119 assertions are <strong>additional named class memberships</strong>, not the complete set of all possible OWL conclusions. The notebook's seven saved code cells have executed outputs and no error outputs.</p>
+<h3 id="session-4-validation-evidence">Session 4 validation evidence</h3>
+<p>The full asserted AAA graph has <strong>0 violations and 5 warnings</strong>. The warnings identify the three unknown scores and two unknown exam deadlines; their exact focus nodes match the selected CSV rows. Strict SHACL conformance is false because warnings are present, while the project's documented gate policy passes.</p>
+<p>All 14 target-bearing shapes have coverage counts. Thirteen are populated; the optional DailyInteraction target is empty because activity was not loaded. Seven structural target counts were independently checked against CSV-derived counts.</p>
+<p>The verification report records <strong>37 passed checks</strong>, including bad links, score boundaries, incorrect datatypes, duplicate keys, cross-offering relationships, date semantics and the empty-target trap. The real sample passes with 3 warnings; its one-link broken variant fails with 1 violation and the same 3 warnings. The naive draft flags those three missing values as violations, showing why triage changes the policy without changing the facts.</p>
+<p>Read the <a href="shacl-triage.md">rule coverage and triage decisions</a>, <a href="../outputs/shacl/full/report.html">full results</a> and <a href="../outputs/shacl/verification.json">SHACL verification</a>. The following section distinguishes those saved local results from the prepared CI workflow.</p>
+<h3 id="shacl-and-ci-what-is-implemented-and-what-has-run">SHACL and CI: what is implemented and what has run</h3>
+<p><strong>Yes: SHACL verification includes a CI workflow.</strong> CI means continuous integration: a remote runner automatically checks relevant code changes. SHACL defines the validation rules; CI decides when to execute the validator and tests. Running the scripts on your computer is local verification, not a GitHub Actions run.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Execution path</th>
+<th>Data and checks</th>
+<th>Evidence/status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full local validation</td>
+<td>All 28,470 asserted AAA triples; 0 violations and 5 warnings.</td>
+<td><a href="../outputs/shacl/full/report.html">Saved full report</a>; gate passes.</td>
+</tr>
+<tr>
+<td>Full local verification</td>
+<td>37 checks: 31 shared sample/fault checks plus 6 full-data evidence checks.</td>
+<td><a href="../outputs/shacl/verification.json">Saved verification</a>; all passed on 14 October 2026.</td>
+</tr>
+<tr>
+<td>GitHub Actions CI</td>
+<td>Real sample validation, 31 shared checks using <code>--sample-only</code>, then a separate check that the broken fixture exits with code 1.</td>
+<td><a href="../.github/workflows/shacl-gate.yml">Workflow definition</a> exists locally. It was still <strong>untracked by Git</strong> at this audit. No successful GitHub run is established.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The CI check count is <strong>31, not 37</strong>. The six additional local checks compare the full run's inputs and validator, confirm sample triples belong to the source graph, compare seven entity counts with CSVs, match warning identities to missing CSV values, check the full gate result, and verify the full run's PROV-O input/output fingerprints. Those six require the full local extract and saved report, so sample-only mode skips them. The 31 shared checks passed as part of the saved 37-check run; that does not claim a separate remote CI run.</p>
+<p>The workflow is named <strong>OULAD SHACL gate</strong>, with job ID <code>validate</code>. It listens for relevant pushes and pull requests, and also defines a manual <code>workflow_dispatch</code> trigger. Its path filters cover shapes, the RDFS schema, validation code, SHACL fixtures, the verifier and the workflow itself. A README-only change therefore does not trigger this workflow automatically.</p>
+<p>The runner uses Ubuntu, Python 3.12, pySHACL 0.40.1 and RDFLib 7.6.0. Installation occurs on the runner; your existing local <strong>M2ENV</strong> is unchanged. It needs neither Docker, Neo4j, Fuseki nor the raw OULAD download. The fixture files are outside the ignored <code>data/</code> directory so they can be included in Git.</p>
+<p><strong>How CI decides whether to pass:</strong> the real sample must pass its gate; the verifier must pass all 31 checks; the deliberately broken sample must return <strong>exit 1</strong>. That expected failure makes the final test pass, because it proves the gate rejects the known bad link. An unexpected exit 0 or an execution error (exit 2) makes that step fail. The two fixture checks are separate workflow steps, not extra numbered regression checks.</p>
+<p><strong>What remains before GitHub execution:</strong> commit the workflow together with its shapes, schema, validator, verifier and fixture dependencies, then push those files to the intended repository with Actions enabled. The local repository has an <code>origin</code> remote, but this audit did not query GitHub runs or repository settings. For a manual run, the workflow must be available on the default branch; open Actions, select OULAD SHACL gate, then Run workflow. Record the resulting run URL, commit SHA and conclusion as remote evidence. No commit, push or remote run was performed by this documentation update. See <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">GitHub workflow syntax</a>.</p>
+<p><strong>Merge enforcement is separate.</strong> To require a passing check before merging, configure the repository's branch protection or ruleset. Before making this particular workflow required for every pull request, adjust its workflow-level path filters: a skipped workflow can leave a required check pending on unrelated changes. GitHub documents this behavior in <a href="https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks">troubleshooting required status checks</a>. No merge protection was changed by this task.</p>
+<p>The current workflow does not upload downloadable report artifacts or capture a GitHub run URL in the project provenance. Local run records and the workflow definition are included in this audit; a future green check should be linked here only after it has actually run.</p>
 <h2 id="8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</h2>
 <p>All three views ultimately use the project data; they do not introduce another original dataset.</p>
 <div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
@@ -381,18 +436,40 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 <td>Saved test report timestamp</td>
 </tr>
 <tr>
-<td>This provenance audit</td>
+<td>Initial provenance audit</td>
 <td>13 October 2026, 13:05:14</td>
-<td>Read-only inspection and fingerprint comparisons</td>
+<td>Original file-level inspection</td>
+</tr>
+<tr>
+<td>Latest saved full SHACL validation</td>
+<td>14 October 2026, 06:46:29</td>
+<td>Validation completed at the former project location; fingerprints match the relocated files</td>
+</tr>
+<tr>
+<td>Latest saved SHACL verification</td>
+<td>14 October 2026, 06:47:31</td>
+<td>37 checks passed; verified against that full report</td>
+</tr>
+<tr>
+<td>First Session 4 provenance audit</td>
+<td>14 October 2026, 06:39:15</td>
+<td>Preserved in the historical snapshot</td>
+</tr>
+<tr>
+<td>Current provenance audit</td>
+<td>15 October 2026, 02:43:27</td>
+<td>Checked current files, four saved validation runs and local CI definition; no new validation run</td>
 </tr>
 </tbody>
 </table></div>
-<p>The audit checked <strong>all seven raw CSVs</strong> against the manifest. It also checked the four input fingerprints stored by the full reasoner report, and the two stored by the Fuseki report. All matched the current files.</p>
-<p>The accompanying <a href="provenance-snapshot.json">provenance-snapshot.json</a> records full SHA-256 fingerprints for 72 selected data, code, ontology and result files. A fingerprint helps detect file changes; these local fingerprints are not publisher-authenticated signatures. They capture the files inspected now, not an independently archived history of every earlier run.</p>
-<p>The current environment is the existing Conda <strong>M2ENV</strong>: Python 3.12.15, pandas 2.3.3, RDFLib 7.6.0, owlrl 7.6.2 and Owlready2 0.51. The snapshot includes additional notebook and profiling package versions. This inventory describes the environment inspected now. The <a href="../README.md">README</a> contains the execution order, Java requirement, ontology steps and optional database instructions.</p>
+<p>The audit checked <strong>all seven raw CSVs</strong> against the manifest. It also checked the four input fingerprints stored by the full reasoner report, and the two stored by the Fuseki report. All matched the current files. All four saved SHACL runs (full, sample, broken and draft) have matching input and validator fingerprints at the new location. Their PROV-O records match the three input entities, software agent and five generated report-file fingerprints. The latest verification fingerprint matches the latest full summary.</p>
+<p>The accompanying <a href="provenance-snapshot.json">provenance-snapshot.json</a> records full SHA-256 fingerprints for 113 selected data, code, ontology, shapes, fixture, workflow, documentation and result files. A fingerprint helps detect file changes; these local fingerprints are not publisher-authenticated signatures. They capture the files inspected now, not an independently archived history of every earlier run.</p>
+<p>The <a href="history/provenance-snapshot-2026-10-14T063915Z.json">previous snapshot</a> is preserved with its original audit time and old run ID. The current full run is <code>f6dd0ac440204d898b9705840bb8b353</code>. The audit on 15 October updates the evidence record; it does not relabel the validation as a new run.</p>
+<p><strong>Folder relocation:</strong> the project is now <code>D:\DESKTOP\M2\kr-oulad</code>, with the course in <code>D:\DESKTOP\M2\KRR</code>. Earlier reports retain their original <code>C:</code> input paths. We compared those inputs by role and SHA-256 with files at the new location, preserving the original reports. To create fresh reports with current paths, activate M2ENV, enter the project folder and run <code>./run-shacl.ps1</code>. Running only the full verifier against old absolute paths can fail; run the full helper first.</p>
+<p>The current environment is the existing Conda <strong>M2ENV</strong>: Python 3.12.15, pandas 2.3.3, RDFLib 7.6.0, owlrl 7.6.2, Owlready2 0.51 and pySHACL 0.40.1. The snapshot includes additional notebook and profiling package versions. This inventory describes the environment inspected now. The <a href="../README.md">README</a> contains the execution order, Java requirement, ontology steps and optional database instructions.</p>
 <p>After changing data, mappings or axioms, regenerate their dependent outputs and verification reports before updating this guide. Reordered Turtle serialization can change a file's fingerprint even when its RDF meaning is unchanged.</p>
 <h2 id="10-connection-to-the-course-provenance-lesson">10. Connection to the course provenance lesson</h2>
-<p>The <a href="https://www.w3.org/TR/prov-o/" rel="noreferrer">W3C PROV-O model</a> describes provenance using entities, activities and agents. Here is how those ideas fit this project:</p>
+<p>The <a href="https://www.w3.org/TR/prov-o/">W3C PROV-O model</a> describes provenance using entities, activities and agents. Here is how those ideas fit this project:</p>
 <div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
@@ -424,10 +501,17 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 </tr>
 </tbody>
 </table></div>
-<p>This guide and its snapshot provide <strong>documented file-level provenance</strong>, plus one checked row-to-inference example. They do not add <code>prov:wasDerivedFrom</code> annotations to every RDF fact or create a complete machine-queryable run history.</p>
-<p>The course's <a href="../../KRR/demos/session-04-shacl/add_provenance.py">Session 4 add_provenance.py</a> demonstrates a separate PROV-O graph. Extending this project in that direction would require explicit run identifiers and links between source entities, transformations and outputs. That extension has not been implemented by writing this guide.</p>
+<p>This guide and its snapshot provide <strong>documented file-level provenance</strong>, plus a checked row-to-inference example. Since Session 4, validation additionally emits a machine-queryable PROV-O record for each actual run. It does not annotate every source triple or reconstruct all earlier pipeline executions.</p>
+<p>The course's <a href="../../KRR/demos/session-04-shacl/add_provenance.py">Session 4 add_provenance.py</a> motivates the new <a href="../outputs/shacl/full/provenance.ttl">validation provenance record</a>. It describes the validation that actually ran:</p>
+<ul>
+<li><strong>Entities:</strong> the data, RDFS schema and SHACL shapes, identified by SHA-256; the generated report files also have fingerprints.</li>
+<li><strong>Activity:</strong> a unique validation run with recorded start and end times. The PROV activity includes report assembly; <code>summary.json</code> separately records the validation finish time.</li>
+<li><strong>Software agent:</strong> the project validator identified by its code fingerprint, with its pySHACL version.</li>
+<li><strong>Links:</strong> <code>prov:used</code> connects the run to its inputs; <code>prov:wasGeneratedBy</code> connects reports to the run; <code>prov:wasAssociatedWith</code> identifies the software.</li>
+</ul>
+<p>Run <code>python src/validation/show_provenance.py</code> to answer which inputs and software produced the full report. Each output folder holds the latest run; its files are replaced on rerun. This is validation-run provenance, not a claim of immutable history for the entire project.</p>
 <h2 id="11-what-this-record-cannot-establish">11. What this record cannot establish</h2>
 <p>The selected AAA offerings are a teaching scope. Results do not describe all university students, reveal the real module title, or establish causal explanations of performance. Missing activity and unknown values remain limits on the questions that can be answered.</p>
-<p>The project has not recorded a complete immutable history of each past code version, exact execution start/end times, or provenance for every triple. Some stages have only saved reports and current source files. This guide states those limits so its evidence can be used at the level actually supported.</p>
-<p><strong>To explain the project aloud:</strong> “We obtained OULAD from UCI, preserved the originals, selected AAA and checked its tables. We mapped the selected records into RDF, authored an education ontology with a small attributed FOAF fragment, and used HermiT to derive classifications. We compared the graph answers and inferred identities with the CSVs. The manifests, source files and verification reports let us trace those results back to their inputs.”</p>
-<div class="footer">Source: the accompanying Markdown guide and the project's saved evidence. This document works offline; external reference links require a connection. Counts describe the recorded AAA build.</div></main></div></body></html>
+<p>The project has not recorded a complete immutable history of each past code version, execution start/end times for every earlier stage, or provenance for every triple. SHACL runs now record their own times and input/output identities. Some stages have only saved reports and current source files. This guide states those limits so its evidence can be used at the level actually supported.</p>
+<p><strong>To explain the project aloud:</strong> “We obtained OULAD from UCI, preserved the originals, selected AAA and checked its tables. We mapped the selected records into RDF, authored an education ontology with a small attributed FOAF fragment, and used HermiT to derive classifications. We validated the asserted graph with SHACL, triaged unknown values as warnings, and checked that deliberate faults fail the gate. We compared the graph answers and inferred identities with the CSVs. The manifests, source files and verification reports let us trace those results back to their inputs.”</p>
+<div class="footer">Audited 15 October 2026. Saved validation evidence and prepared CI configuration are identified separately.</div></main></div></body></html>

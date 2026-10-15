@@ -1,0 +1,48 @@
+name: OULAD SHACL gate
+
+on:
+  push:
+    paths:
+      - 'shapes/**'
+      - 'ontology/education.rdfs.ttl'
+      - 'src/validation/**'
+      - 'evaluation/fixtures/shacl/**'
+      - 'evaluation/verify_shacl.py'
+      - '.github/workflows/shacl-gate.yml'
+  pull_request:
+    paths:
+      - 'shapes/**'
+      - 'ontology/education.rdfs.ttl'
+      - 'src/validation/**'
+      - 'evaluation/fixtures/shacl/**'
+      - 'evaluation/verify_shacl.py'
+      - '.github/workflows/shacl-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install the lab validator versions in the CI runner
+        run: python -m pip install pyshacl==0.40.1 rdflib==7.6.0
+      - name: Validate the committed real-data sample
+        run: python src/validation/validate.py --data evaluation/fixtures/shacl/valid.ttl --out outputs/shacl/sample
+      - name: Verify deliberate faults, boundaries and empty-target protection
+        run: python evaluation/verify_shacl.py --sample-only
+      - name: Verify the broken example exits with gate failure
+        shell: bash
+        run: |
+          set +e
+          python src/validation/validate.py --data evaluation/fixtures/shacl/broken.ttl --out outputs/shacl/broken
+          status=$?
+          test "$status" -eq 1
+
+# This checks committed fixtures, not the ignored full OULAD extract.
+# A remote push and branch protection are separate user/repository actions.

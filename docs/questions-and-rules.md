@@ -44,7 +44,7 @@ Associations in Q3, Q4, and Q8 do not establish causation. Final outcomes descri
 
 | Rule | Status | Action now / later |
 | --- | --- | --- |
-| Every course offering has a module and presentation code | Structural key | Check null and duplicate composite keys; later SHACL cardinality |
+| Every course offering has a module and presentation code | Structural key | Check null and duplicate composite keys; SHACL now checks graph cardinality (README section 12) |
 | An enrollment is identified by student + module + presentation | Project identifier aligned with source table grain | Do not use student ID alone as the enrollment key |
 | Assessment ID identifies an assessment | Candidate key verified on the loaded data | Fail the build on nulls or duplicates |
 | A recorded student-assessment pair identifies an AssessmentRecord in this release | Candidate key, checked rather than blindly assumed | Fail on duplicates; review rather than silently collapse |
@@ -61,7 +61,7 @@ Associations in Q3, Q4, and Q8 do not establish causation. Final outcomes descri
 | Withdrawn outcome agrees with recorded unregistration | Documented intended relationship | Review disagreement and missingness; do not synthesize dates |
 | Planned resource start week does not exceed end week | Candidate consistency rule | Review if both values are present |
 
-These Python checks are the first validation layer. SHACL comes later. The current graph builder
+These Python checks are the first validation layer. Session 4 SHACL now validates the mapped RDF; see [rule coverage and triage](shacl-triage.md). Unmapped fields and source-row duplicates still require Python checks. The current graph builder
 blocks recorded errors and preserves optional missing values. A warning can still require a modeling decision.
 
 ## Rules we must NOT assert

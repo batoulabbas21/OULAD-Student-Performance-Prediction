@@ -1,0 +1,27 @@
+{
+  "generated_at_utc": "2026-10-15T02:50:44.520286+00:00",
+  "source_data_sha256": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5",
+  "source_shapes_sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0",
+  "selected_enrollments": [
+    "https://example.org/oulad/id/enrollment/AAA/2013J/100893",
+    "https://example.org/oulad/id/enrollment/AAA/2013J/106247",
+    "https://example.org/oulad/id/enrollment/AAA/2013J/106577",
+    "https://example.org/oulad/id/enrollment/AAA/2013J/134143",
+    "https://example.org/oulad/id/enrollment/AAA/2013J/1401935",
+    "https://example.org/oulad/id/enrollment/AAA/2013J/260355",
+    "https://example.org/oulad/id/enrollment/AAA/2014J/129955"
+  ],
+  "sample_triples": 299,
+  "sample_individuals": 57,
+  "sample_note": "All triples copied unchanged from asserted RDF; seven enrollments, their records, all assessments, one resource per offering, and linked entities.",
+  "broken_change": {
+    "focus": "https://example.org/oulad/id/enrollment/AAA/2013J/100893",
+    "path": "https://example.org/oulad/schema#hasStudent",
+    "removed": "https://example.org/oulad/id/student/100893",
+    "added": "https://example.org/oulad/teaching#untyped-student-typo"
+  },
+  "files": {
+    "valid.ttl": "27de5ce0df7c18af2a911cc9ed0407c5aef8e025a94dc1d7a1f8895d3708d0dc",
+    "broken.ttl": "058732cedbbb45d50f91e8e7060ff1a6b0e0741d521168f1a627422197552178"
+  }
+}

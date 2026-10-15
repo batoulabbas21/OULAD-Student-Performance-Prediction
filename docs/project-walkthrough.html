@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Understanding the OULAD project | Results, interpretation and challenges</title>
+<meta content="Detailed walkthrough of the OULAD knowledge graph, ontology, SHACL results, actual challenges, and deliberate teaching errors." name="description"/>
+<style>
+:root { color-scheme: light; --ink:#172e35; --muted:#516970; --line:#dce6e5; --accent:#087064; --paper:#fff; --wash:#f3f7f5; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:24px; }
+body { margin:0; background:var(--wash); color:var(--ink); font:16px/1.7 "Segoe UI",Arial,sans-serif; }
+a { color:var(--accent); text-underline-offset:3px; overflow-wrap:anywhere; }
+a:hover { color:#034b43; }
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible { outline:3px solid #cf9143; outline-offset:4px; }
+.top { background:var(--ink); color:white; padding:18px max(24px,calc((100vw - 1260px)/2)); display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.brand { font-size:12px; letter-spacing:.15em; text-transform:uppercase; font-weight:700; }
+.actions { display:flex; align-items:center; gap:22px; font-size:13px; }
+.actions a { color:white; }
+button { background:transparent; border:1px solid #98b4b9; border-radius:5px; color:white; font:inherit; padding:6px 12px; cursor:pointer; }
+.layout { max-width:1308px; padding:42px 24px 70px; margin:auto; display:grid; grid-template-columns:244px minmax(0,1fr); gap:34px; align-items:start; }
+nav { position:sticky; top:24px; font-size:13px; line-height:1.5; }
+nav strong { display:block; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 13px 12px; }
+nav a { display:block; padding:8px 12px; border-left:2px solid #ccddda; color:var(--muted); text-decoration:none; }
+nav a:hover { background:#e8f0ed; border-left-color:var(--accent); }
+.scope { margin-top:24px; padding:15px; border:1px solid var(--line); border-radius:7px; font-size:12px; color:var(--muted); }
+.scope b { display:block; color:var(--ink); margin-bottom:4px; }
+main { min-width:0; background:var(--paper); padding:44px 48px; border:1px solid var(--line); border-radius:10px; box-shadow:0 8px 28px #172e3505; }
+h1 { font-size:40px; line-height:1.13; letter-spacing:-.035em; font-weight:650; margin:0 0 18px; }
+h1 + p { color:var(--muted); font-size:19px; line-height:1.5; }
+h1 + p strong { font-weight:400; }
+h2 { font-size:23px; line-height:1.3; letter-spacing:-.02em; margin:48px 0 18px; padding-top:27px; border-top:1px solid var(--line); }
+h3 { font-size:17px; line-height:1.4; margin:27px 0 10px; }
+p { margin:0 0 17px; }
+blockquote { margin:26px 0; padding:19px 22px; border-left:4px solid var(--accent); background:#eef7f3; border-radius:0 7px 7px 0; }
+blockquote p { margin:0; }
+ul,ol { padding-left:25px; margin:16px 0 22px; }
+li { padding-left:4px; margin:0 0 11px; }
+.table-wrap { overflow-x:auto; margin:21px 0 24px; border:1px solid var(--line); border-radius:7px; }
+table { border-collapse:collapse; width:100%; font-size:14px; line-height:1.6; }
+th { padding:12px 14px; background:#edf4f1; text-align:left; font-weight:650; vertical-align:top; }
+td { padding:12px 14px; vertical-align:top; border-top:1px solid var(--line); }
+tr:nth-child(even) td { background:#fafcfb; }
+td:first-child { font-weight:550; }
+code { font: .87em/1.5 Consolas,"Courier New",monospace; background:#eff3f2; border-radius:4px; padding:2px 4px; overflow-wrap:anywhere; }
+pre { background:#18373d; color:#edf8f2; padding:22px; border-radius:7px; white-space:pre-wrap; overflow-wrap:anywhere; font-size:13px; line-height:1.65; }
+pre code { background:none; color:inherit; padding:0; font-size:inherit; }
+.footer { border-top:1px solid var(--line); padding-top:22px; margin-top:40px; font-size:12px; color:var(--muted); }
+@media(max-width:1040px) { .layout { grid-template-columns:200px minmax(0,1fr); gap:22px; } main { padding:35px 30px; } }
+@media(max-width:800px) { .layout { display:block; padding:20px 14px 40px; } nav { position:static; margin:0 0 24px; } nav .toc { display:grid; grid-template-columns:1fr 1fr; } .scope { display:none; } main { padding:30px 24px; } h1 { font-size:33px; } }
+@media(max-width:500px) { nav .toc { display:block; } .top { padding:15px; align-items:flex-start; } .actions { gap:12px; flex-wrap:wrap; justify-content:flex-end; } main { padding:26px 18px; } h1 { font-size:30px; } th,td { padding:10px; } }
+@media print { @page { size:A4; margin:15mm; } body { background:white; font-size:10pt; line-height:1.5; } .top,nav { display:none; } .layout { display:block; padding:0; max-width:none; } main { border:0; padding:0; box-shadow:none; } h1 { font-size:26pt; } h2 { font-size:15pt; margin-top:24px; padding-top:15px; } h3 { font-size:12pt; } h1,h2,h3 { break-after:avoid; } p,li { orphans:3; widows:3; } table { font-size:9pt; } tr { break-inside:avoid; } .table-wrap { overflow:visible; } pre { background:#f4f7f5; color:#172e35; font-size:8pt; break-inside:avoid; } a { color:#174e47; } }
+
+nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{max-height:none;overflow:visible;}}</style></head><body>
+<header class="top"><span class="brand">KRR / OULAD · Project walkthrough</span><div class="actions"><a href="project-walkthrough.md">Editable version</a><button onclick="window.print()" type="button">Print / save PDF</button></div></header>
+<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-what-problem-are-we-solving">1. What problem are we solving?</a><a href="#2-what-we-did-in-order">2. What we did, in order</a><a href="#3-what-data-do-we-actually-have">3. What data do we actually have?</a><a href="#4-how-to-read-the-graph">4. How to read the graph</a><a href="#5-what-the-analytical-answers-mean">5. What the analytical answers mean</a><a href="#6-what-the-ontology-added">6. What the ontology added</a><a href="#7-what-shacl-added">7. What SHACL added</a><a href="#8-the-exact-shacl-results-and-their-interpretation">8. The exact SHACL results and their interpretation</a><a href="#9-actual-challenges-and-how-they-were-addressed">9. Actual challenges and how they were addressed</a><a href="#10-deliberate-errors-what-we-tested-and-learned">10. Deliberate errors: what we tested and learned</a><a href="#11-what-the-verification-establishes">11. What the verification establishes</a><a href="#12-what-neo4j-and-fuseki-results-mean">12. What Neo4j and Fuseki results mean</a><a href="#13-provenance-how-we-know-which-run-produced-a-result">13. Provenance: how we know which run produced a result</a><a href="#14-how-to-inspect-and-repeat-the-work">14. How to inspect and repeat the work</a><a href="#15-a-short-explanation-for-your-presentation">15. A short explanation for your presentation</a><a href="#appendix-all-shacl-verification-checks">Appendix: all SHACL verification checks</a></div><div class="scope"><b>Verified project results</b>14 October 2026<br/>14 core · 17 ontology · 37 SHACL checks<br/>0 blocking violations · 5 warnings<br/><a href="../outputs/shacl/full/report.html">Open the latest validation report</a></div></nav>
+<main><h1>Understanding the OULAD project</h1>
+<p><strong>What we built, what the results mean, and how we handled challenges and errors.</strong></p>
+<p>Prepared on <strong>14 October 2026</strong>. This walkthrough covers the project through the Session 4 SHACL extension, with particular attention to interpreting validation results. It uses saved project evidence and current source files. It does not rerun the analysis or contact the database servers.</p>
+<blockquote>
+<p><strong>The main result:</strong> we have a traceable education knowledge graph, an ontology that derives useful classifications, and a validation gate that catches structural errors while retaining documented missing values. The current full SHACL report has <strong>0 violations and 5 warnings</strong>, and <strong>37 verification checks pass</strong>.</p>
+</blockquote>
+<h2 id="1-what-problem-are-we-solving">1. What problem are we solving?</h2>
+<p>OULAD originally consists of separate CSV tables. A question such as “Which enrollments have a low assessment score?” requires joining student, offering, enrollment and assessment information correctly.</p>
+<p>Our project represents these relationships explicitly, gives them clear meanings, and checks that the resulting graph follows our rules. It applies the lab techniques to education data while retaining the existing <strong>M2ENV</strong> Conda environment and the agreed project folders.</p>
+<p>We selected module <strong>AAA</strong>, an anonymized Social Sciences module, across <strong>2013J and 2014J</strong>. A presentation is one offering of a module. AAA's real title, assignment content and instructors are not provided. The <a href="aaa-module.md">AAA explanation</a> contains the detailed source interpretation.</p>
+<p>Three different questions guide the work:</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Tool or layer that answers it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What is explicitly recorded?</td>
+<td>CSVs, RDF facts and SPARQL</td>
+</tr>
+<tr>
+<td>What follows logically from those facts and our definitions?</td>
+<td>RDFS/OWL and the reasoner</td>
+</tr>
+<tr>
+<td>Does the supplied graph satisfy explicit data requirements?</td>
+<td>SHACL and the project gate</td>
+</tr>
+</tbody>
+</table></div>
+<p>An enrollment can be logically consistent in OWL while failing a SHACL completeness check. These layers have different purposes.</p>
+<h2 id="2-what-we-did-in-order">2. What we did, in order</h2>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Work completed</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Download</td>
+<td>Retrieved the seven OULAD CSVs and recorded source information, sizes and SHA-256 fingerprints.</td>
+<td>We can identify the original inputs and detect later file changes.</td>
+</tr>
+<tr>
+<td>Select</td>
+<td>Kept AAA's two offerings and their related rows in separate interim files.</td>
+<td>A small connected extract is easier to explain and validate.</td>
+</tr>
+<tr>
+<td>Profile</td>
+<td>Inspected distributions, missing values, candidate keys, references and value ranges.</td>
+<td>Problems in source tables should be understood before conversion.</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>Distinguished Student, Module, CourseOffering, Enrollment, Assessment, AssessmentRecord and LearningResource.</td>
+<td>The graph respects the different meanings and identities in the data.</td>
+</tr>
+<tr>
+<td>Convert to RDF</td>
+<td>Created stable identifiers, links and typed values from the selected tables.</td>
+<td>Questions can follow explicit relationships instead of repeatedly reconstructing joins.</td>
+</tr>
+<tr>
+<td>Add RDFS</td>
+<td>Declared classes, subclasses, domains and ranges.</td>
+<td>The vocabulary becomes interpretable and supports basic entailment.</td>
+</tr>
+<tr>
+<td>Query and verify</td>
+<td>Answered competency questions and compared graph answers with CSV/SQL results.</td>
+<td>We checked that the conversion preserves the intended answers.</td>
+</tr>
+<tr>
+<td>Add database views</td>
+<td>Loaded a property-graph projection into Neo4j and RDF/schema into Fuseki.</td>
+<td>The same data can be explored visually and queried through a server.</td>
+</tr>
+<tr>
+<td>Add OWL</td>
+<td>Authored formal class definitions, reused a small FOAF fragment and ran HermiT through Owlready2.</td>
+<td>The ontology can classify records and expose contradictory modeling commitments.</td>
+</tr>
+<tr>
+<td>Add SHACL</td>
+<td>Defined explicit graph constraints, review warnings, target checks and a blocking gate.</td>
+<td>The pipeline can reject malformed data rather than merely describe its meaning.</td>
+</tr>
+<tr>
+<td>Record provenance</td>
+<td>Wrote the human-readable guide, fingerprints and a PROV-O record for each SHACL run.</td>
+<td>Results can be connected to their inputs, software and validation activity.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The current main pipeline places SHACL <strong>immediately after RDF conversion and before answering questions</strong>. Neo4j, Fuseki and full OWL reasoning remain explicit separate steps. The full command sequence is in the <a href="../README.md">README</a>.</p>
+<h2 id="3-what-data-do-we-actually-have">3. What data do we actually have?</h2>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th style="text-align:right">Result</th>
+<th>Correct interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modules</td>
+<td style="text-align:right">1</td>
+<td>The selected module is AAA.</td>
+</tr>
+<tr>
+<td>Offerings</td>
+<td style="text-align:right">2</td>
+<td>The same module is offered in two presentations.</td>
+</tr>
+<tr>
+<td>Distinct student IDs</td>
+<td style="text-align:right">712</td>
+<td>Count of different recorded people.</td>
+</tr>
+<tr>
+<td>Enrollments</td>
+<td style="text-align:right">748</td>
+<td>Count of participation records, each tied to one offering.</td>
+</tr>
+<tr>
+<td>Assessments</td>
+<td style="text-align:right">12</td>
+<td>Ten tutor-marked assessments and two exam definitions.</td>
+</tr>
+<tr>
+<td>Assessment records</td>
+<td style="text-align:right">3,149</td>
+<td>Recorded student-assessment results, including banked results.</td>
+</tr>
+<tr>
+<td>Resource descriptions</td>
+<td style="text-align:right">413</td>
+<td>Descriptions of available resources, not evidence that each was accessed.</td>
+</tr>
+<tr>
+<td>Asserted RDF triples</td>
+<td style="text-align:right">28,470</td>
+<td>Explicit statements produced by conversion.</td>
+</tr>
+<tr>
+<td>Separate RDFS triples</td>
+<td style="text-align:right">105</td>
+<td>Vocabulary statements describing classes and properties.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Why are there 748 enrollments but only 712 students?</strong> Thirty-six student IDs appear in both offerings. A student is therefore a different entity from an enrollment. A repeated student may have a different outcome in each offering.</p>
+<p>The seven types of project entities above account for <strong>5,037 named entities</strong> in total. This explains the corresponding Neo4j node count and the number of individuals classified in the full ontology run. A node can have many triples and several class memberships, so these counts need not equal the number of triples or inferred types.</p>
+<p>Daily interaction data were downloaded but excluded from the core graph. The optional activity query is marked <strong>unavailable</strong>. That status does not tell us whether the students studied or clicked resources; it tells us those facts were not loaded.</p>
+<h2 id="4-how-to-read-the-graph">4. How to read the graph</h2>
+<p>The main relationship pattern is:</p>
+<pre><code class="language-text">Enrollment --hasStudent--&gt; Student
+Enrollment --inOffering--&gt; CourseOffering --offeringOf--&gt; Module
+AssessmentRecord --recordForEnrollment--&gt; Enrollment
+AssessmentRecord --forAssessment--&gt; Assessment --assessmentInOffering--&gt; CourseOffering
+LearningResource --resourceInOffering--&gt; CourseOffering
+</code></pre>
+<p>The record for student <code>100893</code> in AAA/2013J is identified by:</p>
+<pre><code class="language-text">https://example.org/oulad/id/enrollment/AAA/2013J/100893
+</code></pre>
+<p>Its recorded final result is Pass. This fact belongs to that enrollment. We do not turn it into a timeless statement that the person always passes.</p>
+<p>The RDF mapping preserves several distinctions:</p>
+<ul>
+<li>Identifiers are strings or IRIs, rather than quantities to average.</li>
+<li>Scores are decimal values and banked flags are Booleans.</li>
+<li>Day values are signed integer offsets relative to the offering, so a negative registration day is meaningful.</li>
+<li>A missing optional value produces no property assertion. It is not replaced by zero, false or the text <code>nan</code>.</li>
+<li>A banked assessment result can come from an earlier presentation. <code>AssessmentRecord</code> is therefore a more accurate name than assuming every row is a fresh submission.</li>
+</ul>
+<h2 id="5-what-the-analytical-answers-mean">5. What the analytical answers mean</h2>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Answer</th>
+<th style="text-align:right">Result</th>
+<th>Interpretation and limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Enrollments in 2013J</td>
+<td style="text-align:right">383</td>
+<td>Participation records for that offering.</td>
+</tr>
+<tr>
+<td>Enrollments in 2014J</td>
+<td style="text-align:right">365</td>
+<td>Participation records for the later offering.</td>
+</tr>
+<tr>
+<td>Recorded late assessment records</td>
+<td style="text-align:right">815</td>
+<td>Nonbanked records with both dates known and submission strictly after the recorded deadline.</td>
+</tr>
+<tr>
+<td>Known scores below 40</td>
+<td style="text-align:right">90</td>
+<td>Low-scoring assessment records; multiple records may concern one enrollment.</td>
+</tr>
+<tr>
+<td>Enrollments with at least one low score</td>
+<td style="text-align:right">75</td>
+<td>Different enrollments associated with those 90 records.</td>
+</tr>
+<tr>
+<td>Unknown scores</td>
+<td style="text-align:right">3</td>
+<td>The records exist, but their marks are not supplied.</td>
+</tr>
+<tr>
+<td>Banked assessment records</td>
+<td style="text-align:right">42</td>
+<td>Results flagged as transferred from an earlier presentation.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The 815 late records are not 815 different students. A same-day submission is excluded from “late,” and banked results are excluded. The result does not account for individual extensions or establish misconduct.</p>
+<p>The 90 low scores do not imply 90 final module failures. A final outcome is recorded separately. If expressing the low-score proportion, the known-score denominator is <strong>3,146</strong>, giving <strong>90 / 3,146 = 2.86%</strong>. Including the three unknown scores in a “known score” denominator would be misleading.</p>
+<p>Final outcomes are:</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Outcome</th>
+<th style="text-align:right">2013J</th>
+<th style="text-align:right">2014J</th>
+<th style="text-align:right">Both offerings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pass</td>
+<td style="text-align:right">258</td>
+<td style="text-align:right">229</td>
+<td style="text-align:right">487</td>
+</tr>
+<tr>
+<td>Distinction</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">24</td>
+<td style="text-align:right">44</td>
+</tr>
+<tr>
+<td>Fail</td>
+<td style="text-align:right">45</td>
+<td style="text-align:right">46</td>
+<td style="text-align:right">91</td>
+</tr>
+<tr>
+<td>Withdrawn</td>
+<td style="text-align:right">60</td>
+<td style="text-align:right">66</td>
+<td style="text-align:right">126</td>
+</tr>
+<tr>
+<td>Total</td>
+<td style="text-align:right">383</td>
+<td style="text-align:right">365</td>
+<td style="text-align:right">748</td>
+</tr>
+</tbody>
+</table></div>
+<p>Our definition of success is Pass or Distinction: <strong>487 + 44 = 531 successful enrollments</strong>. Using all enrollments, including withdrawals, the proportion is <strong>531 / 748 = 70.99%</strong>. It is 72.58% for 2013J and 69.32% for 2014J under the same definition. These describe this selected extract; they do not explain why the proportions differ.</p>
+<p>Evidence: <a href="../outputs/answers/01_enrollments.csv">enrollment answers</a>, <a href="../outputs/answers/05_outcomes.csv">outcomes</a>, <a href="../queries/03_late_records.rq">late-record query</a> and <a href="../outputs/ontology/inferred-class-counts.csv">ontology class counts</a>.</p>
+<h2 id="6-what-the-ontology-added">6. What the ontology added</h2>
+<p>RDFS provides the basic hierarchy. For example, a TutorMarkedAssessment is an Assessment, and a Student is a Person. OWL adds richer definitions and commitments, including disjoint classes, inverse properties, qualified cardinality and class equivalences.</p>
+<p>The ontology aligns the project's Person class with a documented fragment of FOAF containing Person and Agent. It does not import every FOAF axiom or claim a complete BFO alignment.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Inferred class</th>
+<th style="text-align:right">Count</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SuccessfulEnrollment</td>
+<td style="text-align:right">531</td>
+<td>Enrollment with recorded outcome Pass or Distinction.</td>
+</tr>
+<tr>
+<td>WithdrawnEnrollment</td>
+<td style="text-align:right">126</td>
+<td>Enrollment with recorded outcome Withdrawn.</td>
+</tr>
+<tr>
+<td>LowScoreAssessmentRecord</td>
+<td style="text-align:right">90</td>
+<td>Assessment record with a known score strictly below 40.</td>
+</tr>
+<tr>
+<td>BankedAssessmentRecord</td>
+<td style="text-align:right">42</td>
+<td>Record with the banked flag explicitly true.</td>
+</tr>
+<tr>
+<td>NonBankedAssessmentRecord</td>
+<td style="text-align:right">3,107</td>
+<td>Record with that flag explicitly false.</td>
+</tr>
+<tr>
+<td>EnrollmentWithLowScore</td>
+<td style="text-align:right">75</td>
+<td>Enrollment linked to at least one low-score record.</td>
+</tr>
+</tbody>
+</table></div>
+<p>For enrollment <code>AAA/2013J/100893</code>, the CSV supplies Pass, the RDF supplies the enrollment and its outcome, and the OWL definition supports classifying it as SuccessfulEnrollment. The inference follows from our definition and the existing fact; it is not a future prediction.</p>
+<p>HermiT classified <strong>5,037 named individuals</strong> and the exporter saved <strong>6,119 additional named type assertions</strong>. These are extra classifications, not 6,119 new people or newly collected observations. The export is limited to named types and is not the complete OWL deductive closure.</p>
+<p>The clean ontology and loaded facts are <strong>consistent</strong>, and no named class is unsatisfiable in the saved full run. Consistency means the axioms and facts can hold together under the model. It does not establish that the dataset is complete or that every modeling assumption is true in the real world.</p>
+<p>All <strong>17 ontology checks passed</strong>, including exact inferred identities against CSV expectations and controlled semantic examples. See <a href="../outputs/ontology/verification.json">ontology verification</a> and the <a href="../outputs/ontology/ontology-results.html">readable ontology results</a>.</p>
+<h2 id="7-what-shacl-added">7. What SHACL added</h2>
+<p>The shapes describe requirements for the supplied graph. Examples include exactly one Student link per Enrollment, a present score within [0,100], a Boolean banked flag, and agreement between the offering of an assessment and the offering of the corresponding enrollment.</p>
+<p>We used SHACL Core for counts, datatypes, ranges, allowed values, forbidden properties, subtype alternatives and the comparison between registration and withdrawal dates on the same enrollment. SHACL-SPARQL handles checks across distinct records or linked paths, including duplicate contextual keys and cross-offering relationships.</p>
+<p>The validator uses asserted RDF plus the RDFS hierarchy with automatic inference disabled. SHACL can still recognize subclasses for class targets and class checks. We avoid domain/range materialization because it could give an incorrectly typed object the very type we want to check explicitly.</p>
+<p>There are <strong>14 target-bearing shapes</strong>. Thirteen have focus nodes in the core build. The optional DailyInteraction shape has none because activity was not loaded. The validator prints the counts, and the full verification compares seven structural entity counts with independent CSV-derived expectations.</p>
+<h3>Reading a validation result</h3>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Report field</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Focus node</td>
+<td>The entity under inspection.</td>
+<td><code>assessment-record/260355/1754</code></td>
+</tr>
+<tr>
+<td>Path</td>
+<td>The property involved.</td>
+<td><code>edu:score</code></td>
+</tr>
+<tr>
+<td>Constraint</td>
+<td>The requirement that produced the result.</td>
+<td><code>MinCountConstraintComponent</code></td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>The project's triage category.</td>
+<td>Warning</td>
+</tr>
+<tr>
+<td>Message</td>
+<td>The interpretation or review action.</td>
+<td>Keep the unknown score absent; do not replace it with zero.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Open the <a href="../outputs/shacl/full/report.html">full HTML report</a>. The CSV and Turtle versions retain the detailed results for inspection or another tool.</p>
+<h3>Why “conforms False” and “gate PASS” can appear together</h3>
+<p>The strict validator reports <code>conforms=False</code> when validation results are present, including warnings. Our pipeline makes a separate policy decision:</p>
+<pre><code class="language-text">No violations + no unknown severities + no empty required targets
+    -&gt; project gate passes
+</code></pre>
+<p>Warnings remain visible for review. A gate pass therefore means that the supplied graph meets our blocking requirements; it does not mean that the graph has no limitations or that every possible rule has been checked.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Exit code</th>
+<th>Meaning</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Gate passes.</td>
+<td>Read any warnings before interpreting the answers.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Gate fails.</td>
+<td>Inspect violations and required-target coverage.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Execution error.</td>
+<td>Check missing files, parsing, shapes or dependencies; no successful validation is established.</td>
+</tr>
+</tbody>
+</table></div>
+<p>After an execution error, an older report may still exist in the output folder. Check the command's exit code, report timestamp and run ID before treating that report as current.</p>
+<h2 id="8-the-exact-shacl-results-and-their-interpretation">8. The exact SHACL results and their interpretation</h2>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Experiment</th>
+<th>Scope</th>
+<th style="text-align:right">Violations</th>
+<th style="text-align:right">Warnings</th>
+<th>Strict conforms</th>
+<th>Gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full graph, triaged shapes</td>
+<td>All 28,470 asserted facts plus schema</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">5</td>
+<td>False</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Real sample, triaged shapes</td>
+<td>299 unchanged source triples plus schema</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">3</td>
+<td>False</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Broken-link sample</td>
+<td>Same sample with one Student link changed</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">3</td>
+<td>False</td>
+<td>FAIL</td>
+</tr>
+<tr>
+<td>Naive first draft</td>
+<td>Real sample; missing scores/deadlines treated as violations</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">0</td>
+<td>False</td>
+<td>FAIL</td>
+</tr>
+</tbody>
+</table></div>
+<p>The full graph's five warnings are:</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Focus node suffix</th>
+<th>Missing property</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>assessment-record/260355/1754</code></td>
+<td>Score</td>
+<td>Keep the record and its unknown mark.</td>
+</tr>
+<tr>
+<td><code>assessment-record/2606802/1760</code></td>
+<td>Score</td>
+<td>Same treatment.</td>
+</tr>
+<tr>
+<td><code>assessment-record/721259/1752</code></td>
+<td>Score</td>
+<td>Same treatment.</td>
+</tr>
+<tr>
+<td><code>assessment/1757</code></td>
+<td>Exact exam deadline</td>
+<td>Keep the exam definition and leave the date unknown.</td>
+</tr>
+<tr>
+<td><code>assessment/1763</code></td>
+<td>Exact exam deadline</td>
+<td>Same treatment.</td>
+</tr>
+</tbody>
+</table></div>
+<p>These exact identities match missing values in the selected CSVs. The sample has only three warnings because it contains one of the unknown-score records and both exam definitions.</p>
+<p>The first draft and triaged sample use the <strong>same data</strong>. The change is the severity assigned to those three absences after reviewing their meaning. We did not delete the affected records or invent replacement values to make the report pass.</p>
+<p>The broken sample changes the Student link on enrollment <code>AAA/2013J/100893</code> to an untyped teaching identifier. The resulting Class violation is expected. It demonstrates that a malformed relationship stops the gate while known completeness warnings remain visible.</p>
+<p>The current full run took approximately <strong>three minutes</strong> on this machine. The small examples took about one second each in the latest saved run. Runtime depends on the machine and concurrent work; the cross-record SPARQL checks are more expensive than simple datatype or range checks.</p>
+<h2 id="9-actual-challenges-and-how-they-were-addressed">9. Actual challenges and how they were addressed</h2>
+<p>This section records the challenges supported by the project files and implementation history. It is not a complete terminal transcript. Deliberate teaching faults are listed separately in the next section.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Challenge or actual issue</th>
+<th>Why it mattered</th>
+<th>Response and remaining limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repeated students across offerings</td>
+<td>A student ID alone cannot identify a participation record or its outcome.</td>
+<td>Created contextual Enrollment IRIs using module, offering and student. Verified 712 people versus 748 enrollments.</td>
+</tr>
+<tr>
+<td>Large daily-activity table</td>
+<td>Including activity would substantially enlarge the first graph and distract from the core joins.</td>
+<td>Retained the original download but left activity out of the core build. Its question is explicitly unavailable.</td>
+</tr>
+<tr>
+<td>Missing scores and exam dates</td>
+<td>Imputing zero or a date would invent facts and distort queries.</td>
+<td>Preserved absence, kept the records and recorded warnings. This documents the limitation; it does not recover missing values.</td>
+</tr>
+<tr>
+<td>Exam definitions without exam result records</td>
+<td>A defined exam is not evidence that every student's result is available.</td>
+<td>Modeled assessments separately from assessment records. No rule requires an exam mark for every enrollment.</td>
+</tr>
+<tr>
+<td>Banked results and lateness</td>
+<td>A banked result is not necessarily a new submission in that offering.</td>
+<td>Required <code>isBanked=false</code> for the late-record query, with both dates known.</td>
+</tr>
+<tr>
+<td>Negative day values</td>
+<td>Treating all negative numbers as errors would reject valid pre-start registration/activity.</td>
+<td>Kept signed integer offsets and tested negative-day examples.</td>
+</tr>
+<tr>
+<td>Assignment and exam weights</td>
+<td>Summing both groups could appear to produce an invalid 200% total.</td>
+<td>Validated individual percentages; did not invent a formula combining the separate weighting schemes.</td>
+</tr>
+<tr>
+<td>Confusing inference with validation</td>
+<td>RDFS domain/range statements can add types rather than reject a bad link. OWL can permit unstated fillers.</td>
+<td>Retained reasoning for meaning and added explicit SHACL constraints for supplied data. Validation disables domain/range materialization.</td>
+</tr>
+<tr>
+<td>FOAF import compatibility warning</td>
+<td>Loading the full vocabulary through Owlready2 raised a property-kind warning for <code>foaf:name</code>.</td>
+<td>Cached the original, documented the issue and imported only the relevant Person/Agent fragment. Results apply to that selected fragment.</td>
+</tr>
+<tr>
+<td>Windows ontology-loading path handling</td>
+<td>Owlready2's <code>file:///C:/...</code> handling was problematic for the loader.</td>
+<td>Serialized the merged graph to N-Triples and loaded a <code>BytesIO</code> file object, as documented in the reasoner code.</td>
+</tr>
+<tr>
+<td>Enumerating RDF instances in Owlready2</td>
+<td>RDF class assertions need not explicitly declare <code>owl:NamedIndividual</code>.</td>
+<td>Added declarations to a temporary loading graph so the reasoner can enumerate instances. Original source facts remain unchanged.</td>
+</tr>
+<tr>
+<td>Local ontology imports</td>
+<td>A missing or unresolved import could change the knowledge available to the reasoner.</td>
+<td>Used a local catalog and fail when an import is absent from it. Retained the FOAF snapshot and fingerprints.</td>
+</tr>
+<tr>
+<td>Fuseki dataset creation rejected by the lab admin interface</td>
+<td>The browser/admin creation route was unavailable under the lab configuration.</td>
+<td>Added <code>/oulad</code> through a project startup configuration while preserving <code>/kr</code> and the persistent volume. Import, query parity and restart persistence were checked.</td>
+</tr>
+<tr>
+<td>Different graph representations</td>
+<td>Neo4j labels/properties, RDF triples and OWL class memberships do not have identical counts or semantics.</td>
+<td>Imported a documented property-graph projection, retained IRIs and compared shared answers. Inherited labels are added explicitly by the importer.</td>
+</tr>
+<tr>
+<td>A report could “pass” while targeting nothing</td>
+<td>A misspelled class name can yield zero focus nodes and strict SHACL conformance True.</td>
+<td>Added a project coverage gate and a deliberate zero-target test. Full verification also checks source-derived counts.</td>
+</tr>
+<tr>
+<td>A record could lose its type triple</td>
+<td>Class-only targeting might fail to inspect that record.</td>
+<td>Added property-based targets alongside class targets, with explicit class requirements; tested a missing-type record.</td>
+</tr>
+<tr>
+<td>Known source gaps versus blocking errors</td>
+<td>Treating all missing values as violations made the naive sample fail without identifying malformed numbers or links.</td>
+<td>Separated completeness warnings from structural/value violations, documenting each triage choice.</td>
+</tr>
+<tr>
+<td>Zero could disappear from the readable result</td>
+<td>An early value-extraction expression treated numeric zero like an absent value.</td>
+<td>Replaced truthiness handling with an explicit <code>None</code> check. A test now confirms that an invalid zero offering length is reported with value <code>0</code>.</td>
+</tr>
+<tr>
+<td>Slow full-graph validation</td>
+<td>Repeated cross-record queries take much longer than small-example checks.</td>
+<td>Kept a complete local gate and a small real-data fixture for fast practice/CI. Recorded runtimes rather than hiding the cost.</td>
+</tr>
+<tr>
+<td>Reports can become stale after rerunning a stage</td>
+<td>A new run changes timestamps, run IDs and output fingerprints, even if the data and result counts stay the same.</td>
+<td>Verification checks the exact full-report fingerprint and current inputs. Rerun verification after validation; preserve output folders if earlier runs are needed.</td>
+</tr>
+<tr>
+<td>Fields not represented in RDF</td>
+<td>SHACL cannot inspect studied credits or resource week ranges absent from the mapping.</td>
+<td>Kept those checks in Python profiling and documented the SHACL coverage boundary.</td>
+</tr>
+<tr>
+<td>Source duplicates can collapse during conversion</td>
+<td>RDF is a set of triples; repeated source rows can become indistinguishable after mapping to the same IRI.</td>
+<td>Kept source key/duplicate checks before conversion and graph key checks across distinct nodes afterward.</td>
+</tr>
+<tr>
+<td>Remote CI is a separate step</td>
+<td>A local workflow file does not prove a GitHub run passed or prevent merging by itself.</td>
+<td>Prepared the workflow and tested its local behavior. No remote run is claimed; branch protection must later require the check.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The current issues that remain are primarily <strong>documented missingness and scope limitations</strong>. There is no outstanding blocking SHACL violation in the saved full graph. That statement concerns the implemented constraints, not every conceivable defect.</p>
+<h2 id="10-deliberate-errors-what-we-tested-and-learned">10. Deliberate errors: what we tested and learned</h2>
+<p>These are controlled examples, not errors found in real student records. The broken fixture and synthetic examples stay separate from the original data and database imports.</p>
+<h3>Ontology experiments</h3>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Deliberate setup</th>
+<th>Expected outcome</th>
+<th>Lesson</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use <code>hasStudent</code> as though its subject were a Student, while its domain is Enrollment and Person/Enrollment are disjoint.</td>
+<td>The two constructed teaching classes are unsatisfiable.</td>
+<td>Domains infer types, and those inferred types can conflict with disjointness.</td>
+</tr>
+<tr>
+<td>Create an instance of one of those impossible classes.</td>
+<td>The example ontology becomes inconsistent.</td>
+<td>An empty impossible class differs from an asserted impossible individual.</td>
+</tr>
+<tr>
+<td>Omit explicit Student/Offering links from an enrollment constrained by OWL exactly-one axioms.</td>
+<td>The example remains consistent.</td>
+<td>Open-world reasoning can allow unstated fillers.</td>
+</tr>
+<tr>
+<td>Give one enrollment two student names, then explicitly declare the people different.</td>
+<td>Equality can satisfy the first case; the explicit difference makes the restricted case inconsistent.</td>
+<td>OWL does not assume every distinct name denotes a different individual.</td>
+</tr>
+<tr>
+<td>Change the success definition from equivalence to subclass only.</td>
+<td>The outcome no longer suffices to infer successful membership.</td>
+<td>Necessary conditions alone are not a complete classification definition.</td>
+</tr>
+<tr>
+<td>Use only-low records without a some-record condition.</td>
+<td>No record existence is entailed by the universal restriction alone.</td>
+<td>“Only” restricts possible values; “some” requires existence.</td>
+</tr>
+<tr>
+<td>Test known scores 39, 40, 41 and an unknown score.</td>
+<td>Only 39 is inferred low.</td>
+<td>The low-score boundary is strict, and absence does not imply zero.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>SHACL experiments</h3>
+<p>The tests remove required links, introduce two Student values, replace a typed link with an untyped identifier, use scores outside the permitted range, use wrong datatypes, duplicate contextual keys and connect records across different offerings. They also test unsupported assessment types, misplaced final outcomes, reversed dates, negative counts and missing type triples.</p>
+<p>Each test checks that the validator reacts <strong>as expected</strong>. A test of an invalid score passes when the shape flags that invalid score. It does not mean that the invalid score was accepted.</p>
+<p>Valid boundaries are also tested: scores 0 and 100 remain allowed, known negative day offsets remain allowed, and zero clicks remain allowed. Unknown scores remain warnings. This helps prevent a validator that rejects legitimate observations while catching bad ones.</p>
+<h2 id="11-what-the-verification-establishes">11. What the verification establishes</h2>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th style="text-align:right">Passed checks</th>
+<th>What was checked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Core CSV/RDF pipeline</td>
+<td style="text-align:right">14</td>
+<td>Counts, outcome answers, exact late-record identities and day differences against SQL, missing-value retention and query boundaries.</td>
+</tr>
+<tr>
+<td>OWL ontology</td>
+<td style="text-align:right">17</td>
+<td>Consistency/coherence, exact inferred identities against CSVs, vocabulary alignment, sample fidelity and reasoning semantics.</td>
+</tr>
+<tr>
+<td>SHACL extension</td>
+<td style="text-align:right">37</td>
+<td>Valid/broken behavior, value boundaries, link integrity, target coverage, sample fidelity, CSV warning identities, source fingerprints and PROV-O input/output fingerprints.</td>
+</tr>
+</tbody>
+</table></div>
+<p>These are counts of checks, not counts of defects or percentages of complete coverage. Several checks address related aspects of the same model. Passing the suite supports the specific properties tested.</p>
+<p>The latest full SHACL result and its verification have matching report fingerprints when this walkthrough was prepared. The full run finished at <strong>2026-10-14T06:46:29.611529+00:00</strong> and the 37-check verification was recorded at <strong>2026-10-14T06:47:31.859554+00:00</strong> (UTC). The saved ontology report's input fingerprints also match the current ontology and data. The database counts below come from their earlier saved import checks; this explanatory task did not query live servers.</p>
+<p>An appendix below lists all 37 SHACL checks from the verification file, so you can connect the summary to the exact evidence.</p>
+<h2 id="12-what-neo4j-and-fuseki-results-mean">12. What Neo4j and Fuseki results mean</h2>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Saved result</th>
+<th>How to interpret it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Neo4j</td>
+<td>5,037 project nodes, 8,221 relationships; 815 late records.</td>
+<td>A property-graph projection. RDF literal values become node properties, and selected types become labels.</td>
+</tr>
+<tr>
+<td>Fuseki</td>
+<td>28,575 triples; all six available query result sets matched the local RDFLib results.</td>
+<td>28,470 data facts plus 105 RDFS schema triples in the default graph. Automatic RDFS inference is disabled.</td>
+</tr>
+<tr>
+<td>Ontology notebook</td>
+<td>Saved inferred class memberships, examples and explanations.</td>
+<td>Local presentation of the reasoner evidence, with source fingerprints checked.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The OWL inference export is separate from both database imports. It is not automatically present merely because the server contains an RDFS or OWL file.</p>
+<p>For access, Neo4j's browser is on port <strong>7474</strong>, its driver/Bolt connection is on <strong>7687</strong>, and the configured Fuseki web service is on <strong>3030</strong>. The <a href="../README.md">README</a> explains startup, loading and example queries. These are configured addresses, not a claim that the services are running now.</p>
+<h2 id="13-provenance-how-we-know-which-run-produced-a-result">13. Provenance: how we know which run produced a result</h2>
+<p>There are two complementary records:</p>
+<ol>
+<li>The <a href="project-provenance.html">project provenance guide</a> explains data origins, transformations, authorship/reuse, decisions and limitations. Its JSON snapshot is a dated audit of files.</li>
+<li>Each SHACL output folder contains <code>provenance.ttl</code>, recording a real validation activity with input entities, a software agent and generated report entities.</li>
+</ol>
+<p>The validation run uses the data, schema and shapes; it records their SHA-256 fingerprints. The validator is identified by its code fingerprint and pySHACL version. The output report fingerprints are linked back to that run. Local start/end times are recorded in UTC.</p>
+<p>A fingerprint helps identify changed bytes. It is not a publisher signature, proof of truth or an automatically preserved history. An unchanged graph can also acquire a different file fingerprint if its Turtle serialization is reordered.</p>
+<p>During preparation of this explanation, a newer full validation run was observed, followed by a matching new 37-check verification. It retained the same 0-violation/5-warning outcome. This illustrates why a dated provenance snapshot and the current output directory can describe different runs without their counts disagreeing. The existing project-wide snapshot retains its earlier audit date; the current per-run files identify the newer activity.</p>
+<p>Run <code>python src/validation/show_provenance.py</code> to inspect the latest full validation record. Copy a run's output directory before rerunning if you need to preserve its historical reports. Per-triple provenance for the entire graph and an immutable history of every earlier stage have not been implemented.</p>
+<p><strong>After moving the project:</strong> the current project folder is <code>D:\DESKTOP\M2\kr-oulad</code>, with the course folder at <code>D:\DESKTOP\M2\KRR</code>. Earlier reports may still record the old <code>C:</code> locations because those were their inputs' locations when they ran. We preserve those historical records. To produce validation reports and verification for the new location, run the complete Session 4 sequence below; it regenerates the reports with current paths. Running only the verification against old reports may fail when their recorded absolute paths no longer exist. This walkthrough checks the saved verification fingerprints against the files at their new location; it does not claim a new validation run.</p>
+<h2 id="14-how-to-inspect-and-repeat-the-work">14. How to inspect and repeat the work</h2>
+<p>For understanding, open these in order:</p>
+<ol>
+<li><a href="aaa-module.md">AAA data explanation</a>: understand the observations and their limits.</li>
+<li><a href="../outputs/ontology/ontology-results.html">Ontology results</a>: see what the definitions infer.</li>
+<li><a href="../outputs/shacl/full/report.html">Full SHACL report</a>: inspect the five actual warnings and coverage counts.</li>
+<li><a href="../outputs/shacl/broken/report.html">Broken example report</a>: see the Class violation caused by the changed Student link.</li>
+<li><a href="../outputs/shacl/draft/report.html">Draft report</a> and <a href="../outputs/shacl/sample/report.html">triaged sample</a>: compare severity changes on identical facts.</li>
+<li><a href="shacl-triage.md">SHACL triage decisions</a>: connect each rule to its justification.</li>
+</ol>
+<p>To rerun the Session 4 demonstration:</p>
+<pre><code class="language-powershell">conda activate M2ENV
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
+.\run-shacl.ps1
+</code></pre>
+<p>The helper expects the broken-link and naive-draft examples to return exit 1, and fails on unexpected outcomes. For the current full graph alone, use <code>python src/validation/validate.py</code>, followed by <code>python evaluation/verify_shacl.py</code> to reconcile that new run. The complete step-by-step instructions are in <a href="../README.md#12-session-4--shacl-validation-triage-and-gate">README section 12</a>.</p>
+<p>This project describes historical records. It has no evaluated prediction model or natural-language interface yet. Final outcomes cannot be used as if they were known before a future prediction cutoff. The current SHACL work also does not claim completion of every separate Session 4 exercise, such as ontology version-IRI management.</p>
+<h2 id="15-a-short-explanation-for-your-presentation">15. A short explanation for your presentation</h2>
+<p>“We selected two offerings of OULAD module AAA and profiled their related tables. We represented the data as RDF, keeping people separate from contextual enrollments and preserving missing values. RDFS describes the vocabulary, and OWL definitions let HermiT classify records such as successful enrollments and low scores. We checked those identities against the CSVs. We then added SHACL requirements and a gate: the full graph has no blocking violations and five documented completeness warnings. Deliberately broken examples show that the gate catches faults. The README, reports and provenance records make the workflow reproducible and explain its limits.”</p>
+<p>If asked why you did not simply remove the warnings, explain that a trustworthy graph should represent what is known and make missingness visible. A cleaner-looking report would not justify inventing marks or exam dates.</p>
+<h2 id="appendix-all-shacl-verification-checks">Appendix: all SHACL verification checks</h2>
+<p>The following table is inserted directly from the saved verification report when this guide is generated. It describes the checked behavior; it does not mean these deliberate faults occurred in the real dataset.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align:right">#</th>
+<th>Behavior checked</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">1</td>
+<td>Real sample: 0 violations, 3 visible warnings, gate passes</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td>All 12 assessment subtypes are targeted without RDFS materialization</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td>Only the optional activity target is empty in the real sample</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td>Broken fixture changes exactly one Student link</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td>Broken Student reference blocks the gate at the expected focus node</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td>Missing Student link is a SHACL minCount violation (OWL open-world contrast)</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td>Two distinct Student IRIs violate maxCount without OWL identity merging</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td>Score boundary -1: gate fails</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td>Score boundary 0: gate passes</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td>Score boundary 100: gate passes</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td>Score boundary 101: gate fails</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td>Zero offering length fails and its zero value is retained in the report</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td>Numeric-looking string is not an xsd:decimal score</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td>Removing a known score adds a warning, preserves the record and passes the gate</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">15</td>
+<td>Integer banked flag is rejected after the mapping to Boolean</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td>A valid Assessment from the wrong offering is caught by SHACL-SPARQL</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td>Duplicate contextual enrollment key is caught across distinct nodes</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">18</td>
+<td>Duplicate assessment-record key is caught across distinct nodes</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td>Unexpected outcome is a vocabulary violation</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">20</td>
+<td>Negative previous-attempt count is rejected</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">21</td>
+<td>Negative day offsets remain permitted</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">22</td>
+<td>Pass with a withdrawal date is a review warning, not a silent repair</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td>Reversed dates produce a core property-pair warning</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">24</td>
+<td>Outcome on Student is forbidden by maxCount zero</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">25</td>
+<td>Assessment without a supported subtype is rejected</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">26</td>
+<td>A record missing its type is still selected through its properties</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">27</td>
+<td>Optional activity validates when present, including zero clicks</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">28</td>
+<td>Negative click count is rejected</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">29</td>
+<td>Activity cannot link to a resource in another offering</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">30</td>
+<td>Zero-focus trap: SHACL conforms True, project gate fails</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">31</td>
+<td>An empty data graph cannot pass the coverage gate</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">32</td>
+<td>Saved full run matches current data, schema, shapes and validator</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">33</td>
+<td>Every real sample triple is an unchanged source triple</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">34</td>
+<td>Full structural focus counts match all seven CSV-derived entity counts</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">35</td>
+<td>Full warning identities match the missing score/deadline CSV rows</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">36</td>
+<td>Full graph gate passes with no violations and visible warnings</td>
+<td>Passed</td>
+</tr>
+<tr>
+<td style="text-align:right">37</td>
+<td>PROV-O input and output fingerprints match the actual validation run</td>
+<td>Passed</td>
+</tr>
+</tbody>
+</table></div>
+<p>Evidence: <a href="../outputs/shacl/verification.json">SHACL verification JSON</a>, <a href="../outputs/ontology/verification.json">OWL verification JSON</a>, <a href="../outputs/verification.json">core verification JSON</a>, <a href="../report/first-run.md">dated run notes</a>, and <a href="questions-and-rules.md">source questions and rules</a>. The early run notes are chronological: statements that OWL/SHACL were future work refer to that earlier stage.</p>
+<div class="footer">Evidence-based explanation through Session 4. Results describe the selected AAA extract. Source and verification links are provided beside the relevant explanations.</div></main></div></body></html>
