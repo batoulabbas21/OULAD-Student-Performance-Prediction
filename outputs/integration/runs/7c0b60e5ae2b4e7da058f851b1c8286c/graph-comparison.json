@@ -1,0 +1,14 @@
+{
+  "reference_triples": 28470,
+  "mapped_triples": 28470,
+  "only_reference": 0,
+  "only_mapped": 0,
+  "equal": true,
+  "raw_term_differences": {
+    "only_reference": 0,
+    "only_mapped": 0
+  },
+  "normalization": "RDF 1.1 simple literals and xsd:string are equivalent; canonical integer/decimal/boolean lexical forms. Datatype IRIs, language tags, IRI identities and values are preserved.",
+  "examples_only_reference": [],
+  "examples_only_mapped": []
+}

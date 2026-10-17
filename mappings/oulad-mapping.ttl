@@ -1,0 +1,78 @@
+# Shared by Morph-KGC and Ontop. SQL NULL produces no RDF term.
+# Unqualified views use the configured PostgreSQL schema/search_path.
+# Assessment subtypes are asserted; full OWL reasoning is a separate stage.
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix edu: <https://example.org/oulad/schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<#Modules> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_modules" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/module/{code_module}" ; rr:class edu:Module ] ;
+    rr:predicateObjectMap [ rr:predicate rdfs:label ; rr:objectMap [ rr:column "code_module" ; rr:datatype xsd:string ] ] .
+
+<#Offerings> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_offerings" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/offering/{code_module}/{code_presentation}" ; rr:class edu:CourseOffering ] ;
+    rr:predicateObjectMap [ rr:predicate rdfs:label ; rr:objectMap [ rr:column "label" ; rr:datatype xsd:string ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:presentationCode ; rr:objectMap [ rr:column "code_presentation" ; rr:datatype xsd:string ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:lengthDays ; rr:objectMap [ rr:column "module_presentation_length" ; rr:datatype xsd:integer ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:offeringOf ; rr:objectMap [ rr:template "https://example.org/oulad/id/module/{code_module}" ] ] .
+
+<#Students> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_students" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/student/{id_student}" ; rr:class edu:Student ] ;
+    rr:predicateObjectMap [ rr:predicate edu:studentId ; rr:objectMap [ rr:column "id_student" ; rr:datatype xsd:string ] ] .
+
+<#Enrollments> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_enrollments" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/enrollment/{code_module}/{code_presentation}/{id_student}" ; rr:class edu:Enrollment ] ;
+    rr:predicateObjectMap [ rr:predicate edu:hasStudent ; rr:objectMap [ rr:template "https://example.org/oulad/id/student/{id_student}" ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:inOffering ; rr:objectMap [ rr:template "https://example.org/oulad/id/offering/{code_module}/{code_presentation}" ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:finalResult ; rr:objectMap [ rr:column "final_result" ; rr:datatype xsd:string ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:previousAttempts ; rr:objectMap [ rr:column "num_of_prev_attempts" ; rr:datatype xsd:integer ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:ageBand ; rr:objectMap [ rr:column "age_band" ; rr:datatype xsd:string ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:region ; rr:objectMap [ rr:column "region" ; rr:datatype xsd:string ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:highestEducation ; rr:objectMap [ rr:column "highest_education" ; rr:datatype xsd:string ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:registrationDay ; rr:objectMap [ rr:column "date_registration" ; rr:datatype xsd:integer ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:unregistrationDay ; rr:objectMap [ rr:column "date_unregistration" ; rr:datatype xsd:integer ] ] .
+
+<#Assessments> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_assessments" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/assessment/{id_assessment}" ] ;
+    rr:predicateObjectMap [ rr:predicate edu:assessmentInOffering ; rr:objectMap [ rr:template "https://example.org/oulad/id/offering/{code_module}/{code_presentation}" ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:deadlineDay ; rr:objectMap [ rr:column "deadline_day" ; rr:datatype xsd:integer ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:weightPercent ; rr:objectMap [ rr:column "weight" ; rr:datatype xsd:decimal ] ] .
+
+<#TutorMarkedAssessment> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_assessments WHERE assessment_type = 'TMA'" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/assessment/{id_assessment}" ; rr:class edu:TutorMarkedAssessment ] .
+
+<#ComputerMarkedAssessment> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_assessments WHERE assessment_type = 'CMA'" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/assessment/{id_assessment}" ; rr:class edu:ComputerMarkedAssessment ] .
+
+<#Exam> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_assessments WHERE assessment_type = 'Exam'" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/assessment/{id_assessment}" ; rr:class edu:Exam ] .
+
+<#AssessmentRecords> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_assessment_records" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/assessment-record/{id_student}/{id_assessment}" ; rr:class edu:AssessmentRecord ] ;
+    rr:predicateObjectMap [ rr:predicate edu:recordForEnrollment ; rr:objectMap [ rr:template "https://example.org/oulad/id/enrollment/{code_module}/{code_presentation}/{id_student}" ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:forAssessment ; rr:objectMap [ rr:template "https://example.org/oulad/id/assessment/{id_assessment}" ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:submissionDay ; rr:objectMap [ rr:column "date_submitted" ; rr:datatype xsd:integer ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:isBanked ; rr:objectMap [ rr:column "is_banked" ; rr:datatype xsd:boolean ] ] .
+
+# Explicit SQL NULL filtering prevents a driver/materializer from rendering None.
+# The AssessmentRecords map above still retains every assessment record.
+<#KnownScores> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_assessment_records WHERE score IS NOT NULL" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/assessment-record/{id_student}/{id_assessment}" ] ;
+    rr:predicateObjectMap [ rr:predicate edu:score ; rr:objectMap [ rr:column "score" ; rr:datatype xsd:decimal ] ] .
+
+<#Resources> a rr:TriplesMap ;
+    rr:logicalTable [ rr:sqlQuery "SELECT * FROM v_resources" ] ;
+    rr:subjectMap [ rr:template "https://example.org/oulad/id/resource/{code_module}/{code_presentation}/{id_site}" ; rr:class edu:LearningResource ] ;
+    rr:predicateObjectMap [ rr:predicate edu:resourceInOffering ; rr:objectMap [ rr:template "https://example.org/oulad/id/offering/{code_module}/{code_presentation}" ] ] ;
+    rr:predicateObjectMap [ rr:predicate edu:activityType ; rr:objectMap [ rr:column "activity_type" ; rr:datatype xsd:string ] ] .

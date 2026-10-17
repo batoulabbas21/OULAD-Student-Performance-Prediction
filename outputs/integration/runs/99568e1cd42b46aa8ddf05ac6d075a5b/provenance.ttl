@@ -1,0 +1,399 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:sha256:02097a678d5c5a000e75ad25b6a89261c2e6dd2251a9f268da96ab9ef4c2a203> a prov:Entity ;
+    dcterms:title "freshness/virtual-before/freshness.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:06cd2824d6464296095ccdc4e1cbacf20940488d3c4d2c74e8cf05eed932dc69> a prov:Entity ;
+    dcterms:title "virtual/05_outcomes.sql.txt" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:08e3b68b9ebde96700228624f15b223d7688a0e6b9b1d0ca5a00a0780f7dc609> a prov:Entity ;
+    dcterms:title "graph-comparison.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:1314d6b6f5e2ba65c7b8b4d75b5bca44813376c35c1416e8f3f372727947c1f5> a prov:Entity ;
+    dcterms:title "virtual/03_late_records.sql.txt" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:1f94c41c8e1dc716f4664e081c9e19127279c466cf770b78175382e5bc1dc4c9> a prov:Entity ;
+    dcterms:title "virtual/02_assessments.sql.txt" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:2791ea00e84fd23a28fa403365733ffa99bdb1dad9bff9c4681d05dfbc2e248a> a prov:Entity ;
+    dcterms:title "virtual/01_enrollments.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:27f0ad5a988cb17a5ed117dd6325a61f8997fb55acd30d6c0d4d4173404644a5> a prov:Entity ;
+    dcterms:title "shacl/summary.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:2c6595a0bda27a89c970b4c19e3c17041645b41fea40c93bf3e97bc3bedfa35a> a prov:Entity ;
+    dcterms:title "virtual/01_enrollments.sql.txt" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:37e738b5327195b504c44d0c7fa27026d926253673b511c8fe55e1ac54af0bfe> a prov:Entity ;
+    dcterms:title "freshness/virtual-after/freshness.log" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:3a7a7c5f6df093ae9f75a676f1b65b178d995a8bb175687e3633d307fe0927f7> a prov:Entity ;
+    dcterms:title "virtual/03_late_records.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:3aed824f70c528bfa67de3aaf9171c8beadec22f7cdc5949a05755a730aa811b> a prov:Entity ;
+    dcterms:title "freshness/freshness.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:3d16ee54874b1937bc150593f16c5282da04b8de370b4a0c9326e773ed0e28b4> a prov:Entity ;
+    dcterms:title "shacl/report.ttl" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:3e0c37972ea93aeba4e21b4815b895087ef87f73dd8054d40ba6d20c14a5b9ba> a prov:Entity ;
+    dcterms:title "freshness/freshness.rq" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:42d895aa815916bd0015d7989cb8889b60ef59217d7ba5aa6ada36b53e8df303> a prov:Entity ;
+    dcterms:title "freshness/virtual-after/freshness.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:479d7c6d7a1878715278132aa175024f2b23071cf4bdc3d686f8280cead193ad> a prov:Entity ;
+    dcterms:title "virtual/05_outcomes.log" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:485c180e032822a554f75ba127026866cf2d22685e9cc2319611d6e7c9cd4413> a prov:Entity ;
+    dcterms:title "materialized/06_unknown_scores.csv",
+        "reference/06_unknown_scores.csv",
+        "virtual/06_unknown_scores.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:506595dc235dfa2808273462962c9bdcf7a9f993b1acd3c84c6e85df314381ca> a prov:Entity ;
+    dcterms:title "sql/04_low_scores.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:535bb0896c96da3ab4dbcaa1768d414e8d46c4f4a5a498cc9ceb7e51657e0a7e> a prov:Entity ;
+    dcterms:title "virtual/02_assessments.log" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:5cb334f5b8dfd9693431ddc8b2a53e20b9db295ca58525b37f16b14de527bbfb> a prov:Entity ;
+    dcterms:title "shacl-command.log" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:605d5a917b48efcdf69e2dee4cccebb7c2b482d0fbe61178e894698cda283672> a prov:Entity ;
+    dcterms:title "reference/04_low_scores.csv",
+        "virtual/04_low_scores.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:62e74ecd7e5467c3bf31f0db0c7892d545017211c7a8267bbd82ebd4bc802823> a prov:Entity ;
+    dcterms:title "shacl/results.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:74e1c4ec1ceb3022e540c12fd05a4bb9e15dce161a7e8574dff7ee52e98a0f4f> a prov:Entity ;
+    dcterms:title "virtual/06_unknown_scores.log" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:7cd57fa0d46955bbd07737132ae01f6900443fca7a9e15bdf182bc8dc26f227d> a prov:Entity ;
+    dcterms:title "virtual/04_low_scores.log" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:82e0713340567f2a3b603a209f365cf1de4b6fa8a416f273b229bda75115888d> a prov:Entity ;
+    dcterms:title "materialization.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:86706f906a5e10c931ba8e873e7df672ba04859f08a98c5fa6c0ea0310c4715c> a prov:Entity ;
+    dcterms:title "materialized/05_outcomes.csv",
+        "reference/05_outcomes.csv",
+        "virtual/05_outcomes.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:8c9007a7e231f738385787db0c95f4dca721e30dd8aef3a2c799415182622f6b> a prov:Entity ;
+    dcterms:title "virtual/04_low_scores.sql.txt" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:8ec2e62eb3f32fa6169542265a8258bd99d854a0832d0f77672ca6a96f41d6b5> a prov:Entity ;
+    dcterms:title "materialized/01_enrollments.csv",
+        "reference/01_enrollments.csv",
+        "sql/01_enrollments.csv",
+        "virtual/01_enrollments.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:8f77095c70b64ab748cec54039454f5b8bba31e0ee1ce4f9ba9661dca48f1b09> a prov:Entity ;
+    dcterms:title "virtual/03_late_records.log" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:9072e1bbadb74fbcb3d2b71fc3bf32cd1ef7afa26efb62602bc4093a752132ea> a prov:Entity ;
+    dcterms:title "virtual/06_unknown_scores.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:9218639197884054496afa18f9c66a28ca2472b0c231060cbbb657c47fe6c1ab> a prov:Entity ;
+    dcterms:title "virtual/01_enrollments.log" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:922ad692c421fb99a0ffc80a5461d8b853578e5b3ce10a4d64aba8f06ea35461> a prov:Entity ;
+    dcterms:title "freshness/virtual-before/freshness.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:983b12164e56d95bdadeb5b8b6c730afd5d9760b14105e6a94b1b66de1d75442> a prov:Entity ;
+    dcterms:title "virtual/04_low_scores.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:9f9e6196d0792db423c4d42fe969e9a06ca1c1da4b2dd988b133011f08cb6c0c> a prov:Entity ;
+    dcterms:title "freshness/before/materialization.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:9fdf19fce36d61df22c6d4d37185fb9043a104f1e7ec464b2bb879ca7dcca48e> a prov:Entity ;
+    dcterms:title "virtual/05_outcomes.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:a338fb71db86945f0c422333860f0703153f4468b7e247e81cc936acc9ad8225> a prov:Entity ;
+    dcterms:title "shacl/report.txt" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:a773372281f2a3adfbe300eb3c11b6ff43de5b16dc3251d237e04398663791e2> a prov:Entity ;
+    dcterms:title "sql/06_unknown_scores.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa> a prov:Entity ;
+    dcterms:title "materialized/02_assessments.csv",
+        "reference/02_assessments.csv",
+        "sql/02_assessments.csv",
+        "virtual/02_assessments.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:b48103a1b501ceead232dd185c9c145e333f20ab2cef6e70d395cf5bb24501e0> a prov:Entity ;
+    dcterms:title "freshness/after/materialization.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:b7542ca74db835f7520e6ee8cd6b4d03a6c94be05fbeadfa8efc41959d2ce982> a prov:Entity ;
+    dcterms:title "virtual/06_unknown_scores.sql.txt" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:b80dd0afb79a9cf2b5316fcce986f6d3519df33d9f15e3929d79130de2d7d172> a prov:Entity ;
+    dcterms:title "sql/03_late_records.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:bf04cb64e81843171d786de172939663d2f38126406393714c05e3be49c93500> a prov:Entity ;
+    dcterms:title "freshness/after/oulad-mapped.nt" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:c63b507fadb3612c7e996ca31dc1db5b283f37f4acd721f1700ea0e54f0476cd> a prov:Entity ;
+    dcterms:title "freshness/virtual-after/freshness.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:c6e497cf73d674640089f499bd5b9fb5e72c5b72faa6acda72fe784849bf936f> a prov:Entity ;
+    dcterms:title "freshness/load.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:c97e28e03dbbbf0bba6e28bce0ab8388b709ec83705fce95e256ad1aeeb2fc38> a prov:Entity ;
+    dcterms:title "load.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:cf7836cdd9c9ee14ef686c555361c28e3ab7a7eb7f6cf608faf50ae32dfafabe> a prov:Entity ;
+    dcterms:title "freshness/virtual-before/freshness.log" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:cfd0530c3bf05db0e1476b75c9ec4556406a5723e03fa7d48fd945f68ed9ae5f> a prov:Entity ;
+    dcterms:title "report.html" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:d425497f43eda2545eafec663aed4c6356c831ae03fdbd19f40dfda8a16cd2ac> a prov:Entity ;
+    dcterms:title "freshness/before/oulad-mapped.nt",
+        "oulad-mapped.nt" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:d65eb76922a2f2fa4f14ba92bc60527c9e0f6c4dd9670a855d71c3e5de390f36> a prov:Entity ;
+    dcterms:title "sql/05_outcomes.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:df5863f4388cc4b4797dd25fc2c04e8cfa7428acc44dc75755be5f3543ab469b> a prov:Entity ;
+    dcterms:title "shacl/report.html" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:e1f7c959e18f3d71e30ad596b68a9342fa909bed5ff1e286ffbab298ba822ec9> a prov:Entity ;
+    dcterms:title "materialized/03_late_records.csv",
+        "reference/03_late_records.csv",
+        "virtual/03_late_records.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:e607c919ea97877d9628f2aea981dd060c29aa01885afe31b6d0452123a92122> a prov:Entity ;
+    dcterms:title "virtual/02_assessments.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:f25efaa38578a7557f4ce52518a2b068f930f6cd81a17847e9fb27543cfd25d3> a prov:Entity ;
+    dcterms:title "freshness/virtual-after/freshness.sql.txt",
+        "freshness/virtual-before/freshness.sql.txt" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:f58c18a0cbc78eb5ec98e66da3de615d3c5a338dd47867ee4324c88dc92ef638> a prov:Entity ;
+    dcterms:title "materialized/04_low_scores.csv" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<urn:sha256:f9eed556f688fb89994d432234df30667a37701a46d6698dd8d32a5a332d599e> a prov:Entity ;
+    dcterms:title "summary.json" ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> .
+
+<https://example.org/oulad/software/integration/645de9973c4ff350a00ec1a8941a0cf20d2783ac73263015d3f8d7e458bfade1> a prov:SoftwareAgent ;
+    dcterms:description "{'morph-kgc': '2.10.0', 'rdflib': '7.6.0', 'pyshacl': '0.40.1', 'SQLAlchemy': '2.0.54', 'psycopg2-binary': '2.9.13'}" .
+
+<urn:oulad:database:sha256:134942e63134f95c1c527b247c6e6a925b64bf88f168bf4be7e193bcade99983> a prov:Entity ;
+    dcterms:description "{'host': '127.0.0.1', 'port': 5433, 'database': 'oulad', 'schema': 'oulad'}" .
+
+<urn:sha256:0216c83a3a3e5a6d290243aef12e33a53c679a758c7689ddd794b667b2c09432> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/requirements-integration.txt> .
+
+<urn:sha256:11dd2993ec89e52e9f101b6707082279b9b8beb276f8814d7dfd445af44017f9> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/integration/sql/02_assessments.sql> .
+
+<urn:sha256:1c93e124651d91c51b686e06ee3a0d12f08a81d84c84c2bf2bc178ca7263cf2e> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/integration/sql/01_enrollments.sql> .
+
+<urn:sha256:223f166600c3b439194cfe9e347ed5ceff035d5cde68ba632782f6012c113d84> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/integration/sql/05_outcomes.sql> .
+
+<urn:sha256:3a3e99fd96e6686ae9d878b748b33f4562464eb06fd5b26068b150952ff4378d> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/integration/freshness.py> .
+
+<urn:sha256:3f5f754c5f16d2b20acffb7fa6fd401b939fab14f232c5891f6761493957a7d3> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/integration/sql/06_unknown_scores.sql> .
+
+<urn:sha256:47e928e20f8d686543438cf381b8cd338c7952a20b6d680e55ae0ba4a0feacac> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/02_assessments.rq> .
+
+<urn:sha256:4879f543622b1c2f35e72739dfa62e31ab99ce96722d0886dcc5c40541eac308> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/integration/compare.py> .
+
+<urn:sha256:4b9264faffdcea0dcc7d63d0c87d2c0165cadf13ae701f43b2163fcb0c4a8901> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/integration/02_assessments.rq> .
+
+<urn:sha256:532154ca048231dd3fa23b5616c41a023a8ccbfd1278e900cc68f861bb63a101> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/01_enrollments.rq> .
+
+<urn:sha256:541066d4e109f150aab3bd2966d93abdcdcc074e45150d156f69e4da315d50b6> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/06_unknown_scores.rq> .
+
+<urn:sha256:573bc44c2ffe3cac4e7518d793964b2757f64397fc649894eaafd45fddf16ec5> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/integration/setup_ontop.py> .
+
+<urn:sha256:645de9973c4ff350a00ec1a8941a0cf20d2783ac73263015d3f8d7e458bfade1> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/integration/run.py> .
+
+<urn:sha256:6bca8a6e981c5bdfb4226ce9adba3699785b3704d200d5dc417fbe2e03deaf70> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/mappings/oulad-mapping.ttl> .
+
+<urn:sha256:76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/shapes/oulad-shapes.ttl> .
+
+<urn:sha256:869a554499895dcbf110b38fc4a60c2a0795d27207ed32f8b74f587a51adcdb6> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/integration/provenance.py> .
+
+<urn:sha256:88055b71dab6bb3ff561dc4f2d6e83fe23bd5f08de1404bce1d570a977580add> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/integration/run_ontop.py> .
+
+<urn:sha256:8933cc554f26e5345f991a55f522f8c3ef212c9c8cf25609ad8ee54a511edfb0> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/data/interim/studentRegistration.csv> .
+
+<urn:sha256:8f0b1e82ccc04a49881a34e7834c07ea2b2b71966bb6afaff5f70e79413f7cea> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/05_outcomes.rq> .
+
+<urn:sha256:8f4365c75fa6041baa4aac3a1b5d5bb10c3914d8ce669b79238d19320593eb0f> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/integration/load_database.py> .
+
+<urn:sha256:9025d2bbf9c24b01aeb40837723d581342643b8cf5986748434d4523d804007b> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/integration/sql/03_late_records.sql> .
+
+<urn:sha256:9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/data/processed/oulad.ttl> .
+
+<urn:sha256:aae4cc4e6bb20478fd53fe65e2c023dd8dd7b2add188dd7c76a0e0bf2558ddd2> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/.runtime/ontop/download-manifest.json> .
+
+<urn:sha256:bdf675841780d8f9a7d868a5408f42ba97e845ea075dd14b5f10fa63ddf2a242> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/config/postgres/schema.sql> .
+
+<urn:sha256:c331b9eb8cbddb982d97f47ff4e07760bfa648025214b089ac70d40c13fa4896> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/data/interim/assessments.csv> .
+
+<urn:sha256:c4fc15dbe643c29f710e815c8d523a34828f3b434317e6854898552884327d75> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/data/interim/studentInfo.csv> .
+
+<urn:sha256:c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/validation/validate.py> .
+
+<urn:sha256:cc29dc5adf8457cab0f57c0411402c264aad43650d74a6db0511d42d012d9678> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/data/interim/vle.csv> .
+
+<urn:sha256:cc3b81a802a397a6b2d9190ae276ed0eee0603577bfdd49dc2e2839f0d2f300f> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/integration/sql/04_low_scores.sql> .
+
+<urn:sha256:cf2485801a751385382337ec93814bd0cfd67cf1fd97ec705a65e00a4d497b5c> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/evaluation/verify_integration.py> .
+
+<urn:sha256:d1283d0b8ff556dbfb5fa49b1ae280b29241f33c87d4672b3ac2ce733dc04d8a> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/integration/init_config.py> .
+
+<urn:sha256:d9e598aac14dd5261895fcabbf65a35aac3e3f2acb2c3af2a72f92753e68678d> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/04_low_scores.rq> .
+
+<urn:sha256:e2bde03c12ff7e7b51da0ba32a476422c3fb6bb65e5dfd3f86b298c593dfbcd9> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/data/interim/studentAssessment.csv> .
+
+<urn:sha256:ed95ea788b19ff0dbf454a1b1938baf920bf4343509952aab129b2791e2bf95f> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/integration/common.py> .
+
+<urn:sha256:f36467d89b7c86226ec590f86467cdfb26cb45f13308b200c5c966537b8df593> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/queries/03_late_records.rq> .
+
+<urn:sha256:f52e7042dffa402110e0fb1086da3ba7569a6de76c496e09ffaf7d1dcd49e4eb> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/data/interim/courses.csv> .
+
+<urn:sha256:f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/ontology/education.rdfs.ttl> .
+
+<urn:sha256:fa2615976ef0d862471d99a12d168ce60ef0a575365f266d27cba9e15ac684be> a prov:Entity ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/src/integration/materialize.py> .
+
+<https://example.org/oulad/run/integration/99568e1cd42b46aa8ddf05ac6d075a5b> a prov:Activity ;
+    prov:endedAtTime "2026-10-16T10:33:10.442659+00:00"^^xsd:dateTime ;
+    prov:startedAtTime "2026-10-16T10:31:22.648570+00:00"^^xsd:dateTime ;
+    prov:used <urn:oulad:database:sha256:134942e63134f95c1c527b247c6e6a925b64bf88f168bf4be7e193bcade99983>,
+        <urn:sha256:0216c83a3a3e5a6d290243aef12e33a53c679a758c7689ddd794b667b2c09432>,
+        <urn:sha256:11dd2993ec89e52e9f101b6707082279b9b8beb276f8814d7dfd445af44017f9>,
+        <urn:sha256:1c93e124651d91c51b686e06ee3a0d12f08a81d84c84c2bf2bc178ca7263cf2e>,
+        <urn:sha256:223f166600c3b439194cfe9e347ed5ceff035d5cde68ba632782f6012c113d84>,
+        <urn:sha256:3a3e99fd96e6686ae9d878b748b33f4562464eb06fd5b26068b150952ff4378d>,
+        <urn:sha256:3f5f754c5f16d2b20acffb7fa6fd401b939fab14f232c5891f6761493957a7d3>,
+        <urn:sha256:47e928e20f8d686543438cf381b8cd338c7952a20b6d680e55ae0ba4a0feacac>,
+        <urn:sha256:4879f543622b1c2f35e72739dfa62e31ab99ce96722d0886dcc5c40541eac308>,
+        <urn:sha256:4b9264faffdcea0dcc7d63d0c87d2c0165cadf13ae701f43b2163fcb0c4a8901>,
+        <urn:sha256:532154ca048231dd3fa23b5616c41a023a8ccbfd1278e900cc68f861bb63a101>,
+        <urn:sha256:541066d4e109f150aab3bd2966d93abdcdcc074e45150d156f69e4da315d50b6>,
+        <urn:sha256:573bc44c2ffe3cac4e7518d793964b2757f64397fc649894eaafd45fddf16ec5>,
+        <urn:sha256:645de9973c4ff350a00ec1a8941a0cf20d2783ac73263015d3f8d7e458bfade1>,
+        <urn:sha256:6bca8a6e981c5bdfb4226ce9adba3699785b3704d200d5dc417fbe2e03deaf70>,
+        <urn:sha256:76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0>,
+        <urn:sha256:869a554499895dcbf110b38fc4a60c2a0795d27207ed32f8b74f587a51adcdb6>,
+        <urn:sha256:88055b71dab6bb3ff561dc4f2d6e83fe23bd5f08de1404bce1d570a977580add>,
+        <urn:sha256:8933cc554f26e5345f991a55f522f8c3ef212c9c8cf25609ad8ee54a511edfb0>,
+        <urn:sha256:8f0b1e82ccc04a49881a34e7834c07ea2b2b71966bb6afaff5f70e79413f7cea>,
+        <urn:sha256:8f4365c75fa6041baa4aac3a1b5d5bb10c3914d8ce669b79238d19320593eb0f>,
+        <urn:sha256:9025d2bbf9c24b01aeb40837723d581342643b8cf5986748434d4523d804007b>,
+        <urn:sha256:9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5>,
+        <urn:sha256:aae4cc4e6bb20478fd53fe65e2c023dd8dd7b2add188dd7c76a0e0bf2558ddd2>,
+        <urn:sha256:bdf675841780d8f9a7d868a5408f42ba97e845ea075dd14b5f10fa63ddf2a242>,
+        <urn:sha256:c331b9eb8cbddb982d97f47ff4e07760bfa648025214b089ac70d40c13fa4896>,
+        <urn:sha256:c4fc15dbe643c29f710e815c8d523a34828f3b434317e6854898552884327d75>,
+        <urn:sha256:c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d>,
+        <urn:sha256:cc29dc5adf8457cab0f57c0411402c264aad43650d74a6db0511d42d012d9678>,
+        <urn:sha256:cc3b81a802a397a6b2d9190ae276ed0eee0603577bfdd49dc2e2839f0d2f300f>,
+        <urn:sha256:cf2485801a751385382337ec93814bd0cfd67cf1fd97ec705a65e00a4d497b5c>,
+        <urn:sha256:d1283d0b8ff556dbfb5fa49b1ae280b29241f33c87d4672b3ac2ce733dc04d8a>,
+        <urn:sha256:d9e598aac14dd5261895fcabbf65a35aac3e3f2acb2c3af2a72f92753e68678d>,
+        <urn:sha256:e2bde03c12ff7e7b51da0ba32a476422c3fb6bb65e5dfd3f86b298c593dfbcd9>,
+        <urn:sha256:ed95ea788b19ff0dbf454a1b1938baf920bf4343509952aab129b2791e2bf95f>,
+        <urn:sha256:f36467d89b7c86226ec590f86467cdfb26cb45f13308b200c5c966537b8df593>,
+        <urn:sha256:f52e7042dffa402110e0fb1086da3ba7569a6de76c496e09ffaf7d1dcd49e4eb>,
+        <urn:sha256:f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766>,
+        <urn:sha256:fa2615976ef0d862471d99a12d168ce60ef0a575365f266d27cba9e15ac684be> ;
+    prov:wasAssociatedWith <https://example.org/oulad/software/integration/645de9973c4ff350a00ec1a8941a0cf20d2783ac73263015d3f8d7e458bfade1> .
+

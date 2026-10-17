@@ -1,0 +1,65 @@
+name: OULAD PostgreSQL integration
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: oulad
+          POSTGRES_USER: oulad
+          POSTGRES_PASSWORD: ci-ephemeral-oulad
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U oulad -d oulad"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      OULAD_DB_HOST: 127.0.0.1
+      OULAD_DB_PORT: '5432'
+      OULAD_DB_NAME: oulad
+      OULAD_DB_USER: oulad
+      OULAD_DB_PASSWORD: ci-ephemeral-oulad
+      OULAD_DB_SCHEMA: oulad_ci
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Install the tested integration packages
+        run: |
+          python -m pip install -r requirements-integration.txt
+          python -m pip install --no-deps morph-kgc==2.10.0
+      - name: Prepare Ontop and its PostgreSQL driver
+        run: python src/integration/setup_ontop.py
+      - name: Verify mapping, virtual queries, SHACL and committed updates
+        run: python evaluation/verify_integration.py --fixture
+      - name: Keep reports and diagnostic logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: oulad-integration-evidence
+          path: outputs/integration/
+          if-no-files-found: warn
+          retention-days: 14
+
+# Uses only committed fixtures. The CI database password is disposable, not a secret.
+# Never upload .env.integration or .runtime/connections/.

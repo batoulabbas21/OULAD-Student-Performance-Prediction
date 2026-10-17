@@ -9,3 +9,6 @@ datasets/
 *.pth
 *.pt
 .env
+# Session 5 private connection and downloaded Java runtime
+.env.integration
+.runtime/

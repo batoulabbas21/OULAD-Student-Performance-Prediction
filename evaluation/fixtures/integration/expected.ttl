@@ -1,0 +1,360 @@
+@prefix edu: <https://example.org/oulad/schema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/oulad/id/assessment-record/100893/1752> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1752> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/100893> ;
+    edu:score 63.0 ;
+    edu:submissionDay 17 .
+
+<https://example.org/oulad/id/assessment-record/100893/1753> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1753> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/100893> ;
+    edu:score 68.0 ;
+    edu:submissionDay 50 .
+
+<https://example.org/oulad/id/assessment-record/100893/1754> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1754> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/100893> ;
+    edu:score 71.0 ;
+    edu:submissionDay 116 .
+
+<https://example.org/oulad/id/assessment-record/100893/1755> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1755> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/100893> ;
+    edu:score 74.0 ;
+    edu:submissionDay 171 .
+
+<https://example.org/oulad/id/assessment-record/100893/1756> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1756> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/100893> ;
+    edu:score 66.0 ;
+    edu:submissionDay 218 .
+
+<https://example.org/oulad/id/assessment-record/106247/1752> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1752> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/106247> ;
+    edu:score 67.0 ;
+    edu:submissionDay 32 .
+
+<https://example.org/oulad/id/assessment-record/106247/1753> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1753> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/106247> ;
+    edu:score 66.0 ;
+    edu:submissionDay 64 .
+
+<https://example.org/oulad/id/assessment-record/106247/1754> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1754> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/106247> ;
+    edu:score 47.0 ;
+    edu:submissionDay 115 .
+
+<https://example.org/oulad/id/assessment-record/106577/1752> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1752> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/106577> ;
+    edu:score 57.0 ;
+    edu:submissionDay 18 .
+
+<https://example.org/oulad/id/assessment-record/106577/1753> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1753> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/106577> ;
+    edu:score 51.0 ;
+    edu:submissionDay 54 .
+
+<https://example.org/oulad/id/assessment-record/106577/1754> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1754> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/106577> ;
+    edu:score 56.0 ;
+    edu:submissionDay 117 .
+
+<https://example.org/oulad/id/assessment-record/106577/1755> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1755> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/106577> ;
+    edu:score 38.0 ;
+    edu:submissionDay 173 .
+
+<https://example.org/oulad/id/assessment-record/106577/1756> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1756> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/106577> ;
+    edu:score 65.0 ;
+    edu:submissionDay 215 .
+
+<https://example.org/oulad/id/assessment-record/129955/1758> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1758> ;
+    edu:isBanked true ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2014J/129955> ;
+    edu:score 85.0 ;
+    edu:submissionDay -1 .
+
+<https://example.org/oulad/id/assessment-record/129955/1759> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1759> ;
+    edu:isBanked true ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2014J/129955> ;
+    edu:score 82.0 ;
+    edu:submissionDay -1 .
+
+<https://example.org/oulad/id/assessment-record/129955/1760> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1760> ;
+    edu:isBanked true ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2014J/129955> ;
+    edu:score 76.0 ;
+    edu:submissionDay -1 .
+
+<https://example.org/oulad/id/assessment-record/134143/1752> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1752> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/134143> ;
+    edu:score 87.0 ;
+    edu:submissionDay 18 .
+
+<https://example.org/oulad/id/assessment-record/134143/1753> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1753> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/134143> ;
+    edu:score 83.0 ;
+    edu:submissionDay 53 .
+
+<https://example.org/oulad/id/assessment-record/134143/1754> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1754> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/134143> ;
+    edu:score 85.0 ;
+    edu:submissionDay 116 .
+
+<https://example.org/oulad/id/assessment-record/134143/1755> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1755> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/134143> ;
+    edu:score 86.0 ;
+    edu:submissionDay 165 .
+
+<https://example.org/oulad/id/assessment-record/134143/1756> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1756> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/134143> ;
+    edu:score 81.0 ;
+    edu:submissionDay 215 .
+
+<https://example.org/oulad/id/assessment-record/1401935/1752> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1752> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/1401935> ;
+    edu:score 45.0 ;
+    edu:submissionDay 26 .
+
+<https://example.org/oulad/id/assessment-record/1401935/1753> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1753> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/1401935> ;
+    edu:score 25.0 ;
+    edu:submissionDay 61 .
+
+<https://example.org/oulad/id/assessment-record/260355/1752> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1752> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/260355> ;
+    edu:score 55.0 ;
+    edu:submissionDay 21 .
+
+<https://example.org/oulad/id/assessment-record/260355/1753> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1753> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/260355> ;
+    edu:score 60.0 ;
+    edu:submissionDay 59 .
+
+<https://example.org/oulad/id/assessment-record/260355/1754> a edu:AssessmentRecord ;
+    edu:forAssessment <https://example.org/oulad/id/assessment/1754> ;
+    edu:isBanked false ;
+    edu:recordForEnrollment <https://example.org/oulad/id/enrollment/AAA/2013J/260355> ;
+    edu:submissionDay 127 .
+
+<https://example.org/oulad/id/assessment/1757> a edu:Exam ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:weightPercent 100.0 .
+
+<https://example.org/oulad/id/assessment/1761> a edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2014J> ;
+    edu:deadlineDay 166 ;
+    edu:weightPercent 20.0 .
+
+<https://example.org/oulad/id/assessment/1762> a edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2014J> ;
+    edu:deadlineDay 215 ;
+    edu:weightPercent 30.0 .
+
+<https://example.org/oulad/id/assessment/1763> a edu:Exam ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2014J> ;
+    edu:weightPercent 100.0 .
+
+<https://example.org/oulad/id/resource/AAA/2013J/546614> a edu:LearningResource ;
+    edu:activityType "homepage" ;
+    edu:resourceInOffering <https://example.org/oulad/id/offering/AAA/2013J> .
+
+<https://example.org/oulad/id/resource/AAA/2014J/1010323> a edu:LearningResource ;
+    edu:activityType "resource" ;
+    edu:resourceInOffering <https://example.org/oulad/id/offering/AAA/2014J> .
+
+<https://example.org/oulad/id/assessment/1758> a edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2014J> ;
+    edu:deadlineDay 19 ;
+    edu:weightPercent 10.0 .
+
+<https://example.org/oulad/id/assessment/1759> a edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2014J> ;
+    edu:deadlineDay 54 ;
+    edu:weightPercent 20.0 .
+
+<https://example.org/oulad/id/assessment/1760> a edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2014J> ;
+    edu:deadlineDay 117 ;
+    edu:weightPercent 20.0 .
+
+<https://example.org/oulad/id/student/100893> a edu:Student ;
+    edu:studentId "100893" .
+
+<https://example.org/oulad/id/student/106247> a edu:Student ;
+    edu:studentId "106247" .
+
+<https://example.org/oulad/id/student/106577> a edu:Student ;
+    edu:studentId "106577" .
+
+<https://example.org/oulad/id/student/129955> a edu:Student ;
+    edu:studentId "129955" .
+
+<https://example.org/oulad/id/student/134143> a edu:Student ;
+    edu:studentId "134143" .
+
+<https://example.org/oulad/id/student/1401935> a edu:Student ;
+    edu:studentId "1401935" .
+
+<https://example.org/oulad/id/student/260355> a edu:Student ;
+    edu:studentId "260355" .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/1401935> a edu:Enrollment ;
+    edu:ageBand "35-55" ;
+    edu:finalResult "Fail" ;
+    edu:hasStudent <https://example.org/oulad/id/student/1401935> ;
+    edu:highestEducation "A Level or Equivalent" ;
+    edu:inOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:previousAttempts 0 ;
+    edu:region "West Midlands Region" ;
+    edu:registrationDay -35 .
+
+<https://example.org/oulad/id/module/AAA> a edu:Module ;
+    rdfs:label "AAA" .
+
+<https://example.org/oulad/id/assessment/1755> a edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:deadlineDay 166 ;
+    edu:weightPercent 20.0 .
+
+<https://example.org/oulad/id/assessment/1756> a edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:deadlineDay 215 ;
+    edu:weightPercent 30.0 .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/106247> a edu:Enrollment ;
+    edu:ageBand "35-55" ;
+    edu:finalResult "Withdrawn" ;
+    edu:hasStudent <https://example.org/oulad/id/student/106247> ;
+    edu:highestEducation "HE Qualification" ;
+    edu:inOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:previousAttempts 0 ;
+    edu:region "South Region" ;
+    edu:registrationDay 5 ;
+    edu:unregistrationDay 175 .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/260355> a edu:Enrollment ;
+    edu:ageBand "35-55" ;
+    edu:finalResult "Withdrawn" ;
+    edu:hasStudent <https://example.org/oulad/id/student/260355> ;
+    edu:highestEducation "A Level or Equivalent" ;
+    edu:inOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:previousAttempts 0 ;
+    edu:region "London Region" ;
+    edu:registrationDay -186 ;
+    edu:unregistrationDay 170 .
+
+<https://example.org/oulad/id/enrollment/AAA/2014J/129955> a edu:Enrollment ;
+    edu:ageBand "0-35" ;
+    edu:finalResult "Withdrawn" ;
+    edu:hasStudent <https://example.org/oulad/id/student/129955> ;
+    edu:highestEducation "A Level or Equivalent" ;
+    edu:inOffering <https://example.org/oulad/id/offering/AAA/2014J> ;
+    edu:previousAttempts 1 ;
+    edu:region "West Midlands Region" ;
+    edu:registrationDay -143 ;
+    edu:unregistrationDay 143 .
+
+<https://example.org/oulad/id/assessment/1754> a edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:deadlineDay 117 ;
+    edu:weightPercent 20.0 .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/100893> a edu:Enrollment ;
+    edu:ageBand "0-35" ;
+    edu:finalResult "Pass" ;
+    edu:hasStudent <https://example.org/oulad/id/student/100893> ;
+    edu:highestEducation "A Level or Equivalent" ;
+    edu:inOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:previousAttempts 0 ;
+    edu:region "Yorkshire Region" ;
+    edu:registrationDay -62 .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/106577> a edu:Enrollment ;
+    edu:ageBand "0-35" ;
+    edu:finalResult "Pass" ;
+    edu:hasStudent <https://example.org/oulad/id/student/106577> ;
+    edu:highestEducation "Lower Than A Level" ;
+    edu:inOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:previousAttempts 0 ;
+    edu:region "East Midlands Region" ;
+    edu:registrationDay -107 .
+
+<https://example.org/oulad/id/enrollment/AAA/2013J/134143> a edu:Enrollment ;
+    edu:ageBand "35-55" ;
+    edu:finalResult "Distinction" ;
+    edu:hasStudent <https://example.org/oulad/id/student/134143> ;
+    edu:highestEducation "A Level or Equivalent" ;
+    edu:inOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:previousAttempts 0 ;
+    edu:region "South East Region" ;
+    edu:registrationDay -96 .
+
+<https://example.org/oulad/id/assessment/1752> a edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:deadlineDay 19 ;
+    edu:weightPercent 10.0 .
+
+<https://example.org/oulad/id/assessment/1753> a edu:TutorMarkedAssessment ;
+    edu:assessmentInOffering <https://example.org/oulad/id/offering/AAA/2013J> ;
+    edu:deadlineDay 54 ;
+    edu:weightPercent 20.0 .
+
+<https://example.org/oulad/id/offering/AAA/2014J> a edu:CourseOffering ;
+    rdfs:label "AAA 2014J" ;
+    edu:lengthDays 269 ;
+    edu:offeringOf <https://example.org/oulad/id/module/AAA> ;
+    edu:presentationCode "2014J" .
+
+<https://example.org/oulad/id/offering/AAA/2013J> a edu:CourseOffering ;
+    rdfs:label "AAA 2013J" ;
+    edu:lengthDays 268 ;
+    edu:offeringOf <https://example.org/oulad/id/module/AAA> ;
+    edu:presentationCode "2013J" .
+

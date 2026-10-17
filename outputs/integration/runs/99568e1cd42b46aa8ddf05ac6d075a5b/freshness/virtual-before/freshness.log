@@ -1,0 +1,393 @@
+13:33:03.530 |-DEBUG in o.e.r.q.p.s.a.CustomAggregateFunctionRegistry - Registered service class org.eclipse.rdf4j.query.algebra.evaluation.function.aggregate.stdev.PopulationStandardDeviationAggregateFactory
+13:33:03.530 |-DEBUG in o.e.r.q.p.s.a.CustomAggregateFunctionRegistry - Registered service class org.eclipse.rdf4j.query.algebra.evaluation.function.aggregate.stdev.StandardDeviationAggregateFactory
+13:33:03.530 |-DEBUG in o.e.r.q.p.s.a.CustomAggregateFunctionRegistry - Registered service class org.eclipse.rdf4j.query.algebra.evaluation.function.aggregate.variance.PopulationVarianceAggregateFactory
+13:33:03.536 |-DEBUG in o.e.r.q.p.s.a.CustomAggregateFunctionRegistry - Registered service class org.eclipse.rdf4j.query.algebra.evaluation.function.aggregate.variance.VarianceAggregateFactory
+13:33:03.592 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.model.OWLOntologyManager
+13:33:03.592 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyManager
+13:33:03.592 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyManager
+13:33:03.592 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyManager
+13:33:03.600 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.model.OWLDataFactory
+13:33:03.600 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLDataFactory
+13:33:03.600 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLDataFactory
+13:33:03.600 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLDataFactory
+13:33:03.641 |-DEBUG in o.s.owlapi.utilities.Injector - Injecting object uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl@45cec376
+13:33:03.645 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.model.OWLOntologyIRIMapper
+13:33:03.648 |-DEBUG in o.s.owlapi.utilities.Injector - No files found for META-INF/services/org.semanticweb.owlapi.model.OWLOntologyIRIMapper
+13:33:03.648 |-DEBUG in o.s.owlapi.utilities.Injector - Injecting values [[]] on method public void uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl.setIRIMappers(java.util.Set).
+13:33:03.649 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:33:03.649 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:33:03.649 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:33:03.649 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:33:03.649 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:33:03.649 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:33:03.649 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:33:03.649 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:33:03.649 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:33:03.649 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:33:03.657 |-DEBUG in o.s.owlapi.utilities.Injector - Injecting values [[org.semanticweb.owlapi.krss2.renderer.KRSS2OWLSyntaxStorerFactory@1d12e953, org.semanticweb.owlapi.functional.renderer.FunctionalSyntaxStorerFactory@44ed0a8f, org.semanticweb.owlapi.dlsyntax.renderer.DLSyntaxStorerFactory@5a75ec37, org.semanticweb.owlapi.rio.RioBinaryRdfStorerFactory@71926a36, org.semanticweb.owlapi.rio.RioN3StorerFactory@69d23296, org.semanticweb.owlapi.rio.RioHDTRdfStorerFactory@2a367e93, org.semanticweb.owlapi.rdf.turtle.renderer.TurtleStorerFactory@2a8a4e0c, org.semanticweb.owlapi.rio.RioNQuadsStorerFactory@3fba233d, org.semanticweb.owlapi.rio.RioRDFXMLStorerFactory@514de325, org.semanticweb.owlapi.rio.RioNTriplesStorerFactory@187e5235, org.semanticweb.owlapi.oboformat.OBOFormatStorerFactory@5b7c8930, org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterSyntaxStorerFactory@2abe9173, org.semanticweb.owlapi.rio.RioTrixStorerFactory@24a86066, org.semanticweb.owlapi.rio.RioTrigStorerFactory@17461db, org.semanticweb.owlapi.rio.RioTurtleStorerFactory@3f1a4795, org.semanticweb.owlapi.rio.RioJsonStorerFactory@78b612c6, org.semanticweb.owlapi.dlsyntax.renderer.DLSyntaxHTMLStorerFactory@22ebccb9, org.semanticweb.owlapi.owlxml.renderer.OWLXMLStorerFactory@e26af6, org.semanticweb.owlapi.rio.RioJsonLDStorerFactory@70211df5, org.semanticweb.owlapi.rdf.rdfxml.renderer.RDFXMLStorerFactory@9679750, org.semanticweb.owlapi.latex.renderer.LatexStorerFactory@20f6f88c]] on method public void uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl.setOntologyStorers(java.util.Set).
+13:33:03.657 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:33:03.657 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:33:03.657 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:33:03.657 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:33:03.657 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:33:03.657 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:33:03.658 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:33:03.658 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:33:03.658 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:33:03.658 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:33:03.661 |-DEBUG in o.s.owlapi.utilities.Injector - Injecting values [[org.semanticweb.owlapi.rio.RioTurtleParserFactory@7c2dfa2, org.semanticweb.owlapi.rio.RioRDFaParserFactory@326d27ac, org.semanticweb.owlapi.rio.RioNTriplesParserFactory@285c6918, org.semanticweb.owlapi.owlxml.parser.OWLXMLParserFactory@ef60710, org.semanticweb.owlapi.rio.RioJsonLDParserFactory@7ee8130e, org.semanticweb.owlapi.rio.RioN3ParserFactory@4288d98e, org.semanticweb.owlapi.krss2.parser.KRSS2OWLParserFactory@53a7a60c, org.semanticweb.owlapi.rdf.rdfxml.parser.RDFXMLParserFactory@600f5704, org.semanticweb.owlapi.rio.RioRDFXMLParserFactory@4d499d65, org.semanticweb.owlapi.rio.RioHDTRdfParserFactory@44b21f9f, org.semanticweb.owlapi.functional.parser.OWLFunctionalSyntaxOWLParserFactory@6a87026, org.semanticweb.owlapi.dlsyntax.parser.DLSyntaxOWLParserFactory@2503ec73, org.semanticweb.owlapi.rio.RioBinaryRdfParserFactory@5e1fc42f, org.semanticweb.owlapi.rdf.turtle.parser.TurtleOntologyParserFactory@28bdbe88, org.semanticweb.owlapi.rio.RioNQuadsParserFactory@169268a7, org.semanticweb.owlapi.rio.RioJsonParserFactory@6296474f, org.semanticweb.owlapi.rio.RioTrixParserFactory@5cc9d3d0, org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxOntologyParserFactory@49d831c2, org.semanticweb.owlapi.oboformat.OBOFormatOWLAPIParserFactory@606f81b5, org.semanticweb.owlapi.rio.RioTrigParserFactory@313f8301]] on method public void uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl.setOntologyParsers(java.util.Set).
+13:33:03.662 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.model.OWLOntologyFactory
+13:33:03.662 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyFactory
+13:33:03.662 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyFactory
+13:33:03.662 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyFactory
+13:33:03.663 |-DEBUG in o.s.owlapi.utilities.Injector - Injecting values [[uk.ac.manchester.cs.owl.owlapi.OWLOntologyFactoryImpl@3ed34ef5]] on method public void uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl.setOntologyFactories(java.util.Set).
+13:33:03.673 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.rdfjson.RDFJSONParserFactory
+13:33:03.675 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.semanticweb.owlapi.rio.RioFunctionalSyntaxParserFactory
+13:33:03.675 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.semanticweb.owlapi.rio.RioManchesterSyntaxParserFactory
+13:33:03.675 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.semanticweb.owlapi.rio.RioOWLXMLParserFactory
+13:33:03.675 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.binary.BinaryRDFParserFactory
+13:33:03.676 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.n3.N3ParserFactory
+13:33:03.676 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.trix.TriXParserFactory
+13:33:03.676 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.hdt.HDTParserFactory
+13:33:03.677 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.turtle.TurtleParserFactory
+13:33:03.677 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.turtlestar.TurtleStarParserFactory
+13:33:03.678 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.jsonld.JSONLDParserFactory
+13:33:03.678 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.ndjsonld.NDJSONLDParserFactory
+13:33:03.678 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.ntriples.NTriplesParserFactory
+13:33:03.678 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.rdfxml.RDFXMLParserFactory
+13:33:03.679 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.nquads.NQuadsParserFactory
+13:33:03.679 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.trig.TriGParserFactory
+13:33:03.679 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.trigstar.TriGStarParserFactory
+13:33:03.685 |-DEBUG in o.e.r.rio.DatatypeHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.datatypes.XMLSchemaDatatypeHandler
+13:33:03.685 |-DEBUG in o.e.r.rio.DatatypeHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.datatypes.RDFDatatypeHandler
+13:33:03.685 |-DEBUG in o.e.r.rio.DatatypeHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.datatypes.DBPediaDatatypeHandler
+13:33:03.685 |-DEBUG in o.e.r.rio.DatatypeHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.datatypes.VirtuosoGeometryDatatypeHandler
+13:33:03.685 |-DEBUG in o.e.r.rio.DatatypeHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.datatypes.GeoSPARQLDatatypeHandler
+13:33:03.685 |-DEBUG in o.e.r.rio.LanguageHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.languages.RFC3066LanguageHandler
+13:33:03.685 |-DEBUG in o.e.r.rio.LanguageHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.languages.BCP47LanguageHandler
+13:33:03.903 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 2 ms/column
+13:33:03.926 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 8 ms/column
+13:33:03.931 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 0 ms/column
+13:33:03.938 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 0 ms/column
+13:33:03.946 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 8 ms/column
+13:33:03.951 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 0 ms/column
+13:33:03.958 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 0 ms/column
+13:33:03.960 |-DEBUG in i.u.i.o.s.m.p.i.SQLPPMappingConverterImpl - Original mapping size: 34
+13:33:03.964 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:33:03.968 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:33:03.976 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:33:03.978 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:33:03.980 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:33:03.986 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:33:03.987 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:33:03.990 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:33:03.996 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:33:03.998 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:33:04.000 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:33:04.006 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:33:04.008 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:33:04.010 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:33:04.016 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:33:04.018 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:33:04.019 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:33:04.025 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:33:04.027 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:33:04.029 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:33:04.035 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:33:04.152 |-DEBUG in i.u.i.o.s.m.t.i.ABoxFactIntoMappingConverterImpl - Transformed 0 rdfFacts into 0 mappingAssertions
+13:33:04.290 |-DEBUG in i.u.i.o.a.c.p.i.TomcatConnectionPool - Connection Pool Properties:
+13:33:04.290 |-DEBUG in i.u.i.o.a.c.p.i.TomcatConnectionPool - Start size: 2
+13:33:04.298 |-DEBUG in i.u.i.o.a.c.p.i.TomcatConnectionPool - Max size: 20
+13:33:04.298 |-DEBUG in i.u.i.o.a.c.p.i.TomcatConnectionPool - Remove abandoned connections: false
+13:33:04.298 |-INFO  in i.u.i.o.a.impl.OntopQueryEngineImpl - Ontop has completed the setup and it is ready for query answering!
+13:33:04.298 |-INFO  in i.u.i.o.r.r.i.OntopVirtualRepository - Ontop virtual repository initialized successfully!
+13:33:04.343 |-DEBUG in o.e.r.q.parser.QueryParserRegistry - Registered service class org.eclipse.rdf4j.query.parser.sparql.SPARQLParserFactory
+13:33:04.404 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - SPARQL query:
+PREFIX edu: <https://example.org/oulad/schema#> SELECT (COUNT(?r) AS ?low) WHERE { ?r a edu:AssessmentRecord; edu:score ?score . FILTER(?score < 40) }
+
+13:33:04.404 |-DEBUG in i.u.i.o.q.t.i.RDF4JQueryTranslatorImpl - Parsed query:
+QueryRoot
+   Projection
+      ProjectionElemList
+         ProjectionElem "low"
+      Extension
+         Group ()
+            Filter
+               Compare (<)
+                  Var (name=score)
+                  ValueConstant (value="40"^^<http://www.w3.org/2001/XMLSchema#integer>)
+               Join
+                  StatementPattern
+                     Var (name=r)
+                     Var (name=_const_f5e5585a_uri, value=http://www.w3.org/1999/02/22-rdf-syntax-ns#type, anonymous)
+                     Var (name=_const_3a998ef1_uri, value=https://example.org/oulad/schema#AssessmentRecord, anonymous)
+                  StatementPattern
+                     Var (name=r)
+                     Var (name=_const_1046f034_uri, value=https://example.org/oulad/schema#score, anonymous)
+                     Var (name=score)
+            GroupElem (low)
+               Count
+                  Var (name=r)
+         ExtensionElem (low)
+            Count
+               Var (name=r)
+
+13:33:04.420 |-DEBUG in i.u.i.o.q.t.i.RDF4JQueryTranslatorImpl - IQTree (before normalization):
+CONSTRUCT [low] []
+   AGGREGATE [] [low/SP_COUNT_1(r)]
+      FILTER RDF_2_DB_BOOL(SP_LT(score,"40"^^xsd:integer))
+         JOIN
+            INTENSIONAL triple(r, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <https://example.org/oulad/schema#AssessmentRecord>)
+            INTENSIONAL triple(r, <https://example.org/oulad/schema#score>, score)
+
+13:33:04.420 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Parsed query converted into IQ (after normalization):
+ans1(low)
+AGGREGATE [] [low/SP_COUNT_1(r)]
+   JOIN RDF_2_DB_BOOL(SP_LT(score,"40"^^xsd:integer))
+      INTENSIONAL triple(r, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <https://example.org/oulad/schema#AssessmentRecord>)
+      INTENSIONAL triple(r, <https://example.org/oulad/schema#score>, score)
+
+
+13:33:04.420 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Start the rewriting process...
+13:33:04.420 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Rewritten IQ:
+ans1(low)
+AGGREGATE [] [low/SP_COUNT_1(r)]
+   JOIN RDF_2_DB_BOOL(SP_LT(score,"40"^^xsd:integer))
+      INTENSIONAL triple(r, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <https://example.org/oulad/schema#AssessmentRecord>)
+      INTENSIONAL triple(r, <https://example.org/oulad/schema#score>, score)
+
+
+13:33:04.420 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - IQ after nodeInGraph simplification:
+ans1(low)
+AGGREGATE [] [low/SP_COUNT_1(r)]
+   JOIN RDF_2_DB_BOOL(SP_LT(score,"40"^^xsd:integer))
+      INTENSIONAL triple(r, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <https://example.org/oulad/schema#AssessmentRecord>)
+      INTENSIONAL triple(r, <https://example.org/oulad/schema#score>, score)
+
+
+13:33:04.420 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Start the unfolding...
+13:33:04.430 |-DEBUG in i.u.i.o.q.u.i.TwoPhaseQueryUnfolder - First phase query unfolding time: 10
+13:33:04.430 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Unfolded query:
+ans1(low)
+AGGREGATE [] [low/SP_COUNT_1(r)]
+   JOIN RDF_2_DB_BOOL(SP_LT(score,"40"^^xsd:integer))
+      CONSTRUCT [r] [r/RDF(https://example.org/oulad/id/assessment-record/{}/{}(id_student1m8,id_assessment1m8),IRI)]
+         DISTINCT
+            FILTER AND2(IS_NOT_NULL(id_student1m8),IS_NOT_NULL(id_assessment1m8))
+               EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8)
+      CONSTRUCT [r, score] [score/RDF(NUMERICToTEXT(score1m19),xsd:decimal), r/RDF(https://example.org/oulad/id/assessment-record/{}/{}(id_student1m19,id_assessment1m19),IRI)]
+         DISTINCT
+            FILTER AND3(IS_NOT_NULL(id_student1m19),IS_NOT_NULL(id_assessment1m19),IS_NOT_NULL(score1m19))
+               EXTENSIONAL "v_assessment_records"(0:id_assessment1m19,1:id_student1m19,4:score1m19)
+
+
+13:33:04.450 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New lifted query:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         JOIN AND2(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8)
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.450 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - Query tree after preventing DISTINCT for non-supported data types:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         JOIN AND2(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8)
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.458 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after evaluation authorization functions (0 ms):
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         JOIN AND2(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8)
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.471 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after fixed point join optimization (13 ms):
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.474 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after view unfolding:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.474 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after simplifying using the context:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.474 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after simplifying the aggregation node:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.474 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after trying to split the aggregation node:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.474 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after simplifying the order by node:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.478 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after simplifying disjunctions of equalities:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.478 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - Query tree after preventing DISTINCT for non-supported data types, second pass:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.478 |-DEBUG in i.u.i.o.i.p.i.AvoidJoinAboveUnionPlanner - Planned IQ:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.478 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Planned query:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.478 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Producing the native query string...
+13:33:04.481 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - After lifting the RDF types:
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.481 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - After lifting the post-processable function symbols:
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   AGGREGATE [] [v1/COUNT_0()]
+      DISTINCT
+         FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+            EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.481 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after lifting the slice:
+AGGREGATE [] [v1/COUNT_0()]
+   DISTINCT
+      FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+         EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.481 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after lifting order by above distinct:
+AGGREGATE [] [v1/COUNT_0()]
+   DISTINCT
+      FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+         EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.481 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after flattening the union:
+AGGREGATE [] [v1/COUNT_0()]
+   DISTINCT
+      FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+         EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.481 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after pushing down:
+AGGREGATE [] [v1/COUNT_0()]
+   DISTINCT
+      FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+         EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.494 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - Query tree after pulling out equalities:
+AGGREGATE [] [v1/COUNT_0()]
+   DISTINCT
+      FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+         EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.494 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after top construction elimination in order by cases: 
+AGGREGATE [] [v1/COUNT_0()]
+   DISTINCT
+      FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+         EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+13:33:04.494 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after empty rows values node transformation:
+AGGREGATE [] [v1/COUNT_0()]
+   DISTINCT
+      FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+         EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.494 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after the dialect-specific extra normalization:
+AGGREGATE [] [v1/COUNT_0()]
+   DISTINCT
+      FILTER AND4(NUM_LT(NUMERICToDECIMAL(score1m19),"40"^^DECIMAL),IS_NOT_NULL(score1m19),IS_NOT_NULL(id_assessment1m8),IS_NOT_NULL(id_student1m8))
+         EXTENSIONAL "v_assessment_records"(0:id_assessment1m8,1:id_student1m8,4:score1m19)
+
+
+13:33:04.502 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Resulting native query:
+ans1(low)
+CONSTRUCT [low] [low/RDF(BIGINTToTEXT(v1),xsd:integer)]
+   NATIVE [v1]
+SELECT COUNT(*) AS "v1"
+FROM (SELECT DISTINCT v1."id_assessment" AS "id_assessment1m8", v1."id_student" AS "id_student1m8", v1."score" AS "score1m19"
+FROM "v_assessment_records" v1
+WHERE ((CAST(v1."score" AS DECIMAL) < 40::DECIMAL) AND v1."score" IS NOT NULL AND v1."id_assessment" IS NOT NULL AND v1."id_student" IS NOT NULL)
+) v3
+
+
+
+13:33:04.502 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Reformulation time: 98 ms
+
+13:33:04.502 |-DEBUG in i.u.i.o.a.c.impl.QuestStatement - Executing the query and get the result...
+13:33:04.512 |-DEBUG in i.u.i.o.a.c.impl.QuestStatement - Result set unblocked.
+
+

@@ -1,0 +1,8 @@
+code_module,code_presentation,id_student,gender,region,highest_education,imd_band,age_band,num_of_prev_attempts,studied_credits,disability,final_result
+AAA,2013J,100893,M,Yorkshire Region,A Level or Equivalent,20-30%,0-35,0,60,N,Pass
+AAA,2013J,106247,M,South Region,HE Qualification,80-90%,35-55,0,60,N,Withdrawn
+AAA,2013J,106577,M,East Midlands Region,Lower Than A Level,20-30%,0-35,0,60,N,Pass
+AAA,2013J,134143,F,South East Region,A Level or Equivalent,90-100%,35-55,0,60,N,Distinction
+AAA,2013J,260355,F,London Region,A Level or Equivalent,80-90%,35-55,0,60,N,Withdrawn
+AAA,2013J,1401935,M,West Midlands Region,A Level or Equivalent,70-80%,35-55,0,60,N,Fail
+AAA,2014J,129955,M,West Midlands Region,A Level or Equivalent,50-60%,0-35,1,60,N,Withdrawn

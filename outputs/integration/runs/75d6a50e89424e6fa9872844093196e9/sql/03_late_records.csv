@@ -1,0 +1,11 @@
+enrollment,assessment,submitted,deadline,daysLate
+https://example.org/oulad/id/enrollment/AAA/2013J/106247,https://example.org/oulad/id/assessment/1752,32,19,13
+https://example.org/oulad/id/enrollment/AAA/2013J/260355,https://example.org/oulad/id/assessment/1752,21,19,2
+https://example.org/oulad/id/enrollment/AAA/2013J/1401935,https://example.org/oulad/id/assessment/1752,26,19,7
+https://example.org/oulad/id/enrollment/AAA/2013J/1401935,https://example.org/oulad/id/assessment/1753,61,54,7
+https://example.org/oulad/id/enrollment/AAA/2013J/106247,https://example.org/oulad/id/assessment/1753,64,54,10
+https://example.org/oulad/id/enrollment/AAA/2013J/260355,https://example.org/oulad/id/assessment/1753,59,54,5
+https://example.org/oulad/id/enrollment/AAA/2013J/260355,https://example.org/oulad/id/assessment/1754,127,117,10
+https://example.org/oulad/id/enrollment/AAA/2013J/100893,https://example.org/oulad/id/assessment/1755,171,166,5
+https://example.org/oulad/id/enrollment/AAA/2013J/106577,https://example.org/oulad/id/assessment/1755,173,166,7
+https://example.org/oulad/id/enrollment/AAA/2013J/100893,https://example.org/oulad/id/assessment/1756,218,215,3

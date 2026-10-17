@@ -1,0 +1,33 @@
+Validation Report
+Conforms: False
+Results (5):
+Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: shape:DeadlinePresence
+	Focus Node: <https://example.org/oulad/id/assessment/1757>
+	Result Path: edu:deadlineDay
+	Message: Deadline is unknown: preserve the absence, including unknown exam dates.
+Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: shape:DeadlinePresence
+	Focus Node: <https://example.org/oulad/id/assessment/1763>
+	Result Path: edu:deadlineDay
+	Message: Deadline is unknown: preserve the absence, including unknown exam dates.
+Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: shape:ScorePresence
+	Focus Node: <https://example.org/oulad/id/assessment-record/260355/1754>
+	Result Path: edu:score
+	Message: Score is unknown: retain the record and review source completeness; do not replace with zero.
+Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: shape:ScorePresence
+	Focus Node: <https://example.org/oulad/id/assessment-record/2606802/1760>
+	Result Path: edu:score
+	Message: Score is unknown: retain the record and review source completeness; do not replace with zero.
+Validation Result in MinCountConstraintComponent (http://www.w3.org/ns/shacl#MinCountConstraintComponent):
+	Severity: sh:Warning
+	Source Shape: shape:ScorePresence
+	Focus Node: <https://example.org/oulad/id/assessment-record/721259/1752>
+	Result Path: edu:score
+	Message: Score is unknown: retain the record and review source completeness; do not replace with zero.

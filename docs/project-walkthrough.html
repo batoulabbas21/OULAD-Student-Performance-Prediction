@@ -2,7 +2,7 @@
 
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Understanding the OULAD project | Results, interpretation and challenges</title>
-<meta content="Detailed walkthrough of the OULAD knowledge graph, ontology, SHACL results, actual challenges, and deliberate teaching errors." name="description"/>
+<meta content="OULAD through Session 5: data origins, RDF/OWL/SHACL, PostgreSQL mapping, materialization, virtualization, verification and provenance." name="description"/>
 <style>
 :root { color-scheme: light; --ink:#172e35; --muted:#516970; --line:#dce6e5; --accent:#087064; --paper:#fff; --wash:#f3f7f5; }
 * { box-sizing:border-box; }
@@ -51,10 +51,10 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 
 nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{max-height:none;overflow:visible;}}</style></head><body>
 <header class="top"><span class="brand">KRR / OULAD · Project walkthrough</span><div class="actions"><a href="project-walkthrough.md">Editable version</a><button onclick="window.print()" type="button">Print / save PDF</button></div></header>
-<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-what-problem-are-we-solving">1. What problem are we solving?</a><a href="#2-what-we-did-in-order">2. What we did, in order</a><a href="#3-what-data-do-we-actually-have">3. What data do we actually have?</a><a href="#4-how-to-read-the-graph">4. How to read the graph</a><a href="#5-what-the-analytical-answers-mean">5. What the analytical answers mean</a><a href="#6-what-the-ontology-added">6. What the ontology added</a><a href="#7-what-shacl-added">7. What SHACL added</a><a href="#8-the-exact-shacl-results-and-their-interpretation">8. The exact SHACL results and their interpretation</a><a href="#9-actual-challenges-and-how-they-were-addressed">9. Actual challenges and how they were addressed</a><a href="#10-deliberate-errors-what-we-tested-and-learned">10. Deliberate errors: what we tested and learned</a><a href="#11-what-the-verification-establishes">11. What the verification establishes</a><a href="#12-what-neo4j-and-fuseki-results-mean">12. What Neo4j and Fuseki results mean</a><a href="#13-provenance-how-we-know-which-run-produced-a-result">13. Provenance: how we know which run produced a result</a><a href="#14-how-to-inspect-and-repeat-the-work">14. How to inspect and repeat the work</a><a href="#15-a-short-explanation-for-your-presentation">15. A short explanation for your presentation</a><a href="#appendix-all-shacl-verification-checks">Appendix: all SHACL verification checks</a></div><div class="scope"><b>Verified project results</b>14 October 2026<br/>14 core · 17 ontology · 37 SHACL checks<br/>0 blocking violations · 5 warnings<br/><a href="../outputs/shacl/full/report.html">Open the latest validation report</a></div></nav>
+<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-what-problem-are-we-solving">1. What problem are we solving?</a><a href="#2-what-we-did-in-order">2. What we did, in order</a><a href="#3-what-data-do-we-actually-have">3. What data do we actually have?</a><a href="#4-how-to-read-the-graph">4. How to read the graph</a><a href="#5-what-the-analytical-answers-mean">5. What the analytical answers mean</a><a href="#6-what-the-ontology-added">6. What the ontology added</a><a href="#7-what-shacl-added">7. What SHACL added</a><a href="#8-the-exact-shacl-results-and-their-interpretation">8. The exact SHACL results and their interpretation</a><a href="#9-actual-challenges-and-how-they-were-addressed">9. Actual challenges and how they were addressed</a><a href="#10-deliberate-errors-what-we-tested-and-learned">10. Deliberate errors: what we tested and learned</a><a href="#11-what-the-verification-establishes">11. What the verification establishes</a><a href="#12-what-neo4j-and-fuseki-results-mean">12. What Neo4j and Fuseki results mean</a><a href="#13-provenance-how-we-know-which-run-produced-a-result">13. Provenance: how we know which run produced a result</a><a href="#14-how-to-inspect-and-repeat-the-work">14. How to inspect and repeat the work</a><a href="#15-a-short-explanation-for-your-presentation">15. A short explanation for your presentation</a><a href="#16-session-5-one-mapping-two-ways-to-answer">16. Session 5: one mapping, two ways to answer</a><a href="#appendix-all-shacl-verification-checks">Appendix: all SHACL verification checks</a></div><div class="scope"><b>Through Session 5</b>Updated 16 October 2026<br/>23 full integration checks<br/>23 fixture checks<br/>0 blocking SHACL violations<br/><a href="../outputs/integration/integration-results.html">Open integration results</a></div></nav>
 <main><h1>Understanding the OULAD project</h1>
 <p><strong>What we built, what the results mean, and how we handled challenges and errors.</strong></p>
-<p>Prepared on <strong>14 October 2026</strong>. This walkthrough covers the project through the Session 4 SHACL extension, with particular attention to interpreting validation results. It uses saved project evidence and current source files. It does not rerun the analysis or contact the database servers.</p>
+<p>Prepared on <strong>14 October 2026</strong>, updated through Session 5 on <strong>16 October 2026</strong>. This guide explains the saved earlier stages and the newly executed PostgreSQL integration. Section 16 covers mappings, materialization, virtualization, results and actual fixes.</p>
 <blockquote>
 <p><strong>The main result:</strong> we have a traceable education knowledge graph, an ontology that derives useful classifications, and a validation gate that catches structural errors while retaining documented missing values. The current full SHACL report has <strong>0 violations and 5 warnings</strong>, and <strong>37 verification checks pass</strong>.</p>
 </blockquote>
@@ -148,8 +148,13 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 </tr>
 <tr>
 <td>Record provenance</td>
-<td>Wrote the human-readable guide, fingerprints and a PROV-O record for each SHACL run.</td>
-<td>Results can be connected to their inputs, software and validation activity.</td>
+<td>Wrote the human-readable guide, fingerprints and PROV-O records for SHACL and integration runs.</td>
+<td>Results can be connected to their inputs, software and activity.</td>
+</tr>
+<tr>
+<td>Add Session 5 integration</td>
+<td>Loaded PostgreSQL and reused one R2RML mapping with Morph-KGC and Ontop.</td>
+<td>Saved and virtual graphs preserve the existing questions; committed changes demonstrate freshness.</td>
 </tr>
 </tbody>
 </table></div>
@@ -381,7 +386,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <p>We used SHACL Core for counts, datatypes, ranges, allowed values, forbidden properties, subtype alternatives and the comparison between registration and withdrawal dates on the same enrollment. SHACL-SPARQL handles checks across distinct records or linked paths, including duplicate contextual keys and cross-offering relationships.</p>
 <p>The validator uses asserted RDF plus the RDFS hierarchy with automatic inference disabled. SHACL can still recognize subclasses for class targets and class checks. We avoid domain/range materialization because it could give an incorrectly typed object the very type we want to check explicitly.</p>
 <p>There are <strong>14 target-bearing shapes</strong>. Thirteen have focus nodes in the core build. The optional DailyInteraction shape has none because activity was not loaded. The validator prints the counts, and the full verification compares seven structural entity counts with independent CSV-derived expectations.</p>
-<h3>Reading a validation result</h3>
+<h3 id="reading-a-validation-result">Reading a validation result</h3>
 <div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
@@ -419,7 +424,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 </tbody>
 </table></div>
 <p>Open the <a href="../outputs/shacl/full/report.html">full HTML report</a>. The CSV and Turtle versions retain the detailed results for inspection or another tool.</p>
-<h3>Why “conforms False” and “gate PASS” can appear together</h3>
+<h3 id="why-conforms-false-and-gate-pass-can-appear-together">Why “conforms False” and “gate PASS” can appear together</h3>
 <p>The strict validator reports <code>conforms=False</code> when validation results are present, including warnings. Our pipeline makes a separate policy decision:</p>
 <pre><code class="language-text">No violations + no unknown severities + no empty required targets
     -&gt; project gate passes
@@ -664,14 +669,14 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <tr>
 <td>Remote CI is a separate step</td>
 <td>A local workflow file does not prove a GitHub run passed or prevent merging by itself.</td>
-<td>Prepared the workflow and tested its local behavior. No remote run is claimed; branch protection must later require the check.</td>
+<td>Your screenshot shows the SHACL workflow succeeded at <code>afd8535</code> on main. The new integration workflow is prepared locally; branch protection remains a separate repository setting.</td>
 </tr>
 </tbody>
 </table></div>
 <p>The current issues that remain are primarily <strong>documented missingness and scope limitations</strong>. There is no outstanding blocking SHACL violation in the saved full graph. That statement concerns the implemented constraints, not every conceivable defect.</p>
 <h2 id="10-deliberate-errors-what-we-tested-and-learned">10. Deliberate errors: what we tested and learned</h2>
 <p>These are controlled examples, not errors found in real student records. The broken fixture and synthetic examples stay separate from the original data and database imports.</p>
-<h3>Ontology experiments</h3>
+<h3 id="ontology-experiments">Ontology experiments</h3>
 <div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
@@ -718,7 +723,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 </tr>
 </tbody>
 </table></div>
-<h3>SHACL experiments</h3>
+<h3 id="shacl-experiments">SHACL experiments</h3>
 <p>The tests remove required links, introduce two Student values, replace a typed link with an untyped identifier, use scores outside the permitted range, use wrong datatypes, duplicate contextual keys and connect records across different offerings. They also test unsupported assessment types, misplaced final outcomes, reversed dates, negative counts and missing type triples.</p>
 <p>Each test checks that the validator reacts <strong>as expected</strong>. A test of an invalid score passes when the shape flags that invalid score. It does not mean that the invalid score was accepted.</p>
 <p>Valid boundaries are also tested: scores 0 and 100 remain allowed, known negative day offsets remain allowed, and zero clicks remain allowed. Unknown scores remain warnings. This helps prevent a validator that rejects legitimate observations while catching bad ones.</p>
@@ -743,6 +748,11 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <td>Consistency/coherence, exact inferred identities against CSVs, vocabulary alignment, sample fidelity and reasoning semantics.</td>
 </tr>
 <tr>
+<td>PostgreSQL integration</td>
+<td style="text-align:right">23 per dataset</td>
+<td>Graph equality, six SQL/RDF/virtual answer comparisons, generated SQL, SQL constraints, SHACL and committed-update freshness.</td>
+</tr>
+<tr>
 <td>SHACL extension</td>
 <td style="text-align:right">37</td>
 <td>Valid/broken behavior, value boundaries, link integrity, target coverage, sample fidelity, CSV warning identities, source fingerprints and PROV-O input/output fingerprints.</td>
@@ -750,7 +760,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 </tbody>
 </table></div>
 <p>These are counts of checks, not counts of defects or percentages of complete coverage. Several checks address related aspects of the same model. Passing the suite supports the specific properties tested.</p>
-<p>The latest full SHACL result and its verification have matching report fingerprints when this walkthrough was prepared. The full run finished at <strong>2026-10-14T06:46:29.611529+00:00</strong> and the 37-check verification was recorded at <strong>2026-10-14T06:47:31.859554+00:00</strong> (UTC). The saved ontology report's input fingerprints also match the current ontology and data. The database counts below come from their earlier saved import checks; this explanatory task did not query live servers.</p>
+<p>The latest full SHACL result and its verification have matching report fingerprints when this walkthrough was prepared. The full run finished at <strong>2026-10-15T02:51:37.486501+00:00</strong> and the 37-check verification was recorded at <strong>2026-10-15T02:51:53.178880+00:00</strong> (UTC). The saved ontology report's input fingerprints also match the current ontology and data. The database counts below come from their earlier saved import checks; the Session 5 update did not recheck Neo4j or Fuseki. It did query the project PostgreSQL service through SQL and Ontop.</p>
 <p>An appendix below lists all 37 SHACL checks from the verification file, so you can connect the summary to the exact evidence.</p>
 <h2 id="12-what-neo4j-and-fuseki-results-mean">12. What Neo4j and Fuseki results mean</h2>
 <div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
@@ -782,16 +792,20 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <p>The OWL inference export is separate from both database imports. It is not automatically present merely because the server contains an RDFS or OWL file.</p>
 <p>For access, Neo4j's browser is on port <strong>7474</strong>, its driver/Bolt connection is on <strong>7687</strong>, and the configured Fuseki web service is on <strong>3030</strong>. The <a href="../README.md">README</a> explains startup, loading and example queries. These are configured addresses, not a claim that the services are running now.</p>
 <h2 id="13-provenance-how-we-know-which-run-produced-a-result">13. Provenance: how we know which run produced a result</h2>
-<p>There are two complementary records:</p>
+<p>There are three complementary records:</p>
 <ol>
-<li>The <a href="project-provenance.html">project provenance guide</a> explains data origins, transformations, authorship/reuse, decisions and limitations. Its JSON snapshot is a dated audit of files.</li>
-<li>Each SHACL output folder contains <code>provenance.ttl</code>, recording a real validation activity with input entities, a software agent and generated report entities.</li>
+<li><p>The <a href="project-provenance.html">project provenance guide</a> explains data origins, transformations, authorship/reuse, decisions and limitations. Its JSON snapshot is a dated audit of files.</p>
+</li>
+<li><p>Each SHACL output folder contains <code>provenance.ttl</code>, recording a real validation activity with input entities, a software agent and generated report entities.</p>
+</li>
+<li><p>Each Session 5 run records the six CSVs, mapping, SQL schema, code, questions, runtime download manifest, database fingerprint and generated outputs in its own <code>provenance.ttl</code>.</p>
+</li>
 </ol>
 <p>The validation run uses the data, schema and shapes; it records their SHA-256 fingerprints. The validator is identified by its code fingerprint and pySHACL version. The output report fingerprints are linked back to that run. Local start/end times are recorded in UTC.</p>
 <p>A fingerprint helps identify changed bytes. It is not a publisher signature, proof of truth or an automatically preserved history. An unchanged graph can also acquire a different file fingerprint if its Turtle serialization is reordered.</p>
-<p>During preparation of this explanation, a newer full validation run was observed, followed by a matching new 37-check verification. It retained the same 0-violation/5-warning outcome. This illustrates why a dated provenance snapshot and the current output directory can describe different runs without their counts disagreeing. The existing project-wide snapshot retains its earlier audit date; the current per-run files identify the newer activity.</p>
+<p>During preparation of this explanation, a newer full validation run was observed, followed by a matching new 37-check verification. It retained the same 0-violation/5-warning outcome. This illustrates why a dated provenance snapshot and the current output directory can describe different runs without their counts disagreeing. The project-wide snapshot was refreshed on 16 October, retaining the previous snapshot in docs/history/. Each integration run also has a unique output directory and its own PROV-O record.</p>
 <p>Run <code>python src/validation/show_provenance.py</code> to inspect the latest full validation record. Copy a run's output directory before rerunning if you need to preserve its historical reports. Per-triple provenance for the entire graph and an immutable history of every earlier stage have not been implemented.</p>
-<p><strong>After moving the project:</strong> the current project folder is <code>D:\DESKTOP\M2\kr-oulad</code>, with the course folder at <code>D:\DESKTOP\M2\KRR</code>. Earlier reports may still record the old <code>C:</code> locations because those were their inputs' locations when they ran. We preserve those historical records. To produce validation reports and verification for the new location, run the complete Session 4 sequence below; it regenerates the reports with current paths. Running only the verification against old reports may fail when their recorded absolute paths no longer exist. This walkthrough checks the saved verification fingerprints against the files at their new location; it does not claim a new validation run.</p>
+<p><strong>After moving the project:</strong> the current project folder is <code>D:\DESKTOP\M2\kr-oulad</code>, with the course folder at <code>D:\DESKTOP\M2\KRR</code>. Earlier reports may still record the old <code>C:</code> locations because those were their inputs' locations when they ran. We preserve those historical records. To produce validation reports and verification for the new location, run the complete Session 4 sequence below; it regenerates the reports with current paths. Running only the verification against old reports may fail when their recorded absolute paths no longer exist. This walkthrough checks the saved verification fingerprints against the files at their new location; the current Session 4 reports date from 15 October. Session 5 separately validates its new mapped graph in its own run directory.</p>
 <h2 id="14-how-to-inspect-and-repeat-the-work">14. How to inspect and repeat the work</h2>
 <p>For understanding, open these in order:</p>
 <ol>
@@ -812,6 +826,162 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 <h2 id="15-a-short-explanation-for-your-presentation">15. A short explanation for your presentation</h2>
 <p>“We selected two offerings of OULAD module AAA and profiled their related tables. We represented the data as RDF, keeping people separate from contextual enrollments and preserving missing values. RDFS describes the vocabulary, and OWL definitions let HermiT classify records such as successful enrollments and low scores. We checked those identities against the CSVs. We then added SHACL requirements and a gate: the full graph has no blocking violations and five documented completeness warnings. Deliberately broken examples show that the gate catches faults. The README, reports and provenance records make the workflow reproducible and explain its limits.”</p>
 <p>If asked why you did not simply remove the warnings, explain that a trustworthy graph should represent what is known and make missingness visible. A cleaner-looking report would not justify inventing marks or exam dates.</p>
+<h2 id="16-session-5-one-mapping-two-ways-to-answer">16. Session 5: one mapping, two ways to answer</h2>
+<p>The purpose is to show that a relational database can support our existing knowledge-graph questions in two ways. We can convert its rows to a saved graph, or query those rows through a virtual graph. PostgreSQL is the shared source; the R2RML file defines how relational keys, columns and joins become RDF identities, values and links.</p>
+<pre><code class="language-text">Six selected AAA CSVs → PostgreSQL tables and views
+                                  │
+                    one shared R2RML mapping
+                         ┌────────┴────────┐
+                         ↓                 ↓
+                    Morph-KGC            Ontop
+                         ↓                 ↓
+                 saved RDF snapshot   SPARQL rewritten to SQL
+                         ↓                 ↓
+                   RDFLib + SHACL     live PostgreSQL answers
+</code></pre>
+<h3 id="what-we-built-and-why">What we built and why</h3>
+<p>The loader retains all columns in the six selected tables, uses composite keys for enrollments, adds foreign-key/range constraints and commits a complete load transactionally. SQL views reconstruct relationships. For example, studentAssessment supplies student and assessment IDs; joining assessments supplies the module/offering needed to link the result to the correct enrollment. A separate loader check rejects records without that enrollment. We never join only on student ID where an offering is also required.</p>
+<p>The mapping constructs the same <code>https://example.org/oulad/id/</code> resources as the original Python conversion. Each <code>rr:logicalTable</code> selects rows; <code>rr:subjectMap</code> creates the subject; predicate-object maps emit values and relationship targets. This makes the transformation explicit and reusable by two engines. The database contains 2 offerings, 748 enrollment rows, 748 registration rows, 12 assessments, 3,149 assessment records and 413 resource rows. Its Student view deduplicates 712 student IDs.</p>
+<p><strong>Materialization:</strong> Morph-KGC reads the database and mapping, then writes 28,470 asserted triples. This is a snapshot at execution time. It can be stored, inspected or validated with the existing SHACL rules. It is different from computing new OWL class memberships.</p>
+<p><strong>Virtualization:</strong> Ontop translates each SPARQL query through the mapping into SQL and reads PostgreSQL. We retain the resulting CSV and generated SQL so you can inspect the translation. There is no need to populate a separate RDF store to execute these virtual queries. Returned answers are live relative to committed database state at query time, not a guarantee of one synchronized state across arbitrary concurrent requests.</p>
+<h3 id="the-questions-and-verified-results">The questions and verified results</h3>
+<p>The full integration run <strong>99568e1cd42b46aa8ddf05ac6d075a5b</strong> started <strong>2026-10-16T10:31:22.648570+00:00</strong> and completed its checks <strong>2026-10-16T10:33:10.438337+00:00</strong> (UTC). All <strong>23 checks passed</strong>. The fixture independently passed the same 23 checks on 299 triples.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Question file</th>
+<th style="text-align:right">Result rows</th>
+<th>Comparison</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01_enrollments</td>
+<td style="text-align:right">2</td>
+<td>Same answers in all four paths</td>
+</tr>
+<tr>
+<td>02_assessments</td>
+<td style="text-align:right">12</td>
+<td>Same answers in all four paths</td>
+</tr>
+<tr>
+<td>03_late_records</td>
+<td style="text-align:right">815</td>
+<td>Same answers in all four paths</td>
+</tr>
+<tr>
+<td>04_low_scores</td>
+<td style="text-align:right">90</td>
+<td>Same answers in all four paths</td>
+</tr>
+<tr>
+<td>05_outcomes</td>
+<td style="text-align:right">8</td>
+<td>Same answers in all four paths</td>
+</tr>
+<tr>
+<td>06_unknown_scores</td>
+<td style="text-align:right">3</td>
+<td>Same answers in all four paths</td>
+</tr>
+</tbody>
+</table></div>
+<p>The four paths are independent SQL, the original RDF conversion, mapped RDF and Ontop. We compare complete answer multisets, retaining duplicates while ignoring presentation order. Thus 815 means matching late-record answers, not just an equal total. The graph comparison also compares identities, predicates and typed values. Its raw-term difference is zero in this run; the comparator additionally documents equivalent RDF 1.1 string and numeric lexical forms.</p>
+<p>Enrollment counts are grouped by offering; outcome rows are offering/outcome groups. The three unknown-score answers are preserved records whose score property is absent. Low scores and late records are historical observations, not causal explanations or predictions.</p>
+<p>Question 2's original RDFS path is represented for Ontop by the explicit current assessment types TMA, CMA and Exam. Both versions return the same 12 assessments. No OWL ontology is passed to Ontop here; HermiT's Session 3 classifications remain a separately tested stage. Ontop's ontology support should not be equated with unrestricted OWL DL reasoning.</p>
+<h3 id="how-shacl-fits">How SHACL fits</h3>
+<p>The existing validator runs on the newly materialized graph plus the existing RDFS schema. It again reports <strong>0 violations and 5 warnings</strong>: three unknown scores and two unknown exam deadlines. The project gate passes with those visible warnings. The fixture has one unknown score and two unknown deadlines, so its warning count is three. A passing mapped graph does not prove every future virtual database state will pass: after changing source data, rematerialize and validate again.</p>
+<p>The integration tests also attempt a duplicate enrollment key, an out-of-range score of 101, and an unknown offering. PostgreSQL rejects all three; each attempt is rolled back. SQL constraints protect the table state, while SHACL checks the graph produced by the mapping. Neither substitutes for the other.</p>
+<h3 id="the-change-experiment-interpreted">The change experiment, interpreted</h3>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Stage</th>
+<th style="text-align:right">Low-score count</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original snapshot and virtual query</td>
+<td style="text-align:right">90</td>
+<td>Both describe the original teaching copy.</td>
+</tr>
+<tr>
+<td>Change one score to 99 and commit; query Ontop</td>
+<td style="text-align:right">89</td>
+<td>One record no longer meets score &lt; 40.</td>
+</tr>
+<tr>
+<td>Query the old RDF snapshot</td>
+<td style="text-align:right">90</td>
+<td>Saving a graph does not give it an automatic refresh mechanism.</td>
+</tr>
+<tr>
+<td>Materialize again and query the new graph</td>
+<td style="text-align:right">89</td>
+<td>A new snapshot reflects the committed update.</td>
+</tr>
+<tr>
+<td>Restore the edited value</td>
+<td style="text-align:right">Original database fingerprint restored</td>
+<td>The experiment leaves the teaching copy's data as it was.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The experiment runs in a separate <code>oulad_demo</code> schema; the main AAA tables are unchanged. It illustrates freshness, not a general speed ranking. Query timings include local Java startup, and the source is small. The fixture performs the same experiment with counts 2 → 1. Before/after teaching artifacts remain clearly labeled and should not be mistaken for the original dataset.</p>
+<h3 id="actual-implementation-challenges-and-fixes">Actual implementation challenges and fixes</h3>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Observed problem</th>
+<th>Cause</th>
+<th>Fix and evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Database fingerprint query failed with ORDER BY position 13</td>
+<td>The student_info table has 12 columns; a fixed positional sort was wrong.</td>
+<td>Sort full rows by their JSON representation; then hash columns and rows deterministically. Both datasets now pass the load-state checks.</td>
+</tr>
+<tr>
+<td>Fixture produced 300 triples rather than 299</td>
+<td>Morph emitted the text <code>None</code> as a decimal for a SQL NULL score.</td>
+<td>A separate <code>KnownScores</code> mapping selects only non-NULL scores. It retains the record and its other links. Exact graph equality and unknown-score answers now pass.</td>
+</tr>
+<tr>
+<td>Ontop rejected a Windows properties path as an invalid URI</td>
+<td>Backslashes in a relative path were interpreted as URI syntax.</td>
+<td>Pass forward-slash relative paths for mapping, properties, query and output arguments. All six virtual queries pass.</td>
+</tr>
+<tr>
+<td>Lab dependencies exceed Morph's declared upper bounds</td>
+<td>M2ENV uses newer RDFLib/PyOxigraph versions required by the course.</td>
+<td>Install the pinned Morph package with <code>--no-deps</code>, keep the existing versions, and verify the actual mapping/query workload. CI explicitly reproduces this tested combination.</td>
+</tr>
+<tr>
+<td>Need to compare changing database and saved graph meaningfully</td>
+<td>Different source states can create a false mapping discrepancy.</td>
+<td>Hold shared table locks during baseline comparisons; isolate intentional edits in a separate demo schema and restore the score in a finally block.</td>
+</tr>
+<tr>
+<td>Need to distinguish successful checks from remote CI</td>
+<td>Local execution does not demonstrate a GitHub runner result.</td>
+<td>Record 23 local checks for each dataset; prepare the separate workflow and label its remote execution pending. The earlier SHACL workflow success is independently identified as user-supplied screenshot evidence.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Failed implementation attempts retain their diagnostics in <code>outputs/integration/runs/</code>. The last-success pointers are updated only after every check and provenance verification succeeds. Known missing values remain documented limitations; no source value was invented to make the tests pass.</p>
+<h3 id="how-to-run-and-inspect-it">How to run and inspect it</h3>
+<pre><code class="language-powershell">conda activate M2ENV
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
+.\run-integration.ps1
+</code></pre>
+<p>Open the <a href="../outputs/integration/integration-results.html">integration results</a>, inspect <a href="../outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/summary.json">this run's summary</a>, then follow a question's CSV and generated SQL links. Read <a href="../README.md#13-session-5--postgresql-mappings-materialization-and-virtualization">README section 13</a> for prerequisites, individual commands, connection settings, fixture mode and troubleshooting.</p>
+<p>The new <a href="../.github/workflows/integration.yml">integration CI workflow</a> runs the committed fixture against PostgreSQL and retains evidence artifacts. It is prepared locally; no remote execution is claimed yet. The full data and its 28,470 triples are checked locally. The <a href="project-provenance.html#12-session-5-integration-provenance">provenance guide</a> records exact inputs, software, database fingerprints and both successful run IDs.</p>
+<p>For a presentation: “We now maintain one explicit relational-to-RDF mapping. Morph-KGC uses it to save a graph; Ontop uses it to answer SPARQL directly from PostgreSQL. We compared the graph and all six questions with the original pipeline, re-ran SHACL, and demonstrated why a saved graph needs refreshing after a committed source change.”</p>
 <h2 id="appendix-all-shacl-verification-checks">Appendix: all SHACL verification checks</h2>
 <p>The following table is inserted directly from the saved verification report when this guide is generated. It describes the checked behavior; it does not mean these deliberate faults occurred in the real dataset.</p>
 <div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
@@ -1011,4 +1181,4 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 </tbody>
 </table></div>
 <p>Evidence: <a href="../outputs/shacl/verification.json">SHACL verification JSON</a>, <a href="../outputs/ontology/verification.json">OWL verification JSON</a>, <a href="../outputs/verification.json">core verification JSON</a>, <a href="../report/first-run.md">dated run notes</a>, and <a href="questions-and-rules.md">source questions and rules</a>. The early run notes are chronological: statements that OWL/SHACL were future work refer to that earlier stage.</p>
-<div class="footer">Evidence-based explanation through Session 4. Results describe the selected AAA extract. Source and verification links are provided beside the relevant explanations.</div></main></div></body></html>
+</main></div></body></html>

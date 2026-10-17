@@ -1,0 +1,4 @@
+severity,focus_node,path,value,source_shape,constraint,message
+Warning,https://example.org/oulad/id/assessment-record/260355/1754,https://example.org/oulad/schema#score,,https://example.org/oulad/shapes#ScorePresence,MinCountConstraintComponent,Score is unknown: retain the record and review source completeness; do not replace with zero.
+Warning,https://example.org/oulad/id/assessment/1757,https://example.org/oulad/schema#deadlineDay,,https://example.org/oulad/shapes#DeadlinePresence,MinCountConstraintComponent,"Deadline is unknown: preserve the absence, including unknown exam dates."
+Warning,https://example.org/oulad/id/assessment/1763,https://example.org/oulad/schema#deadlineDay,,https://example.org/oulad/shapes#DeadlinePresence,MinCountConstraintComponent,"Deadline is unknown: preserve the absence, including unknown exam dates."

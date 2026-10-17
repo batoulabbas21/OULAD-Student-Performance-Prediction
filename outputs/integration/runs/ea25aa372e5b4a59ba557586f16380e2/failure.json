@@ -1,0 +1,7 @@
+{
+  "run_id": "ea25aa372e5b4a59ba557586f16380e2",
+  "failed_at_utc": "2026-10-16T05:31:47.769755+00:00",
+  "passed": false,
+  "error": "ORDER BY position 13 is not in select list\nLINE 1: ...* FROM \"student_info\" ORDER BY 1,2,3,4,5,6,7,8,9,10,11,12,13\n                                                                     ^\n",
+  "checks": []
+}

@@ -1,0 +1,293 @@
+{
+  "run_id": "3b6137f75df44a76938e7fefe114d905",
+  "started_at_utc": "2026-10-16T10:24:39.373981+00:00",
+  "finished_at_utc": "2026-10-16T10:25:18.112623+00:00",
+  "passed": true,
+  "scope": "fixture",
+  "connection": {
+    "host": "127.0.0.1",
+    "port": 5433,
+    "database": "oulad",
+    "schema": "oulad_fixture"
+  },
+  "database": {
+    "sha256": "7187137e74142870a1bee1924433254d1c6a32450c140aad5339e40db3a207b1",
+    "row_counts": {
+      "courses": 2,
+      "student_info": 7,
+      "student_registration": 7,
+      "assessments": 12,
+      "student_assessment": 26,
+      "vle": 2
+    }
+  },
+  "checks": [
+    {
+      "check": "Database matches the load receipt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Duplicate enrollment key is rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Score 101 is rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unknown offering is rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Mapped graph matches the reference RDF terms",
+      "passed": true,
+      "detail": {
+        "reference_triples": 299,
+        "mapped_triples": 299,
+        "only_reference": 0,
+        "only_mapped": 0,
+        "equal": true,
+        "raw_term_differences": {
+          "only_reference": 0,
+          "only_mapped": 0
+        },
+        "normalization": "RDF 1.1 simple literals and xsd:string are equivalent; canonical integer/decimal/boolean lexical forms. Datatype IRIs, language tags, IRI identities and values are preserved.",
+        "examples_only_reference": [],
+        "examples_only_mapped": []
+      }
+    },
+    {
+      "check": "Expected snapshot triple count",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "01_enrollments: SQL, RDF and virtual answers match",
+      "passed": true,
+      "detail": {
+        "rows": 2
+      }
+    },
+    {
+      "check": "01_enrollments: generated SQL captured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "02_assessments: SQL, RDF and virtual answers match",
+      "passed": true,
+      "detail": {
+        "rows": 12
+      }
+    },
+    {
+      "check": "02_assessments: generated SQL captured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "03_late_records: SQL, RDF and virtual answers match",
+      "passed": true,
+      "detail": {
+        "rows": 10
+      }
+    },
+    {
+      "check": "03_late_records: generated SQL captured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "04_low_scores: SQL, RDF and virtual answers match",
+      "passed": true,
+      "detail": {
+        "rows": 2
+      }
+    },
+    {
+      "check": "04_low_scores: generated SQL captured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "05_outcomes: SQL, RDF and virtual answers match",
+      "passed": true,
+      "detail": {
+        "rows": 5
+      }
+    },
+    {
+      "check": "05_outcomes: generated SQL captured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "06_unknown_scores: SQL, RDF and virtual answers match",
+      "passed": true,
+      "detail": {
+        "rows": 1
+      }
+    },
+    {
+      "check": "06_unknown_scores: generated SQL captured",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Mapped graph passes the existing SHACL gate",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Expected SHACL warnings remain visible",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Database unchanged during baseline comparisons",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Committed database changes and stale RDF snapshots are distinguished",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Evidence inputs unchanged during the run",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "query_comparisons": [
+    {
+      "query": "01_enrollments",
+      "rows": 2,
+      "all_equal": true,
+      "ontop_seconds": 16.701
+    },
+    {
+      "query": "02_assessments",
+      "rows": 12,
+      "all_equal": true,
+      "ontop_seconds": 2.055
+    },
+    {
+      "query": "03_late_records",
+      "rows": 10,
+      "all_equal": true,
+      "ontop_seconds": 2.002
+    },
+    {
+      "query": "04_low_scores",
+      "rows": 2,
+      "all_equal": true,
+      "ontop_seconds": 1.862
+    },
+    {
+      "query": "05_outcomes",
+      "rows": 5,
+      "all_equal": true,
+      "ontop_seconds": 1.968
+    },
+    {
+      "query": "06_unknown_scores",
+      "rows": 1,
+      "all_equal": true,
+      "ontop_seconds": 1.986
+    }
+  ],
+  "materialization": {
+    "finished_at_utc": "2026-10-16T10:24:41.990868+00:00",
+    "triples": 299,
+    "duration_seconds": 2.334,
+    "mapping_sha256": "6bca8a6e981c5bdfb4226ce9adba3699785b3704d200d5dc417fbe2e03deaf70",
+    "output_sha256": "fc41168193d3f617bc790d6e3cf5d6ca9af2a0eadd363ab1da73ab57bad916d3",
+    "inference": "none; asserted mapping output only"
+  },
+  "graph_comparison": {
+    "reference_triples": 299,
+    "mapped_triples": 299,
+    "only_reference": 0,
+    "only_mapped": 0,
+    "equal": true,
+    "raw_term_differences": {
+      "only_reference": 0,
+      "only_mapped": 0
+    },
+    "normalization": "RDF 1.1 simple literals and xsd:string are equivalent; canonical integer/decimal/boolean lexical forms. Datatype IRIs, language tags, IRI identities and values are preserved.",
+    "examples_only_reference": [],
+    "examples_only_mapped": []
+  },
+  "shacl": {
+    "severity_counts": {
+      "Violation": 0,
+      "Warning": 3,
+      "Info": 0
+    },
+    "gate_passed": true,
+    "run_id": "70f0b9d9d83149e1a5af987958774579"
+  },
+  "freshness": {
+    "teaching_schema": "oulad_fixture_demo",
+    "original_score": "38.0",
+    "temporary_score": "99",
+    "virtual_before": 2,
+    "virtual_after_commit": 1,
+    "old_snapshot_after_commit": 2,
+    "new_snapshot": 1,
+    "database_restored": true,
+    "passed": true,
+    "note": "Separate database schema; example outputs retain before/after teaching states."
+  },
+  "source_sha256": {
+    "evaluation/fixtures/integration/expected.ttl": "f7414cdfa727a806d7934423cd2c3b2a1d7d3fd9d7faad58c80d8aa72f06f800",
+    "mappings/oulad-mapping.ttl": "6bca8a6e981c5bdfb4226ce9adba3699785b3704d200d5dc417fbe2e03deaf70",
+    "config/postgres/schema.sql": "bdf675841780d8f9a7d868a5408f42ba97e845ea075dd14b5f10fa63ddf2a242",
+    "ontology/education.rdfs.ttl": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+    "shapes/oulad-shapes.ttl": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0",
+    "src/validation/validate.py": "c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d",
+    "src/integration/common.py": "ed95ea788b19ff0dbf454a1b1938baf920bf4343509952aab129b2791e2bf95f",
+    "src/integration/compare.py": "4879f543622b1c2f35e72739dfa62e31ab99ce96722d0886dcc5c40541eac308",
+    "src/integration/freshness.py": "3a3e99fd96e6686ae9d878b748b33f4562464eb06fd5b26068b150952ff4378d",
+    "src/integration/init_config.py": "d1283d0b8ff556dbfb5fa49b1ae280b29241f33c87d4672b3ac2ce733dc04d8a",
+    "src/integration/load_database.py": "8f4365c75fa6041baa4aac3a1b5d5bb10c3914d8ce669b79238d19320593eb0f",
+    "src/integration/materialize.py": "fa2615976ef0d862471d99a12d168ce60ef0a575365f266d27cba9e15ac684be",
+    "src/integration/provenance.py": "869a554499895dcbf110b38fc4a60c2a0795d27207ed32f8b74f587a51adcdb6",
+    "src/integration/run.py": "669ea38826f482ef5e3e591761bfd9d6fe16fdeab54d8d6212fc9dcde93b6523",
+    "src/integration/run_ontop.py": "88055b71dab6bb3ff561dc4f2d6e83fe23bd5f08de1404bce1d570a977580add",
+    "src/integration/setup_ontop.py": "573bc44c2ffe3cac4e7518d793964b2757f64397fc649894eaafd45fddf16ec5",
+    "evaluation/fixtures/integration/assessments.csv": "c331b9eb8cbddb982d97f47ff4e07760bfa648025214b089ac70d40c13fa4896",
+    "evaluation/fixtures/integration/courses.csv": "f52e7042dffa402110e0fb1086da3ba7569a6de76c496e09ffaf7d1dcd49e4eb",
+    "evaluation/fixtures/integration/studentAssessment.csv": "1f658060f209358f87c62e0ef7d45fe9d3bfc69c9657aed4331db2fb424f1dcd",
+    "evaluation/fixtures/integration/studentInfo.csv": "8fca678b4da0fb9766bbea0808357f7dfab7b3f3d6c5c1c8bd08834d88b8b4ae",
+    "evaluation/fixtures/integration/studentRegistration.csv": "b504ce2af973ee45b6be5a25c2a0bd0bdc485d9cca3e9e7e1a963cb15f3b1a10",
+    "evaluation/fixtures/integration/vle.csv": "bcee15041117089f06b5d2c873dd5acca8daf3dc81302ee1fdcc537253e34857",
+    "queries/01_enrollments.rq": "532154ca048231dd3fa23b5616c41a023a8ccbfd1278e900cc68f861bb63a101",
+    "queries/02_assessments.rq": "47e928e20f8d686543438cf381b8cd338c7952a20b6d680e55ae0ba4a0feacac",
+    "queries/03_late_records.rq": "f36467d89b7c86226ec590f86467cdfb26cb45f13308b200c5c966537b8df593",
+    "queries/04_low_scores.rq": "d9e598aac14dd5261895fcabbf65a35aac3e3f2acb2c3af2a72f92753e68678d",
+    "queries/05_outcomes.rq": "8f0b1e82ccc04a49881a34e7834c07ea2b2b71966bb6afaff5f70e79413f7cea",
+    "queries/06_unknown_scores.rq": "541066d4e109f150aab3bd2966d93abdcdcc074e45150d156f69e4da315d50b6",
+    "queries/integration/02_assessments.rq": "4b9264faffdcea0dcc7d63d0c87d2c0165cadf13ae701f43b2163fcb0c4a8901",
+    "queries/integration/sql/01_enrollments.sql": "1c93e124651d91c51b686e06ee3a0d12f08a81d84c84c2bf2bc178ca7263cf2e",
+    "queries/integration/sql/02_assessments.sql": "11dd2993ec89e52e9f101b6707082279b9b8beb276f8814d7dfd445af44017f9",
+    "queries/integration/sql/03_late_records.sql": "9025d2bbf9c24b01aeb40837723d581342643b8cf5986748434d4523d804007b",
+    "queries/integration/sql/04_low_scores.sql": "cc3b81a802a397a6b2d9190ae276ed0eee0603577bfdd49dc2e2839f0d2f300f",
+    "queries/integration/sql/05_outcomes.sql": "223f166600c3b439194cfe9e347ed5ceff035d5cde68ba632782f6012c113d84",
+    "queries/integration/sql/06_unknown_scores.sql": "3f5f754c5f16d2b20acffb7fa6fd401b939fab14f232c5891f6761493957a7d3"
+  },
+  "versions": {
+    "morph-kgc": "2.10.0",
+    "rdflib": "7.6.0",
+    "pyshacl": "0.40.1",
+    "SQLAlchemy": "2.0.54",
+    "psycopg2-binary": "2.9.13"
+  },
+  "ontop_version": "5.5.0",
+  "inference_policy": "Asserted mapping comparison; no ontology supplied to Ontop; RDFS hierarchy available to local query 02 and SHACL."
+}

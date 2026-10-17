@@ -1,0 +1,1 @@
+SELECT 'https://example.org/oulad/id/offering/' || code_module || '/' || code_presentation AS offering, final_result AS outcome, count(*) AS count FROM student_info GROUP BY code_module,code_presentation,final_result;

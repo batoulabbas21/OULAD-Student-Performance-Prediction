@@ -1,0 +1,13 @@
+offering,assessment,type,deadline,weight
+https://example.org/oulad/id/offering/AAA/2013J,https://example.org/oulad/id/assessment/1752,https://example.org/oulad/schema#TutorMarkedAssessment,19,10.0
+https://example.org/oulad/id/offering/AAA/2013J,https://example.org/oulad/id/assessment/1753,https://example.org/oulad/schema#TutorMarkedAssessment,54,20.0
+https://example.org/oulad/id/offering/AAA/2013J,https://example.org/oulad/id/assessment/1754,https://example.org/oulad/schema#TutorMarkedAssessment,117,20.0
+https://example.org/oulad/id/offering/AAA/2013J,https://example.org/oulad/id/assessment/1755,https://example.org/oulad/schema#TutorMarkedAssessment,166,20.0
+https://example.org/oulad/id/offering/AAA/2013J,https://example.org/oulad/id/assessment/1756,https://example.org/oulad/schema#TutorMarkedAssessment,215,30.0
+https://example.org/oulad/id/offering/AAA/2013J,https://example.org/oulad/id/assessment/1757,https://example.org/oulad/schema#Exam,,100.0
+https://example.org/oulad/id/offering/AAA/2014J,https://example.org/oulad/id/assessment/1758,https://example.org/oulad/schema#TutorMarkedAssessment,19,10.0
+https://example.org/oulad/id/offering/AAA/2014J,https://example.org/oulad/id/assessment/1759,https://example.org/oulad/schema#TutorMarkedAssessment,54,20.0
+https://example.org/oulad/id/offering/AAA/2014J,https://example.org/oulad/id/assessment/1760,https://example.org/oulad/schema#TutorMarkedAssessment,117,20.0
+https://example.org/oulad/id/offering/AAA/2014J,https://example.org/oulad/id/assessment/1761,https://example.org/oulad/schema#TutorMarkedAssessment,166,20.0
+https://example.org/oulad/id/offering/AAA/2014J,https://example.org/oulad/id/assessment/1762,https://example.org/oulad/schema#TutorMarkedAssessment,215,30.0
+https://example.org/oulad/id/offering/AAA/2014J,https://example.org/oulad/id/assessment/1763,https://example.org/oulad/schema#Exam,,100.0

@@ -1,0 +1,19 @@
+Focus nodes    12: Assessment structure and subtype
+Focus nodes    12: Review unknown deadlines
+Focus nodes   748: Enrollment structure and key
+Focus nodes     0: Optional daily activity (optional)
+Focus nodes     1: Module identity
+Focus nodes     2: Offering structure and key
+Focus nodes  3149: Record and enrollment use the same offering
+Focus nodes  3149: Assessment record structure, score and key
+Focus nodes   748: Review registration dates
+Focus nodes   413: Learning resource structure
+Focus nodes  3149: Review unknown scores
+Focus nodes   712: Student identity
+Focus nodes  3149: Review unknown submission days
+Focus nodes   748: Review withdrawal status versus date
+Strict SHACL conforms: False
+Results: {'Violation': 0, 'Warning': 5, 'Info': 0}
+GATE: PASS
+Report: D:\DESKTOP\M2\kr-oulad\outputs\integration\runs\7c0b60e5ae2b4e7da058f851b1c8286c\shacl\report.html
+

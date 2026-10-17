@@ -1,0 +1,16 @@
+{
+  "started_at_utc": "2026-10-16T10:33:31.290982+00:00",
+  "finished_at_utc": "2026-10-16T10:33:33.149970+00:00",
+  "duration_seconds": 1.859,
+  "rows": 1,
+  "query_sha256": "3e0c37972ea93aeba4e21b4815b895087ef87f73dd8054d40ba6d20c14a5b9ba",
+  "mapping_sha256": "6bca8a6e981c5bdfb4226ce9adba3699785b3704d200d5dc417fbe2e03deaf70",
+  "sql_captured": true,
+  "ontology_reasoning": "disabled; no -t ontology argument",
+  "connection": {
+    "host": "127.0.0.1",
+    "port": 5433,
+    "database": "oulad",
+    "schema": "oulad_fixture_demo"
+  }
+}

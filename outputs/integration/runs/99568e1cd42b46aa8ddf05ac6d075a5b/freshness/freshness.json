@@ -1,0 +1,12 @@
+{
+  "teaching_schema": "oulad_demo",
+  "original_score": "38.0",
+  "temporary_score": "99",
+  "virtual_before": 90,
+  "virtual_after_commit": 89,
+  "old_snapshot_after_commit": 90,
+  "new_snapshot": 89,
+  "database_restored": true,
+  "passed": true,
+  "note": "Separate database schema; example outputs retain before/after teaching states."
+}

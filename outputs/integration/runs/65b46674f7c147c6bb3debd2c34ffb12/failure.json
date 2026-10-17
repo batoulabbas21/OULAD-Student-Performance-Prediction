@@ -1,0 +1,51 @@
+{
+  "run_id": "65b46674f7c147c6bb3debd2c34ffb12",
+  "failed_at_utc": "2026-10-16T05:33:14.529079+00:00",
+  "passed": false,
+  "error": "Ontop failed for 01_enrollments; inspect D:\\DESKTOP\\M2\\kr-oulad\\outputs\\integration\\runs\\65b46674f7c147c6bb3debd2c34ffb12\\virtual\\01_enrollments.log",
+  "checks": [
+    {
+      "check": "Database matches the load receipt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Duplicate enrollment key is rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Score 101 is rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unknown offering is rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Mapped graph matches the reference RDF terms",
+      "passed": true,
+      "detail": {
+        "reference_triples": 299,
+        "mapped_triples": 299,
+        "only_reference": 0,
+        "only_mapped": 0,
+        "equal": true,
+        "raw_term_differences": {
+          "only_reference": 0,
+          "only_mapped": 0
+        },
+        "normalization": "RDF 1.1 simple literals and xsd:string are equivalent; canonical integer/decimal/boolean lexical forms. Datatype IRIs, language tags, IRI identities and values are preserved.",
+        "examples_only_reference": [],
+        "examples_only_mapped": []
+      }
+    },
+    {
+      "check": "Expected snapshot triple count",
+      "passed": true,
+      "detail": null
+    }
+  ]
+}

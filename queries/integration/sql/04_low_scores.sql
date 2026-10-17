@@ -1,0 +1,1 @@
+SELECT 'https://example.org/oulad/id/enrollment/' || code_module || '/' || code_presentation || '/' || id_student AS enrollment, 'https://example.org/oulad/id/assessment/' || id_assessment AS assessment, score, is_banked AS banked FROM student_assessment JOIN assessments USING(id_assessment) WHERE score<40;

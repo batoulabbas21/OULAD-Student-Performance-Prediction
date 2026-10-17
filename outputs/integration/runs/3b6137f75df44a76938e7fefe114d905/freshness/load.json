@@ -1,0 +1,31 @@
+{
+  "started_at_utc": "2026-10-16T10:25:10.220034+00:00",
+  "finished_at_utc": "2026-10-16T10:25:10.295441+00:00",
+  "connection": {
+    "host": "127.0.0.1",
+    "port": 5433,
+    "database": "oulad",
+    "schema": "oulad_fixture_demo"
+  },
+  "inputs": {
+    "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\integration\\courses.csv": "f52e7042dffa402110e0fb1086da3ba7569a6de76c496e09ffaf7d1dcd49e4eb",
+    "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\integration\\studentInfo.csv": "8fca678b4da0fb9766bbea0808357f7dfab7b3f3d6c5c1c8bd08834d88b8b4ae",
+    "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\integration\\studentRegistration.csv": "b504ce2af973ee45b6be5a25c2a0bd0bdc485d9cca3e9e7e1a963cb15f3b1a10",
+    "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\integration\\assessments.csv": "c331b9eb8cbddb982d97f47ff4e07760bfa648025214b089ac70d40c13fa4896",
+    "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\integration\\studentAssessment.csv": "1f658060f209358f87c62e0ef7d45fe9d3bfc69c9657aed4331db2fb424f1dcd",
+    "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\integration\\vle.csv": "bcee15041117089f06b5d2c873dd5acca8daf3dc81302ee1fdcc537253e34857"
+  },
+  "schema_sha256": "bdf675841780d8f9a7d868a5408f42ba97e845ea075dd14b5f10fa63ddf2a242",
+  "database": {
+    "sha256": "7187137e74142870a1bee1924433254d1c6a32450c140aad5339e40db3a207b1",
+    "row_counts": {
+      "courses": 2,
+      "student_info": 7,
+      "student_registration": 7,
+      "assessments": 12,
+      "student_assessment": 26,
+      "vle": 2
+    }
+  },
+  "mode": "replace-six-managed-tables-in-one-transaction"
+}

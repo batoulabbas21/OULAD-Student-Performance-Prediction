@@ -1,0 +1,11 @@
+
+it.unibz.inf.ontop.exception.InvalidOntopConfigurationException: Invalid property file path: Illegal character in path at index 8: .runtime\connections\oulad_fixture.properties
+	at it.unibz.inf.ontop.injection.impl.OntopModelConfigurationImpl.extractPropertyFile(OntopModelConfigurationImpl.java:225)
+	at it.unibz.inf.ontop.injection.impl.OntopModelConfigurationImpl$DefaultOntopModelBuilderFragment.propertyFile(OntopModelConfigurationImpl.java:156)
+	at it.unibz.inf.ontop.injection.impl.OntopKGQueryConfigurationImpl$OntopKGQueryBuilderMixin.propertyFile(OntopKGQueryConfigurationImpl.java:106)
+	at it.unibz.inf.ontop.injection.impl.OntopSQLOWLAPIConfigurationImpl$BuilderImpl.propertyFile(OntopSQLOWLAPIConfigurationImpl.java:158)
+	at it.unibz.inf.ontop.injection.impl.OntopKGQueryConfigurationImpl$OntopKGQueryBuilderMixin.propertyFile(OntopKGQueryConfigurationImpl.java:59)
+	at it.unibz.inf.ontop.cli.OntopQuery.run(OntopQuery.java:65)
+	at it.unibz.inf.ontop.cli.Ontop.main(Ontop.java:19)
+Exception in thread "main" java.lang.AssertionError
+	at it.unibz.inf.ontop.cli.Ontop.main(Ontop.java:31)

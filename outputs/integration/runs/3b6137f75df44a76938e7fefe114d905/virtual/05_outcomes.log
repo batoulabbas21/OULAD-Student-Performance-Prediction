@@ -1,0 +1,428 @@
+13:25:05.720 |-DEBUG in o.e.r.q.p.s.a.CustomAggregateFunctionRegistry - Registered service class org.eclipse.rdf4j.query.algebra.evaluation.function.aggregate.stdev.PopulationStandardDeviationAggregateFactory
+13:25:05.723 |-DEBUG in o.e.r.q.p.s.a.CustomAggregateFunctionRegistry - Registered service class org.eclipse.rdf4j.query.algebra.evaluation.function.aggregate.stdev.StandardDeviationAggregateFactory
+13:25:05.723 |-DEBUG in o.e.r.q.p.s.a.CustomAggregateFunctionRegistry - Registered service class org.eclipse.rdf4j.query.algebra.evaluation.function.aggregate.variance.PopulationVarianceAggregateFactory
+13:25:05.723 |-DEBUG in o.e.r.q.p.s.a.CustomAggregateFunctionRegistry - Registered service class org.eclipse.rdf4j.query.algebra.evaluation.function.aggregate.variance.VarianceAggregateFactory
+13:25:05.785 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.model.OWLOntologyManager
+13:25:05.785 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyManager
+13:25:05.785 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyManager
+13:25:05.785 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyManager
+13:25:05.799 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.model.OWLDataFactory
+13:25:05.799 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLDataFactory
+13:25:05.799 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLDataFactory
+13:25:05.799 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLDataFactory
+13:25:05.837 |-DEBUG in o.s.owlapi.utilities.Injector - Injecting object uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl@1a96d94c
+13:25:05.843 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.model.OWLOntologyIRIMapper
+13:25:05.843 |-DEBUG in o.s.owlapi.utilities.Injector - No files found for META-INF/services/org.semanticweb.owlapi.model.OWLOntologyIRIMapper
+13:25:05.843 |-DEBUG in o.s.owlapi.utilities.Injector - Injecting values [[]] on method public void uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl.setIRIMappers(java.util.Set).
+13:25:05.843 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.model.OWLOntologyFactory
+13:25:05.843 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyFactory
+13:25:05.843 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyFactory
+13:25:05.843 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-impl-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLOntologyFactory
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Injecting values [[uk.ac.manchester.cs.owl.owlapi.OWLOntologyFactoryImpl@18578491]] on method public void uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl.setOntologyFactories(java.util.Set).
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:25:05.847 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.io.OWLParserFactory
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Injecting values [[org.semanticweb.owlapi.rio.RioN3ParserFactory@3c3820bb, org.semanticweb.owlapi.functional.parser.OWLFunctionalSyntaxOWLParserFactory@58f437b0, org.semanticweb.owlapi.rio.RioTrigParserFactory@54402c04, org.semanticweb.owlapi.rio.RioNTriplesParserFactory@d1d8e1a, org.semanticweb.owlapi.oboformat.OBOFormatOWLAPIParserFactory@5a8ab2, org.semanticweb.owlapi.rio.RioRDFaParserFactory@30c1da48, org.semanticweb.owlapi.owlxml.parser.OWLXMLParserFactory@354e7004, org.semanticweb.owlapi.rio.RioTurtleParserFactory@7d0d91a1, org.semanticweb.owlapi.rdf.turtle.parser.TurtleOntologyParserFactory@20d87335, org.semanticweb.owlapi.dlsyntax.parser.DLSyntaxOWLParserFactory@2e1ddc90, org.semanticweb.owlapi.rio.RioBinaryRdfParserFactory@216e9ca3, org.semanticweb.owlapi.krss2.parser.KRSS2OWLParserFactory@43f9dd56, org.semanticweb.owlapi.manchestersyntax.parser.ManchesterOWLSyntaxOntologyParserFactory@6ab4a5b, org.semanticweb.owlapi.rio.RioTrixParserFactory@6a6f6c7e, org.semanticweb.owlapi.rio.RioNQuadsParserFactory@427ae189, org.semanticweb.owlapi.rio.RioJsonLDParserFactory@4c5228e7, org.semanticweb.owlapi.rio.RioJsonParserFactory@257e0827, org.semanticweb.owlapi.rio.RioHDTRdfParserFactory@7f6874f2, org.semanticweb.owlapi.rdf.rdfxml.parser.RDFXMLParserFactory@2687725a, org.semanticweb.owlapi.rio.RioRDFXMLParserFactory@3fd9e827]] on method public void uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl.setOntologyParsers(java.util.Set).
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Loading file META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-parsers-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-oboformat-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:25:05.854 |-DEBUG in o.s.owlapi.utilities.Injector - Loading URL for service jar:file:/D:/DESKTOP/M2/kr-oulad/.runtime/ontop/lib/owlapi-rio-5.5.1.jar!/META-INF/services/org.semanticweb.owlapi.model.OWLStorerFactory
+13:25:05.860 |-DEBUG in o.s.owlapi.utilities.Injector - Injecting values [[org.semanticweb.owlapi.dlsyntax.renderer.DLSyntaxHTMLStorerFactory@7c2dfa2, org.semanticweb.owlapi.rio.RioBinaryRdfStorerFactory@59ce792e, org.semanticweb.owlapi.rio.RioNTriplesStorerFactory@1bb15351, org.semanticweb.owlapi.latex.renderer.LatexStorerFactory@326d27ac, org.semanticweb.owlapi.rdf.turtle.renderer.TurtleStorerFactory@285c6918, org.semanticweb.owlapi.rio.RioJsonStorerFactory@50f097b5, org.semanticweb.owlapi.rio.RioRDFXMLStorerFactory@4fa822ad, org.semanticweb.owlapi.owlxml.renderer.OWLXMLStorerFactory@7ee8130e, org.semanticweb.owlapi.manchestersyntax.renderer.ManchesterSyntaxStorerFactory@4288d98e, org.semanticweb.owlapi.oboformat.OBOFormatStorerFactory@4b0b64cc, org.semanticweb.owlapi.rio.RioTrigStorerFactory@597f0937, org.semanticweb.owlapi.dlsyntax.renderer.DLSyntaxStorerFactory@661d88a, org.semanticweb.owlapi.rdf.rdfxml.renderer.RDFXMLStorerFactory@44b21f9f, org.semanticweb.owlapi.rio.RioN3StorerFactory@7add838c, org.semanticweb.owlapi.rio.RioTrixStorerFactory@7ad1caa2, org.semanticweb.owlapi.krss2.renderer.KRSS2OWLSyntaxStorerFactory@169268a7, org.semanticweb.owlapi.functional.renderer.FunctionalSyntaxStorerFactory@6296474f, org.semanticweb.owlapi.rio.RioJsonLDStorerFactory@404db674, org.semanticweb.owlapi.rio.RioTurtleStorerFactory@6b6b3572, org.semanticweb.owlapi.rio.RioHDTRdfStorerFactory@4860827a, org.semanticweb.owlapi.rio.RioNQuadsStorerFactory@3662bdff]] on method public void uk.ac.manchester.cs.owl.owlapi.OWLOntologyManagerImpl.setOntologyStorers(java.util.Set).
+13:25:05.868 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.rdfjson.RDFJSONParserFactory
+13:25:05.875 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.semanticweb.owlapi.rio.RioFunctionalSyntaxParserFactory
+13:25:05.875 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.semanticweb.owlapi.rio.RioManchesterSyntaxParserFactory
+13:25:05.875 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.semanticweb.owlapi.rio.RioOWLXMLParserFactory
+13:25:05.875 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.binary.BinaryRDFParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.n3.N3ParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.trix.TriXParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.hdt.HDTParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.turtle.TurtleParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.turtlestar.TurtleStarParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.jsonld.JSONLDParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.ndjsonld.NDJSONLDParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.ntriples.NTriplesParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.rdfxml.RDFXMLParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.nquads.NQuadsParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.trig.TriGParserFactory
+13:25:05.878 |-DEBUG in o.e.rdf4j.rio.RDFParserRegistry - Registered service class org.eclipse.rdf4j.rio.trigstar.TriGStarParserFactory
+13:25:05.886 |-DEBUG in o.e.r.rio.DatatypeHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.datatypes.XMLSchemaDatatypeHandler
+13:25:05.886 |-DEBUG in o.e.r.rio.DatatypeHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.datatypes.RDFDatatypeHandler
+13:25:05.888 |-DEBUG in o.e.r.rio.DatatypeHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.datatypes.DBPediaDatatypeHandler
+13:25:05.888 |-DEBUG in o.e.r.rio.DatatypeHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.datatypes.VirtuosoGeometryDatatypeHandler
+13:25:05.889 |-DEBUG in o.e.r.rio.DatatypeHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.datatypes.GeoSPARQLDatatypeHandler
+13:25:05.889 |-DEBUG in o.e.r.rio.LanguageHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.languages.RFC3066LanguageHandler
+13:25:05.889 |-DEBUG in o.e.r.rio.LanguageHandlerRegistry - Registered service class org.eclipse.rdf4j.rio.languages.BCP47LanguageHandler
+13:25:06.133 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 2 ms/column
+13:25:06.160 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 4 ms/column
+13:25:06.165 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 0 ms/column
+13:25:06.172 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 0 ms/column
+13:25:06.180 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 4 ms/column
+13:25:06.187 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 0 ms/column
+13:25:06.194 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Column info extracted in 0 ms/column
+13:25:06.195 |-DEBUG in i.u.i.o.s.m.p.i.SQLPPMappingConverterImpl - Original mapping size: 34
+13:25:06.200 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:25:06.204 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:25:06.212 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:25:06.214 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:25:06.216 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:25:06.222 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:25:06.224 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:25:06.226 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:25:06.231 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:25:06.233 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:25:06.234 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:25:06.240 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:25:06.242 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:25:06.244 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:25:06.251 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:25:06.253 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:25:06.254 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:25:06.261 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:25:06.262 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Primary key(s) extracted in 0 ms/column
+13:25:06.264 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Unique constraints extracted in 0 ms/column
+13:25:06.270 |-DEBUG in i.u.i.o.d.i.AbstractDBMetadataProvider - [DB-METADATA] Foreign keys extracted in 0 ms/column
+13:25:06.394 |-DEBUG in i.u.i.o.s.m.t.i.ABoxFactIntoMappingConverterImpl - Transformed 0 rdfFacts into 0 mappingAssertions
+13:25:06.546 |-DEBUG in i.u.i.o.a.c.p.i.TomcatConnectionPool - Connection Pool Properties:
+13:25:06.546 |-DEBUG in i.u.i.o.a.c.p.i.TomcatConnectionPool - Start size: 2
+13:25:06.546 |-DEBUG in i.u.i.o.a.c.p.i.TomcatConnectionPool - Max size: 20
+13:25:06.547 |-DEBUG in i.u.i.o.a.c.p.i.TomcatConnectionPool - Remove abandoned connections: false
+13:25:06.547 |-INFO  in i.u.i.o.a.impl.OntopQueryEngineImpl - Ontop has completed the setup and it is ready for query answering!
+13:25:06.548 |-INFO  in i.u.i.o.r.r.i.OntopVirtualRepository - Ontop virtual repository initialized successfully!
+13:25:06.587 |-DEBUG in o.e.r.q.parser.QueryParserRegistry - Registered service class org.eclipse.rdf4j.query.parser.sparql.SPARQLParserFactory
+13:25:06.648 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - SPARQL query:
+PREFIX edu: <https://example.org/oulad/schema#>
+SELECT ?offering ?outcome (COUNT(DISTINCT ?enrollment) AS ?count)
+WHERE { ?enrollment edu:inOffering ?offering ; edu:finalResult ?outcome }
+GROUP BY ?offering ?outcome ORDER BY ?offering ?outcome
+
+13:25:06.648 |-DEBUG in i.u.i.o.q.t.i.RDF4JQueryTranslatorImpl - Parsed query:
+QueryRoot
+   Projection
+      ProjectionElemList
+         ProjectionElem "offering"
+         ProjectionElem "outcome"
+         ProjectionElem "count"
+      Order
+         OrderElem (ASC)
+            Var (name=offering)
+         OrderElem (ASC)
+            Var (name=outcome)
+         Extension
+            Group (offering, outcome)
+               Join
+                  StatementPattern
+                     Var (name=enrollment)
+                     Var (name=_const_73e68fe9_uri, value=https://example.org/oulad/schema#inOffering, anonymous)
+                     Var (name=offering)
+                  StatementPattern
+                     Var (name=enrollment)
+                     Var (name=_const_8df87555_uri, value=https://example.org/oulad/schema#finalResult, anonymous)
+                     Var (name=outcome)
+               GroupElem (count)
+                  Count (Distinct)
+                     Var (name=enrollment)
+            ExtensionElem (count)
+               Count (Distinct)
+                  Var (name=enrollment)
+
+13:25:06.661 |-DEBUG in i.u.i.o.q.t.i.RDF4JQueryTranslatorImpl - IQTree (before normalization):
+ORDER BY [ASC(offering), ASC(outcome)]
+   CONSTRUCT [offering, outcome, count] []
+      AGGREGATE [offering, outcome] [count/SP_COUNT_1_DISTINCT(enrollment)]
+         JOIN
+            INTENSIONAL triple(enrollment, <https://example.org/oulad/schema#inOffering>, offering)
+            INTENSIONAL triple(enrollment, <https://example.org/oulad/schema#finalResult>, outcome)
+
+13:25:06.661 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Parsed query converted into IQ (after normalization):
+ans1(offering, outcome, count)
+ORDER BY [ASC(offering), ASC(outcome)]
+   AGGREGATE [offering, outcome] [count/SP_COUNT_1_DISTINCT(enrollment)]
+      JOIN
+         INTENSIONAL triple(enrollment, <https://example.org/oulad/schema#inOffering>, offering)
+         INTENSIONAL triple(enrollment, <https://example.org/oulad/schema#finalResult>, outcome)
+
+
+13:25:06.661 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Start the rewriting process...
+13:25:06.667 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Rewritten IQ:
+ans1(offering, outcome, count)
+ORDER BY [ASC(offering), ASC(outcome)]
+   AGGREGATE [offering, outcome] [count/SP_COUNT_1_DISTINCT(enrollment)]
+      JOIN
+         INTENSIONAL triple(enrollment, <https://example.org/oulad/schema#inOffering>, offering)
+         INTENSIONAL triple(enrollment, <https://example.org/oulad/schema#finalResult>, outcome)
+
+
+13:25:06.668 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - IQ after nodeInGraph simplification:
+ans1(offering, outcome, count)
+ORDER BY [ASC(offering), ASC(outcome)]
+   AGGREGATE [offering, outcome] [count/SP_COUNT_1_DISTINCT(enrollment)]
+      JOIN
+         INTENSIONAL triple(enrollment, <https://example.org/oulad/schema#inOffering>, offering)
+         INTENSIONAL triple(enrollment, <https://example.org/oulad/schema#finalResult>, outcome)
+
+
+13:25:06.668 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Start the unfolding...
+13:25:06.673 |-DEBUG in i.u.i.o.q.u.i.TwoPhaseQueryUnfolder - First phase query unfolding time: 5
+13:25:06.673 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Unfolded query:
+ans1(offering, outcome, count)
+ORDER BY [ASC(offering), ASC(outcome)]
+   AGGREGATE [offering, outcome] [count/SP_COUNT_1_DISTINCT(enrollment)]
+      JOIN
+         CONSTRUCT [enrollment, offering] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), enrollment/RDF(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28),IRI)]
+            DISTINCT
+               FILTER AND3(IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+                  EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28)
+         CONSTRUCT [enrollment, outcome] [outcome/RDF(final_result1m21,xsd:string), enrollment/RDF(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m21,code_presentation1m21,id_student1m21),IRI)]
+            DISTINCT
+               FILTER AND4(IS_NOT_NULL(code_module1m21),IS_NOT_NULL(code_presentation1m21),IS_NOT_NULL(id_student1m21),IS_NOT_NULL(final_result1m21))
+                  EXTENSIONAL "v_enrollments"(0:code_module1m21,1:code_presentation1m21,2:id_student1m21,11:final_result1m21)
+
+
+13:25:06.688 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New lifted query:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI)), ASC(RDF(final_result1m21,xsd:string))]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            JOIN IS_NOT_NULL(final_result1m21)
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28)
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.688 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - Query tree after preventing DISTINCT for non-supported data types:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI)), ASC(RDF(final_result1m21,xsd:string))]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            JOIN IS_NOT_NULL(final_result1m21)
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28)
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.688 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after evaluation authorization functions (0 ms):
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI)), ASC(RDF(final_result1m21,xsd:string))]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            JOIN IS_NOT_NULL(final_result1m21)
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28)
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.708 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after fixed point join optimization (20 ms):
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI)), ASC(RDF(final_result1m21,xsd:string))]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.709 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after view unfolding:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI)), ASC(RDF(final_result1m21,xsd:string))]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.710 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after simplifying using the context:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI)), ASC(RDF(final_result1m21,xsd:string))]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.711 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after simplifying the aggregation node:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI)), ASC(RDF(final_result1m21,xsd:string))]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.712 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after trying to split the aggregation node:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI)), ASC(RDF(final_result1m21,xsd:string))]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.712 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after simplifying the order by node:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.718 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - New query after simplifying disjunctions of equalities:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.718 |-DEBUG in i.u.i.o.i.o.i.GeneralStructuralAndSemanticIQOptimizerImpl - Query tree after preventing DISTINCT for non-supported data types, second pass:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.718 |-DEBUG in i.u.i.o.i.p.i.AvoidJoinAboveUnionPlanner - Planned IQ:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.718 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Planned query:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.718 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Producing the native query string...
+13:25:06.722 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - After lifting the RDF types:
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.722 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - After lifting the post-processable function symbols:
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+      AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+         DISTINCT
+            FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+               EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.722 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after lifting the slice:
+ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+   AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+      DISTINCT
+         FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+            EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.722 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after lifting order by above distinct:
+ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+   AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+      DISTINCT
+         FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+            EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.722 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after flattening the union:
+ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+   AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+      DISTINCT
+         FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+            EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.722 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after pushing down:
+ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+   AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+      DISTINCT
+         FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+            EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.722 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - Query tree after pulling out equalities:
+ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+   AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+      DISTINCT
+         FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+            EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.722 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after top construction elimination in order by cases: 
+ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+   AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+      DISTINCT
+         FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+            EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+13:25:06.722 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after empty rows values node transformation:
+ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+   AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+      DISTINCT
+         FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+            EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.722 |-DEBUG in i.u.i.o.a.r.g.impl.SQLGeneratorImpl - New query after the dialect-specific extra normalization:
+ORDER BY [ASC(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28)), ASC(final_result1m21)]
+   AGGREGATE [code_module1m28, code_presentation1m28, final_result1m21] [v1/COUNT_DISTINCT_1(https://example.org/oulad/id/enrollment/{}/{}/{}(code_module1m28,code_presentation1m28,id_student1m28))]
+      DISTINCT
+         FILTER AND4(IS_NOT_NULL(final_result1m21),IS_NOT_NULL(code_module1m28),IS_NOT_NULL(code_presentation1m28),IS_NOT_NULL(id_student1m28))
+            EXTENSIONAL "v_enrollments"(0:code_module1m28,1:code_presentation1m28,2:id_student1m28,11:final_result1m21)
+
+
+13:25:06.743 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Resulting native query:
+ans1(offering, outcome, count)
+CONSTRUCT [offering, outcome, count] [offering/RDF(https://example.org/oulad/id/offering/{}/{}(code_module1m28,code_presentation1m28),IRI), count/RDF(BIGINTToTEXT(v1),xsd:integer), outcome/RDF(final_result1m21,xsd:string)]
+   NATIVE [code_module1m28, code_presentation1m28, final_result1m21, v1]
+SELECT v3."code_module1m28" AS "code_module1m28", v3."code_presentation1m28" AS "code_presentation1m28", v3."final_result1m21" AS "final_result1m21", COUNT(DISTINCT(('https://example.org/oulad/id/enrollment/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(v3."code_module1m28", '%', '%25'), ' ', '%20'), '!', '%21'), '"', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '''', '%27'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '<', '%3C'), '=', '%3D'), '>', '%3E'), '?', '%3F'), '@', '%40'), '[', '%5B'), '\', '%5C'), ']', '%5D'), '^', '%5E'), '`', '%60'), '{', '%7B'), '|', '%7C'), '}', '%7D') || '/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(v3."code_presentation1m28", '%', '%25'), ' ', '%20'), '!', '%21'), '"', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '''', '%27'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '<', '%3C'), '=', '%3D'), '>', '%3E'), '?', '%3F'), '@', '%40'), '[', '%5B'), '\', '%5C'), ']', '%5D'), '^', '%5E'), '`', '%60'), '{', '%7B'), '|', '%7C'), '}', '%7D') || '/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(v3."id_student1m28", '%', '%25'), ' ', '%20'), '!', '%21'), '"', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '''', '%27'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '<', '%3C'), '=', '%3D'), '>', '%3E'), '?', '%3F'), '@', '%40'), '[', '%5B'), '\', '%5C'), ']', '%5D'), '^', '%5E'), '`', '%60'), '{', '%7B'), '|', '%7C'), '}', '%7D')))) AS "v1"
+FROM (SELECT DISTINCT v1."code_module" AS "code_module1m28", v1."code_presentation" AS "code_presentation1m28", v1."final_result" AS "final_result1m21", v1."id_student" AS "id_student1m28"
+FROM "v_enrollments" v1
+WHERE (v1."final_result" IS NOT NULL AND v1."code_module" IS NOT NULL AND v1."code_presentation" IS NOT NULL AND v1."id_student" IS NOT NULL)
+) v3
+GROUP BY v3."code_module1m28", v3."code_presentation1m28", v3."final_result1m21"
+ORDER BY ('https://example.org/oulad/id/offering/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(v3."code_module1m28", '%', '%25'), ' ', '%20'), '!', '%21'), '"', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '''', '%27'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '<', '%3C'), '=', '%3D'), '>', '%3E'), '?', '%3F'), '@', '%40'), '[', '%5B'), '\', '%5C'), ']', '%5D'), '^', '%5E'), '`', '%60'), '{', '%7B'), '|', '%7C'), '}', '%7D') || '/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(v3."code_presentation1m28", '%', '%25'), ' ', '%20'), '!', '%21'), '"', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '''', '%27'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '<', '%3C'), '=', '%3D'), '>', '%3E'), '?', '%3F'), '@', '%40'), '[', '%5B'), '\', '%5C'), ']', '%5D'), '^', '%5E'), '`', '%60'), '{', '%7B'), '|', '%7C'), '}', '%7D')) NULLS FIRST, v3."final_result1m21" NULLS FIRST
+
+
+
+13:25:06.743 |-DEBUG in i.u.i.o.a.r.impl.QuestQueryProcessor - Reformulation time: 95 ms
+
+13:25:06.743 |-DEBUG in i.u.i.o.a.c.impl.QuestStatement - Executing the query and get the result...
+13:25:06.753 |-DEBUG in i.u.i.o.a.c.impl.QuestStatement - Result set unblocked.
+
+

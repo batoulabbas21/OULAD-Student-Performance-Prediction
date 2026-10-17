@@ -1,0 +1,8 @@
+PREFIX edu: <https://example.org/oulad/schema#>
+# Equivalent for this project's three supported assessment subtypes; no schema path.
+SELECT ?offering ?assessment ?type ?deadline ?weight WHERE {
+ VALUES ?type { edu:TutorMarkedAssessment edu:ComputerMarkedAssessment edu:Exam }
+ ?assessment a ?type ; edu:assessmentInOffering ?offering .
+ OPTIONAL { ?assessment edu:deadlineDay ?deadline }
+ OPTIONAL { ?assessment edu:weightPercent ?weight }
+} ORDER BY ?offering ?assessment

@@ -1,0 +1,5 @@
+# run_ontop.py generates a private runtime copy from the database settings.
+jdbc.url=jdbc:postgresql://127.0.0.1:5433/oulad?currentSchema=oulad
+jdbc.user=oulad
+jdbc.password=replace-with-your-local-password
+jdbc.driver=org.postgresql.Driver

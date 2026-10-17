@@ -1,4 +1,4 @@
-# OULAD knowledge representation project — first working stages
+# OULAD knowledge representation project
 
 This starter implements download, relational subsetting, profiling, RDF conversion,
 RDFS schema, SPARQL questions, RDFS entailment, and a Session 3 OWL ontology with verified inferences.
@@ -7,6 +7,7 @@ No Docker service, API key, LLM, package upgrade, or new environment is needed f
 The optional Neo4j visualization and Fuseki SPARQL server below use the existing lab Docker services.
 For the OWL ontology, terminal reasoner, and results notebook, follow **section 11**. Protégé is not required.
 For SHACL graph validation, triage, the gate and run provenance, follow **section 12**.
+For PostgreSQL, R2RML mappings, materialization and Ontop virtualization, follow **section 13**.
 
 **What is AAA?** An anonymized Social Sciences module with two October offerings (2013J and 2014J).
 Our extract has 748 enrollments but 712 distinct student IDs. Read [the AAA explanation](docs/aaa-module.md)
@@ -131,7 +132,10 @@ kr-oulad/
     ontology/                    Local imports, reasoning, checks and HTML notebook preview
     verification.json
   report/                        Recorded execution evidence
-  mappings/                      Later
+  mappings/oulad-mapping.ttl      Shared Session 5 R2RML mapping
+  src/integration/               PostgreSQL, materialization, virtualization and provenance
+  run-integration.ps1            Complete Session 5 workflow
+  outputs/integration/           Unique run folders, comparisons and reports
   shapes/oulad-shapes.ttl         Session 4 graph validation policies
 ```
 
@@ -329,8 +333,8 @@ and does not install packages. Use the individual commands for a different selec
 
 ## What comes next
 
-The mappings/, src/learning/, and src/access/ directories are reserved for later stages.
-SHACL shapes and a validation gate are implemented in section 12. There are no trained models, R2RML mappings, or natural-language interface yet.
+The src/learning/ and src/access/ directories are reserved for later stages.
+SHACL validation is implemented in section 12; PostgreSQL, R2RML mapping and Ontop integration are implemented in section 13. There are no trained models or natural-language interface yet.
 Preserve this historical graph. Later build a separate prediction graph constrained to the chosen
 information cutoff; the historical graph includes final outcomes and future events.
 
@@ -870,12 +874,12 @@ The helper prepares the examples, validates the full graph and both fixtures, ru
 
 ### Step 8 — understand the automatic gate and CI status
 
-**CI is implemented as a local GitHub Actions workflow, but a successful GitHub run has not been verified.** On 15 October 2026, the workflow and SHACL implementation files were still uncommitted in this project.
+**Your GitHub screenshot shows the SHACL workflow succeeded** at commit `afd8535` on `main` (34 seconds total; validate job 29 seconds). This is screenshot evidence supplied by you; no run URL or independent API check is recorded. The new Session 5 integration workflow has a separate pending remote status.
 
 | Run | What it covers | Status |
 |---|---|---|
-| Full local verification | 37 checks, including full CSV/report/provenance comparisons | Saved 14 October result: all passed |
-| GitHub Actions workflow | Validate the real fixture, run 31 shared checks with `--sample-only`, and require exit 1 from the deliberately broken fixture | Prepared locally; remote run unverified |
+| Full local verification | 37 checks, including full CSV/report/provenance comparisons | Saved 15 October result: all passed |
+| GitHub Actions workflow | Validate the real fixture, run 31 shared checks with `--sample-only`, and require exit 1 from the deliberately broken fixture | Success shown in your screenshot at `afd8535`; URL not supplied |
 
 The workflow is [`.github/workflows/shacl-gate.yml`](.github/workflows/shacl-gate.yml), named **OULAD SHACL gate**, with job ID `validate`. It runs on pushes and pull requests affecting the listed SHACL paths, and supports a manual trigger. README-only changes do not trigger it automatically. It uses Python 3.12, pySHACL 0.40.1 and RDFLib 7.6.0 on an Ubuntu runner; your local Conda environment is unchanged.
 
@@ -891,7 +895,7 @@ For remote execution, commit the workflow and its shapes, RDFS schema, validatio
 
 Making a failure block merging requires a separate branch-protection/ruleset setting. Before requiring this workflow for every pull request, adjust its workflow-level path filters so unrelated changes do not leave the required check pending. See [GitHub's explanation](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks). No merge protection was configured by this task.
 
-The [provenance guide's SHACL and CI section](docs/project-provenance.html#shacl-and-ci-what-is-implemented-and-what-has-run) explains the exact checks, expected failures and remaining remote setup. The present workflow does not upload report artifacts; inspect its logs for the run result.
+The [provenance guide's SHACL and CI section](docs/project-provenance.html#shacl-and-ci-what-is-implemented-and-what-has-run) explains the exact checks, expected failures and recorded CI evidence. The present workflow does not upload report artifacts; inspect its logs for the run result.
 
 ### Step 9 — inspect provenance and maintain the shapes
 
@@ -910,6 +914,129 @@ The shapes use **SHACL Core** for cardinality, datatype, vocabulary, ranges, for
 References: [W3C SHACL](https://www.w3.org/TR/shacl/), [pySHACL](https://github.com/RDFLib/pySHACL), [W3C PROV-O](https://www.w3.org/TR/prov-o/).
 
 
+## 13. Session 5 — PostgreSQL, mappings, materialization and virtualization
+
+The same six AAA CSV tables now feed PostgreSQL. One R2RML mapping describes how their rows become the existing RDF identifiers and properties. **Morph-KGC executes it to save an RDF snapshot; Ontop uses it to translate SPARQL into SQL at query time.** Both are checked against the original RDF and independent SQL answers.
+
+### Step 1 — keep M2ENV and check prerequisites
+
+```powershell
+conda activate M2ENV
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
+python -c "import morph_kgc, psycopg2, sqlalchemy, rdflib, pyshacl; print('Integration packages available')"
+java -version
+docker info
+```
+
+Java 21 and Docker Desktop must be available. This working copy already has the tested packages; Morph-KGC 2.10.0 was added to **the existing M2ENV**, using its existing dependencies. No second Conda environment is needed. If Docker is stopped, start Docker Desktop and wait for its engine.
+
+For a fresh installation only, first review `requirements-integration.txt`, then install the tested integration dependencies and Morph separately:
+
+```powershell
+python -m pip install -r requirements-integration.txt
+python -m pip install --no-deps morph-kgc==2.10.0
+```
+
+Why `--no-deps`? Morph-KGC 2.10.0 declares older RDFLib/PyOxigraph upper bounds than the lab environment. The course uses this explicit compatibility override; our real mapping and query tests verify the combination used here. This is a project-tested configuration, not a claim that Morph supports every newer dependency or every feature. A global `pip check` may still report those declared-bound conflicts. Do not rerun the install commands merely to start the project.
+
+### Step 2 — check the prepared input
+
+The full mode expects `data/interim/` with the six AAA CSVs and `data/processed/oulad.ttl` from the core pipeline. If starting from an empty clone, follow the earlier download, selection and RDF steps first. The small fixture mode below needs no raw download. The integration intentionally excludes `studentVle` activity and expects the existing default AAA scope.
+
+### Step 3 — run the complete extension
+
+```powershell
+.\run-integration.ps1
+```
+
+The helper creates `.env.integration` once with a generated local password, starts the project PostgreSQL container, prepares the pinned Ontop/JDBC downloads, and runs the complete verification. Existing credentials are reused. It stops at the first failed step. Read **`outputs/integration/integration-results.html`** afterward.
+
+Equivalent individual steps, useful for learning or diagnosing a failure:
+
+```powershell
+python src/integration/init_config.py
+docker compose --env-file .env.integration -f docker-compose.postgres.yml up -d --wait
+python src/integration/setup_ontop.py
+python evaluation/verify_integration.py
+```
+
+The verifier loads the database, materializes, queries, compares, validates with SHACL, runs the change experiment and records provenance. It replaces only the six managed tables in its selected schema, in a transaction. Treat these as reproducible project tables: manual edits there are replaced on the next full run. Original CSVs and the original RDF file are retained.
+
+The database is **127.0.0.1:5433**, database `oulad`, schema `oulad`, user `oulad`; its password is in `.env.integration`. A PostgreSQL client such as pgAdmin or DBeaver can use those values. The container internally uses port 5432. This separate Compose project and persistent volume avoid changing the course's existing services. Environment variables override the connection file when connecting to an existing PostgreSQL server. Use an explicitly dedicated schema because loading replaces its managed tables.
+
+For a faster complete test on a small connected dataset:
+
+```powershell
+.\run-integration.ps1 -Fixture
+```
+
+It uses `oulad_fixture` and a separate demo schema, writes `outputs/integration/fixture-results.html`, and expects 299 triples, 23 passed checks and three SHACL warnings. It does not replace the full `oulad` tables.
+
+### Step 4 — understand the files and the mapping
+
+```text
+config/postgres/schema.sql             Six tables, keys, constraints and mapping views
+config/postgres/connection.env.example Connection field reference; no real password
+docker-compose.postgres.yml            Dedicated local PostgreSQL service
+mappings/oulad-mapping.ttl              Shared R2RML mapping for both engines
+src/integration/load_database.py       Transactional CSV loader and load receipt
+src/integration/materialize.py         PostgreSQL → saved asserted RDF
+src/integration/run_ontop.py            SPARQL → SQL → live PostgreSQL results
+src/integration/compare.py             Graph terms and answer multiset comparison
+src/integration/freshness.py           Separate-schema update experiment
+src/integration/provenance.py          Run inputs, database state and output fingerprints
+queries/integration/                  Portable assessment query and six SQL equivalents
+evaluation/verify_integration.py       Complete integration verification
+evaluation/fixtures/integration/       Small real-data CSVs and expected RDF, with attribution
+.github/workflows/integration.yml      Small-dataset integration CI
+outputs/integration/runs/<run-id>/      Retained results for each execution
+```
+
+In R2RML, `rr:logicalTable` supplies rows, `rr:subjectMap` builds each resource IRI, and `rr:predicateObjectMap` adds a relationship or typed value. For example, an enrollment is identified by **module + presentation + student**, never student ID alone. Joins in the views reconstruct each assessment record's offering and enrollment. Decimal scores remain decimal; signed relative dates remain integers; SQL NULL produces no score/deadline fact.
+
+The `KnownScores` mapping explicitly filters `WHERE score IS NOT NULL`. During testing Morph emitted an invalid `"None"^^xsd:decimal` for an unfiltered nullable score. The separate score mapping fixes that problem without removing the assessment record. The exact graph comparison guards against its return.
+
+### Step 5 — run individual queries and inspect generated SQL
+
+After the database is loaded:
+
+```powershell
+python src/integration/run_ontop.py --query queries/01_enrollments.rq
+python src/integration/run_ontop.py --query queries/integration/02_assessments.rq
+python src/integration/run_ontop.py --query queries/03_late_records.rq
+python src/integration/materialize.py --out outputs/integration/manual-materialization
+```
+
+Individual query outputs go to `outputs/integration/manual-virtual/`: `.csv` answers, `.sql.txt` generated SQL, a diagnostic `.log`, and `.json` metadata. The last command writes `oulad-mapped.nt`, a new RDF snapshot. These manual folders are overwritten on another manual run; the complete verifier uses unique run folders.
+
+The six tested questions are enrollment counts per offering, assessment details, late records, scores below 40, outcome counts, and unknown scores. Question 2 uses the explicit current assessment types (`TMA`, `CMA`, `Exam`) in `queries/integration/02_assessments.rq`; the original local query follows the RDFS subclass hierarchy. Their answers are compared. Extend that portable query if new assessment subclasses are introduced.
+
+No OWL file is supplied to Ontop for this baseline. This demonstrates mapping virtualization over asserted facts; it does not repeat HermiT's full OWL classifications. “Materialization” here means generating mapped RDF, distinct from the earlier materialization of inferred types.
+
+### Step 6 — interpret the result
+
+The full run checks **28,470 mapped triples**, all six answer multisets and **23 integration checks**. The mapped graph passes the existing SHACL gate with **0 violations and 5 warnings** (three unknown scores, two unknown deadlines). Strict SHACL conformance can remain false under that warning policy. The integration count is separate from Session 4's 37 regression checks.
+
+The freshness experiment copies the input to `oulad_demo`, changes one low score to 99 and commits. Ontop's low-score count changes **90 → 89**; the old RDF snapshot stays **90**; a new materialization returns **89**. The score is restored and the demo database fingerprint is checked. The full `oulad` schema is unchanged by this experiment. Fixture mode demonstrates **2 → 1** instead.
+
+Each run folder contains `summary.json`, `report.html`, `load.json`, `graph-comparison.json`, the mapped graph, answer files, generated SQL, a `shacl/` report, `freshness/` evidence, `provenance.ttl` and `provenance-check.json`. `latest-full.json` points to the latest successful full run. Failed runs keep `failure.json` and available diagnostics; they do not replace the last-success pointer. A failure does not mean the whole graph is unusable: read the first failed check and its evidence.
+
+### Step 7 — CI and reruns
+
+The **OULAD PostgreSQL integration** workflow starts PostgreSQL 16 on a GitHub runner, prepares Python 3.12/Java 21/Ontop, and executes the same 23-check fixture workflow, including SHACL and the committed-update experiment. Its `oulad-integration-evidence` artifact retains reports and logs for 14 days. It runs on push, pull request or a manual dispatch once committed/pushed. The full AAA data stays local. This new workflow has been prepared and the fixture has passed locally; its first remote run is still pending.
+
+Keep `.env.integration` and `.runtime/` private/ignored. Commit the source, mapping, schema, fixture, requirements, workflow and documentation together; review selected generated evidence before committing it. No Git commit or push was performed for this extension. A green CI run does not itself configure branch protection.
+
+If a connection fails, check Docker's health and port 5433. If Ontop reports an invalid file URI on Windows, the wrapper should be passing forward-slash relative paths. If the graph comparison fails, inspect `graph-comparison.json`; triple count alone is insufficient. If the source scope changed, rebuild the reference graph and intentionally revise the expected counts and queries. Stop the database without deleting its volume using:
+
+```powershell
+docker compose --env-file .env.integration -f docker-compose.postgres.yml stop
+```
+
+For the conceptual explanation, results and actual fixes, see [walkthrough section 16](docs/project-walkthrough.html#16-session-5-one-mapping-two-ways-to-answer). For sources, hashes and exact run identities, see [provenance section 12](docs/project-provenance.html#12-session-5-integration-provenance).
+
+Course alignment: [Session 5 lab](../KRR/demos/session-05-integration/README.md). Technical references: [W3C R2RML](https://www.w3.org/TR/r2rml/), [Morph-KGC](https://morph-kgc.readthedocs.io/en/stable/documentation/), [Ontop CLI](https://ontop-vkg.org/guide/cli).
+
 ## Sources and reuse
 
 - Official dictionary: https://research.stem.open.ac.uk/ouanalyse/open-dataset-more/
@@ -919,7 +1046,7 @@ References: [W3C SHACL](https://www.w3.org/TR/shacl/), [pySHACL](https://github.
 - Local course patterns: Session 1 profiling.py; Session 2 RDFLib conversion, SPARQL, and rdfs_entailment_demo.py.
 
 Tested environment: Python 3.12.15, pandas 2.3.3, RDFLib 7.6.0, owlrl 7.6.2,
-ydata-profiling 4.18.4, pySHACL 0.40.1. No package installation or version changes were made.
+ydata-profiling 4.18.4, pySHACL 0.40.1. The original stages used these versions. Session 5 additionally installed Morph-KGC 2.10.0 without changing the existing dependency versions; see section 13.
 
 Raw data are gitignored; generated evidence is organized under outputs/. Commit scripts, schema,
 queries, docs, and selected final evidence. Keep secrets out of commits.

@@ -1,0 +1,12 @@
+{
+  "teaching_schema": "oulad_fixture_demo",
+  "original_score": "38.0",
+  "temporary_score": "99",
+  "virtual_before": 2,
+  "virtual_after_commit": 1,
+  "old_snapshot_after_commit": 2,
+  "new_snapshot": 1,
+  "database_restored": true,
+  "passed": true,
+  "note": "Separate database schema; example outputs retain before/after teaching states."
+}

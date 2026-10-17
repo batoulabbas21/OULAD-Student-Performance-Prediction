@@ -1,0 +1,1045 @@
+{
+  "audit_at_utc": "2026-10-15T02:43:27.247538+00:00",
+  "scope": "Read-only audit on 15 October 2026 of saved results and current files after relocation. No new SHACL, OWL, or database run. All four saved SHACL run input/output fingerprints were checked. Git status was inspected locally; no GitHub workflow run or repository settings were queried.",
+  "project_root": "D:\\DESKTOP\\M2\\kr-oulad",
+  "recorded_raw_retrieved_or_verified_utc": "2026-10-10T19:30:38.516852+00:00",
+  "raw_files_match_manifest": {
+    "courses.csv": true,
+    "assessments.csv": true,
+    "studentInfo.csv": true,
+    "studentRegistration.csv": true,
+    "studentAssessment.csv": true,
+    "vle.csv": true,
+    "studentVle.csv": true
+  },
+  "report_sources_match_current_files": {
+    "reasoned-full.json": {
+      "data/processed/oulad.ttl": true,
+      "ontology/education.owl.ttl": true,
+      "ontology/education.rdfs.ttl": true,
+      "ontology/imports/foaf.rdf": true
+    },
+    "fuseki/import-summary.json": {
+      "data/processed/oulad.ttl": true,
+      "ontology/education.rdfs.ttl": true
+    },
+    "shacl/full/summary.json": {
+      "data": true,
+      "schema": true,
+      "shapes": true
+    }
+  },
+  "selection": {
+    "module": "AAA",
+    "presentations": [
+      "2013J",
+      "2014J"
+    ],
+    "include_activity": false,
+    "counts": {
+      "courses": 2,
+      "assessments": 12,
+      "studentInfo": 748,
+      "studentRegistration": 748,
+      "vle": 413,
+      "studentAssessment": 3149
+    },
+    "note": "Original raw CSVs retained. No imputation or automatic row deletion."
+  },
+  "current_environment": {
+    "python": "3.12.15",
+    "python_executable": "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+    "packages": {
+      "pandas": "2.3.3",
+      "rdflib": "7.6.0",
+      "owlrl": "7.6.2",
+      "owlready2": "0.51",
+      "ydata-profiling": "4.18.4",
+      "nbformat": "5.11.1",
+      "nbclient": "0.11.0",
+      "nbconvert": "7.17.1",
+      "pyshacl": "0.40.1"
+    }
+  },
+  "measured_counts": {
+    "rdf_facts": 28470,
+    "rdfs_schema": 105,
+    "exported_inferred_type_triples": 6119,
+    "students": 712,
+    "enrollments": 748,
+    "successful_enrollments_asserted": 0,
+    "successful_enrollments_inferred": 531,
+    "reasoner_named_individuals": 5037
+  },
+  "saved_verifications": {
+    "core_passed": 14,
+    "core_total": 14,
+    "owl_passed": 17,
+    "owl_total": 17,
+    "owl_verified_at_utc": "2026-10-13T10:01:38.486767+00:00",
+    "reasoner_verified_at_utc": "2026-10-13T09:58:55.179742+00:00",
+    "consistent": true,
+    "unsatisfiable_classes": [],
+    "fuseki_verified_at_utc": "2026-10-12T06:38:19.696093+00:00",
+    "shacl_passed": 37,
+    "shacl_total": 37,
+    "shacl_verified_at_utc": "2026-10-14T06:47:31.859554+00:00"
+  },
+  "saved_notebook": {
+    "code_cells": 7,
+    "executed_cells": 7,
+    "error_outputs": 0
+  },
+  "worked_example": {
+    "raw": {
+      "file": "data/raw/studentInfo.csv",
+      "physical_line_including_header": 26,
+      "key_and_outcome": {
+        "code_module": "AAA",
+        "code_presentation": "2013J",
+        "id_student": "100893",
+        "final_result": "Pass"
+      }
+    },
+    "interim": {
+      "file": "data/interim/studentInfo.csv",
+      "physical_line_including_header": 26,
+      "key_and_outcome": {
+        "code_module": "AAA",
+        "code_presentation": "2013J",
+        "id_student": "100893",
+        "final_result": "Pass"
+      }
+    },
+    "enrollment_iri": "https://example.org/oulad/id/enrollment/AAA/2013J/100893",
+    "asserted_type_enrollment": true,
+    "asserted_outcome": "Pass",
+    "successful_asserted": false,
+    "successful_inferred": true
+  },
+  "files": {
+    ".github/workflows/shacl-gate.yml": {
+      "bytes": 1583,
+      "sha256": "edd6688e5e81b64261d5f876874e6148744c7fed7147878d9acc5952dfcd2e7a"
+    },
+    "README.md": {
+      "bytes": 51857,
+      "sha256": "65c34364ee2ac89e40362aefa5455e65f1f0bd91688ded3999e6d4d0171265e8"
+    },
+    "config/fuseki.ttl": {
+      "bytes": 980,
+      "sha256": "4032bf13a43ffbc5769f22ee5bd5f21e670d589a70fd31583133c3d0a75e3a77"
+    },
+    "data/interim/assessments.csv": {
+      "bytes": 435,
+      "sha256": "c331b9eb8cbddb982d97f47ff4e07760bfa648025214b089ac70d40c13fa4896"
+    },
+    "data/interim/courses.csv": {
+      "bytes": 88,
+      "sha256": "f52e7042dffa402110e0fb1086da3ba7569a6de76c496e09ffaf7d1dcd49e4eb"
+    },
+    "data/interim/selection.json": {
+      "bytes": 361,
+      "sha256": "14cbe731e8d01cfda3afb4ef136e1a70d3a9240fa5019b7fa0e567da2b8cfdaa"
+    },
+    "data/interim/studentAssessment.csv": {
+      "bytes": 75061,
+      "sha256": "e2bde03c12ff7e7b51da0ba32a476422c3fb6bb65e5dfd3f86b298c593dfbcd9"
+    },
+    "data/interim/studentInfo.csv": {
+      "bytes": 61918,
+      "sha256": "c4fc15dbe643c29f710e815c8d523a34828f3b434317e6854898552884327d75"
+    },
+    "data/interim/studentRegistration.csv": {
+      "bytes": 19795,
+      "sha256": "8933cc554f26e5345f991a55f522f8c3ef212c9c8cf25609ad8ee54a511edfb0"
+    },
+    "data/interim/vle.csv": {
+      "bytes": 12022,
+      "sha256": "cc29dc5adf8457cab0f57c0411402c264aad43650d74a6db0511d42d012d9678"
+    },
+    "data/processed/graph_summary.json": {
+      "bytes": 870,
+      "sha256": "b33a24c5d40deb72a4405fd0a7655a1e1f7f2ac9ea64f9c4f226932d27422e52"
+    },
+    "data/processed/oulad.ttl": {
+      "bytes": 1476836,
+      "sha256": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5"
+    },
+    "data/raw/assessments.csv": {
+      "bytes": 8211,
+      "sha256": "9ce92381e4a0ac457f8e251b2eb2c179ed51e023ab30d1d671a0268bd62316ba"
+    },
+    "data/raw/courses.csv": {
+      "bytes": 526,
+      "sha256": "4f16eee7454b15e109b0a21a0e43be820e6846ed6f9301bb7feb5ab5ad737a75"
+    },
+    "data/raw/manifest.json": {
+      "bytes": 1402,
+      "sha256": "aa8af664e449493a9ec35b0d977b5ac07d53f302a06b822ef6f06d45d88db555"
+    },
+    "data/raw/studentAssessment.csv": {
+      "bytes": 5690483,
+      "sha256": "b1839e17618a5de36b6d189a242d3123f7939a56c8c9ccef0c17b9199c614a6b"
+    },
+    "data/raw/studentInfo.csv": {
+      "bytes": 3462763,
+      "sha256": "815fbc3e2de29f79900bc63f0345a35db62c9146afaa1d86e7107b8b3beffc60"
+    },
+    "data/raw/studentRegistration.csv": {
+      "bytes": 1132550,
+      "sha256": "bbc87a0de1fe2a9ec6decce1ca6c1a02cf17b54ad3bdcc673fc6413b41c61d47"
+    },
+    "data/raw/studentVle.csv": {
+      "bytes": 453836331,
+      "sha256": "52668253d876c5becbcb72185977152700cecab2942aca807fecc3dd54b937f0"
+    },
+    "data/raw/vle.csv": {
+      "bytes": 270612,
+      "sha256": "d7a146497edd0e47ef536144b58796c07b554002d3753e848b8e4cd8a56f4c38"
+    },
+    "docker-compose.fuseki.yml": {
+      "bytes": 524,
+      "sha256": "6ec26ec0c390d57221b43150ef32626a4c702e3655f455182dfeb167f9abfbb1"
+    },
+    "docs/project-walkthrough.html": {
+      "bytes": 55989,
+      "sha256": "87e6c87c6db9241712d4f80e725a45e2ced767d288e3c380a1b5abef2056d349"
+    },
+    "docs/project-walkthrough.md": {
+      "bytes": 36625,
+      "sha256": "25db6b5057c0ac2e44a37b394105bebd087f89e68494c50675482360c13bff5b"
+    },
+    "docs/shacl-triage.md": {
+      "bytes": 7878,
+      "sha256": "73700c298381e1688752f32ed35ad55a3f3df696d2eed2180a4dc428d99a141d"
+    },
+    "evaluation/fixtures/shacl/broken.ttl": {
+      "bytes": 15576,
+      "sha256": "058732cedbbb45d50f91e8e7060ff1a6b0e0741d521168f1a627422197552178"
+    },
+    "evaluation/fixtures/shacl/selection.json": {
+      "bytes": 1454,
+      "sha256": "42944ca542565cfddee2689642b2b199786e3fefdc3db8b281f7eb38e45a49dd"
+    },
+    "evaluation/fixtures/shacl/valid.ttl": {
+      "bytes": 15564,
+      "sha256": "27de5ce0df7c18af2a911cc9ed0407c5aef8e025a94dc1d7a1f8895d3708d0dc"
+    },
+    "evaluation/verify.py": {
+      "bytes": 4832,
+      "sha256": "d2cfaadc876d5621efd625d617c24170cc06bc6a27c3a2cdda1499827398d62b"
+    },
+    "evaluation/verify_ontology.py": {
+      "bytes": 8879,
+      "sha256": "4351ec8f233977e64c7b694a3aedd50d927aae62f8f4e492c4c7f919bf014a13"
+    },
+    "evaluation/verify_shacl.py": {
+      "bytes": 14318,
+      "sha256": "238c4cf042e54d0c213b976eacd3c16cdc69883987746428a159eec705b7b7b0"
+    },
+    "notebooks/03_ontology_results.ipynb": {
+      "bytes": 82434,
+      "sha256": "338796c9f22e35ee5bfe0b728e2a859a371e0f2f989beaa181ad7083b29e492d"
+    },
+    "ontology/education.owl.ttl": {
+      "bytes": 5952,
+      "sha256": "54c2ec0e79cc1f138859dfdced499e1ccc3939819c15928f6f1a8d3b40788a29"
+    },
+    "ontology/education.rdfs.ttl": {
+      "bytes": 3731,
+      "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766"
+    },
+    "ontology/exercises/domain-error.ttl": {
+      "bytes": 1282,
+      "sha256": "fe431c035dce2964f2841b1e976b17125207e2a3ce429095ba00d06931f67ac6"
+    },
+    "ontology/imports/README.md": {
+      "bytes": 1954,
+      "sha256": "527c6f786608bc176ec9fcc288a7d988eeb6d68d74b8041a92ed7b44846a073c"
+    },
+    "ontology/imports/foaf.rdf": {
+      "bytes": 44209,
+      "sha256": "3d859b5d92a2c3d041545d014fa826f682ca06d056af8c7b31e32d930abf2bc5"
+    },
+    "outputs/answers/01_enrollments.csv": {
+      "bytes": 145,
+      "sha256": "8ec2e62eb3f32fa6169542265a8258bd99d854a0832d0f77672ca6a96f41d6b5"
+    },
+    "outputs/answers/02_assessments.csv": {
+      "bytes": 1896,
+      "sha256": "b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa"
+    },
+    "outputs/answers/03_late_records.csv": {
+      "bytes": 91958,
+      "sha256": "e1f7c959e18f3d71e30ad596b68a9342fa909bed5ff1e286ffbab298ba822ec9"
+    },
+    "outputs/answers/04_low_scores.csv": {
+      "bytes": 10318,
+      "sha256": "605d5a917b48efcdf69e2dee4cccebb7c2b482d0fbe61178e894698cda283672"
+    },
+    "outputs/answers/05_outcomes.csv": {
+      "bytes": 506,
+      "sha256": "86706f906a5e10c931ba8e873e7df672ba04859f08a98c5fa6c0ea0310c4715c"
+    },
+    "outputs/answers/06_unknown_scores.csv": {
+      "bytes": 518,
+      "sha256": "485c180e032822a554f75ba127026866cf2d22685e9cc2319611d6e7c9cd4413"
+    },
+    "outputs/answers/status.json": {
+      "bytes": 543,
+      "sha256": "58e810e29a0dcc70db205211d7c7a44862a9859af339d14a9481ed219ec18762"
+    },
+    "outputs/fuseki/import-summary.json": {
+      "bytes": 1270,
+      "sha256": "3755796980a9ef851842785f441d2daa9d6f618616810ae0ce49cd6986d2148c"
+    },
+    "outputs/neo4j/import-summary.json": {
+      "bytes": 791,
+      "sha256": "22e225669435a82357a6d34368574090df18295d784bcf06f20d269f346a382d"
+    },
+    "outputs/ontology/inferred-class-counts.csv": {
+      "bytes": 221,
+      "sha256": "5c373c61579d7fdacdb1069a3f0fc56b65a4a3b469e5c3d394f295dbd00a89ab"
+    },
+    "outputs/ontology/inferred-types-full.ttl": {
+      "bytes": 589113,
+      "sha256": "3e6269e01d3b4f1d34011f3393e9eefca04ca320f3101837e09832996a639f21"
+    },
+    "outputs/ontology/inferred-types-sample-enrollments.ttl": {
+      "bytes": 6109,
+      "sha256": "c6e87daa69fcf89873225da9db5c2d001a45f5d6ed76b77f154c287b3c2cc34c"
+    },
+    "outputs/ontology/ontology-results.html": {
+      "bytes": 384333,
+      "sha256": "348c47ea3dea76756b718c20119c0f134288ff31a4e149c91ec0823ec2074ccc"
+    },
+    "outputs/ontology/preparation.json": {
+      "bytes": 1180,
+      "sha256": "d199d10f659fd877659046e2c7a8dfbcd362c88df9ec64c5c093a56ad3874958"
+    },
+    "outputs/ontology/reasoned-full.json": {
+      "bytes": 1262690,
+      "sha256": "72b71c7ad9ca78c4c5f090933f53791a6673c13307ab4d4b3cf76857f28c4e09"
+    },
+    "outputs/ontology/reasoned-sample-enrollments.json": {
+      "bytes": 15500,
+      "sha256": "08a63899839cc696657d3d883152664cb07ebbc2f3b92072f18fa9d4b5cd937c"
+    },
+    "outputs/ontology/verification.json": {
+      "bytes": 5151,
+      "sha256": "35309b3854ffc298211cda831c279b78bd179d61d4d1b091ddd1955c107d2cec"
+    },
+    "outputs/ontology/workspace/catalog-v001.xml": {
+      "bytes": 450,
+      "sha256": "1fc9e6aee20465d1cd728dd96f211c6189bc1da6e37901a31f974afb42ec0e1e"
+    },
+    "outputs/ontology/workspace/domain-error.ttl": {
+      "bytes": 1282,
+      "sha256": "fe431c035dce2964f2841b1e976b17125207e2a3ce429095ba00d06931f67ac6"
+    },
+    "outputs/ontology/workspace/domain-inconsistent.ttl": {
+      "bytes": 302,
+      "sha256": "7251eb8d6db8d0aba594e13fc91277d91a32594080d57e62fe0113ff793e0df4"
+    },
+    "outputs/ontology/workspace/education-base.owl.ttl": {
+      "bytes": 5298,
+      "sha256": "f22982404eca678938e0f4882baf7c61509711b49a49048c2f0c8633efc8ee2e"
+    },
+    "outputs/ontology/workspace/education.owl.ttl": {
+      "bytes": 5952,
+      "sha256": "54c2ec0e79cc1f138859dfdced499e1ccc3939819c15928f6f1a8d3b40788a29"
+    },
+    "outputs/ontology/workspace/foaf-person.ttl": {
+      "bytes": 712,
+      "sha256": "f33e028b63f5467cb84507c44aaa6c70c3f0dbd51bf2b48d117485139027c1bc"
+    },
+    "outputs/ontology/workspace/sample-enrollments.ttl": {
+      "bytes": 18410,
+      "sha256": "5a41149cfff0e3b88555b246b489374f1d990dc30ce360cf3578fce5547caea5"
+    },
+    "outputs/shacl/broken/provenance.ttl": {
+      "bytes": 4177,
+      "sha256": "657e2187114731904a019ff10f38b87d6b193f5294b19ee2f2e7abf650b00fd7"
+    },
+    "outputs/shacl/broken/report.html": {
+      "bytes": 4754,
+      "sha256": "d7bf6dbffe36d88ce898d47f9636d25cc05ce3d4e38930cd1400b66a3b035900"
+    },
+    "outputs/shacl/broken/report.ttl": {
+      "bytes": 2089,
+      "sha256": "b98edd61a23acd532e4e1d3426d18505ab9bc2283fa76af660e3490848f1b632"
+    },
+    "outputs/shacl/broken/report.txt": {
+      "bytes": 1543,
+      "sha256": "a32d93d6d395809269503bd88bacc06ebda3c5197634f19863d2131059cb2335"
+    },
+    "outputs/shacl/broken/results.csv": {
+      "bytes": 1166,
+      "sha256": "1837edecb5cdc9bb39dbabace6b770b9e1410b9739b7667ca3e533845ed5bed8"
+    },
+    "outputs/shacl/broken/summary.json": {
+      "bytes": 5824,
+      "sha256": "24677f920d814da6c2e93b61f0742dfd341eb6a3fc25173e454f9b32cd795b5e"
+    },
+    "outputs/shacl/draft/provenance.ttl": {
+      "bytes": 4197,
+      "sha256": "6cdd478e96cb335010db6abd303abcc65d0dc2180272c46a28a25d220b6758ab"
+    },
+    "outputs/shacl/draft/report.html": {
+      "bytes": 4582,
+      "sha256": "56c580949de2e75c31d176fd0ccda6a565b314e9bad37a0f858e1d4f6a96a4b0"
+    },
+    "outputs/shacl/draft/report.ttl": {
+      "bytes": 1575,
+      "sha256": "467706e6a1cf15d6f25d9bb86dc2442cadeee3db3eb0ece3e610dd46a39351b3"
+    },
+    "outputs/shacl/draft/report.txt": {
+      "bytes": 1129,
+      "sha256": "068d68c01ae890e9ac31a710d9b61d44e8e91eac295f0e456c871be3973617fe"
+    },
+    "outputs/shacl/draft/results.csv": {
+      "bytes": 853,
+      "sha256": "32455c109ea26e24b5445eb77cce36177a54a8e55ed22c45094d2a0e3983c15c"
+    },
+    "outputs/shacl/draft/summary.json": {
+      "bytes": 5367,
+      "sha256": "14d5ff2f07c4e2debc461bfc0768b9f938c3b71fdafadb2a0fa438d45cee6235"
+    },
+    "outputs/shacl/examples/oulad-shapes-v0.ttl": {
+      "bytes": 12853,
+      "sha256": "be5bea2078eb4d3acf791d6f6f61e0432b285a0cbf5e9f04c3a533553be45bda"
+    },
+    "outputs/shacl/full/provenance.ttl": {
+      "bytes": 4164,
+      "sha256": "b20ec045d206243d2e10d02f51905974449aceecaf553814ba23e25abc54b8ca"
+    },
+    "outputs/shacl/full/report.html": {
+      "bytes": 4997,
+      "sha256": "5967d4370a548aae97d837901aa099ec5e2a47a9fd7d8c57ae78e819e79c50fa"
+    },
+    "outputs/shacl/full/report.ttl": {
+      "bytes": 2478,
+      "sha256": "1e469baedf3eebe036eacd60fd4655b9fea41588515f5f30b18cdb80451940b2"
+    },
+    "outputs/shacl/full/report.txt": {
+      "bytes": 1859,
+      "sha256": "a338fb71db86945f0c422333860f0703153f4468b7e247e81cc936acc9ad8225"
+    },
+    "outputs/shacl/full/results.csv": {
+      "bytes": 1402,
+      "sha256": "62e74ecd7e5467c3bf31f0db0c7892d545017211c7a8267bbd82ebd4bc802823"
+    },
+    "outputs/shacl/full/summary.json": {
+      "bytes": 6240,
+      "sha256": "580a46059239516471a5e988d3ab447458b7f1ab0ca753a2fb37c44a11f295fc"
+    },
+    "outputs/shacl/sample/provenance.ttl": {
+      "bytes": 4175,
+      "sha256": "5be94c39284da7aaecc697c031d6130a5baeff6efa4bc74434839590f5c7d45e"
+    },
+    "outputs/shacl/sample/report.html": {
+      "bytes": 4557,
+      "sha256": "1bf0f5ace5a1928d928d3d3bd93db1db329bdf74f7f4847bcb015f87fa427823"
+    },
+    "outputs/shacl/sample/report.ttl": {
+      "bytes": 1569,
+      "sha256": "8cfdfd12ad50f4f1a1fb2377cff728f6b9c8360eea33342b58a9d1107cb82690"
+    },
+    "outputs/shacl/sample/report.txt": {
+      "bytes": 1114,
+      "sha256": "2ca214bd625056e1362042d056135c887bc6035cdd0f034f95987ca5960d57b1"
+    },
+    "outputs/shacl/sample/results.csv": {
+      "bytes": 847,
+      "sha256": "7888f6af5aaf5d3484710176b92ae148576919f5cdff3a38d7bd6db183db0da5"
+    },
+    "outputs/shacl/sample/summary.json": {
+      "bytes": 5339,
+      "sha256": "e7c0adc8cb3b4856b81c61d3554386effdcadbe83926143d2141ac944f05f2db"
+    },
+    "outputs/shacl/verification.json": {
+      "bytes": 6165,
+      "sha256": "a0449bf2d63dbd8d7fa9005c0a96e75010bf3e3671056b0e3e515ee767db61be"
+    },
+    "outputs/verification.json": {
+      "bytes": 1127,
+      "sha256": "662f99e9ff9f5057ab4dadeef4fd117e4306f57aa399e1346e7efa86cf2fc33d"
+    },
+    "queries/01_enrollments.rq": {
+      "bytes": 263,
+      "sha256": "532154ca048231dd3fa23b5616c41a023a8ccbfd1278e900cc68f861bb63a101"
+    },
+    "queries/02_assessments.rq": {
+      "bytes": 470,
+      "sha256": "47e928e20f8d686543438cf381b8cd338c7952a20b6d680e55ae0ba4a0feacac"
+    },
+    "queries/03_late_records.rq": {
+      "bytes": 504,
+      "sha256": "f36467d89b7c86226ec590f86467cdfb26cb45f13308b200c5c966537b8df593"
+    },
+    "queries/04_low_scores.rq": {
+      "bytes": 287,
+      "sha256": "d9e598aac14dd5261895fcabbf65a35aac3e3f2acb2c3af2a72f92753e68678d"
+    },
+    "queries/05_outcomes.rq": {
+      "bytes": 244,
+      "sha256": "8f0b1e82ccc04a49881a34e7834c07ea2b2b71966bb6afaff5f70e79413f7cea"
+    },
+    "queries/06_unknown_scores.rq": {
+      "bytes": 356,
+      "sha256": "541066d4e109f150aab3bd2966d93abdcdcc074e45150d156f69e4da315d50b6"
+    },
+    "queries/07_early_activity.rq": {
+      "bytes": 466,
+      "sha256": "a08439231b14170e86b5450484efa7fe5e8db5c0c5ab534a8349219b3bbcb365"
+    },
+    "queries/neo4j.cypher": {
+      "bytes": 2178,
+      "sha256": "2732344e74f426a4f7cabaf6c366fbd67b41b54450c8003bb96e255ff5de0c0e"
+    },
+    "run-core.ps1": {
+      "bytes": 1189,
+      "sha256": "419a1056a76554359699856b80b2afbab40ee50a0da7b369c387c211b6183a2e"
+    },
+    "run-shacl.ps1": {
+      "bytes": 1320,
+      "sha256": "3904eb338a73dc1a8465909f2fc64d6a5dae42ba30c7e33cd756bad2b0332112"
+    },
+    "shapes/oulad-shapes.ttl": {
+      "bytes": 12340,
+      "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0"
+    },
+    "src/common/pipeline.py": {
+      "bytes": 24539,
+      "sha256": "a197a51f9aba716b366a7b05dde4a81e3a789d320f4342ba503cf662684198bc"
+    },
+    "src/graph/build_ontology_notebook.py": {
+      "bytes": 12382,
+      "sha256": "c37cc911500f764cc4eaf44f2b939493a2fb9aed8f0168b6986b12c30c7cce75"
+    },
+    "src/graph/convert_to_rdf.py": {
+      "bytes": 286,
+      "sha256": "f10fe7b94891423305662969cfc5318e2f901b377a4fd161e1e9fc92ff45f3aa"
+    },
+    "src/graph/load_fuseki.py": {
+      "bytes": 7155,
+      "sha256": "1e96296ae875646549db79ed20cf417926ec197f6c8c14cd6a3f791a96035992"
+    },
+    "src/graph/neo4j_comparison.py": {
+      "bytes": 8496,
+      "sha256": "98231386d7276759bbdfd97346126f09d5d403dac4ce23df4916456c2a4cc90a"
+    },
+    "src/graph/owl_reasoner.py": {
+      "bytes": 5380,
+      "sha256": "bc6042f61d45e93059824a88a1e644dac9eccfd7b0dbb96dec9fd67c70096a94"
+    },
+    "src/graph/prepare_ontology.py": {
+      "bytes": 7819,
+      "sha256": "9ea7d0495e02ba5820dcba3ec146dd84f68864a72b3cebfc606d8b8db2e133e6"
+    },
+    "src/graph/rdfs_entailment_demo.py": {
+      "bytes": 286,
+      "sha256": "10f06b990472eb27cce23821cedfba22c1cb27f4e27493fbeacf8d05cbe98c57"
+    },
+    "src/graph/run_queries.py": {
+      "bytes": 280,
+      "sha256": "27f6e9a0e611416998ce40e13433d3d489c4cded8b932ab5b0d3af210004094d"
+    },
+    "src/preparation/fetch_data.py": {
+      "bytes": 282,
+      "sha256": "613586e5bfdd0c9d89d3f32e4b5789d4f778e68a68446022fd403fe90922dcec"
+    },
+    "src/preparation/profiling.py": {
+      "bytes": 373,
+      "sha256": "57dfddf3a861b25663eaa3274c1bfd3ae29e5f37743b23cc83a8571ac0857b62"
+    },
+    "src/preparation/select_subset.py": {
+      "bytes": 281,
+      "sha256": "9fcea5546355382edf6f3b7ed8ed43876533ffaf0cd7a6aa8aecd0f6463ce908"
+    },
+    "src/validation/prepare_examples.py": {
+      "bytes": 4345,
+      "sha256": "4a6ee4aa385670a3fe5e723b667d217d7294462730c195504ec1f9caa48cc511"
+    },
+    "src/validation/show_provenance.py": {
+      "bytes": 1313,
+      "sha256": "5387887c06a6b7f17527d6a1789e26b7422171d17223c0b7c04ce8bd39655a47"
+    },
+    "src/validation/validate.py": {
+      "bytes": 13928,
+      "sha256": "c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d"
+    }
+  },
+  "previous_audit_at_utc": "2026-10-14T06:39:15.140077+00:00",
+  "shacl": {
+    "full_run_id": "f6dd0ac440204d898b9705840bb8b353",
+    "started_at_utc": "2026-10-14T06:43:37.201429+00:00",
+    "finished_at_utc": "2026-10-14T06:46:29.611529+00:00",
+    "gate_passed": true,
+    "conforms_shacl": false,
+    "severity_counts": {
+      "Violation": 0,
+      "Warning": 5,
+      "Info": 0
+    },
+    "focus_counts": [
+      {
+        "shape": "https://example.org/oulad/shapes#AssessmentShape",
+        "label": "Assessment structure and subtype",
+        "focus_nodes": 12,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#DeadlinePresenceShape",
+        "label": "Review unknown deadlines",
+        "focus_nodes": 12,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#EnrollmentShape",
+        "label": "Enrollment structure and key",
+        "focus_nodes": 748,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#InteractionShape",
+        "label": "Optional daily activity",
+        "focus_nodes": 0,
+        "optional_target": true
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#ModuleShape",
+        "label": "Module identity",
+        "focus_nodes": 1,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#OfferingShape",
+        "label": "Offering structure and key",
+        "focus_nodes": 2,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#RecordOfferingShape",
+        "label": "Record and enrollment use the same offering",
+        "focus_nodes": 3149,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#RecordShape",
+        "label": "Assessment record structure, score and key",
+        "focus_nodes": 3149,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#RegistrationReviewShape",
+        "label": "Review registration dates",
+        "focus_nodes": 748,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#ResourceShape",
+        "label": "Learning resource structure",
+        "focus_nodes": 413,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#ScorePresenceShape",
+        "label": "Review unknown scores",
+        "focus_nodes": 3149,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#StudentShape",
+        "label": "Student identity",
+        "focus_nodes": 712,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#SubmissionPresenceShape",
+        "label": "Review unknown submission days",
+        "focus_nodes": 3149,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#WithdrawalReviewShape",
+        "label": "Review withdrawal status versus date",
+        "focus_nodes": 748,
+        "optional_target": false
+      }
+    ],
+    "inputs": [
+      {
+        "role": "data",
+        "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\data\\processed\\oulad.ttl",
+        "sha256": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5"
+      },
+      {
+        "role": "schema",
+        "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+        "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766"
+      },
+      {
+        "role": "shapes",
+        "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+        "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0"
+      }
+    ],
+    "validator_sha256": "c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d",
+    "provenance_file": "outputs/shacl/full/provenance.ttl",
+    "regression_checks_passed": 37,
+    "sample": {
+      "Violation": 0,
+      "Warning": 3,
+      "Info": 0
+    },
+    "broken": {
+      "Violation": 1,
+      "Warning": 3,
+      "Info": 0
+    },
+    "draft": {
+      "Violation": 3,
+      "Warning": 0,
+      "Info": 0
+    },
+    "ci_status": "Workflow exists locally and is untracked. No remote execution verified; no push or branch-protection change performed.",
+    "results": [
+      {
+        "severity": "Warning",
+        "focus_node": "https://example.org/oulad/id/assessment-record/260355/1754",
+        "path": "https://example.org/oulad/schema#score",
+        "value": "",
+        "source_shape": "https://example.org/oulad/shapes#ScorePresence",
+        "constraint": "MinCountConstraintComponent",
+        "message": "Score is unknown: retain the record and review source completeness; do not replace with zero."
+      },
+      {
+        "severity": "Warning",
+        "focus_node": "https://example.org/oulad/id/assessment-record/2606802/1760",
+        "path": "https://example.org/oulad/schema#score",
+        "value": "",
+        "source_shape": "https://example.org/oulad/shapes#ScorePresence",
+        "constraint": "MinCountConstraintComponent",
+        "message": "Score is unknown: retain the record and review source completeness; do not replace with zero."
+      },
+      {
+        "severity": "Warning",
+        "focus_node": "https://example.org/oulad/id/assessment-record/721259/1752",
+        "path": "https://example.org/oulad/schema#score",
+        "value": "",
+        "source_shape": "https://example.org/oulad/shapes#ScorePresence",
+        "constraint": "MinCountConstraintComponent",
+        "message": "Score is unknown: retain the record and review source completeness; do not replace with zero."
+      },
+      {
+        "severity": "Warning",
+        "focus_node": "https://example.org/oulad/id/assessment/1757",
+        "path": "https://example.org/oulad/schema#deadlineDay",
+        "value": "",
+        "source_shape": "https://example.org/oulad/shapes#DeadlinePresence",
+        "constraint": "MinCountConstraintComponent",
+        "message": "Deadline is unknown: preserve the absence, including unknown exam dates."
+      },
+      {
+        "severity": "Warning",
+        "focus_node": "https://example.org/oulad/id/assessment/1763",
+        "path": "https://example.org/oulad/schema#deadlineDay",
+        "value": "",
+        "source_shape": "https://example.org/oulad/shapes#DeadlinePresence",
+        "constraint": "MinCountConstraintComponent",
+        "message": "Deadline is unknown: preserve the absence, including unknown exam dates."
+      }
+    ],
+    "runs": {
+      "full": {
+        "run_id": "f6dd0ac440204d898b9705840bb8b353",
+        "started_at_utc": "2026-10-14T06:43:37.201429+00:00",
+        "validation_finished_at_utc": "2026-10-14T06:46:29.611529+00:00",
+        "provenance_ended_at_utc": "2026-10-14T06:46:29.639285+00:00",
+        "severity_counts": {
+          "Violation": 0,
+          "Warning": 5,
+          "Info": 0
+        },
+        "gate_passed": true,
+        "conforms_shacl": false,
+        "inputs": [
+          {
+            "role": "data",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\data\\processed\\oulad.ttl",
+            "sha256": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\data\\processed\\oulad.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "schema",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "shapes",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "matches_current_file": true
+          }
+        ],
+        "validator_matches": true,
+        "provenance_input_output_fingerprints_match": true
+      },
+      "sample": {
+        "run_id": "8dfcbc4c526041b5b8bf928cb8834cfb",
+        "started_at_utc": "2026-10-14T06:46:30.647485+00:00",
+        "validation_finished_at_utc": "2026-10-14T06:46:31.881344+00:00",
+        "provenance_ended_at_utc": "2026-10-14T06:46:31.893696+00:00",
+        "severity_counts": {
+          "Violation": 0,
+          "Warning": 3,
+          "Info": 0
+        },
+        "gate_passed": true,
+        "conforms_shacl": false,
+        "inputs": [
+          {
+            "role": "data",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\valid.ttl",
+            "sha256": "27de5ce0df7c18af2a911cc9ed0407c5aef8e025a94dc1d7a1f8895d3708d0dc",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\valid.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "schema",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "shapes",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "matches_current_file": true
+          }
+        ],
+        "validator_matches": true,
+        "provenance_input_output_fingerprints_match": true
+      },
+      "broken": {
+        "run_id": "b3d2e07545b54a2daa9721448c784e7c",
+        "started_at_utc": "2026-10-14T06:46:32.796949+00:00",
+        "validation_finished_at_utc": "2026-10-14T06:46:33.956666+00:00",
+        "provenance_ended_at_utc": "2026-10-14T06:46:33.963437+00:00",
+        "severity_counts": {
+          "Violation": 1,
+          "Warning": 3,
+          "Info": 0
+        },
+        "gate_passed": false,
+        "conforms_shacl": false,
+        "inputs": [
+          {
+            "role": "data",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\broken.ttl",
+            "sha256": "058732cedbbb45d50f91e8e7060ff1a6b0e0741d521168f1a627422197552178",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\broken.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "schema",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "shapes",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "matches_current_file": true
+          }
+        ],
+        "validator_matches": true,
+        "provenance_input_output_fingerprints_match": true
+      },
+      "draft": {
+        "run_id": "b450a73c01884e44afc795c2461bbd2e",
+        "started_at_utc": "2026-10-14T06:46:35.010810+00:00",
+        "validation_finished_at_utc": "2026-10-14T06:46:36.218164+00:00",
+        "provenance_ended_at_utc": "2026-10-14T06:46:36.227089+00:00",
+        "severity_counts": {
+          "Violation": 3,
+          "Warning": 0,
+          "Info": 0
+        },
+        "gate_passed": false,
+        "conforms_shacl": false,
+        "inputs": [
+          {
+            "role": "data",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\valid.ttl",
+            "sha256": "27de5ce0df7c18af2a911cc9ed0407c5aef8e025a94dc1d7a1f8895d3708d0dc",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\valid.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "schema",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "shapes",
+            "path": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\outputs\\shacl\\examples\\oulad-shapes-v0.ttl",
+            "sha256": "be5bea2078eb4d3acf791d6f6f61e0432b285a0cbf5e9f04c3a533553be45bda",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\outputs\\shacl\\examples\\oulad-shapes-v0.ttl",
+            "matches_current_file": true
+          }
+        ],
+        "validator_matches": true,
+        "provenance_input_output_fingerprints_match": true
+      }
+    },
+    "verification_source_fingerprints_match": true
+  },
+  "previous_audit_snapshot": {
+    "path": "docs/history/provenance-snapshot-2026-10-14T063915Z.json",
+    "sha256": "94dac845051aa7c21167a53750de668dab7e78c025553d4aa708c8425f5cba3a"
+  },
+  "relocation": {
+    "previous_audit_root": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad",
+    "current_root": "D:\\DESKTOP\\M2\\kr-oulad",
+    "historical_report_paths_preserved": true,
+    "method": "Resolve each documented input role to its current project-relative path and compare SHA-256."
+  },
+  "ci": {
+    "workflow": ".github/workflows/shacl-gate.yml",
+    "job_id": "validate",
+    "local_git_status": "untracked",
+    "remote_name_present": "origin",
+    "remote_execution_verified": false,
+    "remote_execution_checked": false,
+    "branch_protection_checked": false,
+    "branch_protection_changed": false,
+    "events": [
+      "push with matching paths",
+      "pull_request with matching paths",
+      "workflow_dispatch"
+    ],
+    "runner": "ubuntu-latest",
+    "python_version": "3.12",
+    "pinned_packages": {
+      "pyshacl": "0.40.1",
+      "rdflib": "7.6.0"
+    },
+    "sample_verification_command": "python evaluation/verify_shacl.py --sample-only",
+    "sample_regression_checks": 31,
+    "full_local_regression_checks": 37,
+    "count_basis": "31 shared checks in the saved 37-check result; six additional checks are guarded by not args.sample_only.",
+    "full_data_validated_in_ci": false,
+    "separate_workflow_steps": [
+      "Validate real fixture; expect exit 0",
+      "Run sample-only verification",
+      "Validate broken fixture; explicitly require exit 1"
+    ],
+    "coverage_limit": "Sample mode skips full CSV counts, full warning identities, sample/source fidelity and full-run provenance checks.",
+    "merge_requirement_note": "Required-check enforcement is a separate repository setting; path filtering needs adjustment before making this workflow required for every PR."
+  },
+  "fingerprint_scope_note": "Selected evidence and project files. The current provenance guide and snapshot are excluded to avoid self-referential fingerprints.",
+  "changes_from_previous_audit": {
+    "README.md": {
+      "previous_sha256": null,
+      "current_sha256": "65c34364ee2ac89e40362aefa5455e65f1f0bd91688ded3999e6d4d0171265e8"
+    },
+    "docs/project-walkthrough.html": {
+      "previous_sha256": null,
+      "current_sha256": "87e6c87c6db9241712d4f80e725a45e2ced767d288e3c380a1b5abef2056d349"
+    },
+    "docs/project-walkthrough.md": {
+      "previous_sha256": null,
+      "current_sha256": "25db6b5057c0ac2e44a37b394105bebd087f89e68494c50675482360c13bff5b"
+    },
+    "docs/shacl-triage.md": {
+      "previous_sha256": null,
+      "current_sha256": "73700c298381e1688752f32ed35ad55a3f3df696d2eed2180a4dc428d99a141d"
+    },
+    "evaluation/fixtures/shacl/selection.json": {
+      "previous_sha256": "ee587727ead306d4644293815d72ea5ce73df97165f878a9dd5b63503066b411",
+      "current_sha256": "42944ca542565cfddee2689642b2b199786e3fefdc3db8b281f7eb38e45a49dd"
+    },
+    "outputs/shacl/broken/provenance.ttl": {
+      "previous_sha256": "a46aca6fc85bc61bf678aa5c37a573631253f418cf51f24a13e6d76f0b47b1e2",
+      "current_sha256": "657e2187114731904a019ff10f38b87d6b193f5294b19ee2f2e7abf650b00fd7"
+    },
+    "outputs/shacl/broken/report.html": {
+      "previous_sha256": "8def79e381b5c7adcbd59996b8e85d1271705de1d467ead07432c9ef3a51ecbc",
+      "current_sha256": "d7bf6dbffe36d88ce898d47f9636d25cc05ce3d4e38930cd1400b66a3b035900"
+    },
+    "outputs/shacl/broken/report.ttl": {
+      "previous_sha256": "94b0748d1c74846876a649ca8d5b8272466679a78b9b307d150696d91b49c8ae",
+      "current_sha256": "b98edd61a23acd532e4e1d3426d18505ab9bc2283fa76af660e3490848f1b632"
+    },
+    "outputs/shacl/broken/summary.json": {
+      "previous_sha256": "69b8a8551a38ace652aa2048793dec2ed8c5cd1d90db3fdd74d00329b1f4dd18",
+      "current_sha256": "24677f920d814da6c2e93b61f0742dfd341eb6a3fc25173e454f9b32cd795b5e"
+    },
+    "outputs/shacl/draft/provenance.ttl": {
+      "previous_sha256": "7df4ebee1aaa1aef9d19b13960ea9822effff865cc4198d7e613aab93a09051f",
+      "current_sha256": "6cdd478e96cb335010db6abd303abcc65d0dc2180272c46a28a25d220b6758ab"
+    },
+    "outputs/shacl/draft/report.html": {
+      "previous_sha256": "3aa8e4dfa669a8b11bf096267010dfaa946b5a47fa169300a4ce8b615ab6be80",
+      "current_sha256": "56c580949de2e75c31d176fd0ccda6a565b314e9bad37a0f858e1d4f6a96a4b0"
+    },
+    "outputs/shacl/draft/report.ttl": {
+      "previous_sha256": "9c13ee5c41fa9f48866bf8bafe41ebd0e5ef2099140ed49eaa822640845d1124",
+      "current_sha256": "467706e6a1cf15d6f25d9bb86dc2442cadeee3db3eb0ece3e610dd46a39351b3"
+    },
+    "outputs/shacl/draft/summary.json": {
+      "previous_sha256": "a9e9486fa8b4a81f8c95b3cb6543d15856720045af648024307a94b994a6df17",
+      "current_sha256": "14d5ff2f07c4e2debc461bfc0768b9f938c3b71fdafadb2a0fa438d45cee6235"
+    },
+    "outputs/shacl/full/provenance.ttl": {
+      "previous_sha256": "51f07ed61c57f7fe80775f96bce0cc8eab89677ce0e17e22971e79244ea42aea",
+      "current_sha256": "b20ec045d206243d2e10d02f51905974449aceecaf553814ba23e25abc54b8ca"
+    },
+    "outputs/shacl/full/report.html": {
+      "previous_sha256": "c2f6c141abef7b97c2639c67f2d47fb1a5c449fa4fee24362734ff6f53b12bb6",
+      "current_sha256": "5967d4370a548aae97d837901aa099ec5e2a47a9fd7d8c57ae78e819e79c50fa"
+    },
+    "outputs/shacl/full/report.ttl": {
+      "previous_sha256": "5a5e7d0cce29551462d304eb3786965863626317769d134dbf19e4798b8bdd3d",
+      "current_sha256": "1e469baedf3eebe036eacd60fd4655b9fea41588515f5f30b18cdb80451940b2"
+    },
+    "outputs/shacl/full/summary.json": {
+      "previous_sha256": "4f89debd0bb573b70f459ab916b6b0da8165a1a4d41b850575f06acec315bcbc",
+      "current_sha256": "580a46059239516471a5e988d3ab447458b7f1ab0ca753a2fb37c44a11f295fc"
+    },
+    "outputs/shacl/sample/provenance.ttl": {
+      "previous_sha256": "07d7cfaf7a545030f88f2f46a96447b355334b49b94b7e714c7f37d6135b4601",
+      "current_sha256": "5be94c39284da7aaecc697c031d6130a5baeff6efa4bc74434839590f5c7d45e"
+    },
+    "outputs/shacl/sample/report.html": {
+      "previous_sha256": "75a24da27f5db259bb11ed6e9a5a17751f4b390168183eccf5d19604f862e3cf",
+      "current_sha256": "1bf0f5ace5a1928d928d3d3bd93db1db329bdf74f7f4847bcb015f87fa427823"
+    },
+    "outputs/shacl/sample/report.ttl": {
+      "previous_sha256": "a067e314d944e50ded9ecf5e3f5b714ed75d2d1f25f075dfc8c756d8d01d1855",
+      "current_sha256": "8cfdfd12ad50f4f1a1fb2377cff728f6b9c8360eea33342b58a9d1107cb82690"
+    },
+    "outputs/shacl/sample/summary.json": {
+      "previous_sha256": "9dee3abcc7ec5fcf5711b5328585113e39b7f122500183740f93e124081f7637",
+      "current_sha256": "e7c0adc8cb3b4856b81c61d3554386effdcadbe83926143d2141ac944f05f2db"
+    },
+    "outputs/shacl/verification.json": {
+      "previous_sha256": "49500a643959696dd75d127c90c42f5dec6b74b2c602953f3af8a733a0237251",
+      "current_sha256": "a0449bf2d63dbd8d7fa9005c0a96e75010bf3e3671056b0e3e515ee767db61be"
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>OULAD project provenance | Origins, transformations and evidence</title>
-<meta content="OULAD provenance through SHACL: saved validation runs, results, input/output fingerprints, and the distinction between local verification and prepared GitHub CI." name="description"/>
+<meta content="OULAD through Session 5: data origins, RDF/OWL/SHACL, PostgreSQL mapping, materialization, virtualization, verification and provenance." name="description"/>
 <style>
 :root { color-scheme: light; --ink:#172e35; --muted:#516970; --line:#dce6e5; --accent:#087064; --paper:#fff; --wash:#f3f7f5; }
 * { box-sizing:border-box; }
@@ -51,10 +51,10 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 
 nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{max-height:none;overflow:visible;}}</style></head><body>
 <header class="top"><span class="brand">KRR / OULAD · Project record</span><div class="actions"><a href="project-provenance.md">Editable version</a><button onclick="window.print()" type="button">Print / save PDF</button></div></header>
-<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-the-project-in-one-minute">1. The project in one minute</a><a href="#2-original-sources-and-credit">2. Original sources and credit</a><a href="#3-the-journey-from-csvs-to-answers">3. The journey from CSVs to answers</a><a href="#4-choices-that-affect-the-meaning">4. Choices that affect the meaning</a><a href="#5-a-real-result-traced-all-the-way-back">5. A real result, traced all the way back</a><a href="#6-four-kinds-of-information-to-keep-separate">6. Four kinds of information to keep separate</a><a href="#7-what-the-saved-checks-establish">7. What the saved checks establish</a><a href="#session-4-validation-evidence">Session 4 validation evidence</a><a href="#shacl-and-ci-what-is-implemented-and-what-has-run">SHACL and CI: what is implemented and what has run</a><a href="#8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</a><a href="#9-dates-fingerprints-and-reproducibility">9. Dates, fingerprints and reproducibility</a><a href="#10-connection-to-the-course-provenance-lesson">10. Connection to the course provenance lesson</a><a href="#11-what-this-record-cannot-establish">11. What this record cannot establish</a></div><div class="scope"><b>SHACL and CI provenance</b>15 October 2026<br/>37 local checks passed<br/>31 CI checks configured<br/>GitHub execution unverified<br/><a href="provenance-snapshot.json">Inspect the evidence snapshot</a></div></nav>
+<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-the-project-in-one-minute">1. The project in one minute</a><a href="#2-original-sources-and-credit">2. Original sources and credit</a><a href="#3-the-journey-from-csvs-to-answers">3. The journey from CSVs to answers</a><a href="#4-choices-that-affect-the-meaning">4. Choices that affect the meaning</a><a href="#5-a-real-result-traced-all-the-way-back">5. A real result, traced all the way back</a><a href="#6-four-kinds-of-information-to-keep-separate">6. Four kinds of information to keep separate</a><a href="#7-what-the-saved-checks-establish">7. What the saved checks establish</a><a href="#session-4-validation-evidence">Session 4 validation evidence</a><a href="#shacl-and-ci-what-is-implemented-and-what-has-run">SHACL and CI: what is implemented and what has run</a><a href="#8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</a><a href="#9-dates-fingerprints-and-reproducibility">9. Dates, fingerprints and reproducibility</a><a href="#10-connection-to-the-course-provenance-lesson">10. Connection to the course provenance lesson</a><a href="#11-what-this-record-cannot-establish">11. What this record cannot establish</a><a href="#12-session-5-integration-provenance">12. Session 5 integration provenance</a></div><div class="scope"><b>Through Session 5</b>Updated 16 October 2026<br/>23 full integration checks<br/>23 fixture checks<br/>0 blocking SHACL violations<br/><a href="../outputs/integration/integration-results.html">Open integration results</a></div></nav>
 <main><h1>OULAD project provenance</h1>
 <p><strong>Where the data came from, what we changed, and why the results can be traced.</strong></p>
-<p>Prepared on <strong>13 October 2026</strong>, updated for Session 4 and CI on <strong>15 October 2026</strong> for the <code>kr-oulad</code> project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the <a href="../README.md">README</a> for commands. Jump to <a href="#session-4-validation-evidence">SHACL evidence</a>, <a href="#shacl-and-ci-what-is-implemented-and-what-has-run">SHACL and CI</a>, or <a href="#10-connection-to-the-course-provenance-lesson">validation-run provenance</a>.</p>
+<p>Prepared on <strong>13 October 2026</strong>, updated through Session 5 on <strong>16 October 2026</strong> for the <code>kr-oulad</code> project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the <a href="../README.md">README</a> for commands. Jump to <a href="#session-4-validation-evidence">SHACL evidence</a>, <a href="#shacl-and-ci-what-is-implemented-and-what-has-run">SHACL and CI</a>, or <a href="#10-connection-to-the-course-provenance-lesson">validation-run provenance</a>.</p>
 <blockquote>
 <p><strong>Provenance means the history behind a result.</strong> For this project, it connects an original CSV row to its RDF representation, the ontology definition applied to it, and the resulting answer.</p>
 </blockquote>
@@ -101,8 +101,16 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <td>0 violations, 5 visible warnings; gate passes</td>
 </tr>
 <tr>
-<td>CI status</td>
-<td>GitHub Actions workflow prepared locally; 31 sample checks configured; remote execution unverified</td>
+<td>SHACL CI</td>
+<td>User screenshot: Success at <code>afd8535</code> on main; 31 fixture regression checks configured</td>
+</tr>
+<tr>
+<td>Session 5</td>
+<td>28,470 mapped triples; 23 integration checks passed for full AAA and 23 for the fixture</td>
+</tr>
+<tr>
+<td>Integration CI</td>
+<td>New PostgreSQL fixture workflow prepared; first remote run pending</td>
 </tr>
 </tbody>
 </table></div>
@@ -355,22 +363,22 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <tr>
 <td>Full local verification</td>
 <td>37 checks: 31 shared sample/fault checks plus 6 full-data evidence checks.</td>
-<td><a href="../outputs/shacl/verification.json">Saved verification</a>; all passed on 14 October 2026.</td>
+<td><a href="../outputs/shacl/verification.json">Saved verification</a>; all passed on 15 October 2026.</td>
 </tr>
 <tr>
 <td>GitHub Actions CI</td>
 <td>Real sample validation, 31 shared checks using <code>--sample-only</code>, then a separate check that the broken fixture exits with code 1.</td>
-<td><a href="../.github/workflows/shacl-gate.yml">Workflow definition</a> exists locally. It was still <strong>untracked by Git</strong> at this audit. No successful GitHub run is established.</td>
+<td>User-provided GitHub screenshot shows <strong>Success</strong> at commit <code>afd8535</code>, branch <code>main</code>, duration 34s (validate job 29s). No run URL or independent API check is recorded.</td>
 </tr>
 </tbody>
 </table></div>
-<p>The CI check count is <strong>31, not 37</strong>. The six additional local checks compare the full run's inputs and validator, confirm sample triples belong to the source graph, compare seven entity counts with CSVs, match warning identities to missing CSV values, check the full gate result, and verify the full run's PROV-O input/output fingerprints. Those six require the full local extract and saved report, so sample-only mode skips them. The 31 shared checks passed as part of the saved 37-check run; that does not claim a separate remote CI run.</p>
+<p>The CI check count is <strong>31, not 37</strong>. The six additional local checks compare the full run's inputs and validator, confirm sample triples belong to the source graph, compare seven entity counts with CSVs, match warning identities to missing CSV values, check the full gate result, and verify the full run's PROV-O input/output fingerprints. Those six require the full local extract and saved report, so sample-only mode skips them. The 31 shared checks passed locally. Remote SHACL success is separately supported by the screenshot supplied by the user.</p>
 <p>The workflow is named <strong>OULAD SHACL gate</strong>, with job ID <code>validate</code>. It listens for relevant pushes and pull requests, and also defines a manual <code>workflow_dispatch</code> trigger. Its path filters cover shapes, the RDFS schema, validation code, SHACL fixtures, the verifier and the workflow itself. A README-only change therefore does not trigger this workflow automatically.</p>
 <p>The runner uses Ubuntu, Python 3.12, pySHACL 0.40.1 and RDFLib 7.6.0. Installation occurs on the runner; your existing local <strong>M2ENV</strong> is unchanged. It needs neither Docker, Neo4j, Fuseki nor the raw OULAD download. The fixture files are outside the ignored <code>data/</code> directory so they can be included in Git.</p>
 <p><strong>How CI decides whether to pass:</strong> the real sample must pass its gate; the verifier must pass all 31 checks; the deliberately broken sample must return <strong>exit 1</strong>. That expected failure makes the final test pass, because it proves the gate rejects the known bad link. An unexpected exit 0 or an execution error (exit 2) makes that step fail. The two fixture checks are separate workflow steps, not extra numbered regression checks.</p>
-<p><strong>What remains before GitHub execution:</strong> commit the workflow together with its shapes, schema, validator, verifier and fixture dependencies, then push those files to the intended repository with Actions enabled. The local repository has an <code>origin</code> remote, but this audit did not query GitHub runs or repository settings. For a manual run, the workflow must be available on the default branch; open Actions, select OULAD SHACL gate, then Run workflow. Record the resulting run URL, commit SHA and conclusion as remote evidence. No commit, push or remote run was performed by this documentation update. See <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">GitHub workflow syntax</a>.</p>
+<p><strong>Remote evidence:</strong> the user committed and pushed the SHACL work, then supplied the successful-run screenshot. The screenshot is the evidence for the recorded conclusion; the full commit SHA and run URL were not supplied. No GitHub API query or branch-protection change was performed for this update. The new integration workflow still needs its own first push/run.</p>
 <p><strong>Merge enforcement is separate.</strong> To require a passing check before merging, configure the repository's branch protection or ruleset. Before making this particular workflow required for every pull request, adjust its workflow-level path filters: a skipped workflow can leave a required check pending on unrelated changes. GitHub documents this behavior in <a href="https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks">troubleshooting required status checks</a>. No merge protection was changed by this task.</p>
-<p>The current workflow does not upload downloadable report artifacts or capture a GitHub run URL in the project provenance. Local run records and the workflow definition are included in this audit; a future green check should be linked here only after it has actually run.</p>
+<p>The current workflow does not upload downloadable report artifacts or capture a GitHub run URL in the project provenance. The successful SHACL screenshot is identified separately from local run records. The new integration workflow is configured to upload its own reports when it runs.</p>
 <h2 id="8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</h2>
 <p>All three views ultimately use the project data; they do not introduce another original dataset.</p>
 <div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
@@ -442,13 +450,13 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 </tr>
 <tr>
 <td>Latest saved full SHACL validation</td>
-<td>14 October 2026, 06:46:29</td>
-<td>Validation completed at the former project location; fingerprints match the relocated files</td>
+<td>15 October 2026, 02:51:37</td>
+<td>Existing Session 4 report at the current project location</td>
 </tr>
 <tr>
 <td>Latest saved SHACL verification</td>
-<td>14 October 2026, 06:47:31</td>
-<td>37 checks passed; verified against that full report</td>
+<td>15 October 2026, 02:51:53</td>
+<td>37 checks passed; fingerprints match that report</td>
 </tr>
 <tr>
 <td>First Session 4 provenance audit</td>
@@ -456,15 +464,20 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <td>Preserved in the historical snapshot</td>
 </tr>
 <tr>
+<td>Full Session 5 integration</td>
+<td>16 October 2026, 10:33:10</td>
+<td>23 checks passed; separate mapped-graph SHACL report</td>
+</tr>
+<tr>
 <td>Current provenance audit</td>
-<td>15 October 2026, 02:43:27</td>
-<td>Checked current files, four saved validation runs and local CI definition; no new validation run</td>
+<td>16 October 2026, 10:36:10</td>
+<td>Refreshed saved-stage fingerprints and recorded new full/fixture integration evidence</td>
 </tr>
 </tbody>
 </table></div>
 <p>The audit checked <strong>all seven raw CSVs</strong> against the manifest. It also checked the four input fingerprints stored by the full reasoner report, and the two stored by the Fuseki report. All matched the current files. All four saved SHACL runs (full, sample, broken and draft) have matching input and validator fingerprints at the new location. Their PROV-O records match the three input entities, software agent and five generated report-file fingerprints. The latest verification fingerprint matches the latest full summary.</p>
-<p>The accompanying <a href="provenance-snapshot.json">provenance-snapshot.json</a> records full SHA-256 fingerprints for 113 selected data, code, ontology, shapes, fixture, workflow, documentation and result files. A fingerprint helps detect file changes; these local fingerprints are not publisher-authenticated signatures. They capture the files inspected now, not an independently archived history of every earlier run.</p>
-<p>The <a href="history/provenance-snapshot-2026-10-14T063915Z.json">previous snapshot</a> is preserved with its original audit time and old run ID. The current full run is <code>f6dd0ac440204d898b9705840bb8b353</code>. The audit on 15 October updates the evidence record; it does not relabel the validation as a new run.</p>
+<p>The accompanying <a href="provenance-snapshot.json">provenance-snapshot.json</a> records full SHA-256 fingerprints for the selected data, code, ontology, shapes, fixture, workflow, documentation and result files listed in its <code>files</code> object. A fingerprint helps detect file changes; these local fingerprints are not publisher-authenticated signatures. They capture the files inspected now, not an independently archived history of every earlier run.</p>
+<p>The <a href="history/provenance-snapshot-2026-10-15T024327Z.json">previous snapshot</a> preserves the 15 October audit; the earlier 14 October snapshot also remains in history. The current Session 4 full run is <code>7b97ef4623a9455c8781799ac0fb1471</code>. The new Session 5 mapped-graph validation has its own run ID, recorded below.</p>
 <p><strong>Folder relocation:</strong> the project is now <code>D:\DESKTOP\M2\kr-oulad</code>, with the course in <code>D:\DESKTOP\M2\KRR</code>. Earlier reports retain their original <code>C:</code> input paths. We compared those inputs by role and SHA-256 with files at the new location, preserving the original reports. To create fresh reports with current paths, activate M2ENV, enter the project folder and run <code>./run-shacl.ps1</code>. Running only the full verifier against old absolute paths can fail; run the full helper first.</p>
 <p>The current environment is the existing Conda <strong>M2ENV</strong>: Python 3.12.15, pandas 2.3.3, RDFLib 7.6.0, owlrl 7.6.2, Owlready2 0.51 and pySHACL 0.40.1. The snapshot includes additional notebook and profiling package versions. This inventory describes the environment inspected now. The <a href="../README.md">README</a> contains the execution order, Java requirement, ontology steps and optional database instructions.</p>
 <p>After changing data, mappings or axioms, regenerate their dependent outputs and verification reports before updating this guide. Reordered Turtle serialization can change a file's fingerprint even when its RDF meaning is unchanged.</p>
@@ -501,7 +514,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 </tr>
 </tbody>
 </table></div>
-<p>This guide and its snapshot provide <strong>documented file-level provenance</strong>, plus a checked row-to-inference example. Since Session 4, validation additionally emits a machine-queryable PROV-O record for each actual run. It does not annotate every source triple or reconstruct all earlier pipeline executions.</p>
+<p>This guide and its snapshot provide <strong>documented file-level provenance</strong>, plus a checked row-to-inference example. Since Session 4, validation emits a machine-queryable PROV-O record for each actual run. Session 5 also records a complete integration activity, its database state, mapping and outputs. It does not annotate every source triple or reconstruct all earlier pipeline executions.</p>
 <p>The course's <a href="../../KRR/demos/session-04-shacl/add_provenance.py">Session 4 add_provenance.py</a> motivates the new <a href="../outputs/shacl/full/provenance.ttl">validation provenance record</a>. It describes the validation that actually ran:</p>
 <ul>
 <li><strong>Entities:</strong> the data, RDFS schema and SHACL shapes, identified by SHA-256; the generated report files also have fingerprints.</li>
@@ -514,4 +527,74 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <p>The selected AAA offerings are a teaching scope. Results do not describe all university students, reveal the real module title, or establish causal explanations of performance. Missing activity and unknown values remain limits on the questions that can be answered.</p>
 <p>The project has not recorded a complete immutable history of each past code version, execution start/end times for every earlier stage, or provenance for every triple. SHACL runs now record their own times and input/output identities. Some stages have only saved reports and current source files. This guide states those limits so its evidence can be used at the level actually supported.</p>
 <p><strong>To explain the project aloud:</strong> “We obtained OULAD from UCI, preserved the originals, selected AAA and checked its tables. We mapped the selected records into RDF, authored an education ontology with a small attributed FOAF fragment, and used HermiT to derive classifications. We validated the asserted graph with SHACL, triaged unknown values as warnings, and checked that deliberate faults fail the gate. We compared the graph answers and inferred identities with the CSVs. The manifests, source files and verification reports let us trace those results back to their inputs.”</p>
-<div class="footer">Audited 15 October 2026. Saved validation evidence and prepared CI configuration are identified separately.</div></main></div></body></html>
+<h2 id="12-session-5-integration-provenance">12. Session 5 integration provenance</h2>
+<p><strong>What changed:</strong> the existing selected AAA CSVs were loaded into PostgreSQL; a shared R2RML mapping was executed by Morph-KGC and queried by Ontop. The original raw CSVs, reference RDF, RDFS/OWL vocabulary and SHACL shapes remain the source of comparison. This adds a relational access path and a reusable declarative mapping, not a new original dataset.</p>
+<p>The design adapts the course's <a href="../../KRR/demos/session-05-integration/README.md">Session 5 lab</a>: database loading, mapping materialization, comparison with Session 2, Ontop querying and SQL inspection. OULAD's composite enrollment identity, joins and missing-value rules replace the lab's supply-chain model. Entity-resolution exercises are outside this extension: the supplied OULAD IDs already determine the modeled joins.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Evidence</th>
+<th>Full AAA</th>
+<th>Real-data fixture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Integration run</td>
+<td><code>99568e1cd42b46aa8ddf05ac6d075a5b</code></td>
+<td><code>75d6a50e89424e6fa9872844093196e9</code></td>
+</tr>
+<tr>
+<td>Check completion, UTC</td>
+<td>2026-10-16T10:33:10.438337+00:00</td>
+<td>2026-10-16T10:33:35.153777+00:00</td>
+</tr>
+<tr>
+<td>Passed checks</td>
+<td>23</td>
+<td>23</td>
+</tr>
+<tr>
+<td>Mapped triples</td>
+<td>28,470</td>
+<td>299</td>
+</tr>
+<tr>
+<td>Graph comparison</td>
+<td>No missing or extra RDF terms</td>
+<td>No missing or extra RDF terms</td>
+</tr>
+<tr>
+<td>Answer comparisons</td>
+<td>Six queries equal across SQL/reference RDF/mapped RDF/Ontop</td>
+<td>Same six comparisons pass</td>
+</tr>
+<tr>
+<td>Mapped SHACL</td>
+<td>0 violations, 5 warnings; gate passes</td>
+<td>0 violations, 3 warnings; gate passes</td>
+</tr>
+<tr>
+<td>Low-score freshness</td>
+<td>90 → 89 live; old snapshot 90; refreshed 89</td>
+<td>2 → 1 live; old snapshot 2; refreshed 1</td>
+</tr>
+<tr>
+<td>Demo restoration</td>
+<td>Original teaching database fingerprint restored</td>
+<td>Original teaching database fingerprint restored</td>
+</tr>
+</tbody>
+</table></div>
+<p>Full <a href="../outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/report.html">report</a>, <a href="../outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/summary.json">summary</a>, <a href="../outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/provenance.ttl">PROV-O</a> and <a href="../outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/provenance-check.json">provenance verification</a>. Fixture <a href="../outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/report.html">report</a>, <a href="../outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/summary.json">summary</a> and <a href="../outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/provenance.ttl">PROV-O</a>. The mapped graph's nested SHACL run is <code>478addc17f0c4be5813c7d00da5a4cb3</code>; it has its own <a href="../outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/shacl/provenance.ttl">validation provenance</a>.</p>
+<h3 id="how-the-integration-provenance-is-recorded">How the integration provenance is recorded</h3>
+<p><strong>Entities:</strong> fingerprints identify the six CSV inputs, reference graph, R2RML mapping, database DDL, RDFS schema, SHACL shapes, source code, question files, declared dependencies and runtime download manifest. A separate entity identifies the actual database rows through a deterministic content hash. The connection description records host, port, database and schema; it excludes credentials.</p>
+<p><strong>Activity:</strong> a unique integration run records its actual start and check-completion timestamps. The PROV activity end time also includes report assembly. Results are stored in <code>outputs/integration/runs/&lt;run-id&gt;/</code>; the stable HTML landing page and latest-success pointer select the newest successful run. Failed attempts remain separate and cannot masquerade as successful evidence.</p>
+<p><strong>Agent and outputs:</strong> the runner is identified by its code fingerprint, with the tested Python package versions. <code>prov:used</code> links the activity to input entities; <code>prov:wasGeneratedBy</code> links answer files, generated SQL, RDF, comparisons and reports to it. <code>provenance-check.json</code> independently re-reads those links and compares input/output hashes. The nested SHACL activity supplies the validator's own evidence. These are file/database-state records, not per-triple source-line annotations.</p>
+<p>Versions: PostgreSQL 16 container; Morph-KGC 2.10.0; Ontop 5.5.0; PostgreSQL JDBC 42.7.13; RDFLib 7.6.0; pySHACL 0.40.1; SQLAlchemy 2.0.54; psycopg2-binary 2.9.13. M2ENV was retained; Morph was installed without replacing its existing dependencies. Runtime download URLs and locally computed fingerprints are captured in the snapshot. Docker's <code>16-alpine</code> tag and some transitive Python dependencies can change; the version declarations are not a bit-for-bit lock of every future machine. Download hashes are local evidence, not publisher signatures.</p>
+<h3 id="interpretation-and-limits">Interpretation and limits</h3>
+<p>The shared mapping produces asserted facts only. The graph comparison preserves RDF identity and datatypes, with documented lexical normalization; the observed raw difference is also zero. Virtual query answers are compared as multisets. No full OWL ontology is passed to Ontop; the existing HermiT results are separately preserved. The activity extension remains excluded.</p>
+<p>Shared table locks hold baseline comparisons to one database state. The intentional update runs in a separately loaded demo schema and restores its edited score; before/after artifacts are teaching states. A prior successful SHACL snapshot does not certify arbitrary future database updates. Freshness results demonstrate the distinction between live access and a saved graph, not general performance superiority.</p>
+<p>The <a href="../.github/workflows/integration.yml">new integration CI workflow</a> repeats the 23-check fixture procedure with a PostgreSQL service and uploads diagnostic artifacts. It is <strong>prepared locally; no remote integration run is recorded</strong>. Your earlier SHACL success screenshot belongs to the separate SHACL workflow. Neither record establishes branch-protection settings.</p>
+<p>The <a href="project-walkthrough.html#16-session-5-one-mapping-two-ways-to-answer">walkthrough</a> explains actual implementation failures and fixes: positional fingerprint sorting, nullable-score emission and Windows URI paths. The <a href="../README.md#13-session-5--postgresql-mappings-materialization-and-virtualization">README</a> gives the full run sequence.</p>
+</main></div></body></html>

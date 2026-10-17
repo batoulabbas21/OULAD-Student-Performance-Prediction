@@ -1,0 +1,19 @@
+name: kr-oulad-integration
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${OULAD_DB_NAME:-oulad}
+      POSTGRES_USER: ${OULAD_DB_USER:-oulad}
+      POSTGRES_PASSWORD: ${OULAD_DB_PASSWORD:?Run init_config.py first}
+    ports:
+      - "127.0.0.1:${OULAD_DB_PORT:-5433}:5432"
+    volumes:
+      - oulad-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+volumes:
+  oulad-postgres:

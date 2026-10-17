@@ -1,0 +1,28 @@
+{
+  "run_id": "702261c21f1e476e91a160618fed9f2e",
+  "failed_at_utc": "2026-10-16T05:32:05.639642+00:00",
+  "passed": false,
+  "error": "[<class 'decimal.ConversionSyntax'>]",
+  "checks": [
+    {
+      "check": "Database matches the load receipt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Duplicate enrollment key is rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Score 101 is rejected",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Unknown offering is rejected",
+      "passed": true,
+      "detail": null
+    }
+  ]
+}
