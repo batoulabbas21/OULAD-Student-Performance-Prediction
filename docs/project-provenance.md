@@ -2,7 +2,7 @@
 
 **Where the data came from, what we changed, and why the results can be traced.**
 
-Prepared on **13 October 2026**, updated through Session 5 on **16 October 2026** for the `kr-oulad` project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the [README](../README.md) for commands. Jump to [SHACL evidence](#session-4-validation-evidence), [SHACL and CI](#shacl-and-ci-what-is-implemented-and-what-has-run), or [validation-run provenance](#10-connection-to-the-course-provenance-lesson).
+Prepared on **13 October 2026**, updated through Session 6 on **18 October 2026** for the `kr-oulad` project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the [README](../README.md) for commands. Jump to [SHACL evidence](#session-4-validation-evidence), [SHACL and CI](#shacl-and-ci-what-is-implemented-and-what-has-run), or [validation-run provenance](#10-connection-to-the-course-provenance-lesson).
 
 > **Provenance means the history behind a result.** For this project, it connects an original CSV row to its RDF representation, the ontology definition applied to it, and the resulting answer.
 
@@ -22,7 +22,8 @@ The project turns a small, understandable part of OULAD into a knowledge graph. 
 | SHACL gate | 0 violations, 5 visible warnings; gate passes |
 | SHACL CI | User screenshot: Success at `afd8535` on main; 31 fixture regression checks configured |
 | Session 5 | 28,470 mapped triples; 23 integration checks passed for full AAA and 23 for the fixture |
-| Integration CI | New PostgreSQL fixture workflow prepared; first remote run pending |
+| Integration CI | New PostgreSQL fixture workflow prepared; no remote run evidence recorded here |
+| Session 6 learning | 21 learning checks and 54 evidence checks passed; predictions retained separately |
 
 The current build excludes daily activity from `studentVle.csv`. An activity question is therefore marked **unavailable**; omitted activity does not mean that students made zero clicks.
 
@@ -212,7 +213,7 @@ The OWL type export is separate; it is not automatically loaded into Neo4j or Fu
 | Latest saved SHACL verification | 15 October 2026, 02:51:53 | 37 checks passed; fingerprints match that report |
 | First Session 4 provenance audit | 14 October 2026, 06:39:15 | Preserved in the historical snapshot |
 | Full Session 5 integration | 16 October 2026, 10:33:10 | 23 checks passed; separate mapped-graph SHACL report |
-| Current provenance audit | 16 October 2026, 10:36:10 | Refreshed saved-stage fingerprints and recorded new full/fixture integration evidence |
+| Session 5 provenance audit | 16 October 2026, 10:36:10 | Refreshed saved-stage fingerprints and recorded new full/fixture integration evidence |
 
 The audit checked **all seven raw CSVs** against the manifest. It also checked the four input fingerprints stored by the full reasoner report, and the two stored by the Fuseki report. All matched the current files. All four saved SHACL runs (full, sample, broken and draft) have matching input and validator fingerprints at the new location. Their PROV-O records match the three input entities, software agent and five generated report-file fingerprints. The latest verification fingerprint matches the latest full summary.
 
@@ -296,3 +297,37 @@ Shared table locks hold baseline comparisons to one database state. The intentio
 The [new integration CI workflow](../.github/workflows/integration.yml) repeats the 23-check fixture procedure with a PostgreSQL service and uploads diagnostic artifacts. It is **prepared locally; no remote integration run is recorded**. Your earlier SHACL success screenshot belongs to the separate SHACL workflow. Neither record establishes branch-protection settings.
 
 The [walkthrough](project-walkthrough.html#16-session-5-one-mapping-two-ways-to-answer) explains actual implementation failures and fixes: positional fingerprint sorting, nullable-score emission and Windows URI paths. The [README](../README.md#13-session-5--postgresql-mappings-materialization-and-virtualization) gives the full run sequence.
+
+
+## 13. Session 6 learning provenance
+
+This extension reads the mapped RDF from the later successful Session 5 source **`outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/oulad-mapped.nt`**. That source is selected through the latest-full receipt and checked against its graph hash and current selected CSV fingerprints. Earlier Session 5 runs listed above remain dated evidence; they are not relabeled as this later source run.
+
+The learning activity **`f7649738f7414536bc2395ef7496eebf`** began **2026-10-17T21:32:30.408391+00:00** and completed checks **2026-10-17T21:33:16.413705+00:00** (UTC). The documentation was updated on **18 October 2026**. The PROV end time additionally includes report assembly. See the [run report](../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/report.html), [summary](../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/summary.json), [manifest](../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/manifest.json), [PROV-O record](../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/provenance.ttl) and [independent verification](../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/verification.json).
+
+### Inputs, transformations and software
+
+Input entities identify the selected mapped graph and its receipt, the six selected CSV files, RDFS schema, fixed learning protocol, source scripts and evidence verifier by SHA-256. The graph builder reconciles labels and features independently with CSV joins. It saves a separate label-free day-60 graph, a label table and explicit train/test row lists.
+
+The outcome models train on 335 eligible 2013J enrollments and test on 340 eligible 2014J enrollments, with no shared students. Twenty-six eligible earlier records were purged because their students occur in the future offering. Forty-seven already-withdrawn enrollments were excluded from the day-60 task. The original 748 enrollments, 531 successful and 217 unsuccessful outcomes remain unchanged. Test predictions are compared with **87 actual positive outcomes**, not the full historical count.
+
+Imputation, constant-feature removal and scaling are fitted on training rows only. Grade values and inferred outcome classes are excluded. The preliminary prototype was corrected to remove zero-variance training features; the final run and code hashes above identify the corrected implementation. The three seeds and all model settings are retained. No source labels or historical facts were replaced by predictions.
+
+The link task masks the 3,107 nonbanked historical submission links into 2,487 train, 310 validation and 310 test edges for each of three seeds. Supporting triples provide only offering membership and assessment types. Hidden target edges and their record-node paths are absent from training. Filtered truth is used for evaluation only; the count baseline uses training frequencies. It is a reconstruction task, separate from the temporal outcome task.
+
+The software agent is identified by the learning runner's hash. Versions are torch 2.8.0, torch-geometric 2.8.0.post1, pykeen 1.11.1, scikit-learn 1.7.2, rdflib 7.6.0, pandas 2.3.3, numpy 2.3.5, matplotlib 3.10.0. The existing **M2ENV** was retained; no package installation was needed. Runtime caches are isolated under ignored `.runtime/learning/`. This records the observed versions, not a guarantee of bit-for-bit numerical identity across every machine.
+
+### Results and evidence strength
+
+- **21 learning checks passed:** original counts, CSV feature reconciliation, eligibility, banked/cutoff rules, exclusion of labels and future events, temporal separation and stable input hashes.
+- **54 evidence checks passed:** recomputed predictions/metrics, training-only preprocessing, disjoint link partitions, train-count popularity ranks and candidate filtering, input/output fingerprints and PROV-O links.
+- **Temporal average precision:** logistic regression 0.526; GraphSAGE mean 0.502 over three seeds; early-submission count 0.444; constant score 0.256.
+- **Link reconstruction:** popularity beats TransE on all three splits under both ranking modes. Full ranks and candidate-set sizes are retained; filtered scores alone are insufficient.
+
+`prov:used` connects the activity to input entities; `prov:wasGeneratedBy` connects features, labels, predictions, checkpoints, rank tables, figures and reports to the activity. `prov:wasAssociatedWith` identifies the software. The manifest excludes itself and the repeatable verification file to avoid self-referential fingerprints; the verifier records the manifest fingerprint it checked. Checkpoints are locally saved but `.pt` files are ignored by Git. A fresh clone must regenerate them before complete output-hash verification.
+
+The current [project snapshot](provenance-snapshot.json) incorporates new evidence and refreshes listed file hashes. The [previous snapshot](history/provenance-snapshot-2026-10-16T103610Z.json) is preserved. Older audits and preliminary run folders retain their own dates and hashes; current code need not match every historical prototype. This is run/file provenance, not per-prediction causal explanation or a complete immutable code archive.
+
+The current learning suite is local. This update adds no learning CI workflow and makes no claim that GitHub ran the models. Existing SHACL and integration workflows have their own scope and evidence. No commit or push was performed for Session 6.
+
+The [detailed learning explanation](learning-results-explained.html) records the cohort changes, metrics, failure modes, actual fixes and limitations. The [README](../README.md#14-session-6--learning-and-baseline-comparisons) gives all steps. This is a teaching experiment on one module and one future offering, with date-based availability assumptions and uncalibrated scores, not a deployed student decision system.

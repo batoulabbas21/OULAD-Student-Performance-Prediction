@@ -1,0 +1,15 @@
+{
+  "existing_conda_environment": "M2ENV",
+  "packages": {
+    "torch": "2.8.0",
+    "torch-geometric": "2.8.0.post1",
+    "pykeen": "1.11.1",
+    "scikit-learn": "1.7.2",
+    "rdflib": "7.6.0",
+    "pandas": "2.3.3",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.0"
+  },
+  "execution": "CPU",
+  "note": "Version inventory of the successful run; no new installation was required. Not a full transitive lockfile."
+}

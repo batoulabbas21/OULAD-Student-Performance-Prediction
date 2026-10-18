@@ -1,0 +1,751 @@
+{
+  "run_id": "b26d51892dff4a4bb42ac213d217fcac",
+  "started_at_utc": "2026-10-17T05:15:12.800480+00:00",
+  "finished_at_utc": "2026-10-17T05:16:17.568035+00:00",
+  "passed": true,
+  "source_graph": "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/oulad-mapped.nt",
+  "source_sha256": {
+    "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/oulad-mapped.nt": "709410e72506607349b638acdf4304c41641ab5eed6d60f3fc97339879314b68",
+    "config/learning/protocol.json": "ff54cf4f6e745dd864e76c376ec958043f6dbe878d37afdb18beb0d4a27a94cc",
+    "ontology/education.rdfs.ttl": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+    "evaluation/verify_learning.py": "62320592199d2aadcd661e33729ed898043e3c5d9acc02cedab4a28638940e30",
+    "outputs/integration/latest-full.json": "83a35ed84ba465e9bbb639ca9be0d35f12bbcebc15ea71bec5618dffd39ea8b2",
+    "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/summary.json": "f4794e8e58b62ee6a4fca763d84211fc6c19b9f218b7251e9a31cde295ca77ff",
+    "src/learning/build_graph.py": "158cc046c401a08425e3f8b7691c679e53223bf3ec1ad2b2960acf10cb5355c1",
+    "src/learning/checks.py": "61cc02c9163233156cf690c9d12bbb9b3e534c0cb9fa1a9e94eb136bf33b5be4",
+    "src/learning/classification.py": "c3b6ac59fe3115cff98535ef3c57c0bb1d69c4c67cdc650f8368ad9c8c605dfa",
+    "src/learning/common.py": "bc4480213a579d359d418b2719fd34967a287923328b395816b05a75f196456d",
+    "src/learning/link_prediction.py": "57b5b9af0127271b7c4e6b43bb452b0c8dd0f6a4a2a6cf00f9e225fe8fd13249",
+    "src/learning/report.py": "78f4c23ed528cebf7f11bed460bc200f4848c761723b99487fd4f1b26b4326c5",
+    "src/learning/run.py": "36503371c75725bfd84b466ef707b1373b0eabacfa5f94810d0d3d7b76b432e2",
+    "data/interim/assessments.csv": "c331b9eb8cbddb982d97f47ff4e07760bfa648025214b089ac70d40c13fa4896",
+    "data/interim/courses.csv": "f52e7042dffa402110e0fb1086da3ba7569a6de76c496e09ffaf7d1dcd49e4eb",
+    "data/interim/studentAssessment.csv": "e2bde03c12ff7e7b51da0ba32a476422c3fb6bb65e5dfd3f86b298c593dfbcd9",
+    "data/interim/studentInfo.csv": "c4fc15dbe643c29f710e815c8d523a34828f3b434317e6854898552884327d75",
+    "data/interim/studentRegistration.csv": "8933cc554f26e5345f991a55f522f8c3ef212c9c8cf25609ad8ee54a511edfb0",
+    "data/interim/vle.csv": "cc29dc5adf8457cab0f57c0411402c264aad43650d74a6db0511d42d012d9678"
+  },
+  "protocol": {
+    "version": 1,
+    "cutoff_day": 60,
+    "train_presentation": "2013J",
+    "test_presentation": "2014J",
+    "positive_label": "Fail or Withdrawn",
+    "eligible": "registered by day 60 and not unregistered by day 60",
+    "purge": "remove training students present anywhere in the 2014J offering",
+    "classification_seeds": [
+      0,
+      1,
+      2
+    ],
+    "random_split_seeds": [
+      0,
+      1,
+      2
+    ],
+    "random_test_share": 0.3,
+    "threshold": 0.5,
+    "graphsage": {
+      "epochs": 100,
+      "hidden": 16,
+      "learning_rate": 0.01
+    },
+    "logistic": {
+      "C": 1.0,
+      "class_weight": "balanced",
+      "max_iter": 2000
+    },
+    "link_prediction": {
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "train_share": 0.8,
+      "validation_share": 0.1,
+      "test_share": 0.1,
+      "model": "TransE",
+      "dimension": 32,
+      "epochs": 100,
+      "batch_size": 256,
+      "learning_rate": 0.01,
+      "negatives_per_positive": 5
+    },
+    "selection": "Settings fixed before viewing test metrics; no best-seed selection or threshold tuning.",
+    "scope": "Retrospective educational experiment on AAA only; no deployed decisions."
+  },
+  "cohort": {
+    "all_enrollments": 748,
+    "all_students": 712,
+    "outcomes": {
+      "Pass": 487,
+      "Withdrawn": 126,
+      "Fail": 91,
+      "Distinction": 44
+    },
+    "successful": 531,
+    "unsuccessful": 217,
+    "eligible_day60": 701,
+    "excluded_day60": 47,
+    "nonbanked_historical_links": 3107,
+    "banked_records_excluded": 42,
+    "eligible_early_edges": 1199,
+    "learning_triples": 5389,
+    "feature_names": [
+      "previous_attempts",
+      "registration_day",
+      "early_submission_count",
+      "early_late_count",
+      "last_submission_day"
+    ],
+    "label_policy": "1 = final Fail or Withdrawn; 0 = final Pass or Distinction",
+    "availability_assumption": "Registration and submission dates approximate recorded availability; no ingestion/revision log exists. Grades excluded because publication dates are absent."
+  },
+  "classification": {
+    "split": {
+      "train_rows": 335,
+      "test_rows": 340,
+      "purged_eligible_training_rows": 26,
+      "all_cross_offering_students": 36,
+      "train_unsuccessful": 57,
+      "test_unsuccessful": 87,
+      "student_overlap": 0
+    },
+    "metrics": [
+      {
+        "model": "Logistic regression",
+        "split": "temporal",
+        "seed": 0,
+        "n": 340,
+        "actual_unsuccessful": 87,
+        "predicted_unsuccessful": 137,
+        "average_precision": 0.5259415887002294,
+        "roc_auc": 0.7101676434510016,
+        "accuracy": 0.6705882352941176,
+        "balanced_accuracy": 0.6617600290763709,
+        "precision": 0.40875912408759124,
+        "recall": 0.6436781609195402,
+        "f1": 0.5,
+        "tn": 172,
+        "fp": 81,
+        "fn": 31,
+        "tp": 56
+      },
+      {
+        "model": "Training prevalence",
+        "split": "temporal",
+        "seed": 0,
+        "n": 340,
+        "actual_unsuccessful": 87,
+        "predicted_unsuccessful": 0,
+        "average_precision": 0.25588235294117645,
+        "roc_auc": 0.5,
+        "accuracy": 0.7441176470588236,
+        "balanced_accuracy": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 253,
+        "fp": 0,
+        "fn": 87,
+        "tp": 0
+      },
+      {
+        "model": "Early submission count",
+        "split": "temporal",
+        "seed": 0,
+        "n": 340,
+        "actual_unsuccessful": 87,
+        "predicted_unsuccessful": 21,
+        "average_precision": 0.4437124759159562,
+        "roc_auc": 0.7069419835536777,
+        "accuracy": 0.7705882352941177,
+        "balanced_accuracy": 0.5743491890418427,
+        "precision": 0.7142857142857143,
+        "recall": 0.1724137931034483,
+        "f1": 0.2777777777777778,
+        "tn": 247,
+        "fp": 6,
+        "fn": 72,
+        "tp": 15
+      },
+      {
+        "model": "GraphSAGE",
+        "split": "temporal",
+        "seed": 0,
+        "n": 340,
+        "actual_unsuccessful": 87,
+        "predicted_unsuccessful": 171,
+        "average_precision": 0.4980261749506073,
+        "roc_auc": 0.6788196810685566,
+        "accuracy": 0.5647058823529412,
+        "balanced_accuracy": 0.586842942165281,
+        "precision": 0.3216374269005848,
+        "recall": 0.632183908045977,
+        "f1": 0.4263565891472868,
+        "tn": 137,
+        "fp": 116,
+        "fn": 32,
+        "tp": 55
+      },
+      {
+        "model": "GraphSAGE",
+        "split": "temporal",
+        "seed": 1,
+        "n": 340,
+        "actual_unsuccessful": 87,
+        "predicted_unsuccessful": 161,
+        "average_precision": 0.4992697114405712,
+        "roc_auc": 0.6867475353232475,
+        "accuracy": 0.611764705882353,
+        "balanced_accuracy": 0.6297760210803689,
+        "precision": 0.36024844720496896,
+        "recall": 0.6666666666666666,
+        "f1": 0.46774193548387094,
+        "tn": 150,
+        "fp": 103,
+        "fn": 29,
+        "tp": 58
+      },
+      {
+        "model": "GraphSAGE",
+        "split": "temporal",
+        "seed": 2,
+        "n": 340,
+        "actual_unsuccessful": 87,
+        "predicted_unsuccessful": 184,
+        "average_precision": 0.5008855410787504,
+        "roc_auc": 0.6862023533687701,
+        "accuracy": 0.5794117647058824,
+        "balanced_accuracy": 0.6306619417563946,
+        "precision": 0.34782608695652173,
+        "recall": 0.735632183908046,
+        "f1": 0.47232472324723246,
+        "tn": 133,
+        "fp": 120,
+        "fn": 23,
+        "tp": 64
+      },
+      {
+        "model": "INVALID label-leak control",
+        "split": "leak_control",
+        "seed": 0,
+        "n": 340,
+        "actual_unsuccessful": 87,
+        "predicted_unsuccessful": 87,
+        "average_precision": 1.0,
+        "roc_auc": 1.0,
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "tn": 253,
+        "fp": 0,
+        "fn": 0,
+        "tp": 87
+      },
+      {
+        "model": "Logistic regression",
+        "split": "random_0",
+        "seed": 0,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 65,
+        "average_precision": 0.6706209288927744,
+        "roc_auc": 0.830514705882353,
+        "accuracy": 0.7819905213270142,
+        "balanced_accuracy": 0.7493872549019608,
+        "precision": 0.5384615384615384,
+        "recall": 0.6862745098039216,
+        "f1": 0.603448275862069,
+        "tn": 130,
+        "fp": 30,
+        "fn": 16,
+        "tp": 35
+      },
+      {
+        "model": "Training prevalence",
+        "split": "random_0",
+        "seed": 0,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 0,
+        "average_precision": 0.24170616113744076,
+        "roc_auc": 0.5,
+        "accuracy": 0.7582938388625592,
+        "balanced_accuracy": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 160,
+        "fp": 0,
+        "fn": 51,
+        "tp": 0
+      },
+      {
+        "model": "Early submission count",
+        "split": "random_0",
+        "seed": 0,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 11,
+        "average_precision": 0.5343598087203183,
+        "roc_auc": 0.7549019607843136,
+        "accuracy": 0.8104265402843602,
+        "balanced_accuracy": 0.607843137254902,
+        "precision": 1.0,
+        "recall": 0.21568627450980393,
+        "f1": 0.3548387096774194,
+        "tn": 160,
+        "fp": 0,
+        "fn": 40,
+        "tp": 11
+      },
+      {
+        "model": "GraphSAGE",
+        "split": "random_0",
+        "seed": 0,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 80,
+        "average_precision": 0.6182133717513776,
+        "roc_auc": 0.7488970588235294,
+        "accuracy": 0.6919431279620853,
+        "balanced_accuracy": 0.676654411764706,
+        "precision": 0.4125,
+        "recall": 0.6470588235294118,
+        "f1": 0.5038167938931297,
+        "tn": 113,
+        "fp": 47,
+        "fn": 18,
+        "tp": 33
+      },
+      {
+        "model": "Logistic regression",
+        "split": "random_1",
+        "seed": 0,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 52,
+        "average_precision": 0.4611813362862323,
+        "roc_auc": 0.6928308823529412,
+        "accuracy": 0.7014218009478673,
+        "balanced_accuracy": 0.596078431372549,
+        "precision": 0.38461538461538464,
+        "recall": 0.39215686274509803,
+        "f1": 0.3883495145631068,
+        "tn": 128,
+        "fp": 32,
+        "fn": 31,
+        "tp": 20
+      },
+      {
+        "model": "Training prevalence",
+        "split": "random_1",
+        "seed": 0,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 0,
+        "average_precision": 0.24170616113744076,
+        "roc_auc": 0.5,
+        "accuracy": 0.7582938388625592,
+        "balanced_accuracy": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 160,
+        "fp": 0,
+        "fn": 51,
+        "tp": 0
+      },
+      {
+        "model": "Early submission count",
+        "split": "random_1",
+        "seed": 0,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 6,
+        "average_precision": 0.34626583650837905,
+        "roc_auc": 0.6102941176470588,
+        "accuracy": 0.7772511848341233,
+        "balanced_accuracy": 0.5458946078431373,
+        "precision": 0.8333333333333334,
+        "recall": 0.09803921568627451,
+        "f1": 0.17543859649122806,
+        "tn": 159,
+        "fp": 1,
+        "fn": 46,
+        "tp": 5
+      },
+      {
+        "model": "GraphSAGE",
+        "split": "random_1",
+        "seed": 1,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 58,
+        "average_precision": 0.4203736386712722,
+        "roc_auc": 0.6384191176470588,
+        "accuracy": 0.6540284360189573,
+        "balanced_accuracy": 0.5514705882352942,
+        "precision": 0.3103448275862069,
+        "recall": 0.35294117647058826,
+        "f1": 0.3302752293577982,
+        "tn": 120,
+        "fp": 40,
+        "fn": 33,
+        "tp": 18
+      },
+      {
+        "model": "Logistic regression",
+        "split": "random_2",
+        "seed": 0,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 61,
+        "average_precision": 0.5507936140728215,
+        "roc_auc": 0.7352941176470588,
+        "accuracy": 0.7630331753554502,
+        "balanced_accuracy": 0.710171568627451,
+        "precision": 0.5081967213114754,
+        "recall": 0.6078431372549019,
+        "f1": 0.5535714285714286,
+        "tn": 130,
+        "fp": 30,
+        "fn": 20,
+        "tp": 31
+      },
+      {
+        "model": "Training prevalence",
+        "split": "random_2",
+        "seed": 0,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 0,
+        "average_precision": 0.24170616113744076,
+        "roc_auc": 0.5,
+        "accuracy": 0.7582938388625592,
+        "balanced_accuracy": 0.5,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "tn": 160,
+        "fp": 0,
+        "fn": 51,
+        "tp": 0
+      },
+      {
+        "model": "Early submission count",
+        "split": "random_2",
+        "seed": 0,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 9,
+        "average_precision": 0.45630948845170133,
+        "roc_auc": 0.7214460784313725,
+        "accuracy": 0.7819905213270142,
+        "balanced_accuracy": 0.5623774509803922,
+        "precision": 0.7777777777777778,
+        "recall": 0.13725490196078433,
+        "f1": 0.23333333333333334,
+        "tn": 158,
+        "fp": 2,
+        "fn": 44,
+        "tp": 7
+      },
+      {
+        "model": "GraphSAGE",
+        "split": "random_2",
+        "seed": 2,
+        "n": 211,
+        "actual_unsuccessful": 51,
+        "predicted_unsuccessful": 113,
+        "average_precision": 0.4717961574751623,
+        "roc_auc": 0.6787377450980393,
+        "accuracy": 0.5639810426540285,
+        "balanced_accuracy": 0.6123161764705882,
+        "precision": 0.3185840707964602,
+        "recall": 0.7058823529411765,
+        "f1": 0.43902439024390244,
+        "tn": 83,
+        "fp": 77,
+        "fn": 15,
+        "tp": 36
+      }
+    ],
+    "random_split_diagnostics": [
+      {
+        "seed": 0,
+        "train_rows": 490,
+        "test_rows": 211,
+        "overlapping_students": 7
+      },
+      {
+        "seed": 1,
+        "train_rows": 490,
+        "test_rows": 211,
+        "overlapping_students": 10
+      },
+      {
+        "seed": 2,
+        "train_rows": 490,
+        "test_rows": 211,
+        "overlapping_students": 13
+      }
+    ],
+    "graphsage_seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "link_prediction": {
+    "seeds": [
+      {
+        "seed": 0,
+        "initial_links": 3107,
+        "train_links": 2487,
+        "validation_links": 310,
+        "test_links": 310,
+        "support_links": 772,
+        "cold_entity_test_links": 0,
+        "test_links_with_zero_training_degree": 9,
+        "mean_filtered_candidates": 2.2548387096774194,
+        "min_filtered_candidates": 2,
+        "max_filtered_candidates": 6,
+        "random_unfiltered": {
+          "mrr": 0.4083333333333334,
+          "hits_at_1": 0.16666666666666666,
+          "hits_at_3": 0.5
+        },
+        "random_filtered": {
+          "mrr": 0.7221048387096773,
+          "hits_at_1": 0.469731182795699,
+          "hits_at_3": 0.9737096774193549
+        },
+        "transe_filtered": {
+          "mrr": 0.912741935483871,
+          "hits_at_1": 0.8387096774193549,
+          "hits_at_3": 0.9870967741935484,
+          "n": 310
+        },
+        "transe_unfiltered": {
+          "mrr": 0.22629032258064513,
+          "hits_at_1": 0.0032258064516129032,
+          "hits_at_3": 0.09032258064516129,
+          "n": 310
+        },
+        "popularity_filtered": {
+          "mrr": 0.9846774193548387,
+          "hits_at_1": 0.9709677419354839,
+          "hits_at_3": 0.9967741935483871,
+          "n": 310
+        },
+        "popularity_unfiltered": {
+          "mrr": 0.4770430107526881,
+          "hits_at_1": 0.21935483870967742,
+          "hits_at_3": 0.6451612903225806,
+          "n": 310
+        }
+      },
+      {
+        "seed": 1,
+        "initial_links": 3107,
+        "train_links": 2487,
+        "validation_links": 310,
+        "test_links": 310,
+        "support_links": 772,
+        "cold_entity_test_links": 0,
+        "test_links_with_zero_training_degree": 7,
+        "mean_filtered_candidates": 2.232258064516129,
+        "min_filtered_candidates": 2,
+        "max_filtered_candidates": 6,
+        "random_unfiltered": {
+          "mrr": 0.4083333333333334,
+          "hits_at_1": 0.16666666666666666,
+          "hits_at_3": 0.5
+        },
+        "random_filtered": {
+          "mrr": 0.7254094982078854,
+          "hits_at_1": 0.4737096774193548,
+          "hits_at_3": 0.9743548387096773
+        },
+        "transe_filtered": {
+          "mrr": 0.9368279569892474,
+          "hits_at_1": 0.8838709677419355,
+          "hits_at_3": 0.9903225806451613,
+          "n": 310
+        },
+        "transe_unfiltered": {
+          "mrr": 0.23225806451612904,
+          "hits_at_1": 0.0032258064516129032,
+          "hits_at_3": 0.11612903225806452,
+          "n": 310
+        },
+        "popularity_filtered": {
+          "mrr": 0.9793010752688172,
+          "hits_at_1": 0.9612903225806452,
+          "hits_at_3": 0.9967741935483871,
+          "n": 310
+        },
+        "popularity_unfiltered": {
+          "mrr": 0.4601075268817205,
+          "hits_at_1": 0.2,
+          "hits_at_3": 0.6419354838709678,
+          "n": 310
+        }
+      },
+      {
+        "seed": 2,
+        "initial_links": 3107,
+        "train_links": 2487,
+        "validation_links": 310,
+        "test_links": 310,
+        "support_links": 772,
+        "cold_entity_test_links": 0,
+        "test_links_with_zero_training_degree": 5,
+        "mean_filtered_candidates": 2.2,
+        "min_filtered_candidates": 2,
+        "max_filtered_candidates": 6,
+        "random_unfiltered": {
+          "mrr": 0.4083333333333334,
+          "hits_at_1": 0.16666666666666666,
+          "hits_at_3": 0.5
+        },
+        "random_filtered": {
+          "mrr": 0.7291783154121864,
+          "hits_at_1": 0.47790322580645156,
+          "hits_at_3": 0.977258064516129
+        },
+        "transe_filtered": {
+          "mrr": 0.9296774193548387,
+          "hits_at_1": 0.8709677419354839,
+          "hits_at_3": 0.9903225806451613,
+          "n": 310
+        },
+        "transe_unfiltered": {
+          "mrr": 0.2275268817204301,
+          "hits_at_1": 0.0,
+          "hits_at_3": 0.1,
+          "n": 310
+        },
+        "popularity_filtered": {
+          "mrr": 0.9870967741935484,
+          "hits_at_1": 0.9774193548387097,
+          "hits_at_3": 0.9935483870967742,
+          "n": 310
+        },
+        "popularity_unfiltered": {
+          "mrr": 0.4939784946236559,
+          "hits_at_1": 0.25483870967741934,
+          "hits_at_3": 0.6258064516129033,
+          "n": 310
+        }
+      }
+    ],
+    "initial_links": 3107,
+    "candidate_policy": "Six scheduled assessments in the same offering, including the exam with no observed submission links.",
+    "task": "Retrospective hidden-link reconstruction, not future participation prediction or recommendation."
+  },
+  "checks": [
+    {
+      "check": "All 748 RDF enrollment labels match independent CSV outcomes",
+      "passed": true
+    },
+    {
+      "check": "Original successful and unsuccessful counts are 531 and 217",
+      "passed": true
+    },
+    {
+      "check": "Day-60 eligibility matches registration CSVs",
+      "passed": true
+    },
+    {
+      "check": "Previous-attempt and registration features match CSVs",
+      "passed": true
+    },
+    {
+      "check": "Early submission counts match independent CSV joins",
+      "passed": true
+    },
+    {
+      "check": "Early late counts and last days match independent CSV joins",
+      "passed": true
+    },
+    {
+      "check": "Link target contains exactly 3107 unique nonbanked pairs",
+      "passed": true
+    },
+    {
+      "check": "Every classifier edge is nonbanked and on or before cutoff",
+      "passed": true
+    },
+    {
+      "check": "Learning RDF excludes labels, scores, withdrawal dates and inferred outcome types",
+      "passed": true
+    },
+    {
+      "check": "Every graph feature and edge uses the explicit allowlist",
+      "passed": true
+    },
+    {
+      "check": "Changing final labels and grades cannot change classifier features",
+      "passed": true
+    },
+    {
+      "check": "Removing later assessment records cannot change classifier inputs",
+      "passed": true
+    },
+    {
+      "check": "Day 60 is included at the cutoff boundary",
+      "passed": true
+    },
+    {
+      "check": "Day 61 is excluded at the cutoff boundary",
+      "passed": true
+    },
+    {
+      "check": "Banked records cannot masquerade as new early submissions",
+      "passed": true
+    },
+    {
+      "check": "Temporal split has no shared students",
+      "passed": true
+    },
+    {
+      "check": "Every temporal prediction uses the same held-out population",
+      "passed": true
+    },
+    {
+      "check": "All three predefined GraphSAGE seeds ran",
+      "passed": true
+    },
+    {
+      "check": "Deliberately invalid label control exposes perfect ranking",
+      "passed": true
+    },
+    {
+      "check": "All three TransE splits retain the complete link partition",
+      "passed": true
+    },
+    {
+      "check": "Source inputs unchanged during learning",
+      "passed": true
+    }
+  ],
+  "versions": {
+    "torch": "2.8.0",
+    "torch-geometric": "2.8.0.post1",
+    "pykeen": "1.11.1",
+    "scikit-learn": "1.7.2",
+    "rdflib": "7.6.0",
+    "pandas": "2.3.3",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.0"
+  },
+  "interpretation": {
+    "classification_conclusion": "GraphSAGE mean AP is 0.499 (range 0.498\u20130.501), lower than logistic regression (0.526). This is a comparison on one future offering, not evidence of general superiority.",
+    "link_transe_mean_filtered_mrr_above_count": false
+  }
+}

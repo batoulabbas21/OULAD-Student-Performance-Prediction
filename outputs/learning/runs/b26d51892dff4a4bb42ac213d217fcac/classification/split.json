@@ -1,0 +1,9 @@
+{
+  "train_rows": 335,
+  "test_rows": 340,
+  "purged_eligible_training_rows": 26,
+  "all_cross_offering_students": 36,
+  "train_unsuccessful": 57,
+  "test_unsuccessful": 87,
+  "student_overlap": 0
+}

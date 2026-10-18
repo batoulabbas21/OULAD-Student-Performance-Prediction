@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>OULAD Session 6 | Learning results explained</title>
+<meta content="OULAD through Session 6: observed counts, logistic regression, GraphSAGE, TransE, leakage controls, measured results and provenance." name="description"/>
+<style>
+:root { color-scheme: light; --ink:#172e35; --muted:#516970; --line:#dce6e5; --accent:#087064; --paper:#fff; --wash:#f3f7f5; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:24px; }
+body { margin:0; background:var(--wash); color:var(--ink); font:16px/1.7 "Segoe UI",Arial,sans-serif; }
+a { color:var(--accent); text-underline-offset:3px; overflow-wrap:anywhere; }
+a:hover { color:#034b43; }
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible { outline:3px solid #cf9143; outline-offset:4px; }
+.top { background:var(--ink); color:white; padding:18px max(24px,calc((100vw - 1260px)/2)); display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.brand { font-size:12px; letter-spacing:.15em; text-transform:uppercase; font-weight:700; }
+.actions { display:flex; align-items:center; gap:22px; font-size:13px; }
+.actions a { color:white; }
+button { background:transparent; border:1px solid #98b4b9; border-radius:5px; color:white; font:inherit; padding:6px 12px; cursor:pointer; }
+.layout { max-width:1308px; padding:42px 24px 70px; margin:auto; display:grid; grid-template-columns:244px minmax(0,1fr); gap:34px; align-items:start; }
+nav { position:sticky; top:24px; font-size:13px; line-height:1.5; }
+nav strong { display:block; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 13px 12px; }
+nav a { display:block; padding:8px 12px; border-left:2px solid #ccddda; color:var(--muted); text-decoration:none; }
+nav a:hover { background:#e8f0ed; border-left-color:var(--accent); }
+.scope { margin-top:24px; padding:15px; border:1px solid var(--line); border-radius:7px; font-size:12px; color:var(--muted); }
+.scope b { display:block; color:var(--ink); margin-bottom:4px; }
+main { min-width:0; background:var(--paper); padding:44px 48px; border:1px solid var(--line); border-radius:10px; box-shadow:0 8px 28px #172e3505; }
+h1 { font-size:40px; line-height:1.13; letter-spacing:-.035em; font-weight:650; margin:0 0 18px; }
+h1 + p { color:var(--muted); font-size:19px; line-height:1.5; }
+h1 + p strong { font-weight:400; }
+h2 { font-size:23px; line-height:1.3; letter-spacing:-.02em; margin:48px 0 18px; padding-top:27px; border-top:1px solid var(--line); }
+h3 { font-size:17px; line-height:1.4; margin:27px 0 10px; }
+p { margin:0 0 17px; }
+blockquote { margin:26px 0; padding:19px 22px; border-left:4px solid var(--accent); background:#eef7f3; border-radius:0 7px 7px 0; }
+blockquote p { margin:0; }
+ul,ol { padding-left:25px; margin:16px 0 22px; }
+li { padding-left:4px; margin:0 0 11px; }
+.table-wrap { overflow-x:auto; margin:21px 0 24px; border:1px solid var(--line); border-radius:7px; }
+table { border-collapse:collapse; width:100%; font-size:14px; line-height:1.6; }
+th { padding:12px 14px; background:#edf4f1; text-align:left; font-weight:650; vertical-align:top; }
+td { padding:12px 14px; vertical-align:top; border-top:1px solid var(--line); }
+tr:nth-child(even) td { background:#fafcfb; }
+td:first-child { font-weight:550; }
+code { font: .87em/1.5 Consolas,"Courier New",monospace; background:#eff3f2; border-radius:4px; padding:2px 4px; overflow-wrap:anywhere; }
+pre { background:#18373d; color:#edf8f2; padding:22px; border-radius:7px; white-space:pre-wrap; overflow-wrap:anywhere; font-size:13px; line-height:1.65; }
+pre code { background:none; color:inherit; padding:0; font-size:inherit; }
+.footer { border-top:1px solid var(--line); padding-top:22px; margin-top:40px; font-size:12px; color:var(--muted); }
+@media(max-width:1040px) { .layout { grid-template-columns:200px minmax(0,1fr); gap:22px; } main { padding:35px 30px; } }
+@media(max-width:800px) { .layout { display:block; padding:20px 14px 40px; } nav { position:static; margin:0 0 24px; } nav .toc { display:grid; grid-template-columns:1fr 1fr; } .scope { display:none; } main { padding:30px 24px; } h1 { font-size:33px; } }
+@media(max-width:500px) { nav .toc { display:block; } .top { padding:15px; align-items:flex-start; } .actions { gap:12px; flex-wrap:wrap; justify-content:flex-end; } main { padding:26px 18px; } h1 { font-size:30px; } th,td { padding:10px; } }
+@media print { @page { size:A4; margin:15mm; } body { background:white; font-size:10pt; line-height:1.5; } .top,nav { display:none; } .layout { display:block; padding:0; max-width:none; } main { border:0; padding:0; box-shadow:none; } h1 { font-size:26pt; } h2 { font-size:15pt; margin-top:24px; padding-top:15px; } h3 { font-size:12pt; } h1,h2,h3 { break-after:avoid; } p,li { orphans:3; widows:3; } table { font-size:9pt; } tr { break-inside:avoid; } .table-wrap { overflow:visible; } pre { background:#f4f7f5; color:#172e35; font-size:8pt; break-inside:avoid; } a { color:#174e47; } }
+
+nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{max-height:none;overflow:visible;}}</style></head><body>
+<header class="top"><span class="brand">KRR / OULAD · Project walkthrough</span><div class="actions"><a href="learning-results-explained.md">Editable version</a><button onclick="window.print()" type="button">Print / save PDF</button></div></header>
+<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#the-result-first">The result first</a><a href="#1-what-does-initial-count-mean-here">1. What does “initial count” mean here?</a><a href="#2-the-two-learning-questions">2. The two learning questions</a><a href="#3-from-rdf-to-safe-model-inputs">3. From RDF to safe model inputs</a><a href="#4-why-these-techniques-were-chosen">4. Why these techniques were chosen</a><a href="#5-exact-outcome-results-and-how-to-read-them">5. Exact outcome results and how to read them</a><a href="#6-what-the-logistic-coefficients-mean">6. What the logistic coefficients mean</a><a href="#7-the-leakage-control-and-random-split-comparison">7. The leakage control and random-split comparison</a><a href="#8-exact-link-results-transe-versus-the-original-count-baseline">8. Exact link results: TransE versus the original count baseline</a><a href="#9-challenges-fixes-and-remaining-limits">9. Challenges, fixes and remaining limits</a><a href="#10-verification-provenance-and-how-to-rerun">10. Verification, provenance and how to rerun</a></div><div class="scope"><b>Through Session 6</b>Updated 18 October 2026<br/>21 learning checks passed<br/>54 evidence checks passed<br/><a href="../outputs/learning/learning-results.html">Open learning results</a></div></nav>
+<main><h1>Session 6 results explained</h1>
+<p>Updated <strong>18 October 2026</strong>. This chapter reports the actual run <code>f7649738f7414536bc2395ef7496eebf</code>. Its start and finish timestamps are <strong>2026-10-17T21:32:30.408391+00:00</strong> and <strong>2026-10-17T21:33:16.413705+00:00</strong> (UTC). It passed <strong>21 learning checks</strong> and <strong>54 independently recomputed evidence checks</strong>.</p>
+<h3 id="the-result-first">The result first</h3>
+<p>For predicting eventual Fail/Withdrawn outcomes in the future offering, <strong>logistic regression has the highest average precision among the tested valid models</strong>: 0.526, compared with GraphSAGE's three-seed mean 0.502, the submission-count baseline 0.444, and the constant-score reference 0.256. This is a measured comparison on one cohort; no statistical claim of universal superiority follows.</p>
+<p>For reconstructing hidden historical submission links, <strong>the popularity-count baseline beats TransE in every seed</strong>, both with and without filtering. A more complex method does not automatically help. That is a useful Session 6 finding, not an experiment to hide or tune away.</p>
+<p>Open the <a href="../outputs/learning/learning-results.html">learning results report</a> for charts and downloadable results. The <a href="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/summary.json">full run summary</a> contains every seed, split, model setting and count.</p>
+<h3 id="1-what-does-initial-count-mean-here">1. What does “initial count” mean here?</h3>
+<p>The original facts and the test population must have separate denominators:</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Population or stage</th>
+<th style="text-align:right">Enrollments</th>
+<th style="text-align:right">Successful: Pass/Distinction</th>
+<th style="text-align:right">Unsuccessful: Fail/Withdrawn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Original AAA data</td>
+<td style="text-align:right">748</td>
+<td style="text-align:right">531</td>
+<td style="text-align:right">217</td>
+</tr>
+<tr>
+<td>Original 2013J</td>
+<td style="text-align:right">383</td>
+<td style="text-align:right">278</td>
+<td style="text-align:right">105</td>
+</tr>
+<tr>
+<td>Original 2014J</td>
+<td style="text-align:right">365</td>
+<td style="text-align:right">253</td>
+<td style="text-align:right">112</td>
+</tr>
+<tr>
+<td>Eligible at day 60, both offerings</td>
+<td style="text-align:right">701</td>
+<td style="text-align:right">531</td>
+<td style="text-align:right">170</td>
+</tr>
+<tr>
+<td>Eligible 2013J before student separation</td>
+<td style="text-align:right">361</td>
+<td style="text-align:right">278</td>
+<td style="text-align:right">83</td>
+</tr>
+<tr>
+<td>Final training cohort, 2013J</td>
+<td style="text-align:right">335</td>
+<td style="text-align:right">278</td>
+<td style="text-align:right">57</td>
+</tr>
+<tr>
+<td>Final test cohort, 2014J</td>
+<td style="text-align:right">340</td>
+<td style="text-align:right">253</td>
+<td style="text-align:right">87</td>
+</tr>
+</tbody>
+</table></div>
+<p>There are 47 withdrawals already recorded by day 60: 22 in 2013J and 25 in 2014J. They are excluded because predicting a withdrawal already known at the prediction time would be misleading. Everyone in this extract registered by the cutoff; the eligibility rule also handles not-yet-registered records. A withdrawal after day 60 is retained as a future outcome, while its date is excluded from the features.</p>
+<p>There are 36 students in both original offerings. Of their 2013J enrollments, ten were already excluded by the cutoff rule and 26 remained eligible. We remove those 26 from training so no test student appears in training. All 26 had unsuccessful earlier outcomes. Consequently the training positive share falls to <strong>17.0%</strong>, whereas the test share is <strong>25.6%</strong>. This selection/prevalence difference is a real limitation, not something to conceal.</p>
+<p>The models' predicted counts must therefore be compared with <strong>87 unsuccessful outcomes out of 340 test enrollments</strong>, not with all 217 historical unsuccessful enrollments. No model result changes the original 531/217 facts.</p>
+<h3 id="2-the-two-learning-questions">2. The two learning questions</h3>
+<p><strong>Node classification:</strong> at day 60, among enrollments still registered, can early recorded behavior help rank eventual unsuccessful outcomes? The node is Enrollment, not Student: the outcome belongs to participation in one offering. The positive label 1 combines Fail and Withdrawn; label 0 combines Pass and Distinction. This does not distinguish causes or types of unsuccessful outcome.</p>
+<p><strong>Link prediction:</strong> after hiding some observed enrollment-to-assessment submission links, can the model rank the hidden true assessment? This uses historical nonbanked records across both offerings. It is a separate graph-completion benchmark, not a forecast of future participation and not an assessment recommendation system.</p>
+<h3 id="3-from-rdf-to-safe-model-inputs">3. From RDF to safe model inputs</h3>
+<p>The runner reads the successful Session 5 materialized RDF, currently <code>outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/oulad-mapped.nt</code>. It checks its receipt and the selected CSV fingerprints before using it. If no integration result exists, it explicitly falls back to the original <code>data/processed/oulad.ttl</code>. The current run used the mapped graph. No live PostgreSQL, Neo4j or Fuseki service is needed during learning.</p>
+<p>The classification builder permits only five candidate enrollment features:</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Meaning at day 60</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>previous_attempts</td>
+<td>Recorded number of previous attempts; later removed because it is constant in training.</td>
+</tr>
+<tr>
+<td>registration_day</td>
+<td>Signed day relative to the offering start; negative values remain meaningful.</td>
+</tr>
+<tr>
+<td>early_submission_count</td>
+<td>Number of nonbanked records with a known submission date on or before day 60.</td>
+</tr>
+<tr>
+<td>early_late_count</td>
+<td>Among those records, how many were after a known scheduled deadline.</td>
+</tr>
+<tr>
+<td>last_submission_day</td>
+<td>Latest recorded submission day in that permitted window; absent if no such record exists.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Scores are deliberately excluded: the release gives submission dates, but no grade-publication timestamp proving which grades were available by day 60. Final outcomes, post-cutoff records, withdrawal dates, and OWL-derived SuccessfulEnrollment/WithdrawnEnrollment classes are also excluded. IDs locate rows and edges but are not numerical predictors or identity embeddings. Demographic fields and daily click activity are not used by this model.</p>
+<p>The <a href="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/learning-input.ttl">learning RDF</a> contains the permitted enrollment features and early-submission links, with assessment type, scheduled deadline and weight on neighboring assessment nodes. Labels are saved separately in <code>graph/labels.csv</code>. The whole historical graph is never fed indiscriminately to the GNN.</p>
+<p>Missing last-submission values are filled with the <strong>training median in the numeric feature matrix only</strong>, and a missingness indicator is added. This does not invent an RDF submission or alter a CSV. The absence remains visible. The training-only pipeline then removes constant columns and standardizes values. Previous-attempt count is always zero in the temporal training cohort, so its effect cannot be learned there and it is removed from both models. Some future students are returning students; that remains a transfer limitation.</p>
+<h3 id="4-why-these-techniques-were-chosen">4. Why these techniques were chosen</h3>
+<p><strong>Training prevalence / majority baseline</strong> uses no individual predictors. It assigns every row the training positive share, and at threshold 0.5 predicts successful for everyone. It provides the basic count/imbalance reference.</p>
+<p><strong>Early-submission count baseline</strong> ranks lower counts as greater risk. Its simple decision rule flags only zero-submission enrollments. The ranking and binary rule are deliberately explicit: two methods can use similar rankings but different thresholds and flag different numbers of cases.</p>
+<p><strong>Logistic regression</strong> is a small, inspectable tabular model. It learns a weighted combination of the permitted features. It uses balanced class weights, C=1 and a fixed threshold of 0.5. This gives a stronger baseline before claiming a graph neural network helps.</p>
+<p><strong>GraphSAGE</strong> follows the lab's message-passing idea. Two layers, each with 16 hidden dimensions, combine a node's own features with mean neighbor information. The implementation uses a bipartite PyTorch Geometric graph with enrollment/assessment node flags and edges in both directions. Neighbor assessment features are type, scheduled deadline and weight. It uses 100 epochs, Adam at 0.01 and a training-derived positive-class weight. There are no per-student identity embeddings.</p>
+<p>For each split, the GNN's training graph includes only training enrollments and their permitted edges. The evaluation graph is separate. At inference, it can use other unlabeled enrollments in the same held-out cohort; it never receives their outcome labels or sends their messages through the training graph. Therefore this is cohort inference, not necessarily an isolated one-student-at-a-time service.</p>
+<p><strong>TransE</strong> follows the lab's embedding exercise: it learns vectors so head + relation is near tail. We use PyKEEN, dimension 32, 100 epochs, Adam at 0.01, batch size 256 and five sampled negatives per positive. It is compared with assessment popularity counted from training links only. Its library negative sampler corrupts entities and filters training positives; sampled unobserved links are training contrasts, not verified false statements under the open-world interpretation.</p>
+<p>The <a href="../config/learning/protocol.json">protocol</a> fixes settings and seeds. We did not search for a winning seed, tune the threshold on test labels or keep changing hyperparameters until a complex model won. Logistic regression is deterministic here; repeating its temporal fit with a different seed would not be a meaningful new experiment. GraphSAGE initialization and TransE partitions/training are each evaluated with seeds 0, 1 and 2.</p>
+<h3 id="5-exact-outcome-results-and-how-to-read-them">5. Exact outcome results and how to read them</h3>
+<p>All rows below concern the same <strong>340 test enrollments with 87 actual positives</strong>:</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th style="text-align:right">Seed</th>
+<th style="text-align:right">Predicted unsuccessful</th>
+<th style="text-align:right">Average precision</th>
+<th style="text-align:right">Precision</th>
+<th style="text-align:right">Recall</th>
+<th style="text-align:right">Accuracy</th>
+<th style="text-align:right">Balanced accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logistic regression</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">137</td>
+<td style="text-align:right">0.526</td>
+<td style="text-align:right">40.9%</td>
+<td style="text-align:right">64.4%</td>
+<td style="text-align:right">67.1%</td>
+<td style="text-align:right">66.2%</td>
+</tr>
+<tr>
+<td>Training prevalence</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0.256</td>
+<td style="text-align:right">0.0%</td>
+<td style="text-align:right">0.0%</td>
+<td style="text-align:right">74.4%</td>
+<td style="text-align:right">50.0%</td>
+</tr>
+<tr>
+<td>Early submission count</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">21</td>
+<td style="text-align:right">0.444</td>
+<td style="text-align:right">71.4%</td>
+<td style="text-align:right">17.2%</td>
+<td style="text-align:right">77.1%</td>
+<td style="text-align:right">57.4%</td>
+</tr>
+<tr>
+<td>GraphSAGE</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">152</td>
+<td style="text-align:right">0.502</td>
+<td style="text-align:right">32.2%</td>
+<td style="text-align:right">56.3%</td>
+<td style="text-align:right">58.5%</td>
+<td style="text-align:right">57.8%</td>
+</tr>
+<tr>
+<td>GraphSAGE</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">183</td>
+<td style="text-align:right">0.504</td>
+<td style="text-align:right">34.4%</td>
+<td style="text-align:right">72.4%</td>
+<td style="text-align:right">57.6%</td>
+<td style="text-align:right">62.5%</td>
+</tr>
+<tr>
+<td>GraphSAGE</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">186</td>
+<td style="text-align:right">0.498</td>
+<td style="text-align:right">36.0%</td>
+<td style="text-align:right">77.0%</td>
+<td style="text-align:right">59.1%</td>
+<td style="text-align:right">65.0%</td>
+</tr>
+</tbody>
+</table></div>
+<p><img alt="Temporal average precision" src="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification-comparison.png" style="max-width:100%;height:auto"/></p>
+<p><strong>Average precision (AP)</strong> summarizes how well actual positives occur near the top of the ranking. Here the constant-score AP is 87/340 = 0.256. The implementation uses scikit-learn's <code>average_precision_score</code>; it is not trapezoidal area under a precision-recall curve. GraphSAGE's mean is <strong>0.502</strong>, population standard deviation across seeds <strong>0.002</strong>, and range <strong>0.498–0.504</strong>. These three seeds do not form a confidence interval for performance on other cohorts.</p>
+<p><strong>The logistic-regression counts:</strong> it flags <strong>137</strong>, of which <strong>56</strong> really have unsuccessful outcomes and <strong>81</strong> are false positives. It misses <strong>31</strong> of the 87 actual positives. Its precision is 56/137 = <strong>40.9%</strong>; its recall is 56/87 = <strong>64.4%</strong>. It overcounts positives by 50, but that total alone hides both missed cases and false alarms.</p>
+<p><strong>The submission rule:</strong> it flags 21, correctly identifies 15, generates six false positives and misses 72 actual positives. Its precision is higher (<strong>71.4%</strong>) but its recall is only <strong>17.2%</strong>. This is why a simple rule can have better accuracy and still miss most of the target cases.</p>
+<p><strong>The majority baseline:</strong> it gets 253/340 = <strong>74.4% accuracy</strong> by predicting successful for everyone. It finds none of the 87 positive outcomes. Balanced accuracy is 0.5. Accuracy is therefore insufficient to judge this task. The count rule has 77.1% accuracy, while logistic regression trades some accuracy for greater recall.</p>
+<p><strong>The GNN:</strong> it flags between 152 and 186 cases across seeds. Its ranking is above the count baseline but below logistic regression here. The count feature already summarizes a central part of the graph structure; AAA has few shared assessment nodes. This is a plausible explanation for limited added value, not a causal conclusion established by this experiment.</p>
+<p><img alt="Confusion matrices" src="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/confusion-matrices.png" style="max-width:100%;height:auto"/></p>
+<p>Rows are observed classes and columns are predicted classes. The off-diagonal cells are mistakes. GraphSAGE seed 0 is shown because it was predefined, not selected as the best seed. Class-weighted outputs are not established calibrated risk probabilities, and 0.5 is a reproducible teaching threshold rather than an operationally optimized decision policy.</p>
+<h3 id="6-what-the-logistic-coefficients-mean">6. What the logistic coefficients mean</h3>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Standardized feature</th>
+<th style="text-align:right">Coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>registration_day</td>
+<td style="text-align:right">+0.464</td>
+</tr>
+<tr>
+<td>early_submission_count</td>
+<td style="text-align:right">-1.044</td>
+</tr>
+<tr>
+<td>early_late_count</td>
+<td style="text-align:right">+0.200</td>
+</tr>
+<tr>
+<td>last_submission_day</td>
+<td style="text-align:right">+0.484</td>
+</tr>
+<tr>
+<td>missingindicator_last_submission_day</td>
+<td style="text-align:right">-0.122</td>
+</tr>
+</tbody>
+</table></div>
+<p>A positive coefficient raises the modeled log-odds of the combined unsuccessful label, holding the other inputs fixed; a negative coefficient lowers it. The strongest negative coefficient is the early-submission count. Registration-day and last-submission-day coefficients describe conditional associations, not causes. Correlated features, missingness handling, class weighting and the narrow cohort all affect interpretation. A coefficient is not an explanation of why a particular student withdrew.</p>
+<h3 id="7-the-leakage-control-and-random-split-comparison">7. The leakage control and random-split comparison</h3>
+<p>The deliberately invalid control supplies the final label itself as a predictor. It reaches AP=1.000 and exactly 87 predicted positives. That is a diagnostic example of cheating, not the best usable model; its outputs are labeled <code>INVALID label-leak control</code> and excluded from the valid-model comparison.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Random split seed</th>
+<th style="text-align:right">Logistic AP</th>
+<th style="text-align:right">GraphSAGE AP</th>
+<th style="text-align:right">Students shared across train/test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align:right">0.671</td>
+<td style="text-align:right">0.618</td>
+<td style="text-align:right">7</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:right">0.461</td>
+<td style="text-align:right">0.420</td>
+<td style="text-align:right">10</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">0.551</td>
+<td style="text-align:right">0.472</td>
+<td style="text-align:right">13</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each random test has 211 rows and 51 positives, mixing offerings. Some random scores are higher and some lower than the temporal result. The important issue is what is being tested: these splits mix past/future and share student identities, so they cannot substantiate future-offering generalization. The headline evaluation instead uses 2013J for training and 2014J for testing, with student separation.</p>
+<h3 id="8-exact-link-results-transe-versus-the-original-count-baseline">8. Exact link results: TransE versus the original count baseline</h3>
+<p>There are 3,149 assessment records in the source, including 42 banked results. We use the <strong>3,107 unique nonbanked enrollment → assessment pairs</strong> as observed links. Each seed keeps <strong>2,487 training</strong>, <strong>310 validation</strong> and <strong>310 hidden test</strong> links. Validation is reserved and participates in standard known-truth filtering during evaluation; there is no early stopping or hyperparameter selection.</p>
+<p>Additional training support contains 772 facts: enrollment-to-offering, assessment-to-offering and assessment type. No AssessmentRecord nodes or inverse/reified paths remain that would directly reveal a hidden submission. Every candidate assessment and enrollment is represented through this metadata, so no hidden edge is dropped for a completely unknown entity. Some test enrollments have no remaining training submission links; these harder cases are retained and counted in each seed's summary.</p>
+<p>Both methods rank the <strong>same six scheduled assessments in the same offering</strong>, including the exam for which this extract has no recorded results. The baseline score is the assessment's training submission count. IDs do not break ties: the evaluator uses average/realistic rank.</p>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Seed</th>
+<th style="text-align:right">Hidden links</th>
+<th style="text-align:right">Popularity MRR unfiltered</th>
+<th style="text-align:right">TransE MRR unfiltered</th>
+<th style="text-align:right">Popularity MRR filtered</th>
+<th style="text-align:right">TransE MRR filtered</th>
+<th style="text-align:right">Mean candidates after filtering</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align:right">310</td>
+<td style="text-align:right">0.477</td>
+<td style="text-align:right">0.226</td>
+<td style="text-align:right">0.985</td>
+<td style="text-align:right">0.913</td>
+<td style="text-align:right">2.25</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:right">310</td>
+<td style="text-align:right">0.460</td>
+<td style="text-align:right">0.232</td>
+<td style="text-align:right">0.979</td>
+<td style="text-align:right">0.937</td>
+<td style="text-align:right">2.23</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:right">310</td>
+<td style="text-align:right">0.494</td>
+<td style="text-align:right">0.228</td>
+<td style="text-align:right">0.987</td>
+<td style="text-align:right">0.930</td>
+<td style="text-align:right">2.20</td>
+</tr>
+</tbody>
+</table></div>
+<p><img alt="Link comparison" src="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/link-comparison.png" style="max-width:100%;height:auto"/></p>
+<p><strong>MRR</strong> averages reciprocal rank: first place contributes 1, second 0.5, third 0.333. <strong>Hits@1</strong> and <strong>Hits@3</strong> count how often the true assessment is in the first position or first three positions; all values and per-link ranks are saved in the report. For six random candidate ranks, expected MRR is <strong>0.408</strong>, Hits@1 <strong>0.167</strong> and Hits@3 <strong>0.500</strong>.</p>
+<p>Unfiltered evaluation retains all six alternatives, including other assessments the same enrollment truly submitted. Filtered evaluation removes those other known true links, while retaining the target. The complete truth is used for that scoring operation only; model training and popularity counts use training links. Filtering leaves only about two candidates on average, often the true assessment and an exam with no observed results. Its random-ranking MRR is already around <strong>0.72</strong>, not 0.408. This makes the high filtered scores much less surprising.</p>
+<p>TransE's mean filtered MRR is <strong>0.926</strong> versus <strong>0.984</strong> for popularity. Its mean unfiltered MRR is <strong>0.229</strong> versus <strong>0.477</strong> for popularity. TransE is even below uniform random rank on the unfiltered task. Reporting only its high filtered number would obscure this weakness.</p>
+<p>This graph is dense in mandatory assignment participation and has very few assessment candidates. Popularity captures much of that structure. We can conclude that these embeddings do not beat that baseline under this protocol. We cannot conclude that TransE never works or that an unobserved exam was not taken.</p>
+<h3 id="9-challenges-fixes-and-remaining-limits">9. Challenges, fixes and remaining limits</h3>
+<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Challenge or observed issue</th>
+<th>How it was handled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Historical graph contains outcomes and their OWL-derived classes</td>
+<td>Use an explicit feature/edge allowlist and save labels separately. Tests change labels/grades in a graph copy and confirm unchanged classifier inputs.</td>
+</tr>
+<tr>
+<td>Post-cutoff submissions or already-known withdrawals can give misleading results</td>
+<td>Filter submission dates and eligibility at day 60. Test inclusion at day 60, exclusion at day 61, and banked-result exclusion.</td>
+</tr>
+<tr>
+<td>Returning students cross the year boundary</td>
+<td>Purge 26 eligible earlier enrollments; record all 36 original overlapping students and the resulting prevalence shift.</td>
+</tr>
+<tr>
+<td>Previous-attempt count is constant in training</td>
+<td>A preliminary run exposed the limitation. Add train-only variance filtering for both models and rerun the complete protocol; current evidence supersedes that prototype. No test-score-based feature selection was used.</td>
+</tr>
+<tr>
+<td>Missing feature versus missing RDF fact</td>
+<td>Impute only the numerical feature matrix using training statistics and a missingness flag; preserve source files and the label-free RDF.</td>
+</tr>
+<tr>
+<td>PyKEEN initially tried writing its cache under a restricted home directory</td>
+<td>Set <code>PYSTOW_HOME</code> to the ignored project <code>.runtime/learning/pystow</code> before importing PyKEEN; keep the same Conda environment.</td>
+</tr>
+<tr>
+<td>CPU-only library warnings</td>
+<td>Set an explicit evaluation batch size and disable training memory pinning. Library evaluation can still print CPU pinning/memory notices; the final run completed and all evidence checks passed. No GPU was required.</td>
+</tr>
+<tr>
+<td>High filtered link scores can exaggerate difficulty</td>
+<td>Show unfiltered scores, candidate-set sizes and a random-rank reference alongside filtered scores.</td>
+</tr>
+<tr>
+<td>Complex models did not beat the stronger simple baselines</td>
+<td>Report the loss transparently with all seeds, exact splits and predictions; do not select a favorable seed or tune on test results.</td>
+</tr>
+</tbody>
+</table></div>
+<p>There are only two offerings of one module and one temporal test. Random seeds measure training/split variability, not independent future cohorts. Submission/registration dates are availability proxies: the release lacks ingestion or revision timestamps. Assessment schedule metadata is treated as known in advance. The model excludes grades and click activity, so it is deliberately limited. The combined Fail/Withdrawn target does not identify causes or prescribe interventions. No operational decisions or automatic changes to historical outcomes are implemented.</p>
+<h3 id="10-verification-provenance-and-how-to-rerun">10. Verification, provenance and how to rerun</h3>
+<p>The 21 learning checks cover source counts, independent CSV feature reconstruction, eligibility, cutoffs, banked records, forbidden labels, split integrity and stable inputs. The 54 saved-evidence checks recompute classification metrics from predictions, check preprocessing against training rows, verify link partitions and popularity ranks, and check input/output hashes and PROV-O entities. These are local learning checks; existing SHACL/integration CI does not run these new models.</p>
+<p>Each execution gets a unique folder. It holds protocol, graph inputs, separate labels, cohort/split tables, predictions, coefficients, model checkpoints, per-link ranks, figures, a readable report, JSON summaries, verification and <code>provenance.ttl</code>. Failed runs retain <code>failure.json</code>; only a fully verified run updates <code>outputs/learning/latest.json</code>. The earlier prototype folder remains historical evidence; its original source fingerprints need not match the corrected current code.</p>
+<pre><code class="language-powershell">conda activate M2ENV
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
+.\run-learning.ps1
+</code></pre>
+<p>To check saved evidence without retraining:</p>
+<pre><code class="language-powershell">python evaluation/verify_learning.py
+</code></pre>
+<p>To view the saved results:</p>
+<pre><code class="language-powershell">Start-Process '.\outputs\learning\learning-results.html'
+</code></pre>
+<p>The HTML report needs no running database. Model checkpoints (<code>.pt</code>) and runtime caches are ignored by Git; regenerate them after cloning before using the complete evidence verifier. Predictions and their interpretation remain separate from source facts and OWL inferences. Read <a href="../README.md#14-session-6--learning-and-baseline-comparisons">README section 14</a> for the execution order and file roles, and <a href="project-provenance.html#13-session-6-learning-provenance">project provenance</a> for the exact source graph and recorded software.</p>
+<p>Course reference: <a href="../../KRR/demos/session-06-learning/README.md">Session 6 lab</a>. Method references: <a href="https://scikit-learn.org/stable/common_pitfalls.html">scikit-learn leakage guidance</a>, <a href="https://scikit-learn.org/1.7/modules/generated/sklearn.metrics.average_precision_score.html">average precision</a>, <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.SAGEConv.html">GraphSAGE layer</a>, <a href="https://pykeen.readthedocs.io/en/stable/api/pykeen.models.TransE.html">PyKEEN TransE</a>, and <a href="https://pykeen.readthedocs.io/en/stable/tutorial/understanding_evaluation.html">filtered ranking evaluation</a>.</p>
+</main></div></body></html>

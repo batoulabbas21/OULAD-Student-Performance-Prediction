@@ -21,3 +21,15 @@
 - Which warnings require changes to the model or queries?
 - Which question justified each class and property?
 - What does the subset omit?
+
+## Session 6 learning decisions
+
+- Use Enrollment as the classification unit and Fail/Withdrawn as the positive outcome.
+- Use day 60 as a fixed teaching cutoff, exclude known prior withdrawals, and split 2013J → 2014J.
+- Purge earlier enrollments for students present in the future offering; report the prevalence change.
+- Whitelist early nonbanked submission observations; exclude scores without publication timestamps and all outcome-derived inputs.
+- Fit imputation, constant-column filtering and scaling only on training data.
+- Compare GraphSAGE with both simple counts and logistic regression; report all three seeds.
+- Treat TransE as historical link reconstruction, with identical candidate sets and train-only popularity counts.
+- Report unfiltered and filtered ranks with candidate-set sizes and random-rank references.
+- Keep predictions separate from asserted facts; do not treat scores as calibrated probabilities or causal explanations.

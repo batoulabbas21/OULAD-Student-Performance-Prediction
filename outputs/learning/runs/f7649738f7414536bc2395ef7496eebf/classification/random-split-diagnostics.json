@@ -1,0 +1,20 @@
+[
+  {
+    "seed": 0,
+    "train_rows": 490,
+    "test_rows": 211,
+    "overlapping_students": 7
+  },
+  {
+    "seed": 1,
+    "train_rows": 490,
+    "test_rows": 211,
+    "overlapping_students": 10
+  },
+  {
+    "seed": 2,
+    "train_rows": 490,
+    "test_rows": 211,
+    "overlapping_students": 13
+  }
+]

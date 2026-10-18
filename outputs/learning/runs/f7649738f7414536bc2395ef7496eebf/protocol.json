@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "cutoff_day": 60,
+  "train_presentation": "2013J",
+  "test_presentation": "2014J",
+  "positive_label": "Fail or Withdrawn",
+  "eligible": "registered by day 60 and not unregistered by day 60",
+  "purge": "remove training students present anywhere in the 2014J offering",
+  "classification_seeds": [
+    0,
+    1,
+    2
+  ],
+  "random_split_seeds": [
+    0,
+    1,
+    2
+  ],
+  "random_test_share": 0.3,
+  "threshold": 0.5,
+  "graphsage": {
+    "epochs": 100,
+    "hidden": 16,
+    "learning_rate": 0.01
+  },
+  "logistic": {
+    "C": 1.0,
+    "class_weight": "balanced",
+    "max_iter": 2000
+  },
+  "link_prediction": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "train_share": 0.8,
+    "validation_share": 0.1,
+    "test_share": 0.1,
+    "model": "TransE",
+    "dimension": 32,
+    "epochs": 100,
+    "batch_size": 256,
+    "learning_rate": 0.01,
+    "negatives_per_positive": 5
+  },
+  "selection": "Settings fixed before viewing test metrics; no best-seed selection or threshold tuning.",
+  "scope": "Retrospective educational experiment on AAA only; no deployed decisions."
+}

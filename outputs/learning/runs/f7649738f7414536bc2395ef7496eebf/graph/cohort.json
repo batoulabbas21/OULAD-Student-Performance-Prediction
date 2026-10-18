@@ -1,0 +1,27 @@
+{
+  "all_enrollments": 748,
+  "all_students": 712,
+  "outcomes": {
+    "Pass": 487,
+    "Withdrawn": 126,
+    "Fail": 91,
+    "Distinction": 44
+  },
+  "successful": 531,
+  "unsuccessful": 217,
+  "eligible_day60": 701,
+  "excluded_day60": 47,
+  "nonbanked_historical_links": 3107,
+  "banked_records_excluded": 42,
+  "eligible_early_edges": 1199,
+  "learning_triples": 5389,
+  "feature_names": [
+    "previous_attempts",
+    "registration_day",
+    "early_submission_count",
+    "early_late_count",
+    "last_submission_day"
+  ],
+  "label_policy": "1 = final Fail or Withdrawn; 0 = final Pass or Distinction",
+  "availability_assumption": "Registration and submission dates approximate recorded availability; no ingestion/revision log exists. Grades excluded because publication dates are absent."
+}

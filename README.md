@@ -8,6 +8,7 @@ The optional Neo4j visualization and Fuseki SPARQL server below use the existing
 For the OWL ontology, terminal reasoner, and results notebook, follow **section 11**. Protégé is not required.
 For SHACL graph validation, triage, the gate and run provenance, follow **section 12**.
 For PostgreSQL, R2RML mappings, materialization and Ontop virtualization, follow **section 13**.
+For learning, count baselines and detailed model evaluation, follow **section 14**.
 
 **What is AAA?** An anonymized Social Sciences module with two October offerings (2013J and 2014J).
 Our extract has 748 enrollments but 712 distinct student IDs. Read [the AAA explanation](docs/aaa-module.md)
@@ -115,7 +116,7 @@ kr-oulad/
       owl_reasoner.py
       build_ontology_notebook.py
     validation/                  SHACL validator, examples and provenance query
-    learning/                    Later
+    learning/                    Session 6 models, leakage checks and evaluation
     access/                      Later
   run-shacl.ps1                  Complete Session 4 demonstration
   evaluation/verify_shacl.py      Graph fault tests and full CSV warning reconciliation
@@ -333,10 +334,10 @@ and does not install packages. Use the individual commands for a different selec
 
 ## What comes next
 
-The src/learning/ and src/access/ directories are reserved for later stages.
-SHACL validation is implemented in section 12; PostgreSQL, R2RML mapping and Ontop integration are implemented in section 13. There are no trained models or natural-language interface yet.
-Preserve this historical graph. Later build a separate prediction graph constrained to the chosen
-information cutoff; the historical graph includes final outcomes and future events.
+Session 6 learning is implemented in src/learning/. The src/access/ directory is reserved for a later stage.
+SHACL validation is implemented in section 12; PostgreSQL, R2RML mapping and Ontop integration are implemented in section 13. Session 6 models and evaluation are implemented in section 14; there is no natural-language interface yet.
+Preserve the historical graph. Session 6 builds a separate learning graph constrained to day 60;
+the historical graph includes final outcomes and later events that must stay outside model inputs.
 
 ## 9. See the graph in Neo4j
 
@@ -1036,6 +1037,94 @@ docker compose --env-file .env.integration -f docker-compose.postgres.yml stop
 For the conceptual explanation, results and actual fixes, see [walkthrough section 16](docs/project-walkthrough.html#16-session-5-one-mapping-two-ways-to-answer). For sources, hashes and exact run identities, see [provenance section 12](docs/project-provenance.html#12-session-5-integration-provenance).
 
 Course alignment: [Session 5 lab](../KRR/demos/session-05-integration/README.md). Technical references: [W3C R2RML](https://www.w3.org/TR/r2rml/), [Morph-KGC](https://morph-kgc.readthedocs.io/en/stable/documentation/), [Ontop CLI](https://ontop-vkg.org/guide/cli).
+
+## 14. Session 6 — learning and baseline comparisons
+
+This extension follows the Session 6 lab with **logistic regression**, **GraphSAGE node classification**, and **TransE link prediction**, always compared with simple count baselines. It reads the verified Session 5 RDF snapshot. It keeps labels, predictions and historical facts separate.
+
+### Step 1 — activate the existing environment
+
+```powershell
+conda activate M2ENV
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
+python -c "import torch, torch_geometric, sklearn; import importlib.metadata as m; print('PyKEEN', m.version('pykeen'))"
+```
+
+The existing M2ENV already contains the needed learning libraries. No installation or environment replacement was required. Tested versions are recorded in `config/learning/tested-environment.json` and each run summary. CPU execution is supported; no GPU, Docker or live database service is needed. The code keeps PyKEEN/Matplotlib caches in ignored `.runtime/learning/`.
+
+### Step 2 — check the source and protocol
+
+Keep `data/interim/` and a successful Session 5 run in place. The runner selects the RDF identified by `outputs/integration/latest-full.json` and verifies its receipt and CSV fingerprints. If that pointer does not exist, it uses `data/processed/oulad.ttl`. A stale integration result is an error: rerun Session 5 or restore the corresponding inputs before training. For a fresh clone, first follow the download/selection/RDF instructions; the full learning experiment needs the AAA extract.
+
+Read `config/learning/protocol.json` before running. The default asks about eventual Fail/Withdrawn outcomes at day 60, trains on 2013J and tests on 2014J with no shared students. The link experiment reconstructs hidden historical nonbanked submissions. It is not a future-submission forecast. The code and verification expect this documented AAA scope; changing the scientific question requires revising the protocol, checks and interpretation together.
+
+### Step 3 — run the complete experiment
+
+```powershell
+.\run-learning.ps1
+```
+
+The helper runs `python src/learning/run.py`, then `python evaluation/verify_learning.py`. It stops on any failure. It creates a fresh run folder instead of overwriting earlier results. You can use those two commands separately if you want to distinguish training from saved-evidence verification.
+
+The runner performs these stages in order:
+
+1. Read the mapped RDF and independently reconcile labels/features with CSVs.
+2. Build a separate label-free graph using only permitted day-60 observations. Save labels separately.
+3. Exclude already-withdrawn enrollments and purge earlier records for students appearing in the future offering.
+4. Fit imputation, constant-feature removal and scaling using training rows only.
+5. Run training-prevalence and submission-count baselines, logistic regression and three GraphSAGE seeds.
+6. Save the explicitly invalid label-leak control and random-split diagnostics separately from the headline temporal results.
+7. Train three TransE splits and compare them with training popularity counts and random-rank references.
+8. Produce figures, per-case predictions, metrics, checks, provenance and a readable HTML report.
+9. Independently recheck metrics, partitions, preprocessing and all recorded file fingerprints.
+
+### Step 4 — open and interpret the results
+
+```powershell
+Start-Process '.\outputs\learning\learning-results.html'
+```
+
+Read the [detailed Session 6 explanation](docs/learning-results-explained.html), also included in [walkthrough section 17](docs/project-walkthrough.html#17-session-6-learning-counts-and-an-honest-comparison). It includes initial counts, exact predictions, confusion matrices, all seeds, coefficient interpretation, errors/fixes and limitations.
+
+The original data has 748 enrollments (531 successful, 217 unsuccessful). The temporal test has 340 eligible enrollments with **87 unsuccessful outcomes**; compare prediction counts with that test count. The documented run passes **21 learning checks and 54 saved-evidence checks**. Logistic regression leads the tested valid classifiers on average precision; popularity counts outperform TransE on all three link splits. The complex model is not automatically the better choice.
+
+### Step 5 — find the evidence
+
+```text
+config/learning/protocol.json          Target, cutoff, years, seeds and fixed settings
+src/learning/build_graph.py            RDF extraction and safe learning graph
+src/learning/classification.py         Baselines, logistic regression and GraphSAGE
+src/learning/link_prediction.py        TransE, count ranks and filtered evaluation
+src/learning/checks.py                 Source reconciliation and leakage/cutoff tests
+src/learning/report.py                 Charts and readable interpretation
+src/learning/run.py                    Whole experiment with PROV-O and manifests
+evaluation/verify_learning.py          Independently check saved evidence
+outputs/learning/latest.json           Pointer to the latest successful run
+outputs/learning/runs/<run-id>/
+  graph/                              Features, separate labels, early edges and counts
+  classification/                     Split lists, preprocessing, metrics and predictions
+  links/seed-0/, seed-1/, seed-2/       Link partitions, models, ranks and metrics
+  report.html                         Main results page
+  summary.json                        Complete measured results and settings
+  checks.json                         Learning checks
+  verification.json                   Independent evidence checks
+  manifest.json                       Input/output fingerprints
+  provenance.ttl                      Actual learning activity and software
+```
+
+The scripts inside `src/learning/` implement stages used by `run.py`; run the complete runner rather than expecting every helper module to be a standalone command. Three PNG figures can be reused in a presentation. `.pt` model checkpoints and caches are ignored by Git; a clean clone needs a new training run before all saved-evidence checks can pass. A later source or code change can make an older run stale; keep its folder as historical evidence and create a new run with the current code.
+
+### Step 6 — verify without retraining and understand limits
+
+```powershell
+python evaluation/verify_learning.py
+# Or select an existing run explicitly:
+python evaluation/verify_learning.py --run-dir outputs/learning/runs/YOUR_RUN_ID
+```
+
+Expect 54 passing evidence checks for this protocol. Inspect a failed assertion before retraining: a fingerprint mismatch means inputs or outputs changed, while a metric mismatch means the saved tables disagree. Failed training attempts keep their `failure.json` in the displayed run folder. CPU-only PyKEEN/Torch notices can appear without invalidating a completed run; use the final checks and exit status to judge completion.
+
+This experiment does not automatically enter predictions into the original RDF, assign OWL outcome classes, update PostgreSQL, or make student decisions. The temporal test covers only one later offering. Scores are not established calibrated probabilities; link ranks measure reconstruction, not recommendation quality. Existing SHACL and integration CI remain separate; **the Session 6 training/evidence suite is currently local, not a new GitHub workflow**.
 
 ## Sources and reuse
 

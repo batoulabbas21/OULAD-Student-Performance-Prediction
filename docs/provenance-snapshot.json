@@ -1,6 +1,6 @@
 {
-  "audit_at_utc": "2026-10-16T10:36:10.470882+00:00",
-  "scope": "16 October 2026 audit after executing full AAA and fixture PostgreSQL/R2RML/Morph-KGC/Ontop integration. Rechecked saved SHACL/OWL/Fuseki input fingerprints; no new OWL, Neo4j or Fuseki execution. SHACL GitHub success observed in user screenshot; new integration CI prepared locally and not run remotely.",
+  "audit_at_utc": "2026-10-17T21:37:13.709505+00:00",
+  "scope": "Session 6 extension audit on 18 October 2026: executed learning and independently verified all new inputs, outputs, metrics, partitions and PROV-O. Existing stages retained as dated saved evidence; not rerun. File inventory refreshed, previous snapshot preserved.",
   "project_root": "D:\\DESKTOP\\M2\\kr-oulad",
   "recorded_raw_retrieved_or_verified_utc": "2026-10-10T19:30:38.516852+00:00",
   "raw_files_match_manifest": {
@@ -61,7 +61,13 @@
       "pyshacl": "0.40.1",
       "morph-kgc": "2.10.0",
       "SQLAlchemy": "2.0.54",
-      "psycopg2-binary": "2.9.13"
+      "psycopg2-binary": "2.9.13",
+      "torch": "2.8.0",
+      "torch-geometric": "2.8.0.post1",
+      "pykeen": "1.11.1",
+      "scikit-learn": "1.7.2",
+      "numpy": "2.3.5",
+      "matplotlib": "3.10.0"
     }
   },
   "measured_counts": {
@@ -88,7 +94,9 @@
     "shacl_total": 37,
     "shacl_verified_at_utc": "2026-10-15T02:51:53.178880+00:00",
     "integration_full_passed": 23,
-    "integration_fixture_passed": 23
+    "integration_fixture_passed": 23,
+    "learning_passed": 21,
+    "learning_evidence_passed": 54
   },
   "saved_notebook": {
     "code_cells": 7,
@@ -137,15 +145,23 @@
     },
     ".runtime/ontop/download-manifest.json": {
       "bytes": 700,
-      "sha256": "aae4cc4e6bb20478fd53fe65e2c023dd8dd7b2add188dd7c76a0e0bf2558ddd2"
+      "sha256": "ccc7c2393716a0fb0a2026d20dd954039d16436cbc94ac4859cb4738bd7bb70f"
     },
     "README.md": {
-      "bytes": 63387,
-      "sha256": "02c1cc79a78d1d4a4d4fbf00f4432ef83e59eee96fb8d0c351e436ba9d7643ec"
+      "bytes": 71023,
+      "sha256": "fd6aae01778ac0546bcd288168bfa2ac9cf4c8c9d2978150c886ea7518168a2b"
     },
     "config/fuseki.ttl": {
       "bytes": 980,
       "sha256": "4032bf13a43ffbc5769f22ee5bd5f21e670d589a70fd31583133c3d0a75e3a77"
+    },
+    "config/learning/protocol.json": {
+      "bytes": 1156,
+      "sha256": "ff54cf4f6e745dd864e76c376ec958043f6dbe878d37afdb18beb0d4a27a94cc"
+    },
+    "config/learning/tested-environment.json": {
+      "bytes": 430,
+      "sha256": "cdf4b2200198e3923645c2907bd30ed4cf43052c5214cc25dfeca92c87df4fa5"
     },
     "config/ontop/connection.properties.example": {
       "bytes": 246,
@@ -235,17 +251,37 @@
       "bytes": 570,
       "sha256": "046aeccfe489833b5362cedbe9de7e0b16baf84a650febfd805db5e6211e973a"
     },
+    "docs/decisions.md": {
+      "bytes": 2634,
+      "sha256": "53f2a0842925ef2e7c458cb396d974a8dd2b1e1a68b5eb6252e09cd67092c4e3"
+    },
     "docs/history/provenance-snapshot-2026-10-15T024327Z.json": {
       "bytes": 42461,
       "sha256": "39a13694d5d0b881ee83f1b0ee7e50421864cc3fee834fe16eb75135c61a45cb"
     },
+    "docs/history/provenance-snapshot-2026-10-16T103610Z.json": {
+      "bytes": 81254,
+      "sha256": "c0880b2b13288a25617d4bb04fc41854a2c888e4e8e61849081106cf8c8e7e95"
+    },
+    "docs/learning-results-explained.html": {
+      "bytes": 36580,
+      "sha256": "2145ab6dadcc482111c09688c3577ad480e63ec5c9d12092613593b611d6e3d4"
+    },
+    "docs/learning-results-explained.md": {
+      "bytes": 22091,
+      "sha256": "9b06a1a0fb404d7eca7b76e757cc9f64300a325a04fe0bee30a4e17bd0862e08"
+    },
     "docs/project-walkthrough.html": {
-      "bytes": 68967,
-      "sha256": "8031fefe972d74662078434cd62fca2b2905a6808ec09148020c532ac2f8204c"
+      "bytes": 98944,
+      "sha256": "beae11c6d7e934df2151a940042ba68b6c9806472cc79cd2096b26e4d0b49e83"
     },
     "docs/project-walkthrough.md": {
-      "bytes": 47320,
-      "sha256": "c97b463b7ec784672ec389d3e0b951259ec844286a7e7fdda673f332435b3f7a"
+      "bytes": 69593,
+      "sha256": "fe5de930fb7deed4741225b2fd37c7361fd9278d156fa451a941a73e05050cb1"
+    },
+    "docs/questions-and-rules.md": {
+      "bytes": 10839,
+      "sha256": "0d4a1dc6262c4cb5f7b43d96184b123347700ae1c280539c576cd8170c8d071f"
     },
     "docs/shacl-triage.md": {
       "bytes": 7878,
@@ -306,6 +342,10 @@
     "evaluation/verify_integration.py": {
       "bytes": 313,
       "sha256": "cf2485801a751385382337ec93814bd0cfd67cf1fd97ec705a65e00a4d497b5c"
+    },
+    "evaluation/verify_learning.py": {
+      "bytes": 5966,
+      "sha256": "d8ad26194e5446659951e5c1eff221413f02515e2d500509658cbc21ef86f55b"
     },
     "evaluation/verify_ontology.py": {
       "bytes": 8879,
@@ -381,7 +421,7 @@
     },
     "outputs/integration/integration-results.html": {
       "bytes": 239,
-      "sha256": "2f8e555a271bc3e17ede084845561513dac62ce6c032322cb0be668e5eff937f"
+      "sha256": "88b1e19030a1db3eb877f31e63090c66cda12543d0dc53e219db5b1567f77a7e"
     },
     "outputs/integration/latest-fixture.json": {
       "bytes": 150,
@@ -389,7 +429,7 @@
     },
     "outputs/integration/latest-full.json": {
       "bytes": 150,
-      "sha256": "fc8679c8e4331715ffc600eb851852eed96459db9800660cb47803752fd390d3"
+      "sha256": "83a35ed84ba465e9bbb639ca9be0d35f12bbcebc15ea71bec5618dffd39ea8b2"
     },
     "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/after/materialization.json": {
       "bytes": 343,
@@ -679,6 +719,14 @@
       "bytes": 3238,
       "sha256": "7c218fd0b9d107242d958f3e138f2dfc692961f34f9e78f6706ffeb47392aa33"
     },
+    "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/oulad-mapped.nt": {
+      "bytes": 4421000,
+      "sha256": "709410e72506607349b638acdf4304c41641ab5eed6d60f3fc97339879314b68"
+    },
+    "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/summary.json": {
+      "bytes": 10826,
+      "sha256": "f4794e8e58b62ee6a4fca763d84211fc6c19b9f218b7251e9a31cde295ca77ff"
+    },
     "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/after/materialization.json": {
       "bytes": 345,
       "sha256": "b48103a1b501ceead232dd185c9c145e333f20ab2cef6e70d395cf5bb24501e0"
@@ -967,6 +1015,238 @@
       "bytes": 3238,
       "sha256": "b7542ca74db835f7520e6ee8cd6b4d03a6c94be05fbeadfa8efc41959d2ce982"
     },
+    "outputs/learning/latest.json": {
+      "bytes": 147,
+      "sha256": "192fc6eef1ccda9cc77fa3cec47387448b89cf7c8f22d9b595eac073ef8a373d"
+    },
+    "outputs/learning/learning-results.html": {
+      "bytes": 222,
+      "sha256": "b8381ffc4ac4c30daf9db1a4915b439fdd2e67ee32da4d0995b3d10220e3e8ec"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/checks.json": {
+      "bytes": 2172,
+      "sha256": "5f1124a33853e61f22180dd73818c8eefbbcd93a137c61de4c3cdaa23a3c5460"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification-comparison.png": {
+      "bytes": 64014,
+      "sha256": "67326d18b6ba0d624d586d3e889d131d3ecd24897f80ad996ed3a53b03a9b8ce"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/graphsage-seed-0.pt": {
+      "bytes": 7499,
+      "sha256": "9b74fb477da2aebd04a569fb8fb567d724e027316ad3fd29c64f6bdaf65e285f"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/graphsage-seed-1.pt": {
+      "bytes": 7499,
+      "sha256": "ce02c51b2cdaacdb6e0a2724e4d71eefd10c29c7bcef28220b9b887dfa11b3f8"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/graphsage-seed-2.pt": {
+      "bytes": 7499,
+      "sha256": "ec0959ab0a44181435f9e802298b9149551c51f5ed465f4c0ffea86691214283"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/logistic-coefficients.csv": {
+      "bytes": 253,
+      "sha256": "b8c456d40cb949b402585ee0e0a2e33099fb9f971a0180785f67ffdc4d1d2e8d"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/logistic-model.json": {
+      "bytes": 247,
+      "sha256": "f29783de91aae8af52b1fb1745684b921237fa83320ed582f5ff1c496de5d671"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/metrics.csv": {
+      "bytes": 3231,
+      "sha256": "22a8ff28796429b1d9e84f920a33483a1df8d5ac29c332dd53a9ec38ead15cdd"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/predictions.csv": {
+      "bytes": 529634,
+      "sha256": "e227587c09cedf155541376b0f5bf196544c1a02514da2e59ad06f1141a7fffc"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/preprocessing.json": {
+      "bytes": 22714,
+      "sha256": "0a80a58257d3253617807c645e15ac432f6a8c666d3856de37f9a658d3084c82"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/purged-training-overlap.csv": {
+      "bytes": 5055,
+      "sha256": "865d28873224052f0d0fb577cfe08078b81135472d956b5d315ff2fbce90fbf6"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/random-split-diagnostics.json": {
+      "bytes": 322,
+      "sha256": "a4f7f8095f6a945200f0e964fed1de8aa263c199f78206b06cbe05e06da9a4dd"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/split.json": {
+      "bytes": 208,
+      "sha256": "ed2d2a25766981971dda723dcaffaa3d9abbcbbf46f7f05aa83cb699cdd89774"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/test-cohort.csv": {
+      "bytes": 62910,
+      "sha256": "d7a665b164fe8446083aa1174c7514298c31b956c105c25a047dfa403d5815a9"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/train-cohort.csv": {
+      "bytes": 61961,
+      "sha256": "a94a7c252a92e448f72f6da83ea9f51b58b64b70bf30fbc7f5c58e951fc86952"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/confusion-matrices.png": {
+      "bytes": 50425,
+      "sha256": "9badc2816614ed4f62a9e55c3d14a4d4b8ce39f02ad2442b1e1dc4efec674c58"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/assessment-metadata.csv": {
+      "bytes": 1513,
+      "sha256": "7a3f134599297226ef57159e84cbeb57117d2b82152b23b4ac5c8cc89e2b0fae"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/cohort.json": {
+      "bytes": 825,
+      "sha256": "1521541ccb549ccedadb8a60ec77cbb82847d962254c5bf0872c72d050a264c4"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/early-edges.csv": {
+      "bytes": 205691,
+      "sha256": "05d4071af66d3a0dc3ef9ec4839c9f8d7181fa77f49cbea4f61c3eaaed675f79"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/features-and-cohort.csv": {
+      "bytes": 132234,
+      "sha256": "92f16e45ec49742b31fd1c8aa06147c56b998fac670752dcc84cee7dc365f751"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/input-checks.json": {
+      "bytes": 1587,
+      "sha256": "fbd784b52eb8b0d4030571eb441e41e91cb182b082f3354d252a3920300fa977"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/labels.csv": {
+      "bytes": 91213,
+      "sha256": "0cbc0b73890bf483fac74cc88a607793aae371b18ad6957f950066014d767cf4"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/learning-input.ttl": {
+      "bytes": 269601,
+      "sha256": "23c9530c12d6b914a6a2c05c26386596497da767edfdb51eb2edeb4d9ba9880c"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/link-comparison.png": {
+      "bytes": 40876,
+      "sha256": "301d8a43c85e5e5bff854a688bcc07e810f199705f0c2db6485a05ecad107fd8"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/all-ranks.csv": {
+      "bytes": 122234,
+      "sha256": "00b9000fe086916fa3847e54459e7d6257181b334a5db4cbecdc9ad1404bfa51"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/ranks.csv": {
+      "bytes": 40878,
+      "sha256": "a13b2203959cec7c0b7b2d58bd1fb75c691148486bc5381002445a61f5c69802"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/summary.json": {
+      "bytes": 1225,
+      "sha256": "1c5d41a8e89254edb0dd08fb8c972c617612722d0c6df097b48069304024c45c"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/support.csv": {
+      "bytes": 90588,
+      "sha256": "5c592cc1819aca3cf4b1ab7e084830ca14249c4f6e3e5250865843c8a5f0c1dd"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/test.csv": {
+      "bytes": 35137,
+      "sha256": "986fa63c0d7aac0e3f434c906fdb5862dd7c7b1fd7a67e2259ec98b0a652b944"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/train.csv": {
+      "bytes": 281682,
+      "sha256": "eb687288ea143f3f2814112ade702f9420a9b53e8b1fb0f21cb7dcaefe5171a4"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/training.json": {
+      "bytes": 56611,
+      "sha256": "95757016b5d0adb6fc27c891c97f4bd199ddabd27016ce9f3283525eb0bfc992"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/transe.pt": {
+      "bytes": 100509,
+      "sha256": "b3c2d35894ad98e5eccf85457d9884f1cb929d2203bad644310450c6a221c11e"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/validation.csv": {
+      "bytes": 35137,
+      "sha256": "b8eb615692427b471d511f1e5034ad6275b834bb3a32a9a17d71b888d7ee8954"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/ranks.csv": {
+      "bytes": 40863,
+      "sha256": "7e3a8679fcce665415883179e1dcd7a9b28a61fddaead9a19209a8f2df2d29fc"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/summary.json": {
+      "bytes": 1210,
+      "sha256": "f0165071cbf8ed23e687bff51fffcefd0d8e47f3182d531aa04691f83cc174e9"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/support.csv": {
+      "bytes": 90588,
+      "sha256": "5c592cc1819aca3cf4b1ab7e084830ca14249c4f6e3e5250865843c8a5f0c1dd"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/test.csv": {
+      "bytes": 35120,
+      "sha256": "959a5013b0989ba430bc59b57786a3e8ab3642dc3630d7b748f623f40937f252"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/train.csv": {
+      "bytes": 281713,
+      "sha256": "2f3a8eb4008cd4fbe300a580796eca0543dfcff34f4cf19a96bae6b88488e23a"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/training.json": {
+      "bytes": 56592,
+      "sha256": "2ae559e9b804f04802f9a16de5c652886223be483355d29b8878d363bf12a689"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/transe.pt": {
+      "bytes": 100509,
+      "sha256": "ef8259d8da008af5c59900b301c83219f73871b536b54665f5d82680751177df"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/validation.csv": {
+      "bytes": 35123,
+      "sha256": "56129f0b11656d50ed90e25b29aa32af1b2676e56e3604b9f1dc21d6cb4eb0e4"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/ranks.csv": {
+      "bytes": 40873,
+      "sha256": "c3df978d5ff39cac4e4594535b383d0ea4527b3dc404b8090314ad3f23233de0"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/summary.json": {
+      "bytes": 1177,
+      "sha256": "d3110f2c86ce3adec356af2de53c9f65cdcbdee3a72aa75897e6356d98f11152"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/support.csv": {
+      "bytes": 90588,
+      "sha256": "5c592cc1819aca3cf4b1ab7e084830ca14249c4f6e3e5250865843c8a5f0c1dd"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/test.csv": {
+      "bytes": 35128,
+      "sha256": "dac3a15f81acb503f04b9153fe238e7c5ce33ca40cca86406c009167e2533e96"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/train.csv": {
+      "bytes": 281684,
+      "sha256": "daa02ed0f85051b307a1fd792768bb36f4ccc8bcb03abf990a52004f890f599f"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/training.json": {
+      "bytes": 56603,
+      "sha256": "43eefa916d2b31a5165038467dea8ceb2b403ef1be0e63237855c49d082b5d7c"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/transe.pt": {
+      "bytes": 100509,
+      "sha256": "70564d81b6fa1160bda9a8642474dfb7544fb75f4ecefb4762b2f8a2ee7ca4ef"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/validation.csv": {
+      "bytes": 35144,
+      "sha256": "3f3620c6acfcf07f98b4de21ca1baa3d5075a5a9185bcd4c5a20d4cd30df8ae9"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/summary.json": {
+      "bytes": 3902,
+      "sha256": "f474a43fe67df46fa55222450d7acaf82d875b8708a1f04e37403eb49e314802"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/manifest.json": {
+      "bytes": 7745,
+      "sha256": "d7d5a65110fc20416a0b308ad5398d1327cf433ef3182d14d08b2e56427b571f"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/protocol.json": {
+      "bytes": 1156,
+      "sha256": "ff54cf4f6e745dd864e76c376ec958043f6dbe878d37afdb18beb0d4a27a94cc"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/provenance.ttl": {
+      "bytes": 18378,
+      "sha256": "3d52c6aa7e860641d3d0332a982a00f66e6bf5e80977cd198d1c34b4cfb8c4ca"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/report.html": {
+      "bytes": 10682,
+      "sha256": "c0ab95f48648737f9445613f7970f0a3f2f3144e1908aff5a023313f40422bb0"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/summary.json": {
+      "bytes": 23488,
+      "sha256": "ec237ad0579df1260f1e360e7a1cb27600a9f8b0f1c0fa2f35eeb0ae8d774996"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/verification.json": {
+      "bytes": 5726,
+      "sha256": "a9766ec06cb3585a0bdf32b5d53ded8a4d64b643fa511385868eaa1e8670f4d0"
+    },
     "outputs/neo4j/import-summary.json": {
       "bytes": 791,
       "sha256": "22e225669435a82357a6d34368574090df18295d784bcf06f20d269f346a382d"
@@ -1211,6 +1491,10 @@
       "bytes": 857,
       "sha256": "9fc2ed7108b37a151a9ebcafdee0bcc2a85f378a8aafa5181f6c8a09224b83c4"
     },
+    "run-learning.ps1": {
+      "bytes": 464,
+      "sha256": "c12cf1f7471a3a68fb304562712d0d4b1e37dcb8d5061506de42d0f61219e1dd"
+    },
     "run-shacl.ps1": {
       "bytes": 1320,
       "sha256": "3904eb338a73dc1a8465909f2fc64d6a5dae42ba30c7e33cd756bad2b0332112"
@@ -1295,6 +1579,34 @@
       "bytes": 2243,
       "sha256": "573bc44c2ffe3cac4e7518d793964b2757f64397fc649894eaafd45fddf16ec5"
     },
+    "src/learning/build_graph.py": {
+      "bytes": 5125,
+      "sha256": "158cc046c401a08425e3f8b7691c679e53223bf3ec1ad2b2960acf10cb5355c1"
+    },
+    "src/learning/checks.py": {
+      "bytes": 5972,
+      "sha256": "61cc02c9163233156cf690c9d12bbb9b3e534c0cb9fa1a9e94eb136bf33b5be4"
+    },
+    "src/learning/classification.py": {
+      "bytes": 8308,
+      "sha256": "ea4efffa3528aca61fc47d4d24ccf607c9c81a2ea2a3c89a8287246d77eb4471"
+    },
+    "src/learning/common.py": {
+      "bytes": 1644,
+      "sha256": "bc4480213a579d359d418b2719fd34967a287923328b395816b05a75f196456d"
+    },
+    "src/learning/link_prediction.py": {
+      "bytes": 6290,
+      "sha256": "a19070e5a92cde526fdee70d21f735fbf8ab916ce526299b76943891e688e821"
+    },
+    "src/learning/report.py": {
+      "bytes": 13983,
+      "sha256": "e8f3ad1c991f62686c335ce2b5473c838ed55a87eed577238ad778949cc51cb6"
+    },
+    "src/learning/run.py": {
+      "bytes": 5480,
+      "sha256": "36503371c75725bfd84b466ef707b1373b0eabacfa5f94810d0d3d7b76b432e2"
+    },
     "src/preparation/fetch_data.py": {
       "bytes": 282,
       "sha256": "613586e5bfdd0c9d89d3f32e4b5789d4f778e68a68446022fd403fe90922dcec"
@@ -1320,7 +1632,7 @@
       "sha256": "c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d"
     }
   },
-  "previous_audit_at_utc": "2026-10-15T02:43:27.247538+00:00",
+  "previous_audit_at_utc": "2026-10-16T10:36:10.470882+00:00",
   "shacl": {
     "full_run_id": "7b97ef4623a9455c8781799ac0fb1471",
     "started_at_utc": "2026-10-15T02:50:45.029517+00:00",
@@ -1658,8 +1970,8 @@
     "verification_source_fingerprints_match": true
   },
   "previous_audit_snapshot": {
-    "path": "docs/history/provenance-snapshot-2026-10-15T024327Z.json",
-    "sha256": "39a13694d5d0b881ee83f1b0ee7e50421864cc3fee834fe16eb75135c61a45cb"
+    "path": "docs/history/provenance-snapshot-2026-10-16T103610Z.json",
+    "sha256": "c0880b2b13288a25617d4bb04fc41854a2c888e4e8e61849081106cf8c8e7e95"
   },
   "relocation": {
     "previous_audit_root": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad",
@@ -1720,14 +2032,14 @@
       "full_data_validated_in_ci": false
     }
   },
-  "fingerprint_scope_note": "Selected previous evidence plus new code, fixture, configuration, documentation and both successful integration runs. Current provenance guide and snapshot excluded to avoid circular fingerprints. Private connection files and downloaded binaries excluded; the safe download manifest is included.",
+  "fingerprint_scope_note": "Previous selected files plus final learning source, code, protocol, documentation and complete final run, including local ignored checkpoints. Current provenance guide/snapshot excluded to avoid circular hashes. Secrets and caches excluded.",
   "changes_from_previous_audit": [
-    "Preserved prior 15 October snapshot",
-    "Refreshed Session 4 records to the existing 15 October run and verification",
-    "Recorded user-supplied successful SHACL CI screenshot",
-    "Implemented and executed Session 5 full/fixture integration",
-    "Added shared mapping, database receipt, generated SQL, SHACL, freshness and PROV-O evidence",
-    "Prepared new fixture integration workflow; no remote run claimed"
+    "Preserved 16 October provenance snapshot",
+    "Recorded latest mapped RDF used as the learning source",
+    "Added separate node classification and historical link reconstruction",
+    "Recorded initial/cohort/test counts, baselines, all seeds and predictions",
+    "Added label/cutoff/source checks and independently recomputed metrics",
+    "Updated README, walkthrough, question boundaries and detailed learning explanation"
   ],
   "integration": {
     "full": {
@@ -1893,6 +2205,677 @@
       "checked_at_utc": "2026-10-16T05:32:40.800360+00:00",
       "note": "Locally computed download fingerprints, not publisher signatures."
     },
-    "mapped_inputs_match_current_files": true
+    "mapped_inputs_match_current_files": false,
+    "historical_input_status_at_learning_audit": {
+      "full": {
+        "directory": "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b",
+        "all_input_fingerprints_match_current_files": false,
+        "changed_inputs_since_that_run": [
+          ".runtime/ontop/download-manifest.json"
+        ],
+        "note": "A historical artifact can differ from the current file without invalidating its recorded past result."
+      },
+      "fixture": {
+        "directory": "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9",
+        "all_input_fingerprints_match_current_files": false,
+        "changed_inputs_since_that_run": [
+          ".runtime/ontop/download-manifest.json"
+        ],
+        "note": "A historical artifact can differ from the current file without invalidating its recorded past result."
+      }
+    },
+    "current_full_learning_source": {
+      "run_id": "7c0b60e5ae2b4e7da058f851b1c8286c",
+      "directory": "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c",
+      "recorded_at_utc": "2026-10-17T05:00:53.401457+00:00",
+      "passed": true,
+      "all_recorded_inputs_match_current_files": true
+    }
+  },
+  "learning": {
+    "directory": "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf",
+    "run_id": "f7649738f7414536bc2395ef7496eebf",
+    "started_at_utc": "2026-10-17T21:32:30.408391+00:00",
+    "finished_at_utc": "2026-10-17T21:33:16.413705+00:00",
+    "source_graph": "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/oulad-mapped.nt",
+    "protocol": {
+      "version": 1,
+      "cutoff_day": 60,
+      "train_presentation": "2013J",
+      "test_presentation": "2014J",
+      "positive_label": "Fail or Withdrawn",
+      "eligible": "registered by day 60 and not unregistered by day 60",
+      "purge": "remove training students present anywhere in the 2014J offering",
+      "classification_seeds": [
+        0,
+        1,
+        2
+      ],
+      "random_split_seeds": [
+        0,
+        1,
+        2
+      ],
+      "random_test_share": 0.3,
+      "threshold": 0.5,
+      "graphsage": {
+        "epochs": 100,
+        "hidden": 16,
+        "learning_rate": 0.01
+      },
+      "logistic": {
+        "C": 1.0,
+        "class_weight": "balanced",
+        "max_iter": 2000
+      },
+      "link_prediction": {
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "train_share": 0.8,
+        "validation_share": 0.1,
+        "test_share": 0.1,
+        "model": "TransE",
+        "dimension": 32,
+        "epochs": 100,
+        "batch_size": 256,
+        "learning_rate": 0.01,
+        "negatives_per_positive": 5
+      },
+      "selection": "Settings fixed before viewing test metrics; no best-seed selection or threshold tuning.",
+      "scope": "Retrospective educational experiment on AAA only; no deployed decisions."
+    },
+    "cohort": {
+      "all_enrollments": 748,
+      "all_students": 712,
+      "outcomes": {
+        "Pass": 487,
+        "Withdrawn": 126,
+        "Fail": 91,
+        "Distinction": 44
+      },
+      "successful": 531,
+      "unsuccessful": 217,
+      "eligible_day60": 701,
+      "excluded_day60": 47,
+      "nonbanked_historical_links": 3107,
+      "banked_records_excluded": 42,
+      "eligible_early_edges": 1199,
+      "learning_triples": 5389,
+      "feature_names": [
+        "previous_attempts",
+        "registration_day",
+        "early_submission_count",
+        "early_late_count",
+        "last_submission_day"
+      ],
+      "label_policy": "1 = final Fail or Withdrawn; 0 = final Pass or Distinction",
+      "availability_assumption": "Registration and submission dates approximate recorded availability; no ingestion/revision log exists. Grades excluded because publication dates are absent."
+    },
+    "classification": {
+      "split": {
+        "train_rows": 335,
+        "test_rows": 340,
+        "purged_eligible_training_rows": 26,
+        "all_cross_offering_students": 36,
+        "train_unsuccessful": 57,
+        "test_unsuccessful": 87,
+        "student_overlap": 0
+      },
+      "metrics": [
+        {
+          "model": "Logistic regression",
+          "split": "temporal",
+          "seed": 0,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 137,
+          "average_precision": 0.5259415887002294,
+          "roc_auc": 0.7101676434510016,
+          "accuracy": 0.6705882352941176,
+          "balanced_accuracy": 0.6617600290763709,
+          "precision": 0.40875912408759124,
+          "recall": 0.6436781609195402,
+          "f1": 0.5,
+          "tn": 172,
+          "fp": 81,
+          "fn": 31,
+          "tp": 56
+        },
+        {
+          "model": "Training prevalence",
+          "split": "temporal",
+          "seed": 0,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 0,
+          "average_precision": 0.25588235294117645,
+          "roc_auc": 0.5,
+          "accuracy": 0.7441176470588236,
+          "balanced_accuracy": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 253,
+          "fp": 0,
+          "fn": 87,
+          "tp": 0
+        },
+        {
+          "model": "Early submission count",
+          "split": "temporal",
+          "seed": 0,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 21,
+          "average_precision": 0.4437124759159562,
+          "roc_auc": 0.7069419835536777,
+          "accuracy": 0.7705882352941177,
+          "balanced_accuracy": 0.5743491890418427,
+          "precision": 0.7142857142857143,
+          "recall": 0.1724137931034483,
+          "f1": 0.2777777777777778,
+          "tn": 247,
+          "fp": 6,
+          "fn": 72,
+          "tp": 15
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "temporal",
+          "seed": 0,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 152,
+          "average_precision": 0.5022309274410596,
+          "roc_auc": 0.6770024078869656,
+          "accuracy": 0.5852941176470589,
+          "balanced_accuracy": 0.5780518831493344,
+          "precision": 0.3223684210526316,
+          "recall": 0.5632183908045977,
+          "f1": 0.4100418410041841,
+          "tn": 150,
+          "fp": 103,
+          "fn": 38,
+          "tp": 49
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "temporal",
+          "seed": 1,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 183,
+          "average_precision": 0.5039480714071871,
+          "roc_auc": 0.6879969106355913,
+          "accuracy": 0.5764705882352941,
+          "balanced_accuracy": 0.6249148153196129,
+          "precision": 0.3442622950819672,
+          "recall": 0.7241379310344828,
+          "f1": 0.4666666666666667,
+          "tn": 133,
+          "fp": 120,
+          "fn": 24,
+          "tp": 63
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "temporal",
+          "seed": 2,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 186,
+          "average_precision": 0.4983570499920872,
+          "roc_auc": 0.6910408432147563,
+          "accuracy": 0.5911764705882353,
+          "balanced_accuracy": 0.6498796056517195,
+          "precision": 0.3602150537634409,
+          "recall": 0.7701149425287356,
+          "f1": 0.4908424908424908,
+          "tn": 134,
+          "fp": 119,
+          "fn": 20,
+          "tp": 67
+        },
+        {
+          "model": "INVALID label-leak control",
+          "split": "leak_control",
+          "seed": 0,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 87,
+          "average_precision": 1.0,
+          "roc_auc": 1.0,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tn": 253,
+          "fp": 0,
+          "fn": 0,
+          "tp": 87
+        },
+        {
+          "model": "Logistic regression",
+          "split": "random_0",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 65,
+          "average_precision": 0.6706209288927744,
+          "roc_auc": 0.830514705882353,
+          "accuracy": 0.7819905213270142,
+          "balanced_accuracy": 0.7493872549019608,
+          "precision": 0.5384615384615384,
+          "recall": 0.6862745098039216,
+          "f1": 0.603448275862069,
+          "tn": 130,
+          "fp": 30,
+          "fn": 16,
+          "tp": 35
+        },
+        {
+          "model": "Training prevalence",
+          "split": "random_0",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 0,
+          "average_precision": 0.24170616113744076,
+          "roc_auc": 0.5,
+          "accuracy": 0.7582938388625592,
+          "balanced_accuracy": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 160,
+          "fp": 0,
+          "fn": 51,
+          "tp": 0
+        },
+        {
+          "model": "Early submission count",
+          "split": "random_0",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 11,
+          "average_precision": 0.5343598087203183,
+          "roc_auc": 0.7549019607843136,
+          "accuracy": 0.8104265402843602,
+          "balanced_accuracy": 0.607843137254902,
+          "precision": 1.0,
+          "recall": 0.21568627450980393,
+          "f1": 0.3548387096774194,
+          "tn": 160,
+          "fp": 0,
+          "fn": 40,
+          "tp": 11
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "random_0",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 80,
+          "average_precision": 0.6182133717513776,
+          "roc_auc": 0.7488970588235294,
+          "accuracy": 0.6919431279620853,
+          "balanced_accuracy": 0.676654411764706,
+          "precision": 0.4125,
+          "recall": 0.6470588235294118,
+          "f1": 0.5038167938931297,
+          "tn": 113,
+          "fp": 47,
+          "fn": 18,
+          "tp": 33
+        },
+        {
+          "model": "Logistic regression",
+          "split": "random_1",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 52,
+          "average_precision": 0.4611813362862323,
+          "roc_auc": 0.6928308823529412,
+          "accuracy": 0.7014218009478673,
+          "balanced_accuracy": 0.596078431372549,
+          "precision": 0.38461538461538464,
+          "recall": 0.39215686274509803,
+          "f1": 0.3883495145631068,
+          "tn": 128,
+          "fp": 32,
+          "fn": 31,
+          "tp": 20
+        },
+        {
+          "model": "Training prevalence",
+          "split": "random_1",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 0,
+          "average_precision": 0.24170616113744076,
+          "roc_auc": 0.5,
+          "accuracy": 0.7582938388625592,
+          "balanced_accuracy": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 160,
+          "fp": 0,
+          "fn": 51,
+          "tp": 0
+        },
+        {
+          "model": "Early submission count",
+          "split": "random_1",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 6,
+          "average_precision": 0.34626583650837905,
+          "roc_auc": 0.6102941176470588,
+          "accuracy": 0.7772511848341233,
+          "balanced_accuracy": 0.5458946078431373,
+          "precision": 0.8333333333333334,
+          "recall": 0.09803921568627451,
+          "f1": 0.17543859649122806,
+          "tn": 159,
+          "fp": 1,
+          "fn": 46,
+          "tp": 5
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "random_1",
+          "seed": 1,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 58,
+          "average_precision": 0.4203736386712722,
+          "roc_auc": 0.6384191176470588,
+          "accuracy": 0.6540284360189573,
+          "balanced_accuracy": 0.5514705882352942,
+          "precision": 0.3103448275862069,
+          "recall": 0.35294117647058826,
+          "f1": 0.3302752293577982,
+          "tn": 120,
+          "fp": 40,
+          "fn": 33,
+          "tp": 18
+        },
+        {
+          "model": "Logistic regression",
+          "split": "random_2",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 61,
+          "average_precision": 0.5507936140728215,
+          "roc_auc": 0.7352941176470588,
+          "accuracy": 0.7630331753554502,
+          "balanced_accuracy": 0.710171568627451,
+          "precision": 0.5081967213114754,
+          "recall": 0.6078431372549019,
+          "f1": 0.5535714285714286,
+          "tn": 130,
+          "fp": 30,
+          "fn": 20,
+          "tp": 31
+        },
+        {
+          "model": "Training prevalence",
+          "split": "random_2",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 0,
+          "average_precision": 0.24170616113744076,
+          "roc_auc": 0.5,
+          "accuracy": 0.7582938388625592,
+          "balanced_accuracy": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 160,
+          "fp": 0,
+          "fn": 51,
+          "tp": 0
+        },
+        {
+          "model": "Early submission count",
+          "split": "random_2",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 9,
+          "average_precision": 0.45630948845170133,
+          "roc_auc": 0.7214460784313725,
+          "accuracy": 0.7819905213270142,
+          "balanced_accuracy": 0.5623774509803922,
+          "precision": 0.7777777777777778,
+          "recall": 0.13725490196078433,
+          "f1": 0.23333333333333334,
+          "tn": 158,
+          "fp": 2,
+          "fn": 44,
+          "tp": 7
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "random_2",
+          "seed": 2,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 113,
+          "average_precision": 0.4717961574751623,
+          "roc_auc": 0.6787377450980393,
+          "accuracy": 0.5639810426540285,
+          "balanced_accuracy": 0.6123161764705882,
+          "precision": 0.3185840707964602,
+          "recall": 0.7058823529411765,
+          "f1": 0.43902439024390244,
+          "tn": 83,
+          "fp": 77,
+          "fn": 15,
+          "tp": 36
+        }
+      ],
+      "random_split_diagnostics": [
+        {
+          "seed": 0,
+          "train_rows": 490,
+          "test_rows": 211,
+          "overlapping_students": 7
+        },
+        {
+          "seed": 1,
+          "train_rows": 490,
+          "test_rows": 211,
+          "overlapping_students": 10
+        },
+        {
+          "seed": 2,
+          "train_rows": 490,
+          "test_rows": 211,
+          "overlapping_students": 13
+        }
+      ],
+      "graphsage_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    "link_prediction": {
+      "seeds": [
+        {
+          "seed": 0,
+          "initial_links": 3107,
+          "train_links": 2487,
+          "validation_links": 310,
+          "test_links": 310,
+          "support_links": 772,
+          "cold_entity_test_links": 0,
+          "test_links_with_zero_training_degree": 9,
+          "mean_filtered_candidates": 2.2548387096774194,
+          "min_filtered_candidates": 2,
+          "max_filtered_candidates": 6,
+          "random_unfiltered": {
+            "mrr": 0.4083333333333334,
+            "hits_at_1": 0.16666666666666666,
+            "hits_at_3": 0.5
+          },
+          "random_filtered": {
+            "mrr": 0.7221048387096773,
+            "hits_at_1": 0.469731182795699,
+            "hits_at_3": 0.9737096774193549
+          },
+          "transe_filtered": {
+            "mrr": 0.912741935483871,
+            "hits_at_1": 0.8387096774193549,
+            "hits_at_3": 0.9870967741935484,
+            "n": 310
+          },
+          "transe_unfiltered": {
+            "mrr": 0.22629032258064513,
+            "hits_at_1": 0.0032258064516129032,
+            "hits_at_3": 0.09032258064516129,
+            "n": 310
+          },
+          "popularity_filtered": {
+            "mrr": 0.9846774193548387,
+            "hits_at_1": 0.9709677419354839,
+            "hits_at_3": 0.9967741935483871,
+            "n": 310
+          },
+          "popularity_unfiltered": {
+            "mrr": 0.4770430107526881,
+            "hits_at_1": 0.21935483870967742,
+            "hits_at_3": 0.6451612903225806,
+            "n": 310
+          }
+        },
+        {
+          "seed": 1,
+          "initial_links": 3107,
+          "train_links": 2487,
+          "validation_links": 310,
+          "test_links": 310,
+          "support_links": 772,
+          "cold_entity_test_links": 0,
+          "test_links_with_zero_training_degree": 7,
+          "mean_filtered_candidates": 2.232258064516129,
+          "min_filtered_candidates": 2,
+          "max_filtered_candidates": 6,
+          "random_unfiltered": {
+            "mrr": 0.4083333333333334,
+            "hits_at_1": 0.16666666666666666,
+            "hits_at_3": 0.5
+          },
+          "random_filtered": {
+            "mrr": 0.7254094982078854,
+            "hits_at_1": 0.4737096774193548,
+            "hits_at_3": 0.9743548387096773
+          },
+          "transe_filtered": {
+            "mrr": 0.9368279569892474,
+            "hits_at_1": 0.8838709677419355,
+            "hits_at_3": 0.9903225806451613,
+            "n": 310
+          },
+          "transe_unfiltered": {
+            "mrr": 0.23225806451612904,
+            "hits_at_1": 0.0032258064516129032,
+            "hits_at_3": 0.11612903225806452,
+            "n": 310
+          },
+          "popularity_filtered": {
+            "mrr": 0.9793010752688172,
+            "hits_at_1": 0.9612903225806452,
+            "hits_at_3": 0.9967741935483871,
+            "n": 310
+          },
+          "popularity_unfiltered": {
+            "mrr": 0.4601075268817205,
+            "hits_at_1": 0.2,
+            "hits_at_3": 0.6419354838709678,
+            "n": 310
+          }
+        },
+        {
+          "seed": 2,
+          "initial_links": 3107,
+          "train_links": 2487,
+          "validation_links": 310,
+          "test_links": 310,
+          "support_links": 772,
+          "cold_entity_test_links": 0,
+          "test_links_with_zero_training_degree": 5,
+          "mean_filtered_candidates": 2.2,
+          "min_filtered_candidates": 2,
+          "max_filtered_candidates": 6,
+          "random_unfiltered": {
+            "mrr": 0.4083333333333334,
+            "hits_at_1": 0.16666666666666666,
+            "hits_at_3": 0.5
+          },
+          "random_filtered": {
+            "mrr": 0.7291783154121864,
+            "hits_at_1": 0.47790322580645156,
+            "hits_at_3": 0.977258064516129
+          },
+          "transe_filtered": {
+            "mrr": 0.9296774193548387,
+            "hits_at_1": 0.8709677419354839,
+            "hits_at_3": 0.9903225806451613,
+            "n": 310
+          },
+          "transe_unfiltered": {
+            "mrr": 0.2275268817204301,
+            "hits_at_1": 0.0,
+            "hits_at_3": 0.1,
+            "n": 310
+          },
+          "popularity_filtered": {
+            "mrr": 0.9870967741935484,
+            "hits_at_1": 0.9774193548387097,
+            "hits_at_3": 0.9935483870967742,
+            "n": 310
+          },
+          "popularity_unfiltered": {
+            "mrr": 0.4939784946236559,
+            "hits_at_1": 0.25483870967741934,
+            "hits_at_3": 0.6258064516129033,
+            "n": 310
+          }
+        }
+      ],
+      "initial_links": 3107,
+      "candidate_policy": "Six scheduled assessments in the same offering, including the exam with no observed submission links.",
+      "task": "Retrospective hidden-link reconstruction, not future participation prediction or recommendation."
+    },
+    "versions": {
+      "torch": "2.8.0",
+      "torch-geometric": "2.8.0.post1",
+      "pykeen": "1.11.1",
+      "scikit-learn": "1.7.2",
+      "rdflib": "7.6.0",
+      "pandas": "2.3.3",
+      "numpy": "2.3.5",
+      "matplotlib": "3.10.0"
+    },
+    "learning_checks_passed": 21,
+    "evidence_checks_passed": 54,
+    "source_fingerprints_match": true,
+    "output_fingerprints_match": true,
+    "manifest_sha256": "d7d5a65110fc20416a0b308ad5398d1327cf433ef3182d14d08b2e56427b571f",
+    "ci_status": "Local learning suite; no Session 6 GitHub workflow added or executed."
   }
 }

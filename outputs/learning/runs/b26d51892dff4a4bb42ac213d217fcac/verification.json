@@ -1,0 +1,207 @@
+{
+  "verified_at_utc": "2026-10-17T05:16:19.743898+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "check": "All recorded input fingerprints match",
+      "passed": true
+    },
+    {
+      "check": "All output fingerprints match",
+      "passed": true
+    },
+    {
+      "check": "Learning checks all passed",
+      "passed": true
+    },
+    {
+      "check": "Train/test years and student separation are correct",
+      "passed": true
+    },
+    {
+      "check": "Preprocessing fitted exactly the training enrollments",
+      "passed": true
+    },
+    {
+      "check": "temporal/Logistic regression: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "Logistic regression: test labels match source cohort",
+      "passed": true
+    },
+    {
+      "check": "temporal/Training prevalence: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "Training prevalence: test labels match source cohort",
+      "passed": true
+    },
+    {
+      "check": "temporal/Early submission count: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "Early submission count: test labels match source cohort",
+      "passed": true
+    },
+    {
+      "check": "temporal/GraphSAGE: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "GraphSAGE: test labels match source cohort",
+      "passed": true
+    },
+    {
+      "check": "temporal/GraphSAGE: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "GraphSAGE: test labels match source cohort",
+      "passed": true
+    },
+    {
+      "check": "temporal/GraphSAGE: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "GraphSAGE: test labels match source cohort",
+      "passed": true
+    },
+    {
+      "check": "leak_control/INVALID label-leak control: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_0/Logistic regression: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_0/Training prevalence: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_0/Early submission count: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_0/GraphSAGE: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_1/Logistic regression: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_1/Training prevalence: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_1/Early submission count: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_1/GraphSAGE: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_2/Logistic regression: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_2/Training prevalence: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_2/Early submission count: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "random_2/GraphSAGE: recomputed metrics",
+      "passed": true
+    },
+    {
+      "check": "Link seed 0: split disjointness",
+      "passed": true
+    },
+    {
+      "check": "Link seed 0: no hidden links in support",
+      "passed": true
+    },
+    {
+      "check": "Link seed 0: transe filtered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 0: transe unfiltered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 0: popularity filtered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 0: popularity unfiltered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 1: split disjointness",
+      "passed": true
+    },
+    {
+      "check": "Link seed 1: no hidden links in support",
+      "passed": true
+    },
+    {
+      "check": "Link seed 1: transe filtered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 1: transe unfiltered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 1: popularity filtered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 1: popularity unfiltered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 2: split disjointness",
+      "passed": true
+    },
+    {
+      "check": "Link seed 2: no hidden links in support",
+      "passed": true
+    },
+    {
+      "check": "Link seed 2: transe filtered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 2: transe unfiltered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 2: popularity filtered recomputed",
+      "passed": true
+    },
+    {
+      "check": "Link seed 2: popularity unfiltered recomputed",
+      "passed": true
+    },
+    {
+      "check": "PROV input entities match the manifest",
+      "passed": true
+    },
+    {
+      "check": "PROV generated entities match output fingerprints",
+      "passed": true
+    }
+  ],
+  "manifest_sha256": "a6e7926e48247488c3fc7df3f1c10994d4411d911294a323c5b30b25725d4bc5"
+}

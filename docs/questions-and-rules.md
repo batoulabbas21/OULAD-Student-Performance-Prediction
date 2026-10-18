@@ -4,7 +4,7 @@
 
 We describe observed enrollment, assessment, and resource activity for selected course offerings.
 The first version uses module AAA across its available offerings. It answers historical questions.
-It does not predict outcomes yet, diagnose students, or explain causes of failure.
+The original stages answer historical questions. Session 6 adds a separate, evaluated retrospective prediction experiment; it does not diagnose students or explain causes of failure.
 The labels AAA and presentation codes are anonymized identifiers: do not invent module titles.
 
 ## A question should lead to a relationship, a check, and an answer
@@ -83,7 +83,7 @@ blocks recorded errors and preserves optional missing values. A warning can stil
 | Who taught AAA? | Instructor identities are outside this dataset. |
 | What is the student's exact age or name? | These are not supplied; age bands are not exact ages. |
 | How many hours did this student study? | Click totals are not durations. |
-| Will this student fail? | This historical RDF/RDFS phase does not yet contain an evaluated prediction model. |
+| Will this student fail? | Session 6 evaluates day-60 scores for the combined Fail/Withdrawn label; it does not establish an individual future outcome or its cause. Read the model limitations. |
 | Which resources did the student access? (core build) | Activity was not loaded; load the activity extension before answering. |
 
 ## Defense questions for you
@@ -108,3 +108,14 @@ blocks recorded errors and preserves optional missing values. A warning can stil
 
 Source pages describe the data. The questions, IRIs, schema, warnings policy, and first module selection are project design choices.
 
+
+## Session 6 follow-up questions
+
+- Does a day-60 submission-count baseline rank eventual unsuccessful outcomes better than a constant score?
+- Does logistic regression improve on the count, and does GraphSAGE improve on logistic regression?
+- How do the predicted positive counts compare with the 87 actual positives in the same test cohort?
+- What changes under a random split, and which students cross that split?
+- Does TransE reconstruct hidden observed links better than training popularity counts?
+- How much of a high filtered MRR is explained by having only about two candidate assessments?
+
+Measured answers and limits: [Session 6 results explained](learning-results-explained.html). Learning outputs remain separate from the historical RDF and OWL inferences.
