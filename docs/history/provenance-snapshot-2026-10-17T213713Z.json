@@ -1,0 +1,2881 @@
+{
+  "audit_at_utc": "2026-10-17T21:37:13.709505+00:00",
+  "scope": "Session 6 extension audit on 18 October 2026: executed learning and independently verified all new inputs, outputs, metrics, partitions and PROV-O. Existing stages retained as dated saved evidence; not rerun. File inventory refreshed, previous snapshot preserved.",
+  "project_root": "D:\\DESKTOP\\M2\\kr-oulad",
+  "recorded_raw_retrieved_or_verified_utc": "2026-10-10T19:30:38.516852+00:00",
+  "raw_files_match_manifest": {
+    "courses.csv": true,
+    "assessments.csv": true,
+    "studentInfo.csv": true,
+    "studentRegistration.csv": true,
+    "studentAssessment.csv": true,
+    "vle.csv": true,
+    "studentVle.csv": true
+  },
+  "report_sources_match_current_files": {
+    "reasoned-full.json": {
+      "data/processed/oulad.ttl": true,
+      "ontology/education.owl.ttl": true,
+      "ontology/education.rdfs.ttl": true,
+      "ontology/imports/foaf.rdf": true
+    },
+    "fuseki/import-summary.json": {
+      "data/processed/oulad.ttl": true,
+      "ontology/education.rdfs.ttl": true
+    },
+    "shacl/full/summary.json": {
+      "data": true,
+      "schema": true,
+      "shapes": true
+    }
+  },
+  "selection": {
+    "module": "AAA",
+    "presentations": [
+      "2013J",
+      "2014J"
+    ],
+    "include_activity": false,
+    "counts": {
+      "courses": 2,
+      "assessments": 12,
+      "studentInfo": 748,
+      "studentRegistration": 748,
+      "vle": 413,
+      "studentAssessment": 3149
+    },
+    "note": "Original raw CSVs retained. No imputation or automatic row deletion."
+  },
+  "current_environment": {
+    "python": "3.12.15",
+    "python_executable": "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+    "packages": {
+      "pandas": "2.3.3",
+      "rdflib": "7.6.0",
+      "owlrl": "7.6.2",
+      "owlready2": "0.51",
+      "ydata-profiling": "4.18.4",
+      "nbformat": "5.11.1",
+      "nbclient": "0.11.0",
+      "nbconvert": "7.17.1",
+      "pyshacl": "0.40.1",
+      "morph-kgc": "2.10.0",
+      "SQLAlchemy": "2.0.54",
+      "psycopg2-binary": "2.9.13",
+      "torch": "2.8.0",
+      "torch-geometric": "2.8.0.post1",
+      "pykeen": "1.11.1",
+      "scikit-learn": "1.7.2",
+      "numpy": "2.3.5",
+      "matplotlib": "3.10.0"
+    }
+  },
+  "measured_counts": {
+    "rdf_facts": 28470,
+    "rdfs_schema": 105,
+    "exported_inferred_type_triples": 6119,
+    "students": 712,
+    "enrollments": 748,
+    "successful_enrollments_asserted": 0,
+    "successful_enrollments_inferred": 531,
+    "reasoner_named_individuals": 5037
+  },
+  "saved_verifications": {
+    "core_passed": 14,
+    "core_total": 14,
+    "owl_passed": 17,
+    "owl_total": 17,
+    "owl_verified_at_utc": "2026-10-13T10:01:38.486767+00:00",
+    "reasoner_verified_at_utc": "2026-10-13T09:58:55.179742+00:00",
+    "consistent": true,
+    "unsatisfiable_classes": [],
+    "fuseki_verified_at_utc": "2026-10-12T06:38:19.696093+00:00",
+    "shacl_passed": 37,
+    "shacl_total": 37,
+    "shacl_verified_at_utc": "2026-10-15T02:51:53.178880+00:00",
+    "integration_full_passed": 23,
+    "integration_fixture_passed": 23,
+    "learning_passed": 21,
+    "learning_evidence_passed": 54
+  },
+  "saved_notebook": {
+    "code_cells": 7,
+    "executed_cells": 7,
+    "error_outputs": 0
+  },
+  "worked_example": {
+    "raw": {
+      "file": "data/raw/studentInfo.csv",
+      "physical_line_including_header": 26,
+      "key_and_outcome": {
+        "code_module": "AAA",
+        "code_presentation": "2013J",
+        "id_student": "100893",
+        "final_result": "Pass"
+      }
+    },
+    "interim": {
+      "file": "data/interim/studentInfo.csv",
+      "physical_line_including_header": 26,
+      "key_and_outcome": {
+        "code_module": "AAA",
+        "code_presentation": "2013J",
+        "id_student": "100893",
+        "final_result": "Pass"
+      }
+    },
+    "enrollment_iri": "https://example.org/oulad/id/enrollment/AAA/2013J/100893",
+    "asserted_type_enrollment": true,
+    "asserted_outcome": "Pass",
+    "successful_asserted": false,
+    "successful_inferred": true
+  },
+  "files": {
+    ".github/workflows/integration.yml": {
+      "bytes": 1977,
+      "sha256": "8f3864945f4da21c9449cfdf9e2e96d2aef65574f37eb56f81e5663caa881b48"
+    },
+    ".github/workflows/shacl-gate.yml": {
+      "bytes": 1583,
+      "sha256": "edd6688e5e81b64261d5f876874e6148744c7fed7147878d9acc5952dfcd2e7a"
+    },
+    ".gitignore": {
+      "bytes": 189,
+      "sha256": "59ea76700bce480c1cab00a6bed9a08b861f01351f1ec995ae011e5049f40401"
+    },
+    ".runtime/ontop/download-manifest.json": {
+      "bytes": 700,
+      "sha256": "ccc7c2393716a0fb0a2026d20dd954039d16436cbc94ac4859cb4738bd7bb70f"
+    },
+    "README.md": {
+      "bytes": 71023,
+      "sha256": "fd6aae01778ac0546bcd288168bfa2ac9cf4c8c9d2978150c886ea7518168a2b"
+    },
+    "config/fuseki.ttl": {
+      "bytes": 980,
+      "sha256": "4032bf13a43ffbc5769f22ee5bd5f21e670d589a70fd31583133c3d0a75e3a77"
+    },
+    "config/learning/protocol.json": {
+      "bytes": 1156,
+      "sha256": "ff54cf4f6e745dd864e76c376ec958043f6dbe878d37afdb18beb0d4a27a94cc"
+    },
+    "config/learning/tested-environment.json": {
+      "bytes": 430,
+      "sha256": "cdf4b2200198e3923645c2907bd30ed4cf43052c5214cc25dfeca92c87df4fa5"
+    },
+    "config/ontop/connection.properties.example": {
+      "bytes": 246,
+      "sha256": "3c04d317cda29529249f1ed8693ef26f424c0691ddd03b034420c04603b731a2"
+    },
+    "config/postgres/connection.env.example": {
+      "bytes": 241,
+      "sha256": "9999fe4a435d222e95618fbdb0767934d2e2dd06fddd7a264c7400636ee8c46a"
+    },
+    "config/postgres/schema.sql": {
+      "bytes": 2891,
+      "sha256": "bdf675841780d8f9a7d868a5408f42ba97e845ea075dd14b5f10fa63ddf2a242"
+    },
+    "data/interim/assessments.csv": {
+      "bytes": 435,
+      "sha256": "c331b9eb8cbddb982d97f47ff4e07760bfa648025214b089ac70d40c13fa4896"
+    },
+    "data/interim/courses.csv": {
+      "bytes": 88,
+      "sha256": "f52e7042dffa402110e0fb1086da3ba7569a6de76c496e09ffaf7d1dcd49e4eb"
+    },
+    "data/interim/selection.json": {
+      "bytes": 361,
+      "sha256": "14cbe731e8d01cfda3afb4ef136e1a70d3a9240fa5019b7fa0e567da2b8cfdaa"
+    },
+    "data/interim/studentAssessment.csv": {
+      "bytes": 75061,
+      "sha256": "e2bde03c12ff7e7b51da0ba32a476422c3fb6bb65e5dfd3f86b298c593dfbcd9"
+    },
+    "data/interim/studentInfo.csv": {
+      "bytes": 61918,
+      "sha256": "c4fc15dbe643c29f710e815c8d523a34828f3b434317e6854898552884327d75"
+    },
+    "data/interim/studentRegistration.csv": {
+      "bytes": 19795,
+      "sha256": "8933cc554f26e5345f991a55f522f8c3ef212c9c8cf25609ad8ee54a511edfb0"
+    },
+    "data/interim/vle.csv": {
+      "bytes": 12022,
+      "sha256": "cc29dc5adf8457cab0f57c0411402c264aad43650d74a6db0511d42d012d9678"
+    },
+    "data/processed/graph_summary.json": {
+      "bytes": 870,
+      "sha256": "b33a24c5d40deb72a4405fd0a7655a1e1f7f2ac9ea64f9c4f226932d27422e52"
+    },
+    "data/processed/oulad.ttl": {
+      "bytes": 1476836,
+      "sha256": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5"
+    },
+    "data/raw/assessments.csv": {
+      "bytes": 8211,
+      "sha256": "9ce92381e4a0ac457f8e251b2eb2c179ed51e023ab30d1d671a0268bd62316ba"
+    },
+    "data/raw/courses.csv": {
+      "bytes": 526,
+      "sha256": "4f16eee7454b15e109b0a21a0e43be820e6846ed6f9301bb7feb5ab5ad737a75"
+    },
+    "data/raw/manifest.json": {
+      "bytes": 1402,
+      "sha256": "aa8af664e449493a9ec35b0d977b5ac07d53f302a06b822ef6f06d45d88db555"
+    },
+    "data/raw/studentAssessment.csv": {
+      "bytes": 5690483,
+      "sha256": "b1839e17618a5de36b6d189a242d3123f7939a56c8c9ccef0c17b9199c614a6b"
+    },
+    "data/raw/studentInfo.csv": {
+      "bytes": 3462763,
+      "sha256": "815fbc3e2de29f79900bc63f0345a35db62c9146afaa1d86e7107b8b3beffc60"
+    },
+    "data/raw/studentRegistration.csv": {
+      "bytes": 1132550,
+      "sha256": "bbc87a0de1fe2a9ec6decce1ca6c1a02cf17b54ad3bdcc673fc6413b41c61d47"
+    },
+    "data/raw/studentVle.csv": {
+      "bytes": 453836331,
+      "sha256": "52668253d876c5becbcb72185977152700cecab2942aca807fecc3dd54b937f0"
+    },
+    "data/raw/vle.csv": {
+      "bytes": 270612,
+      "sha256": "d7a146497edd0e47ef536144b58796c07b554002d3753e848b8e4cd8a56f4c38"
+    },
+    "docker-compose.fuseki.yml": {
+      "bytes": 524,
+      "sha256": "6ec26ec0c390d57221b43150ef32626a4c702e3655f455182dfeb167f9abfbb1"
+    },
+    "docker-compose.postgres.yml": {
+      "bytes": 570,
+      "sha256": "046aeccfe489833b5362cedbe9de7e0b16baf84a650febfd805db5e6211e973a"
+    },
+    "docs/decisions.md": {
+      "bytes": 2634,
+      "sha256": "53f2a0842925ef2e7c458cb396d974a8dd2b1e1a68b5eb6252e09cd67092c4e3"
+    },
+    "docs/history/provenance-snapshot-2026-10-15T024327Z.json": {
+      "bytes": 42461,
+      "sha256": "39a13694d5d0b881ee83f1b0ee7e50421864cc3fee834fe16eb75135c61a45cb"
+    },
+    "docs/history/provenance-snapshot-2026-10-16T103610Z.json": {
+      "bytes": 81254,
+      "sha256": "c0880b2b13288a25617d4bb04fc41854a2c888e4e8e61849081106cf8c8e7e95"
+    },
+    "docs/learning-results-explained.html": {
+      "bytes": 36580,
+      "sha256": "2145ab6dadcc482111c09688c3577ad480e63ec5c9d12092613593b611d6e3d4"
+    },
+    "docs/learning-results-explained.md": {
+      "bytes": 22091,
+      "sha256": "9b06a1a0fb404d7eca7b76e757cc9f64300a325a04fe0bee30a4e17bd0862e08"
+    },
+    "docs/project-walkthrough.html": {
+      "bytes": 98944,
+      "sha256": "beae11c6d7e934df2151a940042ba68b6c9806472cc79cd2096b26e4d0b49e83"
+    },
+    "docs/project-walkthrough.md": {
+      "bytes": 69593,
+      "sha256": "fe5de930fb7deed4741225b2fd37c7361fd9278d156fa451a941a73e05050cb1"
+    },
+    "docs/questions-and-rules.md": {
+      "bytes": 10839,
+      "sha256": "0d4a1dc6262c4cb5f7b43d96184b123347700ae1c280539c576cd8170c8d071f"
+    },
+    "docs/shacl-triage.md": {
+      "bytes": 7878,
+      "sha256": "73700c298381e1688752f32ed35ad55a3f3df696d2eed2180a4dc428d99a141d"
+    },
+    "evaluation/fixtures/integration/README.md": {
+      "bytes": 1162,
+      "sha256": "3c5a8702fe2de4d8de0743f394680444cafdbbe1dc84d1d6f63b7c1a262153f2"
+    },
+    "evaluation/fixtures/integration/assessments.csv": {
+      "bytes": 435,
+      "sha256": "c331b9eb8cbddb982d97f47ff4e07760bfa648025214b089ac70d40c13fa4896"
+    },
+    "evaluation/fixtures/integration/courses.csv": {
+      "bytes": 88,
+      "sha256": "f52e7042dffa402110e0fb1086da3ba7569a6de76c496e09ffaf7d1dcd49e4eb"
+    },
+    "evaluation/fixtures/integration/expected.ttl": {
+      "bytes": 15924,
+      "sha256": "f7414cdfa727a806d7934423cd2c3b2a1d7d3fd9d7faad58c80d8aa72f06f800"
+    },
+    "evaluation/fixtures/integration/selection.json": {
+      "bytes": 1066,
+      "sha256": "ce189f4f8dacf8fbd959bfb52f791008fd3f4f0e85457bd6aa8ba87c77a6ec97"
+    },
+    "evaluation/fixtures/integration/studentAssessment.csv": {
+      "bytes": 664,
+      "sha256": "1f658060f209358f87c62e0ef7d45fe9d3bfc69c9657aed4331db2fb424f1dcd"
+    },
+    "evaluation/fixtures/integration/studentInfo.csv": {
+      "bytes": 760,
+      "sha256": "8fca678b4da0fb9766bbea0808357f7dfab7b3f3d6c5c1c8bd08834d88b8b4ae"
+    },
+    "evaluation/fixtures/integration/studentRegistration.csv": {
+      "bytes": 272,
+      "sha256": "b504ce2af973ee45b6be5a25c2a0bd0bdc485d9cca3e9e7e1a963cb15f3b1a10"
+    },
+    "evaluation/fixtures/integration/vle.csv": {
+      "bytes": 130,
+      "sha256": "bcee15041117089f06b5d2c873dd5acca8daf3dc81302ee1fdcc537253e34857"
+    },
+    "evaluation/fixtures/shacl/broken.ttl": {
+      "bytes": 15576,
+      "sha256": "058732cedbbb45d50f91e8e7060ff1a6b0e0741d521168f1a627422197552178"
+    },
+    "evaluation/fixtures/shacl/selection.json": {
+      "bytes": 1454,
+      "sha256": "c07c5e014bcd3a6963dc831804009bce54eba4e25d9af675022cdc82c30c87e9"
+    },
+    "evaluation/fixtures/shacl/valid.ttl": {
+      "bytes": 15564,
+      "sha256": "27de5ce0df7c18af2a911cc9ed0407c5aef8e025a94dc1d7a1f8895d3708d0dc"
+    },
+    "evaluation/verify.py": {
+      "bytes": 4832,
+      "sha256": "d2cfaadc876d5621efd625d617c24170cc06bc6a27c3a2cdda1499827398d62b"
+    },
+    "evaluation/verify_integration.py": {
+      "bytes": 313,
+      "sha256": "cf2485801a751385382337ec93814bd0cfd67cf1fd97ec705a65e00a4d497b5c"
+    },
+    "evaluation/verify_learning.py": {
+      "bytes": 5966,
+      "sha256": "d8ad26194e5446659951e5c1eff221413f02515e2d500509658cbc21ef86f55b"
+    },
+    "evaluation/verify_ontology.py": {
+      "bytes": 8879,
+      "sha256": "4351ec8f233977e64c7b694a3aedd50d927aae62f8f4e492c4c7f919bf014a13"
+    },
+    "evaluation/verify_shacl.py": {
+      "bytes": 14318,
+      "sha256": "238c4cf042e54d0c213b976eacd3c16cdc69883987746428a159eec705b7b7b0"
+    },
+    "mappings/oulad-mapping.ttl": {
+      "bytes": 6792,
+      "sha256": "6bca8a6e981c5bdfb4226ce9adba3699785b3704d200d5dc417fbe2e03deaf70"
+    },
+    "notebooks/03_ontology_results.ipynb": {
+      "bytes": 82434,
+      "sha256": "338796c9f22e35ee5bfe0b728e2a859a371e0f2f989beaa181ad7083b29e492d"
+    },
+    "ontology/education.owl.ttl": {
+      "bytes": 5952,
+      "sha256": "54c2ec0e79cc1f138859dfdced499e1ccc3939819c15928f6f1a8d3b40788a29"
+    },
+    "ontology/education.rdfs.ttl": {
+      "bytes": 3731,
+      "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766"
+    },
+    "ontology/exercises/domain-error.ttl": {
+      "bytes": 1282,
+      "sha256": "fe431c035dce2964f2841b1e976b17125207e2a3ce429095ba00d06931f67ac6"
+    },
+    "ontology/imports/README.md": {
+      "bytes": 1954,
+      "sha256": "527c6f786608bc176ec9fcc288a7d988eeb6d68d74b8041a92ed7b44846a073c"
+    },
+    "ontology/imports/foaf.rdf": {
+      "bytes": 44209,
+      "sha256": "3d859b5d92a2c3d041545d014fa826f682ca06d056af8c7b31e32d930abf2bc5"
+    },
+    "outputs/answers/01_enrollments.csv": {
+      "bytes": 145,
+      "sha256": "8ec2e62eb3f32fa6169542265a8258bd99d854a0832d0f77672ca6a96f41d6b5"
+    },
+    "outputs/answers/02_assessments.csv": {
+      "bytes": 1896,
+      "sha256": "b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa"
+    },
+    "outputs/answers/03_late_records.csv": {
+      "bytes": 91958,
+      "sha256": "e1f7c959e18f3d71e30ad596b68a9342fa909bed5ff1e286ffbab298ba822ec9"
+    },
+    "outputs/answers/04_low_scores.csv": {
+      "bytes": 10318,
+      "sha256": "605d5a917b48efcdf69e2dee4cccebb7c2b482d0fbe61178e894698cda283672"
+    },
+    "outputs/answers/05_outcomes.csv": {
+      "bytes": 506,
+      "sha256": "86706f906a5e10c931ba8e873e7df672ba04859f08a98c5fa6c0ea0310c4715c"
+    },
+    "outputs/answers/06_unknown_scores.csv": {
+      "bytes": 518,
+      "sha256": "485c180e032822a554f75ba127026866cf2d22685e9cc2319611d6e7c9cd4413"
+    },
+    "outputs/answers/status.json": {
+      "bytes": 543,
+      "sha256": "58e810e29a0dcc70db205211d7c7a44862a9859af339d14a9481ed219ec18762"
+    },
+    "outputs/fuseki/import-summary.json": {
+      "bytes": 1270,
+      "sha256": "3755796980a9ef851842785f441d2daa9d6f618616810ae0ce49cd6986d2148c"
+    },
+    "outputs/integration/fixture-results.html": {
+      "bytes": 239,
+      "sha256": "17eb521d68af99ccfb80db45c6a899f282c2453b1a916551b4c85dec3a82eb09"
+    },
+    "outputs/integration/integration-results.html": {
+      "bytes": 239,
+      "sha256": "88b1e19030a1db3eb877f31e63090c66cda12543d0dc53e219db5b1567f77a7e"
+    },
+    "outputs/integration/latest-fixture.json": {
+      "bytes": 150,
+      "sha256": "62fdfadd41dea8578416640317455c662a80e1a6ad879ee6ed7252043ba69ed4"
+    },
+    "outputs/integration/latest-full.json": {
+      "bytes": 150,
+      "sha256": "83a35ed84ba465e9bbb639ca9be0d35f12bbcebc15ea71bec5618dffd39ea8b2"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/after/materialization.json": {
+      "bytes": 343,
+      "sha256": "4c02335526a001265c51933fbfb538ec4845e9b6cff5af597d6638321024396a"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/after/oulad-mapped.nt": {
+      "bytes": 45781,
+      "sha256": "378987b8c25c9c2763a4af3e37f91526d7bd8c3c30a743b944c5d850ca2ab05d"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/before/materialization.json": {
+      "bytes": 343,
+      "sha256": "bc436fc428f81284be6b029717f23350825d9d940261d43be1a3d909f0485cb7"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/before/oulad-mapped.nt": {
+      "bytes": 45783,
+      "sha256": "994b6875ef9e926686ed558b546791bfe98e4647958eb35ca1ab2843dd19683f"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/freshness.json": {
+      "bytes": 359,
+      "sha256": "caba267ebfde14ce2e0e16280c3215958ec4577a74bc7d85846bd55e333fab2c"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/freshness.rq": {
+      "bytes": 150,
+      "sha256": "3e0c37972ea93aeba4e21b4815b895087ef87f73dd8054d40ba6d20c14a5b9ba"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/load.json": {
+      "bytes": 1636,
+      "sha256": "df1b1568dcb83b0ed58c95534010fc92ad0320593de9ecadcadf4f61fbc7cba8"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/virtual-after/freshness.csv": {
+      "bytes": 8,
+      "sha256": "5705c802bf19252b75ad54ebf336ed0f46bec484da2ad8dd35d789523327f7ef"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/virtual-after/freshness.json": {
+      "bytes": 559,
+      "sha256": "e739cad812a6da60f7ab2c74eb1b1c4ce95f75e4954a2842d50343da1d0d444f"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/virtual-after/freshness.log": {
+      "bytes": 34717,
+      "sha256": "c7a18ea316be20594b1b90121d5866143f6b8f4006dec48c5f16869457a4c13b"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/virtual-after/freshness.sql.txt": {
+      "bytes": 337,
+      "sha256": "f25efaa38578a7557f4ce52518a2b068f930f6cd81a17847e9fb27543cfd25d3"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/virtual-before/freshness.csv": {
+      "bytes": 8,
+      "sha256": "f8a14be8cde7604f7d29a19703b308d4956953fcf7e44c9d72d8c85c4084860d"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/virtual-before/freshness.json": {
+      "bytes": 559,
+      "sha256": "49a4890e9617e0ad8e5305447d86da60c366d7558ad532cff275d754e7ca691d"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/virtual-before/freshness.log": {
+      "bytes": 34713,
+      "sha256": "521ebf8a681b394528faa58d856f55fb1e31e7631164a468c1ecd80eb5d89f0a"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/freshness/virtual-before/freshness.sql.txt": {
+      "bytes": 337,
+      "sha256": "f25efaa38578a7557f4ce52518a2b068f930f6cd81a17847e9fb27543cfd25d3"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/graph-comparison.json": {
+      "bytes": 469,
+      "sha256": "6d54854b47cb968d404b4f399ccfe0f397d145c2e1cfcc39e55d9d8f7b65cd88"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/load.json": {
+      "bytes": 1631,
+      "sha256": "a5ae04441223a09e7bd3a676b3105b30034aa90ac56b1640070b41efcc14665c"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/materialization.json": {
+      "bytes": 343,
+      "sha256": "e366aad06b9f28d889c05306eb3abc1a8199c1261aafc189c02e37382558c995"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/materialized/01_enrollments.csv": {
+      "bytes": 137,
+      "sha256": "115516f17d1a139724f6a1bee41272574dc0d1326c9fa886a4af35380fc99be9"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/materialized/02_assessments.csv": {
+      "bytes": 1896,
+      "sha256": "b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/materialized/03_late_records.csv": {
+      "bytes": 1174,
+      "sha256": "e67beedb2eefd1d313fb80ff94b96acc944ec203f763a65a4b8f937d898490f1"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/materialized/04_low_scores.csv": {
+      "bytes": 265,
+      "sha256": "b602de63453867a32b99066486e4ec9c16dfb289f9ebff6045a92f5189c2a813"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/materialized/05_outcomes.csv": {
+      "bytes": 321,
+      "sha256": "1d97af63fb3dd201a2946fa1af94e6984f281be315a70db36f1c9a0a118d1715"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/materialized/06_unknown_scores.csv": {
+      "bytes": 192,
+      "sha256": "7404d578380e1fc347b82239eabcf0317502722fec859457f3f5e7d0b8dd347d"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/oulad-mapped.nt": {
+      "bytes": 45783,
+      "sha256": "994b6875ef9e926686ed558b546791bfe98e4647958eb35ca1ab2843dd19683f"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/provenance-check.json": {
+      "bytes": 94,
+      "sha256": "79e9bcc8cd51d1b992ee9d9072c5c64fc93d31a83c77af358dbadf4fdbb57641"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/provenance.ttl": {
+      "bytes": 24995,
+      "sha256": "80b4a745b4bdcc49ad75d0555652447692d110b2d6bf530cf48f562ef91313df"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/reference/01_enrollments.csv": {
+      "bytes": 137,
+      "sha256": "115516f17d1a139724f6a1bee41272574dc0d1326c9fa886a4af35380fc99be9"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/reference/02_assessments.csv": {
+      "bytes": 1896,
+      "sha256": "b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/reference/03_late_records.csv": {
+      "bytes": 1174,
+      "sha256": "e67beedb2eefd1d313fb80ff94b96acc944ec203f763a65a4b8f937d898490f1"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/reference/04_low_scores.csv": {
+      "bytes": 265,
+      "sha256": "b602de63453867a32b99066486e4ec9c16dfb289f9ebff6045a92f5189c2a813"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/reference/05_outcomes.csv": {
+      "bytes": 321,
+      "sha256": "1d97af63fb3dd201a2946fa1af94e6984f281be315a70db36f1c9a0a118d1715"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/reference/06_unknown_scores.csv": {
+      "bytes": 192,
+      "sha256": "7404d578380e1fc347b82239eabcf0317502722fec859457f3f5e7d0b8dd347d"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/report.html": {
+      "bytes": 4823,
+      "sha256": "41419fa4dca03a7179ff7d7d1fee579e1a55f46c88b1d493582c63a4e203ca5a"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/shacl-command.log": {
+      "bytes": 897,
+      "sha256": "c60a217cc4d5503a73ba34d3df20a2cd841b6882c4e3905471bc7b21f5d587b3"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/shacl/provenance.ttl": {
+      "bytes": 4159,
+      "sha256": "7717e83377b81d5f501e99edc875e4bb0f3d2ba4b8f1dd7c6f8091ef4e9167b6"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/shacl/report.html": {
+      "bytes": 4535,
+      "sha256": "3487c0948ffeac90dde77fd299276f5d385c46a1e8cd4b3830cf0439aab0e4ad"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/shacl/report.ttl": {
+      "bytes": 1569,
+      "sha256": "ecdac4b75d3ee457a1ebfac2ad6d70983538443cc6d40db99b0d8ab6234cd0bb"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/shacl/report.txt": {
+      "bytes": 1114,
+      "sha256": "2ca214bd625056e1362042d056135c887bc6035cdd0f034f95987ca5960d57b1"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/shacl/results.csv": {
+      "bytes": 847,
+      "sha256": "7888f6af5aaf5d3484710176b92ae148576919f5cdff3a38d7bd6db183db0da5"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/shacl/summary.json": {
+      "bytes": 5309,
+      "sha256": "61864ae6d4a6262ee19bae9802c51f4e26407e1fd16158bfe0d937b128c7b759"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/sql/01_enrollments.csv": {
+      "bytes": 137,
+      "sha256": "115516f17d1a139724f6a1bee41272574dc0d1326c9fa886a4af35380fc99be9"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/sql/02_assessments.csv": {
+      "bytes": 1896,
+      "sha256": "b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/sql/03_late_records.csv": {
+      "bytes": 1174,
+      "sha256": "aaf766137cd3661608ce2aa94255deca15d634a91615ca43dd0950b5bbcde9b4"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/sql/04_low_scores.csv": {
+      "bytes": 265,
+      "sha256": "0d35ac04c5cea1a50cac433046b8bbf34798c241abd1c826dd0d6a998956894a"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/sql/05_outcomes.csv": {
+      "bytes": 321,
+      "sha256": "6380ad40e793bf34323f53174b8c1c4d58cee5c4e499538524863275e2f8eb1d"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/sql/06_unknown_scores.csv": {
+      "bytes": 192,
+      "sha256": "7404d578380e1fc347b82239eabcf0317502722fec859457f3f5e7d0b8dd347d"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/summary.json": {
+      "bytes": 10949,
+      "sha256": "a6196705dea28c3045f70b1c679ae2a0978203d0b932d3f47b30a7da073804d2"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/01_enrollments.csv": {
+      "bytes": 137,
+      "sha256": "115516f17d1a139724f6a1bee41272574dc0d1326c9fa886a4af35380fc99be9"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/01_enrollments.json": {
+      "bytes": 554,
+      "sha256": "76c13c3ffa28499bdc7da165118224a46aa4b0c209ab86fdfc7df1041ca752b8"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/01_enrollments.log": {
+      "bytes": 50120,
+      "sha256": "fde2070448d43a23ebf279c567f4f1dc2ac67997e62d9e3f304cae34406b97c3"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/01_enrollments.sql.txt": {
+      "bytes": 3837,
+      "sha256": "2c6595a0bda27a89c970b4c19e3c17041645b41fea40c93bf3e97bc3bedfa35a"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/02_assessments.csv": {
+      "bytes": 1896,
+      "sha256": "b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/02_assessments.json": {
+      "bytes": 555,
+      "sha256": "576ef0fb42dcfef93907420d837f80a028866db4a9d878e0d4c0a0a67f0c290a"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/02_assessments.log": {
+      "bytes": 89418,
+      "sha256": "edddec2f46d7eede2f8586eb6730d79df02b50bfad816186c3d2d12c0a3b7183"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/02_assessments.sql.txt": {
+      "bytes": 5809,
+      "sha256": "d0720851b821453561d33284ad7303bb24183331e1bb60ea35bc293da077356a"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/03_late_records.csv": {
+      "bytes": 1174,
+      "sha256": "e67beedb2eefd1d313fb80ff94b96acc944ec203f763a65a4b8f937d898490f1"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/03_late_records.json": {
+      "bytes": 555,
+      "sha256": "a7c622297632537a72497f92a778d04927ce81733c36bbfdcbaa4c99a3df336e"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/03_late_records.log": {
+      "bytes": 74373,
+      "sha256": "83f2d3bd050b28466732287aae8e87876704709306458e83bc7ab3618f823734"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/03_late_records.sql.txt": {
+      "bytes": 4080,
+      "sha256": "cc5cc936e178de99904b49dd78b9a729cf7a5e7b324700cae5233c47dfab8f72"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/04_low_scores.csv": {
+      "bytes": 265,
+      "sha256": "b602de63453867a32b99066486e4ec9c16dfb289f9ebff6045a92f5189c2a813"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/04_low_scores.json": {
+      "bytes": 554,
+      "sha256": "6ad48ef6549f2309754fbdf368202bc6a790284307cda85a4e95fbcb4fe4589d"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/04_low_scores.log": {
+      "bytes": 58149,
+      "sha256": "28b29ce3ddc2efac911b7e38fd8b550ded5de7a8bf4868c8420ced355ac621ba"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/04_low_scores.sql.txt": {
+      "bytes": 4697,
+      "sha256": "9c2f09faaea20d4e4449fb67247cc743fb91e641e678ccf45324440591f702b1"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/05_outcomes.csv": {
+      "bytes": 321,
+      "sha256": "1d97af63fb3dd201a2946fa1af94e6984f281be315a70db36f1c9a0a118d1715"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/05_outcomes.json": {
+      "bytes": 554,
+      "sha256": "316464142f6c0fcdefd7460673313659e7b149f00124bebdfff1fb8025f3ba42"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/05_outcomes.log": {
+      "bytes": 49570,
+      "sha256": "282c74783c677726c0d511c30127a178685bd3a159a14d4202f458383b068b54"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/05_outcomes.sql.txt": {
+      "bytes": 3969,
+      "sha256": "6b4b23853c4d3068aab153512caa57b36b6a1278ba63d78ecf8a37402ba53d3a"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/06_unknown_scores.csv": {
+      "bytes": 192,
+      "sha256": "7404d578380e1fc347b82239eabcf0317502722fec859457f3f5e7d0b8dd347d"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/06_unknown_scores.json": {
+      "bytes": 554,
+      "sha256": "da54c08703a1f90a1ce094932d96322a523d8de1e612a316c7cfb373d08df09e"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/06_unknown_scores.log": {
+      "bytes": 52972,
+      "sha256": "4f546991d1df5027a90a498aa00b395f530e7870106fac214e9aabf6ca3db008"
+    },
+    "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9/virtual/06_unknown_scores.sql.txt": {
+      "bytes": 3238,
+      "sha256": "7c218fd0b9d107242d958f3e138f2dfc692961f34f9e78f6706ffeb47392aa33"
+    },
+    "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/oulad-mapped.nt": {
+      "bytes": 4421000,
+      "sha256": "709410e72506607349b638acdf4304c41641ab5eed6d60f3fc97339879314b68"
+    },
+    "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/summary.json": {
+      "bytes": 10826,
+      "sha256": "f4794e8e58b62ee6a4fca763d84211fc6c19b9f218b7251e9a31cde295ca77ff"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/after/materialization.json": {
+      "bytes": 345,
+      "sha256": "b48103a1b501ceead232dd185c9c145e333f20ab2cef6e70d395cf5bb24501e0"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/after/oulad-mapped.nt": {
+      "bytes": 4420998,
+      "sha256": "bf04cb64e81843171d786de172939663d2f38126406393714c05e3be49c93500"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/before/materialization.json": {
+      "bytes": 345,
+      "sha256": "9f9e6196d0792db423c4d42fe969e9a06ca1c1da4b2dd988b133011f08cb6c0c"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/before/oulad-mapped.nt": {
+      "bytes": 4421000,
+      "sha256": "d425497f43eda2545eafec663aed4c6356c831ae03fdbd19f40dfda8a16cd2ac"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/freshness.json": {
+      "bytes": 355,
+      "sha256": "3aed824f70c528bfa67de3aaf9171c8beadec22f7cdc5949a05755a730aa811b"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/freshness.rq": {
+      "bytes": 150,
+      "sha256": "3e0c37972ea93aeba4e21b4815b895087ef87f73dd8054d40ba6d20c14a5b9ba"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/load.json": {
+      "bytes": 1516,
+      "sha256": "c6e497cf73d674640089f499bd5b9fb5e72c5b72faa6acda72fe784849bf936f"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/virtual-after/freshness.csv": {
+      "bytes": 9,
+      "sha256": "42d895aa815916bd0015d7989cb8889b60ef59217d7ba5aa6ada36b53e8df303"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/virtual-after/freshness.json": {
+      "bytes": 551,
+      "sha256": "c63b507fadb3612c7e996ca31dc1db5b283f37f4acd721f1700ea0e54f0476cd"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/virtual-after/freshness.log": {
+      "bytes": 34717,
+      "sha256": "37e738b5327195b504c44d0c7fa27026d926253673b511c8fe55e1ac54af0bfe"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/virtual-after/freshness.sql.txt": {
+      "bytes": 337,
+      "sha256": "f25efaa38578a7557f4ce52518a2b068f930f6cd81a17847e9fb27543cfd25d3"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/virtual-before/freshness.csv": {
+      "bytes": 9,
+      "sha256": "02097a678d5c5a000e75ad25b6a89261c2e6dd2251a9f268da96ab9ef4c2a203"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/virtual-before/freshness.json": {
+      "bytes": 551,
+      "sha256": "922ad692c421fb99a0ffc80a5461d8b853578e5b3ce10a4d64aba8f06ea35461"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/virtual-before/freshness.log": {
+      "bytes": 34714,
+      "sha256": "cf7836cdd9c9ee14ef686c555361c28e3ab7a7eb7f6cf608faf50ae32dfafabe"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/freshness/virtual-before/freshness.sql.txt": {
+      "bytes": 337,
+      "sha256": "f25efaa38578a7557f4ce52518a2b068f930f6cd81a17847e9fb27543cfd25d3"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/graph-comparison.json": {
+      "bytes": 473,
+      "sha256": "08e3b68b9ebde96700228624f15b223d7688a0e6b9b1d0ca5a00a0780f7dc609"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/load.json": {
+      "bytes": 1511,
+      "sha256": "c97e28e03dbbbf0bba6e28bce0ab8388b709ec83705fce95e256ad1aeeb2fc38"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/materialization.json": {
+      "bytes": 345,
+      "sha256": "82e0713340567f2a3b603a209f365cf1de4b6fa8a416f273b229bda75115888d"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/materialized/01_enrollments.csv": {
+      "bytes": 145,
+      "sha256": "8ec2e62eb3f32fa6169542265a8258bd99d854a0832d0f77672ca6a96f41d6b5"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/materialized/02_assessments.csv": {
+      "bytes": 1896,
+      "sha256": "b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/materialized/03_late_records.csv": {
+      "bytes": 91958,
+      "sha256": "e1f7c959e18f3d71e30ad596b68a9342fa909bed5ff1e286ffbab298ba822ec9"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/materialized/04_low_scores.csv": {
+      "bytes": 10318,
+      "sha256": "f58c18a0cbc78eb5ec98e66da3de615d3c5a338dd47867ee4324c88dc92ef638"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/materialized/05_outcomes.csv": {
+      "bytes": 506,
+      "sha256": "86706f906a5e10c931ba8e873e7df672ba04859f08a98c5fa6c0ea0310c4715c"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/materialized/06_unknown_scores.csv": {
+      "bytes": 518,
+      "sha256": "485c180e032822a554f75ba127026866cf2d22685e9cc2319611d6e7c9cd4413"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/oulad-mapped.nt": {
+      "bytes": 4421000,
+      "sha256": "d425497f43eda2545eafec663aed4c6356c831ae03fdbd19f40dfda8a16cd2ac"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/provenance-check.json": {
+      "bytes": 94,
+      "sha256": "38dccba0dfb62918aaccd5e0e1be16752d74cd5aab4eb91c805d087c511d11a2"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/provenance.ttl": {
+      "bytes": 25271,
+      "sha256": "f5a65c5ce151bdda1ddf44a2e4d5458d6a1733049e0c5cb499a1ed092297ba3d"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/reference/01_enrollments.csv": {
+      "bytes": 145,
+      "sha256": "8ec2e62eb3f32fa6169542265a8258bd99d854a0832d0f77672ca6a96f41d6b5"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/reference/02_assessments.csv": {
+      "bytes": 1896,
+      "sha256": "b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/reference/03_late_records.csv": {
+      "bytes": 91958,
+      "sha256": "e1f7c959e18f3d71e30ad596b68a9342fa909bed5ff1e286ffbab298ba822ec9"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/reference/04_low_scores.csv": {
+      "bytes": 10318,
+      "sha256": "605d5a917b48efcdf69e2dee4cccebb7c2b482d0fbe61178e894698cda283672"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/reference/05_outcomes.csv": {
+      "bytes": 506,
+      "sha256": "86706f906a5e10c931ba8e873e7df672ba04859f08a98c5fa6c0ea0310c4715c"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/reference/06_unknown_scores.csv": {
+      "bytes": 518,
+      "sha256": "485c180e032822a554f75ba127026866cf2d22685e9cc2319611d6e7c9cd4413"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/report.html": {
+      "bytes": 4825,
+      "sha256": "cfd0530c3bf05db0e1476b75c9ec4556406a5723e03fa7d48fd945f68ed9ae5f"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/shacl-command.log": {
+      "bytes": 897,
+      "sha256": "5cb334f5b8dfd9693431ddc8b2a53e20b9db295ca58525b37f16b14de527bbfb"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/shacl/provenance.ttl": {
+      "bytes": 4159,
+      "sha256": "01ad895b49883fd94e33fdbeea08e32ad08f7b1a9529654e9f087ea29f26f74e"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/shacl/report.html": {
+      "bytes": 4985,
+      "sha256": "df5863f4388cc4b4797dd25fc2c04e8cfa7428acc44dc75755be5f3543ab469b"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/shacl/report.ttl": {
+      "bytes": 2478,
+      "sha256": "3d16ee54874b1937bc150593f16c5282da04b8de370b4a0c9326e773ed0e28b4"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/shacl/report.txt": {
+      "bytes": 1859,
+      "sha256": "a338fb71db86945f0c422333860f0703153f4468b7e247e81cc936acc9ad8225"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/shacl/results.csv": {
+      "bytes": 1402,
+      "sha256": "62e74ecd7e5467c3bf31f0db0c7892d545017211c7a8267bbd82ebd4bc802823"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/shacl/summary.json": {
+      "bytes": 6221,
+      "sha256": "27f0ad5a988cb17a5ed117dd6325a61f8997fb55acd30d6c0d4d4173404644a5"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/sql/01_enrollments.csv": {
+      "bytes": 145,
+      "sha256": "8ec2e62eb3f32fa6169542265a8258bd99d854a0832d0f77672ca6a96f41d6b5"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/sql/02_assessments.csv": {
+      "bytes": 1896,
+      "sha256": "b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/sql/03_late_records.csv": {
+      "bytes": 91958,
+      "sha256": "b80dd0afb79a9cf2b5316fcce986f6d3519df33d9f15e3929d79130de2d7d172"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/sql/04_low_scores.csv": {
+      "bytes": 10318,
+      "sha256": "506595dc235dfa2808273462962c9bdcf7a9f993b1acd3c84c6e85df314381ca"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/sql/05_outcomes.csv": {
+      "bytes": 506,
+      "sha256": "d65eb76922a2f2fa4f14ba92bc60527c9e0f6c4dd9670a855d71c3e5de390f36"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/sql/06_unknown_scores.csv": {
+      "bytes": 518,
+      "sha256": "a773372281f2a3adfbe300eb3c11b6ff43de5b16dc3251d237e04398663791e2"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/summary.json": {
+      "bytes": 10826,
+      "sha256": "f9eed556f688fb89994d432234df30667a37701a46d6698dd8d32a5a332d599e"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/01_enrollments.csv": {
+      "bytes": 145,
+      "sha256": "8ec2e62eb3f32fa6169542265a8258bd99d854a0832d0f77672ca6a96f41d6b5"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/01_enrollments.json": {
+      "bytes": 546,
+      "sha256": "2791ea00e84fd23a28fa403365733ffa99bdb1dad9bff9c4681d05dfbc2e248a"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/01_enrollments.log": {
+      "bytes": 50122,
+      "sha256": "9218639197884054496afa18f9c66a28ca2472b0c231060cbbb657c47fe6c1ab"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/01_enrollments.sql.txt": {
+      "bytes": 3837,
+      "sha256": "2c6595a0bda27a89c970b4c19e3c17041645b41fea40c93bf3e97bc3bedfa35a"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/02_assessments.csv": {
+      "bytes": 1896,
+      "sha256": "b3e2e28214c5af9b4a970015bff753c4d0b0dd7453e3241b9c8d35284a1d95aa"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/02_assessments.json": {
+      "bytes": 547,
+      "sha256": "e607c919ea97877d9628f2aea981dd060c29aa01885afe31b6d0452123a92122"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/02_assessments.log": {
+      "bytes": 89417,
+      "sha256": "535bb0896c96da3ab4dbcaa1768d414e8d46c4f4a5a498cc9ceb7e51657e0a7e"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/02_assessments.sql.txt": {
+      "bytes": 5809,
+      "sha256": "1f94c41c8e1dc716f4664e081c9e19127279c466cf770b78175382e5bc1dc4c9"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/03_late_records.csv": {
+      "bytes": 91958,
+      "sha256": "e1f7c959e18f3d71e30ad596b68a9342fa909bed5ff1e286ffbab298ba822ec9"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/03_late_records.json": {
+      "bytes": 548,
+      "sha256": "3a7a7c5f6df093ae9f75a676f1b65b178d995a8bb175687e3633d307fe0927f7"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/03_late_records.log": {
+      "bytes": 73954,
+      "sha256": "8f77095c70b64ab748cec54039454f5b8bba31e0ee1ce4f9ba9661dca48f1b09"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/03_late_records.sql.txt": {
+      "bytes": 4065,
+      "sha256": "1314d6b6f5e2ba65c7b8b4d75b5bca44813376c35c1416e8f3f372727947c1f5"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/04_low_scores.csv": {
+      "bytes": 10318,
+      "sha256": "605d5a917b48efcdf69e2dee4cccebb7c2b482d0fbe61178e894698cda283672"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/04_low_scores.json": {
+      "bytes": 547,
+      "sha256": "983b12164e56d95bdadeb5b8b6c730afd5d9760b14105e6a94b1b66de1d75442"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/04_low_scores.log": {
+      "bytes": 58150,
+      "sha256": "7cd57fa0d46955bbd07737132ae01f6900443fca7a9e15bdf182bc8dc26f227d"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/04_low_scores.sql.txt": {
+      "bytes": 4697,
+      "sha256": "8c9007a7e231f738385787db0c95f4dca721e30dd8aef3a2c799415182622f6b"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/05_outcomes.csv": {
+      "bytes": 506,
+      "sha256": "86706f906a5e10c931ba8e873e7df672ba04859f08a98c5fa6c0ea0310c4715c"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/05_outcomes.json": {
+      "bytes": 546,
+      "sha256": "9fdf19fce36d61df22c6d4d37185fb9043a104f1e7ec464b2bb879ca7dcca48e"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/05_outcomes.log": {
+      "bytes": 49568,
+      "sha256": "479d7c6d7a1878715278132aa175024f2b23071cf4bdc3d686f8280cead193ad"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/05_outcomes.sql.txt": {
+      "bytes": 3969,
+      "sha256": "06cd2824d6464296095ccdc4e1cbacf20940488d3c4d2c74e8cf05eed932dc69"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/06_unknown_scores.csv": {
+      "bytes": 518,
+      "sha256": "485c180e032822a554f75ba127026866cf2d22685e9cc2319611d6e7c9cd4413"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/06_unknown_scores.json": {
+      "bytes": 546,
+      "sha256": "9072e1bbadb74fbcb3d2b71fc3bf32cd1ef7afa26efb62602bc4093a752132ea"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/06_unknown_scores.log": {
+      "bytes": 52973,
+      "sha256": "74e1c4ec1ceb3022e540c12fd05a4bb9e15dce161a7e8574dff7ee52e98a0f4f"
+    },
+    "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b/virtual/06_unknown_scores.sql.txt": {
+      "bytes": 3238,
+      "sha256": "b7542ca74db835f7520e6ee8cd6b4d03a6c94be05fbeadfa8efc41959d2ce982"
+    },
+    "outputs/learning/latest.json": {
+      "bytes": 147,
+      "sha256": "192fc6eef1ccda9cc77fa3cec47387448b89cf7c8f22d9b595eac073ef8a373d"
+    },
+    "outputs/learning/learning-results.html": {
+      "bytes": 222,
+      "sha256": "b8381ffc4ac4c30daf9db1a4915b439fdd2e67ee32da4d0995b3d10220e3e8ec"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/checks.json": {
+      "bytes": 2172,
+      "sha256": "5f1124a33853e61f22180dd73818c8eefbbcd93a137c61de4c3cdaa23a3c5460"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification-comparison.png": {
+      "bytes": 64014,
+      "sha256": "67326d18b6ba0d624d586d3e889d131d3ecd24897f80ad996ed3a53b03a9b8ce"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/graphsage-seed-0.pt": {
+      "bytes": 7499,
+      "sha256": "9b74fb477da2aebd04a569fb8fb567d724e027316ad3fd29c64f6bdaf65e285f"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/graphsage-seed-1.pt": {
+      "bytes": 7499,
+      "sha256": "ce02c51b2cdaacdb6e0a2724e4d71eefd10c29c7bcef28220b9b887dfa11b3f8"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/graphsage-seed-2.pt": {
+      "bytes": 7499,
+      "sha256": "ec0959ab0a44181435f9e802298b9149551c51f5ed465f4c0ffea86691214283"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/logistic-coefficients.csv": {
+      "bytes": 253,
+      "sha256": "b8c456d40cb949b402585ee0e0a2e33099fb9f971a0180785f67ffdc4d1d2e8d"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/logistic-model.json": {
+      "bytes": 247,
+      "sha256": "f29783de91aae8af52b1fb1745684b921237fa83320ed582f5ff1c496de5d671"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/metrics.csv": {
+      "bytes": 3231,
+      "sha256": "22a8ff28796429b1d9e84f920a33483a1df8d5ac29c332dd53a9ec38ead15cdd"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/predictions.csv": {
+      "bytes": 529634,
+      "sha256": "e227587c09cedf155541376b0f5bf196544c1a02514da2e59ad06f1141a7fffc"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/preprocessing.json": {
+      "bytes": 22714,
+      "sha256": "0a80a58257d3253617807c645e15ac432f6a8c666d3856de37f9a658d3084c82"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/purged-training-overlap.csv": {
+      "bytes": 5055,
+      "sha256": "865d28873224052f0d0fb577cfe08078b81135472d956b5d315ff2fbce90fbf6"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/random-split-diagnostics.json": {
+      "bytes": 322,
+      "sha256": "a4f7f8095f6a945200f0e964fed1de8aa263c199f78206b06cbe05e06da9a4dd"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/split.json": {
+      "bytes": 208,
+      "sha256": "ed2d2a25766981971dda723dcaffaa3d9abbcbbf46f7f05aa83cb699cdd89774"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/test-cohort.csv": {
+      "bytes": 62910,
+      "sha256": "d7a665b164fe8446083aa1174c7514298c31b956c105c25a047dfa403d5815a9"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification/train-cohort.csv": {
+      "bytes": 61961,
+      "sha256": "a94a7c252a92e448f72f6da83ea9f51b58b64b70bf30fbc7f5c58e951fc86952"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/confusion-matrices.png": {
+      "bytes": 50425,
+      "sha256": "9badc2816614ed4f62a9e55c3d14a4d4b8ce39f02ad2442b1e1dc4efec674c58"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/assessment-metadata.csv": {
+      "bytes": 1513,
+      "sha256": "7a3f134599297226ef57159e84cbeb57117d2b82152b23b4ac5c8cc89e2b0fae"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/cohort.json": {
+      "bytes": 825,
+      "sha256": "1521541ccb549ccedadb8a60ec77cbb82847d962254c5bf0872c72d050a264c4"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/early-edges.csv": {
+      "bytes": 205691,
+      "sha256": "05d4071af66d3a0dc3ef9ec4839c9f8d7181fa77f49cbea4f61c3eaaed675f79"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/features-and-cohort.csv": {
+      "bytes": 132234,
+      "sha256": "92f16e45ec49742b31fd1c8aa06147c56b998fac670752dcc84cee7dc365f751"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/input-checks.json": {
+      "bytes": 1587,
+      "sha256": "fbd784b52eb8b0d4030571eb441e41e91cb182b082f3354d252a3920300fa977"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/labels.csv": {
+      "bytes": 91213,
+      "sha256": "0cbc0b73890bf483fac74cc88a607793aae371b18ad6957f950066014d767cf4"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/graph/learning-input.ttl": {
+      "bytes": 269601,
+      "sha256": "23c9530c12d6b914a6a2c05c26386596497da767edfdb51eb2edeb4d9ba9880c"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/link-comparison.png": {
+      "bytes": 40876,
+      "sha256": "301d8a43c85e5e5bff854a688bcc07e810f199705f0c2db6485a05ecad107fd8"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/all-ranks.csv": {
+      "bytes": 122234,
+      "sha256": "00b9000fe086916fa3847e54459e7d6257181b334a5db4cbecdc9ad1404bfa51"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/ranks.csv": {
+      "bytes": 40878,
+      "sha256": "a13b2203959cec7c0b7b2d58bd1fb75c691148486bc5381002445a61f5c69802"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/summary.json": {
+      "bytes": 1225,
+      "sha256": "1c5d41a8e89254edb0dd08fb8c972c617612722d0c6df097b48069304024c45c"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/support.csv": {
+      "bytes": 90588,
+      "sha256": "5c592cc1819aca3cf4b1ab7e084830ca14249c4f6e3e5250865843c8a5f0c1dd"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/test.csv": {
+      "bytes": 35137,
+      "sha256": "986fa63c0d7aac0e3f434c906fdb5862dd7c7b1fd7a67e2259ec98b0a652b944"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/train.csv": {
+      "bytes": 281682,
+      "sha256": "eb687288ea143f3f2814112ade702f9420a9b53e8b1fb0f21cb7dcaefe5171a4"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/training.json": {
+      "bytes": 56611,
+      "sha256": "95757016b5d0adb6fc27c891c97f4bd199ddabd27016ce9f3283525eb0bfc992"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/transe.pt": {
+      "bytes": 100509,
+      "sha256": "b3c2d35894ad98e5eccf85457d9884f1cb929d2203bad644310450c6a221c11e"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-0/validation.csv": {
+      "bytes": 35137,
+      "sha256": "b8eb615692427b471d511f1e5034ad6275b834bb3a32a9a17d71b888d7ee8954"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/ranks.csv": {
+      "bytes": 40863,
+      "sha256": "7e3a8679fcce665415883179e1dcd7a9b28a61fddaead9a19209a8f2df2d29fc"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/summary.json": {
+      "bytes": 1210,
+      "sha256": "f0165071cbf8ed23e687bff51fffcefd0d8e47f3182d531aa04691f83cc174e9"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/support.csv": {
+      "bytes": 90588,
+      "sha256": "5c592cc1819aca3cf4b1ab7e084830ca14249c4f6e3e5250865843c8a5f0c1dd"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/test.csv": {
+      "bytes": 35120,
+      "sha256": "959a5013b0989ba430bc59b57786a3e8ab3642dc3630d7b748f623f40937f252"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/train.csv": {
+      "bytes": 281713,
+      "sha256": "2f3a8eb4008cd4fbe300a580796eca0543dfcff34f4cf19a96bae6b88488e23a"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/training.json": {
+      "bytes": 56592,
+      "sha256": "2ae559e9b804f04802f9a16de5c652886223be483355d29b8878d363bf12a689"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/transe.pt": {
+      "bytes": 100509,
+      "sha256": "ef8259d8da008af5c59900b301c83219f73871b536b54665f5d82680751177df"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-1/validation.csv": {
+      "bytes": 35123,
+      "sha256": "56129f0b11656d50ed90e25b29aa32af1b2676e56e3604b9f1dc21d6cb4eb0e4"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/ranks.csv": {
+      "bytes": 40873,
+      "sha256": "c3df978d5ff39cac4e4594535b383d0ea4527b3dc404b8090314ad3f23233de0"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/summary.json": {
+      "bytes": 1177,
+      "sha256": "d3110f2c86ce3adec356af2de53c9f65cdcbdee3a72aa75897e6356d98f11152"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/support.csv": {
+      "bytes": 90588,
+      "sha256": "5c592cc1819aca3cf4b1ab7e084830ca14249c4f6e3e5250865843c8a5f0c1dd"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/test.csv": {
+      "bytes": 35128,
+      "sha256": "dac3a15f81acb503f04b9153fe238e7c5ce33ca40cca86406c009167e2533e96"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/train.csv": {
+      "bytes": 281684,
+      "sha256": "daa02ed0f85051b307a1fd792768bb36f4ccc8bcb03abf990a52004f890f599f"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/training.json": {
+      "bytes": 56603,
+      "sha256": "43eefa916d2b31a5165038467dea8ceb2b403ef1be0e63237855c49d082b5d7c"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/transe.pt": {
+      "bytes": 100509,
+      "sha256": "70564d81b6fa1160bda9a8642474dfb7544fb75f4ecefb4762b2f8a2ee7ca4ef"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/seed-2/validation.csv": {
+      "bytes": 35144,
+      "sha256": "3f3620c6acfcf07f98b4de21ca1baa3d5075a5a9185bcd4c5a20d4cd30df8ae9"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/links/summary.json": {
+      "bytes": 3902,
+      "sha256": "f474a43fe67df46fa55222450d7acaf82d875b8708a1f04e37403eb49e314802"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/manifest.json": {
+      "bytes": 7745,
+      "sha256": "d7d5a65110fc20416a0b308ad5398d1327cf433ef3182d14d08b2e56427b571f"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/protocol.json": {
+      "bytes": 1156,
+      "sha256": "ff54cf4f6e745dd864e76c376ec958043f6dbe878d37afdb18beb0d4a27a94cc"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/provenance.ttl": {
+      "bytes": 18378,
+      "sha256": "3d52c6aa7e860641d3d0332a982a00f66e6bf5e80977cd198d1c34b4cfb8c4ca"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/report.html": {
+      "bytes": 10682,
+      "sha256": "c0ab95f48648737f9445613f7970f0a3f2f3144e1908aff5a023313f40422bb0"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/summary.json": {
+      "bytes": 23488,
+      "sha256": "ec237ad0579df1260f1e360e7a1cb27600a9f8b0f1c0fa2f35eeb0ae8d774996"
+    },
+    "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/verification.json": {
+      "bytes": 5726,
+      "sha256": "a9766ec06cb3585a0bdf32b5d53ded8a4d64b643fa511385868eaa1e8670f4d0"
+    },
+    "outputs/neo4j/import-summary.json": {
+      "bytes": 791,
+      "sha256": "22e225669435a82357a6d34368574090df18295d784bcf06f20d269f346a382d"
+    },
+    "outputs/ontology/inferred-class-counts.csv": {
+      "bytes": 221,
+      "sha256": "5c373c61579d7fdacdb1069a3f0fc56b65a4a3b469e5c3d394f295dbd00a89ab"
+    },
+    "outputs/ontology/inferred-types-full.ttl": {
+      "bytes": 589113,
+      "sha256": "3e6269e01d3b4f1d34011f3393e9eefca04ca320f3101837e09832996a639f21"
+    },
+    "outputs/ontology/inferred-types-sample-enrollments.ttl": {
+      "bytes": 6109,
+      "sha256": "c6e87daa69fcf89873225da9db5c2d001a45f5d6ed76b77f154c287b3c2cc34c"
+    },
+    "outputs/ontology/ontology-results.html": {
+      "bytes": 384333,
+      "sha256": "348c47ea3dea76756b718c20119c0f134288ff31a4e149c91ec0823ec2074ccc"
+    },
+    "outputs/ontology/preparation.json": {
+      "bytes": 1180,
+      "sha256": "d199d10f659fd877659046e2c7a8dfbcd362c88df9ec64c5c093a56ad3874958"
+    },
+    "outputs/ontology/reasoned-full.json": {
+      "bytes": 1262690,
+      "sha256": "72b71c7ad9ca78c4c5f090933f53791a6673c13307ab4d4b3cf76857f28c4e09"
+    },
+    "outputs/ontology/reasoned-sample-enrollments.json": {
+      "bytes": 15500,
+      "sha256": "08a63899839cc696657d3d883152664cb07ebbc2f3b92072f18fa9d4b5cd937c"
+    },
+    "outputs/ontology/verification.json": {
+      "bytes": 5151,
+      "sha256": "35309b3854ffc298211cda831c279b78bd179d61d4d1b091ddd1955c107d2cec"
+    },
+    "outputs/ontology/workspace/catalog-v001.xml": {
+      "bytes": 450,
+      "sha256": "1fc9e6aee20465d1cd728dd96f211c6189bc1da6e37901a31f974afb42ec0e1e"
+    },
+    "outputs/ontology/workspace/domain-error.ttl": {
+      "bytes": 1282,
+      "sha256": "fe431c035dce2964f2841b1e976b17125207e2a3ce429095ba00d06931f67ac6"
+    },
+    "outputs/ontology/workspace/domain-inconsistent.ttl": {
+      "bytes": 302,
+      "sha256": "7251eb8d6db8d0aba594e13fc91277d91a32594080d57e62fe0113ff793e0df4"
+    },
+    "outputs/ontology/workspace/education-base.owl.ttl": {
+      "bytes": 5298,
+      "sha256": "f22982404eca678938e0f4882baf7c61509711b49a49048c2f0c8633efc8ee2e"
+    },
+    "outputs/ontology/workspace/education.owl.ttl": {
+      "bytes": 5952,
+      "sha256": "54c2ec0e79cc1f138859dfdced499e1ccc3939819c15928f6f1a8d3b40788a29"
+    },
+    "outputs/ontology/workspace/foaf-person.ttl": {
+      "bytes": 712,
+      "sha256": "f33e028b63f5467cb84507c44aaa6c70c3f0dbd51bf2b48d117485139027c1bc"
+    },
+    "outputs/ontology/workspace/sample-enrollments.ttl": {
+      "bytes": 18410,
+      "sha256": "5a41149cfff0e3b88555b246b489374f1d990dc30ce360cf3578fce5547caea5"
+    },
+    "outputs/shacl/broken/provenance.ttl": {
+      "bytes": 4117,
+      "sha256": "2294054bc62b7eda645825720a1739d1683a4bf134c366ba970d613118e36782"
+    },
+    "outputs/shacl/broken/report.html": {
+      "bytes": 4694,
+      "sha256": "5d4fd98d16d36d927bee21b340564bb394b04bd97e3e516b9762fefb2f2257e9"
+    },
+    "outputs/shacl/broken/report.ttl": {
+      "bytes": 2089,
+      "sha256": "50dc7add778607793f8526f8d9f44cd2bba4cbaa2aeb9cc688f960b6054795a5"
+    },
+    "outputs/shacl/broken/report.txt": {
+      "bytes": 1543,
+      "sha256": "a32d93d6d395809269503bd88bacc06ebda3c5197634f19863d2131059cb2335"
+    },
+    "outputs/shacl/broken/results.csv": {
+      "bytes": 1166,
+      "sha256": "1837edecb5cdc9bb39dbabace6b770b9e1410b9739b7667ca3e533845ed5bed8"
+    },
+    "outputs/shacl/broken/summary.json": {
+      "bytes": 5756,
+      "sha256": "60b1e94389fa86c6aa76099a89f2db099bc1f95aa63ab60959116c39485a9d97"
+    },
+    "outputs/shacl/draft/provenance.ttl": {
+      "bytes": 4137,
+      "sha256": "2c44c4c9bdb041d6ef27db0b4c37b1d55171dc25a19c55d1d8f9deb9ce028ddd"
+    },
+    "outputs/shacl/draft/report.html": {
+      "bytes": 4522,
+      "sha256": "291bc737ecae1578597412ba43ec24132c022b5c2c068492a3a2d97961a0b8fa"
+    },
+    "outputs/shacl/draft/report.ttl": {
+      "bytes": 1575,
+      "sha256": "9c13ee5c41fa9f48866bf8bafe41ebd0e5ef2099140ed49eaa822640845d1124"
+    },
+    "outputs/shacl/draft/report.txt": {
+      "bytes": 1129,
+      "sha256": "068d68c01ae890e9ac31a710d9b61d44e8e91eac295f0e456c871be3973617fe"
+    },
+    "outputs/shacl/draft/results.csv": {
+      "bytes": 853,
+      "sha256": "32455c109ea26e24b5445eb77cce36177a54a8e55ed22c45094d2a0e3983c15c"
+    },
+    "outputs/shacl/draft/summary.json": {
+      "bytes": 5298,
+      "sha256": "853c7a6ae4d19ab74e51c0b759cceed3c1838ea4368bd57c0fc4beb2244bbd8d"
+    },
+    "outputs/shacl/examples/oulad-shapes-v0.ttl": {
+      "bytes": 12853,
+      "sha256": "be5bea2078eb4d3acf791d6f6f61e0432b285a0cbf5e9f04c3a533553be45bda"
+    },
+    "outputs/shacl/full/provenance.ttl": {
+      "bytes": 4104,
+      "sha256": "8ff85ae061d2218fb7f854b82c9b8ebdc9427294f45436313cf7887d4de8bbcb"
+    },
+    "outputs/shacl/full/report.html": {
+      "bytes": 4936,
+      "sha256": "2cd46995772bf38186e26cf511e7e929f8b9541b797d66389fc971d43175e134"
+    },
+    "outputs/shacl/full/report.ttl": {
+      "bytes": 2478,
+      "sha256": "5ba0d0a4aa78f9066b7fef8221352884630d15912e49afe23f7c48ea04eb1c0b"
+    },
+    "outputs/shacl/full/report.txt": {
+      "bytes": 1859,
+      "sha256": "a338fb71db86945f0c422333860f0703153f4468b7e247e81cc936acc9ad8225"
+    },
+    "outputs/shacl/full/results.csv": {
+      "bytes": 1402,
+      "sha256": "62e74ecd7e5467c3bf31f0db0c7892d545017211c7a8267bbd82ebd4bc802823"
+    },
+    "outputs/shacl/full/summary.json": {
+      "bytes": 6170,
+      "sha256": "d372166586ef94a714f6ad267e1ad7854c88b714f3df2a6ba8e57ad2e777570f"
+    },
+    "outputs/shacl/sample/provenance.ttl": {
+      "bytes": 4115,
+      "sha256": "dc076ab954d90318be77495712594e2c9abbcc9d0d0cd10781681c5c7c20a767"
+    },
+    "outputs/shacl/sample/report.html": {
+      "bytes": 4497,
+      "sha256": "e53d7933c4ae78adc1c02c06f902885e8608ecab7b5e50ab0992e0d5d9cd18ce"
+    },
+    "outputs/shacl/sample/report.ttl": {
+      "bytes": 1569,
+      "sha256": "8cfdfd12ad50f4f1a1fb2377cff728f6b9c8360eea33342b58a9d1107cb82690"
+    },
+    "outputs/shacl/sample/report.txt": {
+      "bytes": 1114,
+      "sha256": "2ca214bd625056e1362042d056135c887bc6035cdd0f034f95987ca5960d57b1"
+    },
+    "outputs/shacl/sample/results.csv": {
+      "bytes": 847,
+      "sha256": "7888f6af5aaf5d3484710176b92ae148576919f5cdff3a38d7bd6db183db0da5"
+    },
+    "outputs/shacl/sample/summary.json": {
+      "bytes": 5270,
+      "sha256": "db11a82a5de4f5369eb2adeaab0654e8a1391126eac8d159401a6d41635a063f"
+    },
+    "outputs/shacl/verification.json": {
+      "bytes": 6165,
+      "sha256": "fda8ce56864423f4e12e3fab38af5d93d247b446bd6ddad3d7fb917e50e82287"
+    },
+    "outputs/verification.json": {
+      "bytes": 1127,
+      "sha256": "662f99e9ff9f5057ab4dadeef4fd117e4306f57aa399e1346e7efa86cf2fc33d"
+    },
+    "queries/01_enrollments.rq": {
+      "bytes": 263,
+      "sha256": "532154ca048231dd3fa23b5616c41a023a8ccbfd1278e900cc68f861bb63a101"
+    },
+    "queries/02_assessments.rq": {
+      "bytes": 470,
+      "sha256": "47e928e20f8d686543438cf381b8cd338c7952a20b6d680e55ae0ba4a0feacac"
+    },
+    "queries/03_late_records.rq": {
+      "bytes": 504,
+      "sha256": "f36467d89b7c86226ec590f86467cdfb26cb45f13308b200c5c966537b8df593"
+    },
+    "queries/04_low_scores.rq": {
+      "bytes": 287,
+      "sha256": "d9e598aac14dd5261895fcabbf65a35aac3e3f2acb2c3af2a72f92753e68678d"
+    },
+    "queries/05_outcomes.rq": {
+      "bytes": 244,
+      "sha256": "8f0b1e82ccc04a49881a34e7834c07ea2b2b71966bb6afaff5f70e79413f7cea"
+    },
+    "queries/06_unknown_scores.rq": {
+      "bytes": 356,
+      "sha256": "541066d4e109f150aab3bd2966d93abdcdcc074e45150d156f69e4da315d50b6"
+    },
+    "queries/07_early_activity.rq": {
+      "bytes": 466,
+      "sha256": "a08439231b14170e86b5450484efa7fe5e8db5c0c5ab534a8349219b3bbcb365"
+    },
+    "queries/integration/02_assessments.rq": {
+      "bytes": 481,
+      "sha256": "4b9264faffdcea0dcc7d63d0c87d2c0165cadf13ae701f43b2163fcb0c4a8901"
+    },
+    "queries/integration/sql/01_enrollments.sql": {
+      "bytes": 227,
+      "sha256": "1c93e124651d91c51b686e06ee3a0d12f08a81d84c84c2bf2bc178ca7263cf2e"
+    },
+    "queries/integration/sql/02_assessments.sql": {
+      "bytes": 399,
+      "sha256": "11dd2993ec89e52e9f101b6707082279b9b8beb276f8814d7dfd445af44017f9"
+    },
+    "queries/integration/sql/03_late_records.sql": {
+      "bytes": 417,
+      "sha256": "9025d2bbf9c24b01aeb40837723d581342643b8cf5986748434d4523d804007b"
+    },
+    "queries/integration/sql/04_low_scores.sql": {
+      "bytes": 310,
+      "sha256": "cc3b81a802a397a6b2d9190ae276ed0eee0603577bfdd49dc2e2839f0d2f300f"
+    },
+    "queries/integration/sql/05_outcomes.sql": {
+      "bytes": 219,
+      "sha256": "223f166600c3b439194cfe9e347ed5ceff035d5cde68ba632782f6012c113d84"
+    },
+    "queries/integration/sql/06_unknown_scores.sql": {
+      "bytes": 386,
+      "sha256": "3f5f754c5f16d2b20acffb7fa6fd401b939fab14f232c5891f6761493957a7d3"
+    },
+    "queries/neo4j.cypher": {
+      "bytes": 2178,
+      "sha256": "2732344e74f426a4f7cabaf6c366fbd67b41b54450c8003bb96e255ff5de0c0e"
+    },
+    "requirements-integration.txt": {
+      "bytes": 432,
+      "sha256": "0216c83a3a3e5a6d290243aef12e33a53c679a758c7689ddd794b667b2c09432"
+    },
+    "run-core.ps1": {
+      "bytes": 1189,
+      "sha256": "419a1056a76554359699856b80b2afbab40ee50a0da7b369c387c211b6183a2e"
+    },
+    "run-integration.ps1": {
+      "bytes": 857,
+      "sha256": "9fc2ed7108b37a151a9ebcafdee0bcc2a85f378a8aafa5181f6c8a09224b83c4"
+    },
+    "run-learning.ps1": {
+      "bytes": 464,
+      "sha256": "c12cf1f7471a3a68fb304562712d0d4b1e37dcb8d5061506de42d0f61219e1dd"
+    },
+    "run-shacl.ps1": {
+      "bytes": 1320,
+      "sha256": "3904eb338a73dc1a8465909f2fc64d6a5dae42ba30c7e33cd756bad2b0332112"
+    },
+    "shapes/oulad-shapes.ttl": {
+      "bytes": 12340,
+      "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0"
+    },
+    "src/common/pipeline.py": {
+      "bytes": 24539,
+      "sha256": "a197a51f9aba716b366a7b05dde4a81e3a789d320f4342ba503cf662684198bc"
+    },
+    "src/graph/build_ontology_notebook.py": {
+      "bytes": 12382,
+      "sha256": "c37cc911500f764cc4eaf44f2b939493a2fb9aed8f0168b6986b12c30c7cce75"
+    },
+    "src/graph/convert_to_rdf.py": {
+      "bytes": 286,
+      "sha256": "f10fe7b94891423305662969cfc5318e2f901b377a4fd161e1e9fc92ff45f3aa"
+    },
+    "src/graph/load_fuseki.py": {
+      "bytes": 7155,
+      "sha256": "1e96296ae875646549db79ed20cf417926ec197f6c8c14cd6a3f791a96035992"
+    },
+    "src/graph/neo4j_comparison.py": {
+      "bytes": 8496,
+      "sha256": "98231386d7276759bbdfd97346126f09d5d403dac4ce23df4916456c2a4cc90a"
+    },
+    "src/graph/owl_reasoner.py": {
+      "bytes": 5380,
+      "sha256": "bc6042f61d45e93059824a88a1e644dac9eccfd7b0dbb96dec9fd67c70096a94"
+    },
+    "src/graph/prepare_ontology.py": {
+      "bytes": 7819,
+      "sha256": "9ea7d0495e02ba5820dcba3ec146dd84f68864a72b3cebfc606d8b8db2e133e6"
+    },
+    "src/graph/rdfs_entailment_demo.py": {
+      "bytes": 286,
+      "sha256": "10f06b990472eb27cce23821cedfba22c1cb27f4e27493fbeacf8d05cbe98c57"
+    },
+    "src/graph/run_queries.py": {
+      "bytes": 280,
+      "sha256": "27f6e9a0e611416998ce40e13433d3d489c4cded8b932ab5b0d3af210004094d"
+    },
+    "src/integration/common.py": {
+      "bytes": 3278,
+      "sha256": "ed95ea788b19ff0dbf454a1b1938baf920bf4343509952aab129b2791e2bf95f"
+    },
+    "src/integration/compare.py": {
+      "bytes": 2785,
+      "sha256": "4879f543622b1c2f35e72739dfa62e31ab99ce96722d0886dcc5c40541eac308"
+    },
+    "src/integration/freshness.py": {
+      "bytes": 2556,
+      "sha256": "3a3e99fd96e6686ae9d878b748b33f4562464eb06fd5b26068b150952ff4378d"
+    },
+    "src/integration/init_config.py": {
+      "bytes": 572,
+      "sha256": "d1283d0b8ff556dbfb5fa49b1ae280b29241f33c87d4672b3ac2ce733dc04d8a"
+    },
+    "src/integration/load_database.py": {
+      "bytes": 3598,
+      "sha256": "8f4365c75fa6041baa4aac3a1b5d5bb10c3914d8ce669b79238d19320593eb0f"
+    },
+    "src/integration/materialize.py": {
+      "bytes": 1458,
+      "sha256": "fa2615976ef0d862471d99a12d168ce60ef0a575365f266d27cba9e15ac684be"
+    },
+    "src/integration/provenance.py": {
+      "bytes": 1739,
+      "sha256": "869a554499895dcbf110b38fc4a60c2a0795d27207ed32f8b74f587a51adcdb6"
+    },
+    "src/integration/run.py": {
+      "bytes": 11643,
+      "sha256": "645de9973c4ff350a00ec1a8941a0cf20d2783ac73263015d3f8d7e458bfade1"
+    },
+    "src/integration/run_ontop.py": {
+      "bytes": 3430,
+      "sha256": "88055b71dab6bb3ff561dc4f2d6e83fe23bd5f08de1404bce1d570a977580add"
+    },
+    "src/integration/setup_ontop.py": {
+      "bytes": 2243,
+      "sha256": "573bc44c2ffe3cac4e7518d793964b2757f64397fc649894eaafd45fddf16ec5"
+    },
+    "src/learning/build_graph.py": {
+      "bytes": 5125,
+      "sha256": "158cc046c401a08425e3f8b7691c679e53223bf3ec1ad2b2960acf10cb5355c1"
+    },
+    "src/learning/checks.py": {
+      "bytes": 5972,
+      "sha256": "61cc02c9163233156cf690c9d12bbb9b3e534c0cb9fa1a9e94eb136bf33b5be4"
+    },
+    "src/learning/classification.py": {
+      "bytes": 8308,
+      "sha256": "ea4efffa3528aca61fc47d4d24ccf607c9c81a2ea2a3c89a8287246d77eb4471"
+    },
+    "src/learning/common.py": {
+      "bytes": 1644,
+      "sha256": "bc4480213a579d359d418b2719fd34967a287923328b395816b05a75f196456d"
+    },
+    "src/learning/link_prediction.py": {
+      "bytes": 6290,
+      "sha256": "a19070e5a92cde526fdee70d21f735fbf8ab916ce526299b76943891e688e821"
+    },
+    "src/learning/report.py": {
+      "bytes": 13983,
+      "sha256": "e8f3ad1c991f62686c335ce2b5473c838ed55a87eed577238ad778949cc51cb6"
+    },
+    "src/learning/run.py": {
+      "bytes": 5480,
+      "sha256": "36503371c75725bfd84b466ef707b1373b0eabacfa5f94810d0d3d7b76b432e2"
+    },
+    "src/preparation/fetch_data.py": {
+      "bytes": 282,
+      "sha256": "613586e5bfdd0c9d89d3f32e4b5789d4f778e68a68446022fd403fe90922dcec"
+    },
+    "src/preparation/profiling.py": {
+      "bytes": 373,
+      "sha256": "57dfddf3a861b25663eaa3274c1bfd3ae29e5f37743b23cc83a8571ac0857b62"
+    },
+    "src/preparation/select_subset.py": {
+      "bytes": 281,
+      "sha256": "9fcea5546355382edf6f3b7ed8ed43876533ffaf0cd7a6aa8aecd0f6463ce908"
+    },
+    "src/validation/prepare_examples.py": {
+      "bytes": 4345,
+      "sha256": "4a6ee4aa385670a3fe5e723b667d217d7294462730c195504ec1f9caa48cc511"
+    },
+    "src/validation/show_provenance.py": {
+      "bytes": 1313,
+      "sha256": "5387887c06a6b7f17527d6a1789e26b7422171d17223c0b7c04ce8bd39655a47"
+    },
+    "src/validation/validate.py": {
+      "bytes": 13928,
+      "sha256": "c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d"
+    }
+  },
+  "previous_audit_at_utc": "2026-10-16T10:36:10.470882+00:00",
+  "shacl": {
+    "full_run_id": "7b97ef4623a9455c8781799ac0fb1471",
+    "started_at_utc": "2026-10-15T02:50:45.029517+00:00",
+    "finished_at_utc": "2026-10-15T02:51:37.486501+00:00",
+    "gate_passed": true,
+    "conforms_shacl": false,
+    "severity_counts": {
+      "Violation": 0,
+      "Warning": 5,
+      "Info": 0
+    },
+    "focus_counts": [
+      {
+        "shape": "https://example.org/oulad/shapes#AssessmentShape",
+        "label": "Assessment structure and subtype",
+        "focus_nodes": 12,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#DeadlinePresenceShape",
+        "label": "Review unknown deadlines",
+        "focus_nodes": 12,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#EnrollmentShape",
+        "label": "Enrollment structure and key",
+        "focus_nodes": 748,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#InteractionShape",
+        "label": "Optional daily activity",
+        "focus_nodes": 0,
+        "optional_target": true
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#ModuleShape",
+        "label": "Module identity",
+        "focus_nodes": 1,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#OfferingShape",
+        "label": "Offering structure and key",
+        "focus_nodes": 2,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#RecordOfferingShape",
+        "label": "Record and enrollment use the same offering",
+        "focus_nodes": 3149,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#RecordShape",
+        "label": "Assessment record structure, score and key",
+        "focus_nodes": 3149,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#RegistrationReviewShape",
+        "label": "Review registration dates",
+        "focus_nodes": 748,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#ResourceShape",
+        "label": "Learning resource structure",
+        "focus_nodes": 413,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#ScorePresenceShape",
+        "label": "Review unknown scores",
+        "focus_nodes": 3149,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#StudentShape",
+        "label": "Student identity",
+        "focus_nodes": 712,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#SubmissionPresenceShape",
+        "label": "Review unknown submission days",
+        "focus_nodes": 3149,
+        "optional_target": false
+      },
+      {
+        "shape": "https://example.org/oulad/shapes#WithdrawalReviewShape",
+        "label": "Review withdrawal status versus date",
+        "focus_nodes": 748,
+        "optional_target": false
+      }
+    ],
+    "inputs": [
+      {
+        "role": "data",
+        "path": "D:\\DESKTOP\\M2\\kr-oulad\\data\\processed\\oulad.ttl",
+        "sha256": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5"
+      },
+      {
+        "role": "schema",
+        "path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+        "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766"
+      },
+      {
+        "role": "shapes",
+        "path": "D:\\DESKTOP\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+        "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0"
+      }
+    ],
+    "validator_sha256": "c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d",
+    "provenance_file": "outputs/shacl/full/provenance.ttl",
+    "regression_checks_passed": 37,
+    "sample": {
+      "Violation": 0,
+      "Warning": 3,
+      "Info": 0
+    },
+    "broken": {
+      "Violation": 1,
+      "Warning": 3,
+      "Info": 0
+    },
+    "draft": {
+      "Violation": 3,
+      "Warning": 0,
+      "Info": 0
+    },
+    "ci_status": "User-provided GitHub Actions screenshot shows Success at commit afd8535 on main; run URL not supplied.",
+    "results": [
+      {
+        "severity": "Warning",
+        "focus_node": "https://example.org/oulad/id/assessment-record/260355/1754",
+        "path": "https://example.org/oulad/schema#score",
+        "value": "",
+        "source_shape": "https://example.org/oulad/shapes#ScorePresence",
+        "constraint": "MinCountConstraintComponent",
+        "message": "Score is unknown: retain the record and review source completeness; do not replace with zero."
+      },
+      {
+        "severity": "Warning",
+        "focus_node": "https://example.org/oulad/id/assessment-record/2606802/1760",
+        "path": "https://example.org/oulad/schema#score",
+        "value": "",
+        "source_shape": "https://example.org/oulad/shapes#ScorePresence",
+        "constraint": "MinCountConstraintComponent",
+        "message": "Score is unknown: retain the record and review source completeness; do not replace with zero."
+      },
+      {
+        "severity": "Warning",
+        "focus_node": "https://example.org/oulad/id/assessment-record/721259/1752",
+        "path": "https://example.org/oulad/schema#score",
+        "value": "",
+        "source_shape": "https://example.org/oulad/shapes#ScorePresence",
+        "constraint": "MinCountConstraintComponent",
+        "message": "Score is unknown: retain the record and review source completeness; do not replace with zero."
+      },
+      {
+        "severity": "Warning",
+        "focus_node": "https://example.org/oulad/id/assessment/1757",
+        "path": "https://example.org/oulad/schema#deadlineDay",
+        "value": "",
+        "source_shape": "https://example.org/oulad/shapes#DeadlinePresence",
+        "constraint": "MinCountConstraintComponent",
+        "message": "Deadline is unknown: preserve the absence, including unknown exam dates."
+      },
+      {
+        "severity": "Warning",
+        "focus_node": "https://example.org/oulad/id/assessment/1763",
+        "path": "https://example.org/oulad/schema#deadlineDay",
+        "value": "",
+        "source_shape": "https://example.org/oulad/shapes#DeadlinePresence",
+        "constraint": "MinCountConstraintComponent",
+        "message": "Deadline is unknown: preserve the absence, including unknown exam dates."
+      }
+    ],
+    "runs": {
+      "full": {
+        "run_id": "7b97ef4623a9455c8781799ac0fb1471",
+        "started_at_utc": "2026-10-15T02:50:45.029517+00:00",
+        "validation_finished_at_utc": "2026-10-15T02:51:37.486501+00:00",
+        "provenance_ended_at_utc": "2026-10-15T02:51:37.501018+00:00",
+        "severity_counts": {
+          "Violation": 0,
+          "Warning": 5,
+          "Info": 0
+        },
+        "gate_passed": true,
+        "conforms_shacl": false,
+        "inputs": [
+          {
+            "role": "data",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\data\\processed\\oulad.ttl",
+            "sha256": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\data\\processed\\oulad.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "schema",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "shapes",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "matches_current_file": true
+          }
+        ],
+        "validator_matches": true,
+        "provenance_input_output_fingerprints_match": true
+      },
+      "sample": {
+        "run_id": "681345c200fb43ddb68212e82e90e10d",
+        "started_at_utc": "2026-10-15T02:51:38.036653+00:00",
+        "validation_finished_at_utc": "2026-10-15T02:51:38.814342+00:00",
+        "provenance_ended_at_utc": "2026-10-15T02:51:38.824800+00:00",
+        "severity_counts": {
+          "Violation": 0,
+          "Warning": 3,
+          "Info": 0
+        },
+        "gate_passed": true,
+        "conforms_shacl": false,
+        "inputs": [
+          {
+            "role": "data",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\valid.ttl",
+            "sha256": "27de5ce0df7c18af2a911cc9ed0407c5aef8e025a94dc1d7a1f8895d3708d0dc",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\valid.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "schema",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "shapes",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "matches_current_file": true
+          }
+        ],
+        "validator_matches": true,
+        "provenance_input_output_fingerprints_match": true
+      },
+      "broken": {
+        "run_id": "ce9323de5af046acb1ad09e8aa07e64a",
+        "started_at_utc": "2026-10-15T02:51:39.307252+00:00",
+        "validation_finished_at_utc": "2026-10-15T02:51:40.049076+00:00",
+        "provenance_ended_at_utc": "2026-10-15T02:51:40.057163+00:00",
+        "severity_counts": {
+          "Violation": 1,
+          "Warning": 3,
+          "Info": 0
+        },
+        "gate_passed": false,
+        "conforms_shacl": false,
+        "inputs": [
+          {
+            "role": "data",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\broken.ttl",
+            "sha256": "058732cedbbb45d50f91e8e7060ff1a6b0e0741d521168f1a627422197552178",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\broken.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "schema",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "shapes",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\shapes\\oulad-shapes.ttl",
+            "matches_current_file": true
+          }
+        ],
+        "validator_matches": true,
+        "provenance_input_output_fingerprints_match": true
+      },
+      "draft": {
+        "run_id": "cef409fba93c4b0685bf8a392fb9d00a",
+        "started_at_utc": "2026-10-15T02:51:40.512317+00:00",
+        "validation_finished_at_utc": "2026-10-15T02:51:41.291347+00:00",
+        "provenance_ended_at_utc": "2026-10-15T02:51:41.298089+00:00",
+        "severity_counts": {
+          "Violation": 3,
+          "Warning": 0,
+          "Info": 0
+        },
+        "gate_passed": false,
+        "conforms_shacl": false,
+        "inputs": [
+          {
+            "role": "data",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\valid.ttl",
+            "sha256": "27de5ce0df7c18af2a911cc9ed0407c5aef8e025a94dc1d7a1f8895d3708d0dc",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\evaluation\\fixtures\\shacl\\valid.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "schema",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\ontology\\education.rdfs.ttl",
+            "matches_current_file": true
+          },
+          {
+            "role": "shapes",
+            "path": "D:\\DESKTOP\\M2\\kr-oulad\\outputs\\shacl\\examples\\oulad-shapes-v0.ttl",
+            "sha256": "be5bea2078eb4d3acf791d6f6f61e0432b285a0cbf5e9f04c3a533553be45bda",
+            "current_path": "D:\\DESKTOP\\M2\\kr-oulad\\outputs\\shacl\\examples\\oulad-shapes-v0.ttl",
+            "matches_current_file": true
+          }
+        ],
+        "validator_matches": true,
+        "provenance_input_output_fingerprints_match": true
+      }
+    },
+    "verification_source_fingerprints_match": true
+  },
+  "previous_audit_snapshot": {
+    "path": "docs/history/provenance-snapshot-2026-10-16T103610Z.json",
+    "sha256": "c0880b2b13288a25617d4bb04fc41854a2c888e4e8e61849081106cf8c8e7e95"
+  },
+  "relocation": {
+    "previous_audit_root": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad",
+    "current_root": "D:\\DESKTOP\\M2\\kr-oulad",
+    "historical_report_paths_preserved": true,
+    "method": "Resolve each documented input role to its current project-relative path and compare SHA-256."
+  },
+  "ci": {
+    "workflow": ".github/workflows/shacl-gate.yml",
+    "job_id": "validate",
+    "local_git_status": "Committed by user; screenshot shows remote run",
+    "remote_name_present": "origin",
+    "remote_execution_verified": true,
+    "remote_execution_checked": false,
+    "branch_protection_checked": false,
+    "branch_protection_changed": false,
+    "events": [
+      "push with matching paths",
+      "pull_request with matching paths",
+      "workflow_dispatch"
+    ],
+    "runner": "ubuntu-latest",
+    "python_version": "3.12",
+    "pinned_packages": {
+      "pyshacl": "0.40.1",
+      "rdflib": "7.6.0"
+    },
+    "sample_verification_command": "python evaluation/verify_shacl.py --sample-only",
+    "sample_regression_checks": 31,
+    "full_local_regression_checks": 37,
+    "count_basis": "31 shared checks in the saved 37-check result; six additional checks are guarded by not args.sample_only.",
+    "full_data_validated_in_ci": false,
+    "separate_workflow_steps": [
+      "Validate real fixture; expect exit 0",
+      "Run sample-only verification",
+      "Validate broken fixture; explicitly require exit 1"
+    ],
+    "coverage_limit": "Sample mode skips full CSV counts, full warning identities, sample/source fidelity and full-run provenance checks.",
+    "merge_requirement_note": "Required-check enforcement is a separate repository setting; path filtering needs adjustment before making this workflow required for every PR.",
+    "remote_evidence": {
+      "kind": "user-provided screenshot",
+      "conclusion": "Success",
+      "commit_short": "afd8535",
+      "branch": "main",
+      "total_duration": "34s",
+      "job_duration": "29s",
+      "run_url": null,
+      "limit": "No independent GitHub API check; screenshot does not establish branch protection."
+    },
+    "integration": {
+      "workflow": ".github/workflows/integration.yml",
+      "job_id": "integration",
+      "status": "prepared locally; remote run pending",
+      "runner": "ubuntu-24.04",
+      "fixture_checks": 23,
+      "service": "PostgreSQL 16",
+      "artifact": "oulad-integration-evidence",
+      "full_data_validated_in_ci": false
+    }
+  },
+  "fingerprint_scope_note": "Previous selected files plus final learning source, code, protocol, documentation and complete final run, including local ignored checkpoints. Current provenance guide/snapshot excluded to avoid circular hashes. Secrets and caches excluded.",
+  "changes_from_previous_audit": [
+    "Preserved 16 October provenance snapshot",
+    "Recorded latest mapped RDF used as the learning source",
+    "Added separate node classification and historical link reconstruction",
+    "Recorded initial/cohort/test counts, baselines, all seeds and predictions",
+    "Added label/cutoff/source checks and independently recomputed metrics",
+    "Updated README, walkthrough, question boundaries and detailed learning explanation"
+  ],
+  "integration": {
+    "full": {
+      "directory": "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b",
+      "run_id": "99568e1cd42b46aa8ddf05ac6d075a5b",
+      "started_at_utc": "2026-10-16T10:31:22.648570+00:00",
+      "finished_at_utc": "2026-10-16T10:33:10.438337+00:00",
+      "database": {
+        "sha256": "134942e63134f95c1c527b247c6e6a925b64bf88f168bf4be7e193bcade99983",
+        "row_counts": {
+          "courses": 2,
+          "student_info": 748,
+          "student_registration": 748,
+          "assessments": 12,
+          "student_assessment": 3149,
+          "vle": 413
+        }
+      },
+      "materialization": {
+        "finished_at_utc": "2026-10-16T10:31:26.432136+00:00",
+        "triples": 28470,
+        "duration_seconds": 2.683,
+        "mapping_sha256": "6bca8a6e981c5bdfb4226ce9adba3699785b3704d200d5dc417fbe2e03deaf70",
+        "output_sha256": "d425497f43eda2545eafec663aed4c6356c831ae03fdbd19f40dfda8a16cd2ac",
+        "inference": "none; asserted mapping output only"
+      },
+      "graph_comparison": {
+        "reference_triples": 28470,
+        "mapped_triples": 28470,
+        "only_reference": 0,
+        "only_mapped": 0,
+        "equal": true,
+        "raw_term_differences": {
+          "only_reference": 0,
+          "only_mapped": 0
+        },
+        "normalization": "RDF 1.1 simple literals and xsd:string are equivalent; canonical integer/decimal/boolean lexical forms. Datatype IRIs, language tags, IRI identities and values are preserved.",
+        "examples_only_reference": [],
+        "examples_only_mapped": []
+      },
+      "query_comparisons": [
+        {
+          "query": "01_enrollments",
+          "rows": 2,
+          "all_equal": true,
+          "ontop_seconds": 2.037
+        },
+        {
+          "query": "02_assessments",
+          "rows": 12,
+          "all_equal": true,
+          "ontop_seconds": 1.956
+        },
+        {
+          "query": "03_late_records",
+          "rows": 815,
+          "all_equal": true,
+          "ontop_seconds": 2.133
+        },
+        {
+          "query": "04_low_scores",
+          "rows": 90,
+          "all_equal": true,
+          "ontop_seconds": 1.937
+        },
+        {
+          "query": "05_outcomes",
+          "rows": 8,
+          "all_equal": true,
+          "ontop_seconds": 1.895
+        },
+        {
+          "query": "06_unknown_scores",
+          "rows": 3,
+          "all_equal": true,
+          "ontop_seconds": 1.917
+        }
+      ],
+      "shacl": {
+        "severity_counts": {
+          "Violation": 0,
+          "Warning": 5,
+          "Info": 0
+        },
+        "gate_passed": true,
+        "run_id": "478addc17f0c4be5813c7d00da5a4cb3"
+      },
+      "freshness": {
+        "teaching_schema": "oulad_demo",
+        "original_score": "38.0",
+        "temporary_score": "99",
+        "virtual_before": 90,
+        "virtual_after_commit": 89,
+        "old_snapshot_after_commit": 90,
+        "new_snapshot": 89,
+        "database_restored": true,
+        "passed": true,
+        "note": "Separate database schema; example outputs retain before/after teaching states."
+      },
+      "versions": {
+        "morph-kgc": "2.10.0",
+        "rdflib": "7.6.0",
+        "pyshacl": "0.40.1",
+        "SQLAlchemy": "2.0.54",
+        "psycopg2-binary": "2.9.13"
+      },
+      "inference_policy": "Asserted mapping comparison; no ontology supplied to Ontop; RDFS hierarchy available to local query 02 and SHACL."
+    },
+    "fixture": {
+      "directory": "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9",
+      "run_id": "75d6a50e89424e6fa9872844093196e9",
+      "checks_passed": 23,
+      "triples": 299,
+      "shacl": {
+        "severity_counts": {
+          "Violation": 0,
+          "Warning": 3,
+          "Info": 0
+        },
+        "gate_passed": true,
+        "run_id": "db7c034b21614f85ba77cc29a70ee8bb"
+      },
+      "freshness": {
+        "teaching_schema": "oulad_fixture_demo",
+        "original_score": "38.0",
+        "temporary_score": "99",
+        "virtual_before": 2,
+        "virtual_after_commit": 1,
+        "old_snapshot_after_commit": 2,
+        "new_snapshot": 1,
+        "database_restored": true,
+        "passed": true,
+        "note": "Separate database schema; example outputs retain before/after teaching states."
+      }
+    },
+    "provenance_checks": {
+      "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b": {
+        "passed": true,
+        "generated_entities_checked": 54,
+        "input_entities_checked": 39
+      },
+      "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9": {
+        "passed": true,
+        "generated_entities_checked": 52,
+        "input_entities_checked": 39
+      }
+    },
+    "runtime_downloads": {
+      "ontop": "5.5.0",
+      "jdbc": "42.7.13",
+      "downloads": {
+        "ontop-cli.zip": {
+          "url": "https://github.com/ontop/ontop/releases/download/ontop-5.5.0/ontop-cli-5.5.0.zip",
+          "sha256": "430dff312e68e8ad41d26e6113160ca2365c28c4fe911926193000a33299458f",
+          "bytes": 46631157
+        },
+        "postgresql-42.7.13.jar": {
+          "url": "https://github.com/pgjdbc/pgjdbc/releases/download/REL42.7.13/postgresql-42.7.13.jar",
+          "sha256": "6e0e4cc2d8cae902084f8a2b18728b073a6fd9d1f87c9d8bff8f298c18185b93",
+          "bytes": 1220948
+        }
+      },
+      "checked_at_utc": "2026-10-16T05:32:40.800360+00:00",
+      "note": "Locally computed download fingerprints, not publisher signatures."
+    },
+    "mapped_inputs_match_current_files": false,
+    "historical_input_status_at_learning_audit": {
+      "full": {
+        "directory": "outputs/integration/runs/99568e1cd42b46aa8ddf05ac6d075a5b",
+        "all_input_fingerprints_match_current_files": false,
+        "changed_inputs_since_that_run": [
+          ".runtime/ontop/download-manifest.json"
+        ],
+        "note": "A historical artifact can differ from the current file without invalidating its recorded past result."
+      },
+      "fixture": {
+        "directory": "outputs/integration/runs/75d6a50e89424e6fa9872844093196e9",
+        "all_input_fingerprints_match_current_files": false,
+        "changed_inputs_since_that_run": [
+          ".runtime/ontop/download-manifest.json"
+        ],
+        "note": "A historical artifact can differ from the current file without invalidating its recorded past result."
+      }
+    },
+    "current_full_learning_source": {
+      "run_id": "7c0b60e5ae2b4e7da058f851b1c8286c",
+      "directory": "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c",
+      "recorded_at_utc": "2026-10-17T05:00:53.401457+00:00",
+      "passed": true,
+      "all_recorded_inputs_match_current_files": true
+    }
+  },
+  "learning": {
+    "directory": "outputs/learning/runs/f7649738f7414536bc2395ef7496eebf",
+    "run_id": "f7649738f7414536bc2395ef7496eebf",
+    "started_at_utc": "2026-10-17T21:32:30.408391+00:00",
+    "finished_at_utc": "2026-10-17T21:33:16.413705+00:00",
+    "source_graph": "outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/oulad-mapped.nt",
+    "protocol": {
+      "version": 1,
+      "cutoff_day": 60,
+      "train_presentation": "2013J",
+      "test_presentation": "2014J",
+      "positive_label": "Fail or Withdrawn",
+      "eligible": "registered by day 60 and not unregistered by day 60",
+      "purge": "remove training students present anywhere in the 2014J offering",
+      "classification_seeds": [
+        0,
+        1,
+        2
+      ],
+      "random_split_seeds": [
+        0,
+        1,
+        2
+      ],
+      "random_test_share": 0.3,
+      "threshold": 0.5,
+      "graphsage": {
+        "epochs": 100,
+        "hidden": 16,
+        "learning_rate": 0.01
+      },
+      "logistic": {
+        "C": 1.0,
+        "class_weight": "balanced",
+        "max_iter": 2000
+      },
+      "link_prediction": {
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "train_share": 0.8,
+        "validation_share": 0.1,
+        "test_share": 0.1,
+        "model": "TransE",
+        "dimension": 32,
+        "epochs": 100,
+        "batch_size": 256,
+        "learning_rate": 0.01,
+        "negatives_per_positive": 5
+      },
+      "selection": "Settings fixed before viewing test metrics; no best-seed selection or threshold tuning.",
+      "scope": "Retrospective educational experiment on AAA only; no deployed decisions."
+    },
+    "cohort": {
+      "all_enrollments": 748,
+      "all_students": 712,
+      "outcomes": {
+        "Pass": 487,
+        "Withdrawn": 126,
+        "Fail": 91,
+        "Distinction": 44
+      },
+      "successful": 531,
+      "unsuccessful": 217,
+      "eligible_day60": 701,
+      "excluded_day60": 47,
+      "nonbanked_historical_links": 3107,
+      "banked_records_excluded": 42,
+      "eligible_early_edges": 1199,
+      "learning_triples": 5389,
+      "feature_names": [
+        "previous_attempts",
+        "registration_day",
+        "early_submission_count",
+        "early_late_count",
+        "last_submission_day"
+      ],
+      "label_policy": "1 = final Fail or Withdrawn; 0 = final Pass or Distinction",
+      "availability_assumption": "Registration and submission dates approximate recorded availability; no ingestion/revision log exists. Grades excluded because publication dates are absent."
+    },
+    "classification": {
+      "split": {
+        "train_rows": 335,
+        "test_rows": 340,
+        "purged_eligible_training_rows": 26,
+        "all_cross_offering_students": 36,
+        "train_unsuccessful": 57,
+        "test_unsuccessful": 87,
+        "student_overlap": 0
+      },
+      "metrics": [
+        {
+          "model": "Logistic regression",
+          "split": "temporal",
+          "seed": 0,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 137,
+          "average_precision": 0.5259415887002294,
+          "roc_auc": 0.7101676434510016,
+          "accuracy": 0.6705882352941176,
+          "balanced_accuracy": 0.6617600290763709,
+          "precision": 0.40875912408759124,
+          "recall": 0.6436781609195402,
+          "f1": 0.5,
+          "tn": 172,
+          "fp": 81,
+          "fn": 31,
+          "tp": 56
+        },
+        {
+          "model": "Training prevalence",
+          "split": "temporal",
+          "seed": 0,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 0,
+          "average_precision": 0.25588235294117645,
+          "roc_auc": 0.5,
+          "accuracy": 0.7441176470588236,
+          "balanced_accuracy": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 253,
+          "fp": 0,
+          "fn": 87,
+          "tp": 0
+        },
+        {
+          "model": "Early submission count",
+          "split": "temporal",
+          "seed": 0,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 21,
+          "average_precision": 0.4437124759159562,
+          "roc_auc": 0.7069419835536777,
+          "accuracy": 0.7705882352941177,
+          "balanced_accuracy": 0.5743491890418427,
+          "precision": 0.7142857142857143,
+          "recall": 0.1724137931034483,
+          "f1": 0.2777777777777778,
+          "tn": 247,
+          "fp": 6,
+          "fn": 72,
+          "tp": 15
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "temporal",
+          "seed": 0,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 152,
+          "average_precision": 0.5022309274410596,
+          "roc_auc": 0.6770024078869656,
+          "accuracy": 0.5852941176470589,
+          "balanced_accuracy": 0.5780518831493344,
+          "precision": 0.3223684210526316,
+          "recall": 0.5632183908045977,
+          "f1": 0.4100418410041841,
+          "tn": 150,
+          "fp": 103,
+          "fn": 38,
+          "tp": 49
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "temporal",
+          "seed": 1,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 183,
+          "average_precision": 0.5039480714071871,
+          "roc_auc": 0.6879969106355913,
+          "accuracy": 0.5764705882352941,
+          "balanced_accuracy": 0.6249148153196129,
+          "precision": 0.3442622950819672,
+          "recall": 0.7241379310344828,
+          "f1": 0.4666666666666667,
+          "tn": 133,
+          "fp": 120,
+          "fn": 24,
+          "tp": 63
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "temporal",
+          "seed": 2,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 186,
+          "average_precision": 0.4983570499920872,
+          "roc_auc": 0.6910408432147563,
+          "accuracy": 0.5911764705882353,
+          "balanced_accuracy": 0.6498796056517195,
+          "precision": 0.3602150537634409,
+          "recall": 0.7701149425287356,
+          "f1": 0.4908424908424908,
+          "tn": 134,
+          "fp": 119,
+          "fn": 20,
+          "tp": 67
+        },
+        {
+          "model": "INVALID label-leak control",
+          "split": "leak_control",
+          "seed": 0,
+          "n": 340,
+          "actual_unsuccessful": 87,
+          "predicted_unsuccessful": 87,
+          "average_precision": 1.0,
+          "roc_auc": 1.0,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "tn": 253,
+          "fp": 0,
+          "fn": 0,
+          "tp": 87
+        },
+        {
+          "model": "Logistic regression",
+          "split": "random_0",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 65,
+          "average_precision": 0.6706209288927744,
+          "roc_auc": 0.830514705882353,
+          "accuracy": 0.7819905213270142,
+          "balanced_accuracy": 0.7493872549019608,
+          "precision": 0.5384615384615384,
+          "recall": 0.6862745098039216,
+          "f1": 0.603448275862069,
+          "tn": 130,
+          "fp": 30,
+          "fn": 16,
+          "tp": 35
+        },
+        {
+          "model": "Training prevalence",
+          "split": "random_0",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 0,
+          "average_precision": 0.24170616113744076,
+          "roc_auc": 0.5,
+          "accuracy": 0.7582938388625592,
+          "balanced_accuracy": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 160,
+          "fp": 0,
+          "fn": 51,
+          "tp": 0
+        },
+        {
+          "model": "Early submission count",
+          "split": "random_0",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 11,
+          "average_precision": 0.5343598087203183,
+          "roc_auc": 0.7549019607843136,
+          "accuracy": 0.8104265402843602,
+          "balanced_accuracy": 0.607843137254902,
+          "precision": 1.0,
+          "recall": 0.21568627450980393,
+          "f1": 0.3548387096774194,
+          "tn": 160,
+          "fp": 0,
+          "fn": 40,
+          "tp": 11
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "random_0",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 80,
+          "average_precision": 0.6182133717513776,
+          "roc_auc": 0.7488970588235294,
+          "accuracy": 0.6919431279620853,
+          "balanced_accuracy": 0.676654411764706,
+          "precision": 0.4125,
+          "recall": 0.6470588235294118,
+          "f1": 0.5038167938931297,
+          "tn": 113,
+          "fp": 47,
+          "fn": 18,
+          "tp": 33
+        },
+        {
+          "model": "Logistic regression",
+          "split": "random_1",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 52,
+          "average_precision": 0.4611813362862323,
+          "roc_auc": 0.6928308823529412,
+          "accuracy": 0.7014218009478673,
+          "balanced_accuracy": 0.596078431372549,
+          "precision": 0.38461538461538464,
+          "recall": 0.39215686274509803,
+          "f1": 0.3883495145631068,
+          "tn": 128,
+          "fp": 32,
+          "fn": 31,
+          "tp": 20
+        },
+        {
+          "model": "Training prevalence",
+          "split": "random_1",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 0,
+          "average_precision": 0.24170616113744076,
+          "roc_auc": 0.5,
+          "accuracy": 0.7582938388625592,
+          "balanced_accuracy": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 160,
+          "fp": 0,
+          "fn": 51,
+          "tp": 0
+        },
+        {
+          "model": "Early submission count",
+          "split": "random_1",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 6,
+          "average_precision": 0.34626583650837905,
+          "roc_auc": 0.6102941176470588,
+          "accuracy": 0.7772511848341233,
+          "balanced_accuracy": 0.5458946078431373,
+          "precision": 0.8333333333333334,
+          "recall": 0.09803921568627451,
+          "f1": 0.17543859649122806,
+          "tn": 159,
+          "fp": 1,
+          "fn": 46,
+          "tp": 5
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "random_1",
+          "seed": 1,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 58,
+          "average_precision": 0.4203736386712722,
+          "roc_auc": 0.6384191176470588,
+          "accuracy": 0.6540284360189573,
+          "balanced_accuracy": 0.5514705882352942,
+          "precision": 0.3103448275862069,
+          "recall": 0.35294117647058826,
+          "f1": 0.3302752293577982,
+          "tn": 120,
+          "fp": 40,
+          "fn": 33,
+          "tp": 18
+        },
+        {
+          "model": "Logistic regression",
+          "split": "random_2",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 61,
+          "average_precision": 0.5507936140728215,
+          "roc_auc": 0.7352941176470588,
+          "accuracy": 0.7630331753554502,
+          "balanced_accuracy": 0.710171568627451,
+          "precision": 0.5081967213114754,
+          "recall": 0.6078431372549019,
+          "f1": 0.5535714285714286,
+          "tn": 130,
+          "fp": 30,
+          "fn": 20,
+          "tp": 31
+        },
+        {
+          "model": "Training prevalence",
+          "split": "random_2",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 0,
+          "average_precision": 0.24170616113744076,
+          "roc_auc": 0.5,
+          "accuracy": 0.7582938388625592,
+          "balanced_accuracy": 0.5,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "tn": 160,
+          "fp": 0,
+          "fn": 51,
+          "tp": 0
+        },
+        {
+          "model": "Early submission count",
+          "split": "random_2",
+          "seed": 0,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 9,
+          "average_precision": 0.45630948845170133,
+          "roc_auc": 0.7214460784313725,
+          "accuracy": 0.7819905213270142,
+          "balanced_accuracy": 0.5623774509803922,
+          "precision": 0.7777777777777778,
+          "recall": 0.13725490196078433,
+          "f1": 0.23333333333333334,
+          "tn": 158,
+          "fp": 2,
+          "fn": 44,
+          "tp": 7
+        },
+        {
+          "model": "GraphSAGE",
+          "split": "random_2",
+          "seed": 2,
+          "n": 211,
+          "actual_unsuccessful": 51,
+          "predicted_unsuccessful": 113,
+          "average_precision": 0.4717961574751623,
+          "roc_auc": 0.6787377450980393,
+          "accuracy": 0.5639810426540285,
+          "balanced_accuracy": 0.6123161764705882,
+          "precision": 0.3185840707964602,
+          "recall": 0.7058823529411765,
+          "f1": 0.43902439024390244,
+          "tn": 83,
+          "fp": 77,
+          "fn": 15,
+          "tp": 36
+        }
+      ],
+      "random_split_diagnostics": [
+        {
+          "seed": 0,
+          "train_rows": 490,
+          "test_rows": 211,
+          "overlapping_students": 7
+        },
+        {
+          "seed": 1,
+          "train_rows": 490,
+          "test_rows": 211,
+          "overlapping_students": 10
+        },
+        {
+          "seed": 2,
+          "train_rows": 490,
+          "test_rows": 211,
+          "overlapping_students": 13
+        }
+      ],
+      "graphsage_seeds": [
+        0,
+        1,
+        2
+      ]
+    },
+    "link_prediction": {
+      "seeds": [
+        {
+          "seed": 0,
+          "initial_links": 3107,
+          "train_links": 2487,
+          "validation_links": 310,
+          "test_links": 310,
+          "support_links": 772,
+          "cold_entity_test_links": 0,
+          "test_links_with_zero_training_degree": 9,
+          "mean_filtered_candidates": 2.2548387096774194,
+          "min_filtered_candidates": 2,
+          "max_filtered_candidates": 6,
+          "random_unfiltered": {
+            "mrr": 0.4083333333333334,
+            "hits_at_1": 0.16666666666666666,
+            "hits_at_3": 0.5
+          },
+          "random_filtered": {
+            "mrr": 0.7221048387096773,
+            "hits_at_1": 0.469731182795699,
+            "hits_at_3": 0.9737096774193549
+          },
+          "transe_filtered": {
+            "mrr": 0.912741935483871,
+            "hits_at_1": 0.8387096774193549,
+            "hits_at_3": 0.9870967741935484,
+            "n": 310
+          },
+          "transe_unfiltered": {
+            "mrr": 0.22629032258064513,
+            "hits_at_1": 0.0032258064516129032,
+            "hits_at_3": 0.09032258064516129,
+            "n": 310
+          },
+          "popularity_filtered": {
+            "mrr": 0.9846774193548387,
+            "hits_at_1": 0.9709677419354839,
+            "hits_at_3": 0.9967741935483871,
+            "n": 310
+          },
+          "popularity_unfiltered": {
+            "mrr": 0.4770430107526881,
+            "hits_at_1": 0.21935483870967742,
+            "hits_at_3": 0.6451612903225806,
+            "n": 310
+          }
+        },
+        {
+          "seed": 1,
+          "initial_links": 3107,
+          "train_links": 2487,
+          "validation_links": 310,
+          "test_links": 310,
+          "support_links": 772,
+          "cold_entity_test_links": 0,
+          "test_links_with_zero_training_degree": 7,
+          "mean_filtered_candidates": 2.232258064516129,
+          "min_filtered_candidates": 2,
+          "max_filtered_candidates": 6,
+          "random_unfiltered": {
+            "mrr": 0.4083333333333334,
+            "hits_at_1": 0.16666666666666666,
+            "hits_at_3": 0.5
+          },
+          "random_filtered": {
+            "mrr": 0.7254094982078854,
+            "hits_at_1": 0.4737096774193548,
+            "hits_at_3": 0.9743548387096773
+          },
+          "transe_filtered": {
+            "mrr": 0.9368279569892474,
+            "hits_at_1": 0.8838709677419355,
+            "hits_at_3": 0.9903225806451613,
+            "n": 310
+          },
+          "transe_unfiltered": {
+            "mrr": 0.23225806451612904,
+            "hits_at_1": 0.0032258064516129032,
+            "hits_at_3": 0.11612903225806452,
+            "n": 310
+          },
+          "popularity_filtered": {
+            "mrr": 0.9793010752688172,
+            "hits_at_1": 0.9612903225806452,
+            "hits_at_3": 0.9967741935483871,
+            "n": 310
+          },
+          "popularity_unfiltered": {
+            "mrr": 0.4601075268817205,
+            "hits_at_1": 0.2,
+            "hits_at_3": 0.6419354838709678,
+            "n": 310
+          }
+        },
+        {
+          "seed": 2,
+          "initial_links": 3107,
+          "train_links": 2487,
+          "validation_links": 310,
+          "test_links": 310,
+          "support_links": 772,
+          "cold_entity_test_links": 0,
+          "test_links_with_zero_training_degree": 5,
+          "mean_filtered_candidates": 2.2,
+          "min_filtered_candidates": 2,
+          "max_filtered_candidates": 6,
+          "random_unfiltered": {
+            "mrr": 0.4083333333333334,
+            "hits_at_1": 0.16666666666666666,
+            "hits_at_3": 0.5
+          },
+          "random_filtered": {
+            "mrr": 0.7291783154121864,
+            "hits_at_1": 0.47790322580645156,
+            "hits_at_3": 0.977258064516129
+          },
+          "transe_filtered": {
+            "mrr": 0.9296774193548387,
+            "hits_at_1": 0.8709677419354839,
+            "hits_at_3": 0.9903225806451613,
+            "n": 310
+          },
+          "transe_unfiltered": {
+            "mrr": 0.2275268817204301,
+            "hits_at_1": 0.0,
+            "hits_at_3": 0.1,
+            "n": 310
+          },
+          "popularity_filtered": {
+            "mrr": 0.9870967741935484,
+            "hits_at_1": 0.9774193548387097,
+            "hits_at_3": 0.9935483870967742,
+            "n": 310
+          },
+          "popularity_unfiltered": {
+            "mrr": 0.4939784946236559,
+            "hits_at_1": 0.25483870967741934,
+            "hits_at_3": 0.6258064516129033,
+            "n": 310
+          }
+        }
+      ],
+      "initial_links": 3107,
+      "candidate_policy": "Six scheduled assessments in the same offering, including the exam with no observed submission links.",
+      "task": "Retrospective hidden-link reconstruction, not future participation prediction or recommendation."
+    },
+    "versions": {
+      "torch": "2.8.0",
+      "torch-geometric": "2.8.0.post1",
+      "pykeen": "1.11.1",
+      "scikit-learn": "1.7.2",
+      "rdflib": "7.6.0",
+      "pandas": "2.3.3",
+      "numpy": "2.3.5",
+      "matplotlib": "3.10.0"
+    },
+    "learning_checks_passed": 21,
+    "evidence_checks_passed": 54,
+    "source_fingerprints_match": true,
+    "output_fingerprints_match": true,
+    "manifest_sha256": "d7d5a65110fc20416a0b308ad5398d1327cf433ef3182d14d08b2e56427b571f",
+    "ci_status": "Local learning suite; no Session 6 GitHub workflow added or executed."
+  }
+}

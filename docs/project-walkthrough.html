@@ -2,7 +2,7 @@
 
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Understanding the OULAD project | Results, interpretation and challenges</title>
-<meta content="OULAD through Session 6: observed counts, logistic regression, GraphSAGE, TransE, leakage controls, measured results and provenance." name="description"/>
+<meta content="OULAD through Session 7: natural-language questions, VoID, checked SPARQL, measured results and provenance." name="description"/>
 <style>
 :root { color-scheme: light; --ink:#172e35; --muted:#516970; --line:#dce6e5; --accent:#087064; --paper:#fff; --wash:#f3f7f5; }
 * { box-sizing:border-box; }
@@ -51,10 +51,10 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 
 nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{max-height:none;overflow:visible;}}</style></head><body>
 <header class="top"><span class="brand">KRR / OULAD · Project walkthrough</span><div class="actions"><a href="project-walkthrough.md">Editable version</a><button onclick="window.print()" type="button">Print / save PDF</button></div></header>
-<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-what-problem-are-we-solving">1. What problem are we solving?</a><a href="#2-what-we-did-in-order">2. What we did, in order</a><a href="#3-what-data-do-we-actually-have">3. What data do we actually have?</a><a href="#4-how-to-read-the-graph">4. How to read the graph</a><a href="#5-what-the-analytical-answers-mean">5. What the analytical answers mean</a><a href="#6-what-the-ontology-added">6. What the ontology added</a><a href="#7-what-shacl-added">7. What SHACL added</a><a href="#8-the-exact-shacl-results-and-their-interpretation">8. The exact SHACL results and their interpretation</a><a href="#9-actual-challenges-and-how-they-were-addressed">9. Actual challenges and how they were addressed</a><a href="#10-deliberate-errors-what-we-tested-and-learned">10. Deliberate errors: what we tested and learned</a><a href="#11-what-the-verification-establishes">11. What the verification establishes</a><a href="#12-what-neo4j-and-fuseki-results-mean">12. What Neo4j and Fuseki results mean</a><a href="#13-provenance-how-we-know-which-run-produced-a-result">13. Provenance: how we know which run produced a result</a><a href="#14-how-to-inspect-and-repeat-the-work">14. How to inspect and repeat the work</a><a href="#15-a-short-explanation-for-your-presentation">15. A short explanation for your presentation</a><a href="#16-session-5-one-mapping-two-ways-to-answer">16. Session 5: one mapping, two ways to answer</a><a href="#17-session-6-learning-counts-and-an-honest-comparison">17. Session 6: learning, counts and an honest comparison</a><a href="#appendix-all-shacl-verification-checks">Appendix: all SHACL verification checks</a></div><div class="scope"><b>Through Session 6</b>Updated 18 October 2026<br/>21 learning checks passed<br/>54 evidence checks passed<br/><a href="../outputs/learning/learning-results.html">Open learning results</a></div></nav>
+<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-what-problem-are-we-solving">1. What problem are we solving?</a><a href="#2-what-we-did-in-order">2. What we did, in order</a><a href="#3-what-data-do-we-actually-have">3. What data do we actually have?</a><a href="#4-how-to-read-the-graph">4. How to read the graph</a><a href="#5-what-the-analytical-answers-mean">5. What the analytical answers mean</a><a href="#6-what-the-ontology-added">6. What the ontology added</a><a href="#7-what-shacl-added">7. What SHACL added</a><a href="#8-the-exact-shacl-results-and-their-interpretation">8. The exact SHACL results and their interpretation</a><a href="#9-actual-challenges-and-how-they-were-addressed">9. Actual challenges and how they were addressed</a><a href="#10-deliberate-errors-what-we-tested-and-learned">10. Deliberate errors: what we tested and learned</a><a href="#11-what-the-verification-establishes">11. What the verification establishes</a><a href="#12-what-neo4j-and-fuseki-results-mean">12. What Neo4j and Fuseki results mean</a><a href="#13-provenance-how-we-know-which-run-produced-a-result">13. Provenance: how we know which run produced a result</a><a href="#14-how-to-inspect-and-repeat-the-work">14. How to inspect and repeat the work</a><a href="#15-a-short-explanation-for-your-presentation">15. A short explanation for your presentation</a><a href="#16-session-5-one-mapping-two-ways-to-answer">16. Session 5: one mapping, two ways to answer</a><a href="#17-session-6-learning-counts-and-an-honest-comparison">17. Session 6: learning, counts and an honest comparison</a><a href="#18-session-7-questions-checked-queries-and-grounded-answers">18. Session 7: questions, checked queries and grounded answers</a><a href="#19-start-the-full-project-or-open-the-live-agent">19. Start the full project or open the live agent</a><a href="#appendix-all-shacl-verification-checks">Appendix: all SHACL verification checks</a></div><div class="scope"><b>Through Session 7</b>Reviewed 19 October 2026<br/>65 access checks passed<br/><a href="course-coverage-audit.html">Remaining course requirements</a></div></nav>
 <main><h1>Understanding the OULAD project</h1>
 <p><strong>What we built, what the results mean, and how we handled challenges and errors.</strong></p>
-<p>Prepared on <strong>14 October 2026</strong>, updated through Session 6 on <strong>18 October 2026</strong>. This guide explains the saved earlier stages and the newly executed PostgreSQL integration. Section 16 covers mappings and virtualization; section 17 explains the learning methods, original counts, model results, leakage checks and limitations.</p>
+<p>Prepared on <strong>14 October 2026</strong>, updated through Session 7 on <strong>18 October 2026</strong>. This guide explains the saved earlier stages and the newly executed PostgreSQL integration. Section 16 covers mappings and virtualization; section 17 explains learning; section 18 covers natural-language access, the measured comparison and interpretation.</p>
 <blockquote>
 <p><strong>The main result:</strong> we have a traceable education knowledge graph, an ontology that derives useful classifications, and a validation gate that catches structural errors while retaining documented missing values. The current full SHACL report has <strong>0 violations and 5 warnings</strong>, and <strong>37 verification checks pass</strong>.</p>
 </blockquote>
@@ -63,7 +63,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <p>Our project represents these relationships explicitly, gives them clear meanings, and checks that the resulting graph follows our rules. It applies the lab techniques to education data while retaining the existing <strong>M2ENV</strong> Conda environment and the agreed project folders.</p>
 <p>We selected module <strong>AAA</strong>, an anonymized Social Sciences module, across <strong>2013J and 2014J</strong>. A presentation is one offering of a module. AAA's real title, assignment content and instructors are not provided. The <a href="aaa-module.md">AAA explanation</a> contains the detailed source interpretation.</p>
 <p>Three different questions guide the work:</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Question</th>
@@ -87,7 +87,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 </table></div>
 <p>An enrollment can be logically consistent in OWL while failing a SHACL completeness check. These layers have different purposes.</p>
 <h2 id="2-what-we-did-in-order">2. What we did, in order</h2>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Stage</th>
@@ -160,7 +160,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 </table></div>
 <p>The current main pipeline places SHACL <strong>immediately after RDF conversion and before answering questions</strong>. Neo4j, Fuseki and full OWL reasoning remain explicit separate steps. The full command sequence is in the <a href="../README.md">README</a>.</p>
 <h2 id="3-what-data-do-we-actually-have">3. What data do we actually have?</h2>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Measure</th>
@@ -240,7 +240,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <li>A banked assessment result can come from an earlier presentation. <code>AssessmentRecord</code> is therefore a more accurate name than assuming every row is a fresh submission.</li>
 </ul>
 <h2 id="5-what-the-analytical-answers-mean">5. What the analytical answers mean</h2>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Answer</th>
@@ -289,7 +289,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <p>The 815 late records are not 815 different students. A same-day submission is excluded from “late,” and banked results are excluded. The result does not account for individual extensions or establish misconduct.</p>
 <p>The 90 low scores do not imply 90 final module failures. A final outcome is recorded separately. If expressing the low-score proportion, the known-score denominator is <strong>3,146</strong>, giving <strong>90 / 3,146 = 2.86%</strong>. Including the three unknown scores in a “known score” denominator would be misleading.</p>
 <p>Final outcomes are:</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Outcome</th>
@@ -336,7 +336,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <h2 id="6-what-the-ontology-added">6. What the ontology added</h2>
 <p>RDFS provides the basic hierarchy. For example, a TutorMarkedAssessment is an Assessment, and a Student is a Person. OWL adds richer definitions and commitments, including disjoint classes, inverse properties, qualified cardinality and class equivalences.</p>
 <p>The ontology aligns the project's Person class with a documented fragment of FOAF containing Person and Agent. It does not import every FOAF axiom or claim a complete BFO alignment.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Inferred class</th>
@@ -387,7 +387,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <p>The validator uses asserted RDF plus the RDFS hierarchy with automatic inference disabled. SHACL can still recognize subclasses for class targets and class checks. We avoid domain/range materialization because it could give an incorrectly typed object the very type we want to check explicitly.</p>
 <p>There are <strong>14 target-bearing shapes</strong>. Thirteen have focus nodes in the core build. The optional DailyInteraction shape has none because activity was not loaded. The validator prints the counts, and the full verification compares seven structural entity counts with independent CSV-derived expectations.</p>
 <h3 id="reading-a-validation-result">Reading a validation result</h3>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Report field</th>
@@ -430,7 +430,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
     -&gt; project gate passes
 </code></pre>
 <p>Warnings remain visible for review. A gate pass therefore means that the supplied graph meets our blocking requirements; it does not mean that the graph has no limitations or that every possible rule has been checked.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Exit code</th>
@@ -458,7 +458,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 </table></div>
 <p>After an execution error, an older report may still exist in the output folder. Check the command's exit code, report timestamp and run ID before treating that report as current.</p>
 <h2 id="8-the-exact-shacl-results-and-their-interpretation">8. The exact SHACL results and their interpretation</h2>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Experiment</th>
@@ -505,7 +505,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 </tbody>
 </table></div>
 <p>The full graph's five warnings are:</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Focus node suffix</th>
@@ -547,7 +547,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <p>The current full run took approximately <strong>three minutes</strong> on this machine. The small examples took about one second each in the latest saved run. Runtime depends on the machine and concurrent work; the cross-record SPARQL checks are more expensive than simple datatype or range checks.</p>
 <h2 id="9-actual-challenges-and-how-they-were-addressed">9. Actual challenges and how they were addressed</h2>
 <p>This section records the challenges supported by the project files and implementation history. It is not a complete terminal transcript. Deliberate teaching faults are listed separately in the next section.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Challenge or actual issue</th>
@@ -677,7 +677,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <h2 id="10-deliberate-errors-what-we-tested-and-learned">10. Deliberate errors: what we tested and learned</h2>
 <p>These are controlled examples, not errors found in real student records. The broken fixture and synthetic examples stay separate from the original data and database imports.</p>
 <h3 id="ontology-experiments">Ontology experiments</h3>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Deliberate setup</th>
@@ -728,7 +728,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <p>Each test checks that the validator reacts <strong>as expected</strong>. A test of an invalid score passes when the shape flags that invalid score. It does not mean that the invalid score was accepted.</p>
 <p>Valid boundaries are also tested: scores 0 and 100 remain allowed, known negative day offsets remain allowed, and zero clicks remain allowed. Unknown scores remain warnings. This helps prevent a validator that rejects legitimate observations while catching bad ones.</p>
 <h2 id="11-what-the-verification-establishes">11. What the verification establishes</h2>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Layer</th>
@@ -763,7 +763,7 @@ LearningResource --resourceInOffering--&gt; CourseOffering
 <p>The latest full SHACL result and its verification have matching report fingerprints when this walkthrough was prepared. The full run finished at <strong>2026-10-15T02:51:37.486501+00:00</strong> and the 37-check verification was recorded at <strong>2026-10-15T02:51:53.178880+00:00</strong> (UTC). The saved ontology report's input fingerprints also match the current ontology and data. The database counts below come from their earlier saved import checks; the Session 5 update did not recheck Neo4j or Fuseki. It did query the project PostgreSQL service through SQL and Ontop.</p>
 <p>An appendix below lists all 37 SHACL checks from the verification file, so you can connect the summary to the exact evidence.</p>
 <h2 id="12-what-neo4j-and-fuseki-results-mean">12. What Neo4j and Fuseki results mean</h2>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Tool</th>
@@ -846,7 +846,7 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 <p><strong>Virtualization:</strong> Ontop translates each SPARQL query through the mapping into SQL and reads PostgreSQL. We retain the resulting CSV and generated SQL so you can inspect the translation. There is no need to populate a separate RDF store to execute these virtual queries. Returned answers are live relative to committed database state at query time, not a guarantee of one synchronized state across arbitrary concurrent requests.</p>
 <h3 id="the-questions-and-verified-results">The questions and verified results</h3>
 <p>The full integration run <strong>99568e1cd42b46aa8ddf05ac6d075a5b</strong> started <strong>2026-10-16T10:31:22.648570+00:00</strong> and completed its checks <strong>2026-10-16T10:33:10.438337+00:00</strong> (UTC). All <strong>23 checks passed</strong>. The fixture independently passed the same 23 checks on 299 triples.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Question file</th>
@@ -894,7 +894,7 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 <p>The existing validator runs on the newly materialized graph plus the existing RDFS schema. It again reports <strong>0 violations and 5 warnings</strong>: three unknown scores and two unknown exam deadlines. The project gate passes with those visible warnings. The fixture has one unknown score and two unknown deadlines, so its warning count is three. A passing mapped graph does not prove every future virtual database state will pass: after changing source data, rematerialize and validate again.</p>
 <p>The integration tests also attempt a duplicate enrollment key, an out-of-range score of 101, and an unknown offering. PostgreSQL rejects all three; each attempt is rolled back. SQL constraints protect the table state, while SHACL checks the graph produced by the mapping. Neither substitutes for the other.</p>
 <h3 id="the-change-experiment-interpreted">The change experiment, interpreted</h3>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Stage</th>
@@ -932,7 +932,7 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 </table></div>
 <p>The experiment runs in a separate <code>oulad_demo</code> schema; the main AAA tables are unchanged. It illustrates freshness, not a general speed ranking. Query timings include local Java startup, and the source is small. The fixture performs the same experiment with counts 2 → 1. Before/after teaching artifacts remain clearly labeled and should not be mistaken for the original dataset.</p>
 <h3 id="actual-implementation-challenges-and-fixes">Actual implementation challenges and fixes</h3>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Observed problem</th>
@@ -990,7 +990,7 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 <p>Open the <a href="../outputs/learning/learning-results.html">learning results report</a> for charts and downloadable results. The <a href="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/summary.json">full run summary</a> contains every seed, split, model setting and count.</p>
 <h3 id="1-what-does-initial-count-mean-here">1. What does “initial count” mean here?</h3>
 <p>The original facts and the test population must have separate denominators:</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Population or stage</th>
@@ -1053,7 +1053,7 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 <h3 id="3-from-rdf-to-safe-model-inputs">3. From RDF to safe model inputs</h3>
 <p>The runner reads the successful Session 5 materialized RDF, currently <code>outputs/integration/runs/7c0b60e5ae2b4e7da058f851b1c8286c/oulad-mapped.nt</code>. It checks its receipt and the selected CSV fingerprints before using it. If no integration result exists, it explicitly falls back to the original <code>data/processed/oulad.ttl</code>. The current run used the mapped graph. No live PostgreSQL, Neo4j or Fuseki service is needed during learning.</p>
 <p>The classification builder permits only five candidate enrollment features:</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Feature</th>
@@ -1096,7 +1096,7 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 <p>The <a href="../config/learning/protocol.json">protocol</a> fixes settings and seeds. We did not search for a winning seed, tune the threshold on test labels or keep changing hyperparameters until a complex model won. Logistic regression is deterministic here; repeating its temporal fit with a different seed would not be a meaningful new experiment. GraphSAGE initialization and TransE partitions/training are each evaluated with seeds 0, 1 and 2.</p>
 <h3 id="5-exact-outcome-results-and-how-to-read-them">5. Exact outcome results and how to read them</h3>
 <p>All rows below concern the same <strong>340 test enrollments with 87 actual positives</strong>:</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Method</th>
@@ -1172,16 +1172,16 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 </tr>
 </tbody>
 </table></div>
-<p><img alt="Temporal average precision" src="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification-comparison.png" style="max-width:100%;height:auto"/></p>
+<p><img alt="Temporal average precision" src="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/classification-comparison.png"/></p>
 <p><strong>Average precision (AP)</strong> summarizes how well actual positives occur near the top of the ranking. Here the constant-score AP is 87/340 = 0.256. The implementation uses scikit-learn's <code>average_precision_score</code>; it is not trapezoidal area under a precision-recall curve. GraphSAGE's mean is <strong>0.502</strong>, population standard deviation across seeds <strong>0.002</strong>, and range <strong>0.498–0.504</strong>. These three seeds do not form a confidence interval for performance on other cohorts.</p>
 <p><strong>The logistic-regression counts:</strong> it flags <strong>137</strong>, of which <strong>56</strong> really have unsuccessful outcomes and <strong>81</strong> are false positives. It misses <strong>31</strong> of the 87 actual positives. Its precision is 56/137 = <strong>40.9%</strong>; its recall is 56/87 = <strong>64.4%</strong>. It overcounts positives by 50, but that total alone hides both missed cases and false alarms.</p>
 <p><strong>The submission rule:</strong> it flags 21, correctly identifies 15, generates six false positives and misses 72 actual positives. Its precision is higher (<strong>71.4%</strong>) but its recall is only <strong>17.2%</strong>. This is why a simple rule can have better accuracy and still miss most of the target cases.</p>
 <p><strong>The majority baseline:</strong> it gets 253/340 = <strong>74.4% accuracy</strong> by predicting successful for everyone. It finds none of the 87 positive outcomes. Balanced accuracy is 0.5. Accuracy is therefore insufficient to judge this task. The count rule has 77.1% accuracy, while logistic regression trades some accuracy for greater recall.</p>
 <p><strong>The GNN:</strong> it flags between 152 and 186 cases across seeds. Its ranking is above the count baseline but below logistic regression here. The count feature already summarizes a central part of the graph structure; AAA has few shared assessment nodes. This is a plausible explanation for limited added value, not a causal conclusion established by this experiment.</p>
-<p><img alt="Confusion matrices" src="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/confusion-matrices.png" style="max-width:100%;height:auto"/></p>
+<p><img alt="Confusion matrices" src="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/confusion-matrices.png"/></p>
 <p>Rows are observed classes and columns are predicted classes. The off-diagonal cells are mistakes. GraphSAGE seed 0 is shown because it was predefined, not selected as the best seed. Class-weighted outputs are not established calibrated risk probabilities, and 0.5 is a reproducible teaching threshold rather than an operationally optimized decision policy.</p>
 <h3 id="6-what-the-logistic-coefficients-mean">6. What the logistic coefficients mean</h3>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Standardized feature</th>
@@ -1214,7 +1214,7 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 <p>A positive coefficient raises the modeled log-odds of the combined unsuccessful label, holding the other inputs fixed; a negative coefficient lowers it. The strongest negative coefficient is the early-submission count. Registration-day and last-submission-day coefficients describe conditional associations, not causes. Correlated features, missingness handling, class weighting and the narrow cohort all affect interpretation. A coefficient is not an explanation of why a particular student withdrew.</p>
 <h3 id="7-the-leakage-control-and-random-split-comparison">7. The leakage control and random-split comparison</h3>
 <p>The deliberately invalid control supplies the final label itself as a predictor. It reaches AP=1.000 and exactly 87 predicted positives. That is a diagnostic example of cheating, not the best usable model; its outputs are labeled <code>INVALID label-leak control</code> and excluded from the valid-model comparison.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Random split seed</th>
@@ -1249,7 +1249,7 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 <p>There are 3,149 assessment records in the source, including 42 banked results. We use the <strong>3,107 unique nonbanked enrollment → assessment pairs</strong> as observed links. Each seed keeps <strong>2,487 training</strong>, <strong>310 validation</strong> and <strong>310 hidden test</strong> links. Validation is reserved and participates in standard known-truth filtering during evaluation; there is no early stopping or hyperparameter selection.</p>
 <p>Additional training support contains 772 facts: enrollment-to-offering, assessment-to-offering and assessment type. No AssessmentRecord nodes or inverse/reified paths remain that would directly reveal a hidden submission. Every candidate assessment and enrollment is represented through this metadata, so no hidden edge is dropped for a completely unknown entity. Some test enrollments have no remaining training submission links; these harder cases are retained and counted in each seed's summary.</p>
 <p>Both methods rank the <strong>same six scheduled assessments in the same offering</strong>, including the exam for which this extract has no recorded results. The baseline score is the assessment's training submission count. IDs do not break ties: the evaluator uses average/realistic rank.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Seed</th>
@@ -1291,13 +1291,13 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 </tr>
 </tbody>
 </table></div>
-<p><img alt="Link comparison" src="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/link-comparison.png" style="max-width:100%;height:auto"/></p>
+<p><img alt="Link comparison" src="../outputs/learning/runs/f7649738f7414536bc2395ef7496eebf/link-comparison.png"/></p>
 <p><strong>MRR</strong> averages reciprocal rank: first place contributes 1, second 0.5, third 0.333. <strong>Hits@1</strong> and <strong>Hits@3</strong> count how often the true assessment is in the first position or first three positions; all values and per-link ranks are saved in the report. For six random candidate ranks, expected MRR is <strong>0.408</strong>, Hits@1 <strong>0.167</strong> and Hits@3 <strong>0.500</strong>.</p>
 <p>Unfiltered evaluation retains all six alternatives, including other assessments the same enrollment truly submitted. Filtered evaluation removes those other known true links, while retaining the target. The complete truth is used for that scoring operation only; model training and popularity counts use training links. Filtering leaves only about two candidates on average, often the true assessment and an exam with no observed results. Its random-ranking MRR is already around <strong>0.72</strong>, not 0.408. This makes the high filtered scores much less surprising.</p>
 <p>TransE's mean filtered MRR is <strong>0.926</strong> versus <strong>0.984</strong> for popularity. Its mean unfiltered MRR is <strong>0.229</strong> versus <strong>0.477</strong> for popularity. TransE is even below uniform random rank on the unfiltered task. Reporting only its high filtered number would obscure this weakness.</p>
 <p>This graph is dense in mandatory assignment participation and has very few assessment candidates. Popularity captures much of that structure. We can conclude that these embeddings do not beat that baseline under this protocol. We cannot conclude that TransE never works or that an unobserved exam was not taken.</p>
 <h3 id="9-challenges-fixes-and-remaining-limits">9. Challenges, fixes and remaining limits</h3>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Challenge or observed issue</th>
@@ -1359,9 +1359,96 @@ Set-Location 'D:\DESKTOP\M2\kr-oulad'
 </code></pre>
 <p>The HTML report needs no running database. Model checkpoints (<code>.pt</code>) and runtime caches are ignored by Git; regenerate them after cloning before using the complete evidence verifier. Predictions and their interpretation remain separate from source facts and OWL inferences. Read <a href="../README.md#14-session-6--learning-and-baseline-comparisons">README section 14</a> for the execution order and file roles, and <a href="project-provenance.html#13-session-6-learning-provenance">project provenance</a> for the exact source graph and recorded software.</p>
 <p>Course reference: <a href="../../KRR/demos/session-06-learning/README.md">Session 6 lab</a>. Method references: <a href="https://scikit-learn.org/stable/common_pitfalls.html">scikit-learn leakage guidance</a>, <a href="https://scikit-learn.org/1.7/modules/generated/sklearn.metrics.average_precision_score.html">average precision</a>, <a href="https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.SAGEConv.html">GraphSAGE layer</a>, <a href="https://pykeen.readthedocs.io/en/stable/api/pykeen.models.TransE.html">PyKEEN TransE</a>, and <a href="https://pykeen.readthedocs.io/en/stable/tutorial/understanding_evaluation.html">filtered ranking evaluation</a>.</p>
+<h2 id="18-session-7-questions-checked-queries-and-grounded-answers">18. Session 7: questions, checked queries and grounded answers</h2>
+<p>We added an English-question interface over the existing 28,470 asserted RDF facts plus the 105-triple RDFS schema. It generates a VoID summary of actual data, retrieves three of eight worked examples, asks Gemini for SPARQL, checks the candidate and allows at most two repairs. It displays the query and answer rows in a browser on <strong>port 8007</strong>. The exact local execution uses the stored graph; PostgreSQL, Ontop and Fuseki are not prerequisites for this interface.</p>
+<p>The test set has ten answerable questions and three missing-data questions. Every reference query is reconciled with independent calculations from the selected CSV tables before a provider call. This protects the distinction between 748 enrollments and 712 students, the count of 12 subtype assessments, 815 late nonbanked records, 90 known low scores, 3 unknown scores, 42 banked records, 531 successful outcomes and 2 unknown deadlines.</p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th style="text-align:right">Mean row F1</th>
+<th style="text-align:right">Exact answers</th>
+<th style="text-align:right">Correct refusals</th>
+<th style="text-align:right">Successful repairs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schema</td>
+<td style="text-align:right">1.000</td>
+<td style="text-align:right">10/10</td>
+<td style="text-align:right">3/3</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>examples</td>
+<td style="text-align:right">1.000</td>
+<td style="text-align:right">10/10</td>
+<td style="text-align:right">3/3</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>repair</td>
+<td style="text-align:right">1.000</td>
+<td style="text-align:right">10/10</td>
+<td style="text-align:right">3/3</td>
+<td style="text-align:right">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>All three settings answered all ten questions exactly and refused all three missing-data questions. Examples and repair therefore showed <strong>no measured accuracy improvement on this benchmark</strong>. No live repair was needed; its behavior was verified separately with deliberately faulty, scripted responses. This is a ceiling result on a small, straightforward test, not evidence that every natural-language question will work.</p>
+<p>These are measured <strong>record-mode</strong> results from <code>gemini-3.5-flash-lite</code>, <strong>39 API requests</strong>, run <code>dd0223f4396343f48a214657557b40aa</code>. See <a href="../outputs/access/runs/dd0223f4396343f48a214657557b40aa/report.html">every attempted query and answer</a>. The primary F1 preserves row associations; the lab's flattened-value score is retained only as a comparison. Correct refusals are scored separately. The prompt examples and held-out questions have different wording, but share the same small domain and some operations; schema class counts also make several questions easy.</p>
+<p>The <strong>65 passing access checks</strong> cover reference-answer reconciliation, examples, invented and unavailable vocabulary, aliased/full IRIs, read-only restrictions, empty/boolean answers, association-sensitive scoring, scripted repair, bounded attempts, a real worker timeout, the HTTP contract and recorded-run fingerprints/scores. Scripted failures are deliberate fault tests, not fabricated Gemini results. Repairs exhausted without a valid query are labeled invalid, not accepted as missing-data refusals.</p>
+<p>The full <a href="access-results-explained.html">Session 7 explanation</a> records the pipeline, challenges, fixes, results and limits. The <a href="../README.md#15-session-7--natural-language-access">README</a> gives every command. Run <code>python src/access/serve.py</code> for the no-key catalog, then open http://127.0.0.1:8007. Catalog mode supports eight exact examples; record/live mode supports new wording using your lab key. The provider's credentials remain outside committed files. There is no new Session 7 GitHub workflow in this update.</p>
+<h3 id="interface-refresh-and-defense-readiness-review-19-october-2026">Interface refresh and defense-readiness review — 19 October 2026</h3>
+<p>The Session 7 page now presents dataset counters, a question library and separate Answer/SPARQL/Checks views. It includes keyboard submission, query copying, CSV export and responsive layouts verified at desktop, tablet and mobile widths. The query/model logic is unchanged. The working review preview is on <strong>http://127.0.0.1:8008/</strong>; the default server command remains on port 8007. During testing the earlier port-8007 preview continued to return the old page, so browser validation used a separate port rather than assuming that a file change updated a running server.</p>
+<p>The current complete replay is <a href="../outputs/access/runs/6316669854314620a77b7fa0baedf9cd/report.html"><code>6316669854314620a77b7fa0baedf9cd</code></a>, using zero API requests. Each of the three settings still has 10/10 exact factual answers and 3/3 correct refusals from saved provider responses. All 65 local/evidence checks passed. New UI assets are fingerprinted. The original live experiment retains its own source-version hashes and is historical evidence.</p>
+<p>The <a href="course-coverage-audit.html">course coverage audit</a> identifies real remaining rubric gaps: an entity-resolution experiment with precision/recall, reproducible whole-stack startup with validation before service exposure, and a final report with one open problem supported by three sources. Defense rehearsal and verification of the submitted revision remain. Session 8 itself adds no new algorithm; it is the defense of the handed-in system.</p>
+<h2 id="19-start-the-full-project-or-open-the-live-agent">19. Start the full project or open the live agent</h2>
+<p>We added two launchers to make the existing work easier to repeat. The Conda launcher orchestrates the already implemented course stages; the Docker launcher packages the live access page using existing project data.</p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>What you want</th>
+<th>Command from the project folder</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repeat the complete project</td>
+<td><code>conda activate M2ENV</code>, then <code>.\run-project.ps1</code></td>
+<td>Runs preparation, RDF, OWL, SHACL, mappings/PostgreSQL, learning and Neo4j/Fuseki views, then opens Gemini.</td>
+</tr>
+<tr>
+<td>Open Gemini using existing RDF</td>
+<td><code>.\run-project.ps1 -AccessOnly</code></td>
+<td>Validates the graph and checks access before opening the page; uses M2ENV.</td>
+</tr>
+<tr>
+<td>Run only the access page in Docker</td>
+<td><code>.\start-access-docker.ps1</code></td>
+<td>Builds/starts the access container, validates its copied snapshot, then opens port 8010. No Conda activation needed.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The full launcher needs Java, the existing lab packages and running Docker Desktop. The Docker page needs existing RDF/RDFS/shapes, Docker Desktop and the configured Gemini key. Both live options require internet access for questions. They do not retrain a local Gemini model. See <a href="../README.md#16-one-launcher-for-the-full-project">README sections 16–17</a> for all commands, options, stop instructions and troubleshooting.</p>
+<h3 id="a-successful-answer-and-a-justified-refusal">A successful answer and a justified refusal</h3>
+<ol>
+<li>Ask <strong>“How many distinct students are in the dataset?”</strong> Expected answer: <strong>712</strong>, with the executed SPARQL and query checks. The 748 enrollments include people enrolled in more than one offering.</li>
+<li>Ask <strong>“What personal reasons caused students to withdraw from AAA?”</strong> Expected behavior: a refusal explaining that personal reasons are not in the graph. A recorded withdrawal outcome does not establish its cause.</li>
+</ol>
+<p>On a live page, Gemini generates a query or a refusal. An allowed query is executed against the local RDF; its rows supply the factual answer. The <strong>Answer</strong>, <strong>SPARQL</strong> and <strong>Checks</strong> tabs let you inspect this chain. Refusal, invalid-query exhaustion and provider errors are separate outcomes. A loading indicator is shown while processing; the final result appears when it finishes.</p>
+<h3 id="what-startup-adds-to-our-validation-story">What startup adds to our validation story</h3>
+<p>The launchers require a passing SHACL gate before starting a new access server. The Docker container also freezes a copy of its mounted inputs, so changing the host graph cannot silently change that running session. Restart to validate and use new data. Direct <code>serve.py</code> remains a low-level command without this startup gate; the documented launchers are the preferred entry points.</p>
+<p>The known graph has five warnings and zero violations. Warnings describe existing unknown values and remain in the report. They do not become fabricated values and do not block this project's gate. Any violation or missing required target stops the launcher/container before the page is served.</p>
+<p>The Conda launcher defaults to port 8009 and chooses the next available port if needed. Docker defaults to 8010; choose <code>-Port 8011</code> if another application occupies it. Each new live server has a ten-request default cap; repairs can consume more than one request per question. Opening the page makes no provider call. These launcher checks and startup receipts do not replace the separate Session 7 benchmark.</p>
+<h3 id="evidence-and-limits">Evidence and limits</h3>
+<p>Full/local execution receipts are under <code>outputs/project/runs/</code>; Docker startup, SHACL and PROV records are under <code>outputs/docker-access/container/runs/</code>. The <a href="project-provenance.html">provenance document</a> records what was actually tested for this update. Earlier dated reports remain historical evidence and must not be relabeled as new live Gemini runs.</p>
+<p>This Docker scope is the access page using prepared data, as requested. It does not implement a clean-checkout Docker rebuild of every course layer, an entity-resolution evaluation, or the final defense report. The existing VoID export is still produced by the same function that constructs the prompt description; the runtime does not read <code>void.ttl</code> back as its schema input.</p>
 <h2 id="appendix-all-shacl-verification-checks">Appendix: all SHACL verification checks</h2>
 <p>The following table is inserted directly from the saved verification report when this guide is generated. It describes the checked behavior; it does not mean these deliberate faults occurred in the real dataset.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th style="text-align:right">#</th>

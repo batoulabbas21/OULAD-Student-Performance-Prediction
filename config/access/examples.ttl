@@ -1,0 +1,51 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+<https://example.org/oulad/example/01-enrollments> a sh:SPARQLExecutable ;
+    rdfs:comment "How many enrollments are there in each offering?" ;
+    sh:select """PREFIX edu: <https://example.org/oulad/schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?presentation (COUNT(?e) AS ?count) WHERE { ?e a edu:Enrollment; edu:inOffering ?o. ?o edu:presentationCode ?presentation } GROUP BY ?presentation ORDER BY ?presentation""" .
+
+<https://example.org/oulad/example/02-students> a sh:SPARQLExecutable ;
+    rdfs:comment "How many distinct students are in each offering?" ;
+    sh:select """PREFIX edu: <https://example.org/oulad/schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?presentation (COUNT(DISTINCT ?s) AS ?count) WHERE { ?e edu:hasStudent ?s; edu:inOffering ?o. ?o edu:presentationCode ?presentation } GROUP BY ?presentation ORDER BY ?presentation""" .
+
+<https://example.org/oulad/example/03-types> a sh:SPARQLExecutable ;
+    rdfs:comment "List assessment types and their counts." ;
+    sh:select """PREFIX edu: <https://example.org/oulad/schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?type (COUNT(?a) AS ?count) WHERE { ?a a ?type. ?type rdfs:subClassOf* edu:Assessment } GROUP BY ?type ORDER BY ?type""" .
+
+<https://example.org/oulad/example/04-banked> a sh:SPARQLExecutable ;
+    rdfs:comment "How many banked assessment records are in each offering?" ;
+    sh:select """PREFIX edu: <https://example.org/oulad/schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?presentation (COUNT(?r) AS ?count) WHERE { ?r edu:isBanked true; edu:recordForEnrollment ?e. ?e edu:inOffering ?o. ?o edu:presentationCode ?presentation } GROUP BY ?presentation ORDER BY ?presentation""" .
+
+<https://example.org/oulad/example/05-unknown> a sh:SPARQLExecutable ;
+    rdfs:comment "List records whose score is unknown." ;
+    sh:select """PREFIX edu: <https://example.org/oulad/schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?record WHERE { ?record a edu:AssessmentRecord. FILTER NOT EXISTS { ?record edu:score ?s } } ORDER BY ?record""" .
+
+<https://example.org/oulad/example/06-submissions> a sh:SPARQLExecutable ;
+    rdfs:comment "How many non-banked assessment records are there?" ;
+    sh:select """PREFIX edu: <https://example.org/oulad/schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (COUNT(?r) AS ?count) WHERE { ?r a edu:AssessmentRecord; edu:isBanked false }""" .
+
+<https://example.org/oulad/example/07-resources> a sh:SPARQLExecutable ;
+    rdfs:comment "How many learning resources of each activity type are described?" ;
+    sh:select """PREFIX edu: <https://example.org/oulad/schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?type (COUNT(?r) AS ?count) WHERE { ?r a edu:LearningResource; edu:activityType ?type } GROUP BY ?type ORDER BY ?type""" .
+
+<https://example.org/oulad/example/08-pass> a sh:SPARQLExecutable ;
+    rdfs:comment "How many enrollments have final result Pass in 2013J?" ;
+    sh:select """PREFIX edu: <https://example.org/oulad/schema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT (COUNT(?e) AS ?count) WHERE { ?e edu:finalResult "Pass"; edu:inOffering ?o. ?o edu:presentationCode "2013J" }""" .
+

@@ -1,0 +1,31 @@
+{
+  "started_at_utc": "2026-10-19T20:26:08.813630+00:00",
+  "finished_at_utc": "2026-10-19T20:26:09.044640+00:00",
+  "connection": {
+    "host": "127.0.0.1",
+    "port": 5433,
+    "database": "oulad",
+    "schema": "oulad_demo"
+  },
+  "inputs": {
+    "D:\\DESKTOP\\M2\\kr-oulad\\data\\interim\\courses.csv": "f52e7042dffa402110e0fb1086da3ba7569a6de76c496e09ffaf7d1dcd49e4eb",
+    "D:\\DESKTOP\\M2\\kr-oulad\\data\\interim\\studentInfo.csv": "c4fc15dbe643c29f710e815c8d523a34828f3b434317e6854898552884327d75",
+    "D:\\DESKTOP\\M2\\kr-oulad\\data\\interim\\studentRegistration.csv": "8933cc554f26e5345f991a55f522f8c3ef212c9c8cf25609ad8ee54a511edfb0",
+    "D:\\DESKTOP\\M2\\kr-oulad\\data\\interim\\assessments.csv": "c331b9eb8cbddb982d97f47ff4e07760bfa648025214b089ac70d40c13fa4896",
+    "D:\\DESKTOP\\M2\\kr-oulad\\data\\interim\\studentAssessment.csv": "e2bde03c12ff7e7b51da0ba32a476422c3fb6bb65e5dfd3f86b298c593dfbcd9",
+    "D:\\DESKTOP\\M2\\kr-oulad\\data\\interim\\vle.csv": "cc29dc5adf8457cab0f57c0411402c264aad43650d74a6db0511d42d012d9678"
+  },
+  "schema_sha256": "bdf675841780d8f9a7d868a5408f42ba97e845ea075dd14b5f10fa63ddf2a242",
+  "database": {
+    "sha256": "134942e63134f95c1c527b247c6e6a925b64bf88f168bf4be7e193bcade99983",
+    "row_counts": {
+      "courses": 2,
+      "student_info": 748,
+      "student_registration": 748,
+      "assessments": 12,
+      "student_assessment": 3149,
+      "vle": 413
+    }
+  },
+  "mode": "replace-six-managed-tables-in-one-transaction"
+}

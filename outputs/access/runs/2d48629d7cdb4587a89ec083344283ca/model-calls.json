@@ -1,0 +1,470 @@
+[
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "ab609024c77a5ec7a432f6b99e0c7680cbe86ea0fb95585cd3ede810cdfde7bb",
+    "recorded_at_utc": "2026-10-18T12:25:49.873339+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(DISTINCT ?student) AS ?count)\nWHERE {\n  ?enrollment edu:hasStudent ?student .\n  ?enrollment edu:inOffering ?offering .\n  ?offering edu:offeringOf ?module .\n  ?module <http://www.w3.org/2000/01/rdf-schema#label> \"AAA\" .\n}",
+    "usage": {
+      "completion_tokens": 104,
+      "prompt_tokens": 1119,
+      "total_tokens": 1223
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "2453932ccb7032d71a46132ed1316c865dbf62677f85d195f5c6f519e6a36d9c",
+    "recorded_at_utc": "2026-10-18T12:25:53.750137+00:00",
+    "reply": "```sparql\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?enrollment) AS ?totalEnrollments)\nWHERE {\n  ?enrollment a edu:Enrollment ;\n              edu:inOffering ?offering .\n  ?offering edu:presentationCode \"2014J\" .\n}\n```",
+    "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 1126,
+      "total_tokens": 1204
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "9685b860a80a90911945666b1ec067e8dc7749671b9fe114d58274d3322d9714",
+    "recorded_at_utc": "2026-10-18T12:25:57.508898+00:00",
+    "reply": "```sparql\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(DISTINCT ?assessment) AS ?count)\nWHERE {\n  ?offering edu:offeringOf ?module .\n  ?module rdfs:label \"AAA\" .\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  ?assessment edu:assessmentInOffering ?offering .\n}\n```",
+    "usage": {
+      "completion_tokens": 122,
+      "prompt_tokens": 1126,
+      "total_tokens": 1248
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "ae280920b1d5b728f2ea933216c56ea06f7205ebf39ee1df1484a90b61a1f502",
+    "recorded_at_utc": "2026-10-18T12:26:01.492380+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT ?presentation ?finalResult (COUNT(?enrollment) AS ?count)\nWHERE {\n  ?enrollment a edu:Enrollment ;\n              edu:finalResult ?finalResult ;\n              edu:inOffering ?offering .\n  ?offering edu:presentationCode ?presentation .\n}\nGROUP BY ?presentation ?finalResult\nORDER BY ?presentation ?finalResult",
+    "usage": {
+      "completion_tokens": 96,
+      "prompt_tokens": 1135,
+      "total_tokens": 1231
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "e395981f962b9632a78d96e878bef2df72473482878994fd052cc6c34d33ddfa",
+    "recorded_at_utc": "2026-10-18T12:26:05.706988+00:00",
+    "reply": "```sparql\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?record) AS ?lateCount)\nWHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked false ;\n          edu:submissionDay ?subDay ;\n          edu:forAssessment ?assessment .\n  \n  ?assessment edu:deadlineDay ?deadDay .\n  \n  FILTER(?subDay > ?deadDay)\n}\n```",
+    "usage": {
+      "completion_tokens": 103,
+      "prompt_tokens": 1126,
+      "total_tokens": 1229
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "7bbcb627a470d1f45b9861f4082b871e002fbecd68a0ca9e42f3a4f09f787b4f",
+    "recorded_at_utc": "2026-10-18T12:26:09.299556+00:00",
+    "reply": "```sparql\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?record) AS ?count)\nWHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:score ?score .\n  FILTER(?score < 40)\n}\n```",
+    "usage": {
+      "completion_tokens": 65,
+      "prompt_tokens": 1127,
+      "total_tokens": 1192
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "11d169b5a741b06a5bdd8c821e909fcf48ced3f5572f1ede49d4acc3d2861194",
+    "recorded_at_utc": "2026-10-18T12:26:13.457060+00:00",
+    "reply": "```sparql\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?record) AS ?count)\nWHERE {\n  ?record a edu:AssessmentRecord .\n  FILTER NOT EXISTS { ?record edu:score ?score . }\n}\n```",
+    "usage": {
+      "completion_tokens": 62,
+      "prompt_tokens": 1119,
+      "total_tokens": 1181
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "49373ea2d457684ab6eb939ad7d6a886db836ee7071ac8a7d328657e4b33f830",
+    "recorded_at_utc": "2026-10-18T12:26:17.366402+00:00",
+    "reply": "```sparql\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT (COUNT(?record) AS ?totalBanked)\nWHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked true .\n}\n```",
+    "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 1120,
+      "total_tokens": 1200
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "551f25a50e2e4b8c1f2e5bd0c153204c9e94492a4d448fbdc71ea61833c83462",
+    "recorded_at_utc": "2026-10-18T12:26:21.416062+00:00",
+    "reply": "```sparql\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?enrollment) AS ?successfulEnrollments)\nWHERE {\n  ?enrollment a edu:Enrollment ;\n              edu:finalResult ?result .\n  FILTER(?result IN (\"Pass\", \"Distinction\"))\n}\n```",
+    "usage": {
+      "completion_tokens": 73,
+      "prompt_tokens": 1122,
+      "total_tokens": 1195
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "0bf3cd9adca32d33b82d3c87d850f9ee87b6ab5ac6a4cf5f6c83abbd7a6383aa",
+    "recorded_at_utc": "2026-10-18T12:26:26.005511+00:00",
+    "reply": "```sparql\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(DISTINCT ?assessment) AS ?count)\nWHERE {\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  FILTER NOT EXISTS { ?assessment edu:deadlineDay ?deadline }\n}\n```",
+    "usage": {
+      "completion_tokens": 130,
+      "prompt_tokens": 1119,
+      "total_tokens": 1249
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "933baf45eab441281f9ea207bdd3e9909fb5aeb44ad21407464833fdfb1a84f2",
+    "recorded_at_utc": "2026-10-18T12:26:29.122444+00:00",
+    "reply": "REFUSE: reasons for withdrawal",
+    "usage": {
+      "completion_tokens": 6,
+      "prompt_tokens": 1120,
+      "total_tokens": 1126
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "8cb349f011fa61720c910201f210f72b99ad8595c34f0b9aee6160524404a2d1",
+    "recorded_at_utc": "2026-10-18T12:26:33.252015+00:00",
+    "reply": "REFUSE: instructor names are not present in the dataset.",
+    "usage": {
+      "completion_tokens": 12,
+      "prompt_tokens": 1122,
+      "total_tokens": 1134
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "8f0c54c8c226a3301db9688cc4f6fded8e96fc66f68a83955144083db6247e2e",
+    "recorded_at_utc": "2026-10-18T12:26:37.651613+00:00",
+    "reply": "REFUSE: Study hours are not measurable from this dataset.",
+    "usage": {
+      "completion_tokens": 12,
+      "prompt_tokens": 1120,
+      "total_tokens": 1132
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "e4572f96fe45e3aeabe6dc6ad14f20d78c9cc5eb02547fea1425351fb688c56f",
+    "recorded_at_utc": "2026-10-18T12:27:35.777141+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(DISTINCT ?student) AS ?count)\nWHERE {\n  ?enrollment edu:hasStudent ?student .\n}",
+    "usage": {
+      "completion_tokens": 73,
+      "prompt_tokens": 1426,
+      "total_tokens": 1499
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "5e50ffa46c29a4b14dce7a5f52267132f09e26b1cc6dc16c811e72469c73259f",
+    "recorded_at_utc": "2026-10-18T12:27:39.658264+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nSELECT (COUNT(?e) AS ?count) WHERE { ?e a edu:Enrollment; edu:inOffering ?o. ?o edu:presentationCode \"2014J\" }",
+    "usage": {
+      "completion_tokens": 84,
+      "prompt_tokens": 1443,
+      "total_tokens": 1527
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "17a687071485f2626ed8bfaa16145ce8b63c3508ab0b886342054efb183f3174",
+    "recorded_at_utc": "2026-10-18T12:27:43.400073+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?a) AS ?count) WHERE {\n  ?a a/rdfs:subClassOf* edu:Assessment ;\n     edu:assessmentInOffering ?o .\n  ?o edu:offeringOf ?m .\n  ?m rdfs:label \"AAA\" .\n}",
+    "usage": {
+      "completion_tokens": 108,
+      "prompt_tokens": 1433,
+      "total_tokens": 1541
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "10ce1dd8a69eaf5fba2aee0a4e175e9d51d487669e369f0d644a3b3346a27efd",
+    "recorded_at_utc": "2026-10-18T12:27:47.374544+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?presentation ?finalResult (COUNT(?e) AS ?count)\nWHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?finalResult ;\n     edu:inOffering ?o .\n  ?o edu:presentationCode ?presentation .\n}\nGROUP BY ?presentation ?finalResult\nORDER BY ?presentation ?finalResult",
+    "usage": {
+      "completion_tokens": 119,
+      "prompt_tokens": 1452,
+      "total_tokens": 1571
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "4b24f3e08145199b70c7e6febd4a07fc500c7e49739c21f1f5aa5a6c9e5cd401",
+    "recorded_at_utc": "2026-10-18T12:27:51.497495+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked false ;\n          edu:submissionDay ?subDay ;\n          edu:forAssessment ?assessment .\n  ?assessment edu:deadlineDay ?deadlineDay .\n  FILTER(?subDay > ?deadlineDay)\n}",
+    "usage": {
+      "completion_tokens": 118,
+      "prompt_tokens": 1424,
+      "total_tokens": 1542
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "698a1079f21db034bdc7a12d8548215e5ce2e17801e75c097a6aed999da44416",
+    "recorded_at_utc": "2026-10-18T12:27:55.516802+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:score ?score .\n  FILTER (?score < 40)\n}",
+    "usage": {
+      "completion_tokens": 107,
+      "prompt_tokens": 1414,
+      "total_tokens": 1521
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "859d91ff9733ff8bacbf3495a4cc25671de05ab07a291e4f38497f3c327ef50e",
+    "recorded_at_utc": "2026-10-18T12:27:59.372814+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord .\n  FILTER NOT EXISTS { ?record edu:score ?score }\n}",
+    "usage": {
+      "completion_tokens": 81,
+      "prompt_tokens": 1406,
+      "total_tokens": 1487
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "cdfea6e66609d707b228ca0cd9ed48857cd61a8770bb385885f8606e33dbd165",
+    "recorded_at_utc": "2026-10-18T12:28:03.554470+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:isBanked true .\n}",
+    "usage": {
+      "completion_tokens": 76,
+      "prompt_tokens": 1418,
+      "total_tokens": 1494
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "a0cc8756abbb6993869cc8e01bcab00165c3207a9fc3b83b3feea4e7d3bb10bc",
+    "recorded_at_utc": "2026-10-18T12:28:07.412604+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?e) AS ?count) WHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?result .\n  FILTER(?result IN (\"Pass\", \"Distinction\"))\n}",
+    "usage": {
+      "completion_tokens": 89,
+      "prompt_tokens": 1439,
+      "total_tokens": 1528
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "545a1ed4595d535dc084ded126f4d6f6a8b4537a04956d7e4c72b67f21dc285c",
+    "recorded_at_utc": "2026-10-18T12:28:11.416291+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?assessment) AS ?count) WHERE {\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  FILTER NOT EXISTS { ?assessment edu:deadlineDay ?d }\n}",
+    "usage": {
+      "completion_tokens": 89,
+      "prompt_tokens": 1414,
+      "total_tokens": 1503
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "04def9bfdff4762b56206e4fa3ebcce081996278f485bef9de9cbb5152d5a9ad",
+    "recorded_at_utc": "2026-10-18T12:28:15.374110+00:00",
+    "reply": "REFUSE: The graph has regions and age bands, but no exact ages, personal names, instructors, reasons for withdrawal or real module titles.",
+    "usage": {
+      "completion_tokens": 29,
+      "prompt_tokens": 1427,
+      "total_tokens": 1456
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "39923a55ca441b1179baf860191cb7a08ac9c2cf02bedc812b0807ed7e6f650a",
+    "recorded_at_utc": "2026-10-18T12:28:19.444212+00:00",
+    "reply": "REFUSE: personal names and instructors are missing from the dataset.",
+    "usage": {
+      "completion_tokens": 13,
+      "prompt_tokens": 1429,
+      "total_tokens": 1442
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "deedd9c5de10c155e130f8330803444c92ad0338b69027e6e925dad96f4c0c3c",
+    "recorded_at_utc": "2026-10-18T12:28:23.306520+00:00",
+    "reply": "REFUSE: Study hours are not measurable from this dataset.",
+    "usage": {
+      "completion_tokens": 12,
+      "prompt_tokens": 1427,
+      "total_tokens": 1439
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "e4572f96fe45e3aeabe6dc6ad14f20d78c9cc5eb02547fea1425351fb688c56f",
+    "recorded_at_utc": "2026-10-18T12:27:35.777141+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(DISTINCT ?student) AS ?count)\nWHERE {\n  ?enrollment edu:hasStudent ?student .\n}",
+    "usage": {
+      "completion_tokens": 73,
+      "prompt_tokens": 1426,
+      "total_tokens": 1499
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "5e50ffa46c29a4b14dce7a5f52267132f09e26b1cc6dc16c811e72469c73259f",
+    "recorded_at_utc": "2026-10-18T12:27:39.658264+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nSELECT (COUNT(?e) AS ?count) WHERE { ?e a edu:Enrollment; edu:inOffering ?o. ?o edu:presentationCode \"2014J\" }",
+    "usage": {
+      "completion_tokens": 84,
+      "prompt_tokens": 1443,
+      "total_tokens": 1527
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "17a687071485f2626ed8bfaa16145ce8b63c3508ab0b886342054efb183f3174",
+    "recorded_at_utc": "2026-10-18T12:27:43.400073+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?a) AS ?count) WHERE {\n  ?a a/rdfs:subClassOf* edu:Assessment ;\n     edu:assessmentInOffering ?o .\n  ?o edu:offeringOf ?m .\n  ?m rdfs:label \"AAA\" .\n}",
+    "usage": {
+      "completion_tokens": 108,
+      "prompt_tokens": 1433,
+      "total_tokens": 1541
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "10ce1dd8a69eaf5fba2aee0a4e175e9d51d487669e369f0d644a3b3346a27efd",
+    "recorded_at_utc": "2026-10-18T12:27:47.374544+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?presentation ?finalResult (COUNT(?e) AS ?count)\nWHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?finalResult ;\n     edu:inOffering ?o .\n  ?o edu:presentationCode ?presentation .\n}\nGROUP BY ?presentation ?finalResult\nORDER BY ?presentation ?finalResult",
+    "usage": {
+      "completion_tokens": 119,
+      "prompt_tokens": 1452,
+      "total_tokens": 1571
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "4b24f3e08145199b70c7e6febd4a07fc500c7e49739c21f1f5aa5a6c9e5cd401",
+    "recorded_at_utc": "2026-10-18T12:27:51.497495+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked false ;\n          edu:submissionDay ?subDay ;\n          edu:forAssessment ?assessment .\n  ?assessment edu:deadlineDay ?deadlineDay .\n  FILTER(?subDay > ?deadlineDay)\n}",
+    "usage": {
+      "completion_tokens": 118,
+      "prompt_tokens": 1424,
+      "total_tokens": 1542
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "698a1079f21db034bdc7a12d8548215e5ce2e17801e75c097a6aed999da44416",
+    "recorded_at_utc": "2026-10-18T12:27:55.516802+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:score ?score .\n  FILTER (?score < 40)\n}",
+    "usage": {
+      "completion_tokens": 107,
+      "prompt_tokens": 1414,
+      "total_tokens": 1521
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "859d91ff9733ff8bacbf3495a4cc25671de05ab07a291e4f38497f3c327ef50e",
+    "recorded_at_utc": "2026-10-18T12:27:59.372814+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord .\n  FILTER NOT EXISTS { ?record edu:score ?score }\n}",
+    "usage": {
+      "completion_tokens": 81,
+      "prompt_tokens": 1406,
+      "total_tokens": 1487
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "cdfea6e66609d707b228ca0cd9ed48857cd61a8770bb385885f8606e33dbd165",
+    "recorded_at_utc": "2026-10-18T12:28:03.554470+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:isBanked true .\n}",
+    "usage": {
+      "completion_tokens": 76,
+      "prompt_tokens": 1418,
+      "total_tokens": 1494
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "a0cc8756abbb6993869cc8e01bcab00165c3207a9fc3b83b3feea4e7d3bb10bc",
+    "recorded_at_utc": "2026-10-18T12:28:07.412604+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?e) AS ?count) WHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?result .\n  FILTER(?result IN (\"Pass\", \"Distinction\"))\n}",
+    "usage": {
+      "completion_tokens": 89,
+      "prompt_tokens": 1439,
+      "total_tokens": 1528
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "545a1ed4595d535dc084ded126f4d6f6a8b4537a04956d7e4c72b67f21dc285c",
+    "recorded_at_utc": "2026-10-18T12:28:11.416291+00:00",
+    "reply": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?assessment) AS ?count) WHERE {\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  FILTER NOT EXISTS { ?assessment edu:deadlineDay ?d }\n}",
+    "usage": {
+      "completion_tokens": 89,
+      "prompt_tokens": 1414,
+      "total_tokens": 1503
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "04def9bfdff4762b56206e4fa3ebcce081996278f485bef9de9cbb5152d5a9ad",
+    "recorded_at_utc": "2026-10-18T12:28:15.374110+00:00",
+    "reply": "REFUSE: The graph has regions and age bands, but no exact ages, personal names, instructors, reasons for withdrawal or real module titles.",
+    "usage": {
+      "completion_tokens": 29,
+      "prompt_tokens": 1427,
+      "total_tokens": 1456
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "39923a55ca441b1179baf860191cb7a08ac9c2cf02bedc812b0807ed7e6f650a",
+    "recorded_at_utc": "2026-10-18T12:28:19.444212+00:00",
+    "reply": "REFUSE: personal names and instructors are missing from the dataset.",
+    "usage": {
+      "completion_tokens": 13,
+      "prompt_tokens": 1429,
+      "total_tokens": 1442
+    },
+    "replayed": true
+  },
+  {
+    "model": "gemini-3.5-flash-lite",
+    "prompt_sha256": "deedd9c5de10c155e130f8330803444c92ad0338b69027e6e925dad96f4c0c3c",
+    "recorded_at_utc": "2026-10-18T12:28:23.306520+00:00",
+    "reply": "REFUSE: Study hours are not measurable from this dataset.",
+    "usage": {
+      "completion_tokens": 12,
+      "prompt_tokens": 1427,
+      "total_tokens": 1439
+    },
+    "replayed": true
+  }
+]

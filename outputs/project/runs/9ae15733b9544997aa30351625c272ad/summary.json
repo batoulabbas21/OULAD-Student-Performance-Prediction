@@ -1,0 +1,156 @@
+{
+  "run_id": "9ae15733b9544997aa30351625c272ad",
+  "started_at_utc": "2026-10-19T20:09:12.823082+00:00",
+  "status": "failed",
+  "profile": "full",
+  "mode": "live",
+  "graph_services": true,
+  "python": "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+  "model": "gemini-3.5-flash-lite",
+  "max_requests": 10,
+  "launcher_sha256": "df3b9c07bd6c85ee27732427d1585c88686ebe4e4b314102d64114a4fba7e7fa",
+  "stages": [
+    {
+      "stage": "Data download, profiling, RDF, core SHACL gate and competency queries",
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "-NoProfile",
+        "-File",
+        "D:\\DESKTOP\\M2\\kr-oulad\\run-core.ps1"
+      ],
+      "started_at_utc": "2026-10-19T20:09:12.825435+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-19T20:10:41.836206+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Prepare OWL ontology and local imports",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "src/graph/prepare_ontology.py"
+      ],
+      "started_at_utc": "2026-10-19T20:10:41.843814+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-19T20:10:43.030401+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Reason over the OWL sample",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "src/graph/owl_reasoner.py"
+      ],
+      "started_at_utc": "2026-10-19T20:10:43.030401+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-19T20:10:44.205684+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Reason over the complete asserted graph",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "src/graph/owl_reasoner.py",
+        "--full-data"
+      ],
+      "started_at_utc": "2026-10-19T20:10:44.205684+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-19T20:22:39.955348+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Verify ontology semantics and counts",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "evaluation/verify_ontology.py"
+      ],
+      "started_at_utc": "2026-10-19T20:22:39.955858+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-19T20:22:45.445702+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Execute ontology notebook and export its HTML",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "src/graph/build_ontology_notebook.py"
+      ],
+      "started_at_utc": "2026-10-19T20:22:45.446706+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-19T20:22:53.392091+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "SHACL good/bad examples, triage and verification",
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "-NoProfile",
+        "-File",
+        "D:\\DESKTOP\\M2\\kr-oulad\\run-shacl.ps1"
+      ],
+      "started_at_utc": "2026-10-19T20:22:53.392982+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-19T20:24:20.467489+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "PostgreSQL, mappings, materialization and virtualization",
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "-NoProfile",
+        "-File",
+        "D:\\DESKTOP\\M2\\kr-oulad\\run-integration.ps1"
+      ],
+      "started_at_utc": "2026-10-19T20:24:20.467489+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-19T20:26:21.281240+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Learning experiments and evidence verification",
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "-NoProfile",
+        "-File",
+        "D:\\DESKTOP\\M2\\kr-oulad\\run-learning.ps1"
+      ],
+      "started_at_utc": "2026-10-19T20:26:21.282225+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-19T20:27:49.146641+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Start the existing lab Neo4j service",
+      "command": [
+        "docker",
+        "compose",
+        "-f",
+        "D:\\DESKTOP\\M2\\KRR\\demos\\docker-compose.yml",
+        "up",
+        "-d",
+        "--wait",
+        "--wait-timeout",
+        "120",
+        "neo4j"
+      ],
+      "started_at_utc": "2026-10-19T20:27:49.157055+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-19T20:27:50.188827+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Load and verify the OULAD Neo4j projection",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "src/graph/neo4j_comparison.py"
+      ],
+      "started_at_utc": "2026-10-19T20:27:50.188827+00:00",
+      "status": "failed",
+      "finished_at_utc": "2026-10-19T20:27:54.678669+00:00",
+      "exit_code": 1
+    }
+  ],
+  "api_requests": 0,
+  "note": "JSON orchestration receipt; individual stages retain their own reports and PROV. API count updates on orderly server shutdown.",
+  "finished_at_utc": "2026-10-19T20:27:54.678669+00:00",
+  "error": "Stage failed: Load and verify the OULAD Neo4j projection. No later stage or new access server was started."
+}

@@ -1,0 +1,5 @@
+SELECT COUNT(*) AS "v1"
+FROM (SELECT DISTINCT v1."id_assessment" AS "id_assessment1m8", v1."id_student" AS "id_student1m8", v1."score" AS "score1m19"
+FROM "v_assessment_records" v1
+WHERE ((CAST(v1."score" AS DECIMAL) < 40::DECIMAL) AND v1."score" IS NOT NULL AND v1."id_assessment" IS NOT NULL AND v1."id_student" IS NOT NULL)
+) v3

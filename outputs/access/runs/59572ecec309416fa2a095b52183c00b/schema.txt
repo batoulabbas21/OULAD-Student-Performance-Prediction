@@ -1,0 +1,41 @@
+Observed asserted fact triples: 28470. Counts below are direct types, without OWL inference.
+edu:AssessmentRecord: 3149 directly typed instances
+  edu:forAssessment -> edu:TutorMarkedAssessment
+  edu:isBanked -> xsd:boolean
+  edu:recordForEnrollment -> edu:Enrollment
+  edu:score -> xsd:decimal
+  edu:submissionDay -> xsd:integer
+edu:CourseOffering: 2 directly typed instances
+  http://www.w3.org/2000/01/rdf-schema#label -> xsd:string
+  edu:lengthDays -> xsd:integer
+  edu:offeringOf -> edu:Module
+  edu:presentationCode -> xsd:string
+edu:Enrollment: 748 directly typed instances
+  edu:ageBand -> xsd:string
+  edu:finalResult -> xsd:string
+  edu:hasStudent -> edu:Student
+  edu:highestEducation -> xsd:string
+  edu:inOffering -> edu:CourseOffering
+  edu:previousAttempts -> xsd:integer
+  edu:region -> xsd:string
+  edu:registrationDay -> xsd:integer
+  edu:unregistrationDay -> xsd:integer
+edu:Exam: 2 directly typed instances
+  edu:assessmentInOffering -> edu:CourseOffering
+  edu:weightPercent -> xsd:decimal
+edu:LearningResource: 413 directly typed instances
+  edu:activityType -> xsd:string
+  edu:resourceInOffering -> edu:CourseOffering
+edu:Module: 1 directly typed instances
+  http://www.w3.org/2000/01/rdf-schema#label -> xsd:string
+edu:Student: 712 directly typed instances
+  edu:studentId -> xsd:string
+edu:TutorMarkedAssessment: 10 directly typed instances
+  edu:assessmentInOffering -> edu:CourseOffering
+  edu:deadlineDay -> xsd:integer
+  edu:weightPercent -> xsd:decimal
+edu:ComputerMarkedAssessment rdfs:subClassOf edu:Assessment
+edu:Exam rdfs:subClassOf edu:Assessment
+edu:Student rdfs:subClassOf edu:Person
+edu:TutorMarkedAssessment rdfs:subClassOf edu:Assessment
+Declared but no instances or subclass instances loaded: edu:ComputerMarkedAssessment, edu:DailyInteraction

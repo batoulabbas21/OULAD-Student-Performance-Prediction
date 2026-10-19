@@ -2,7 +2,7 @@
 
 **Where the data came from, what we changed, and why the results can be traced.**
 
-Prepared on **13 October 2026**, updated through Session 6 on **18 October 2026** for the `kr-oulad` project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the [README](../README.md) for commands. Jump to [SHACL evidence](#session-4-validation-evidence), [SHACL and CI](#shacl-and-ci-what-is-implemented-and-what-has-run), or [validation-run provenance](#10-connection-to-the-course-provenance-lesson).
+Prepared on **13 October 2026**, updated through Session 7 on **18 October 2026** for the `kr-oulad` project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the [README](../README.md) for commands. Jump to [SHACL evidence](#session-4-validation-evidence), [SHACL and CI](#shacl-and-ci-what-is-implemented-and-what-has-run), or [validation-run provenance](#10-connection-to-the-course-provenance-lesson).
 
 > **Provenance means the history behind a result.** For this project, it connects an original CSV row to its RDF representation, the ontology definition applied to it, and the resulting answer.
 
@@ -24,6 +24,7 @@ The project turns a small, understandable part of OULAD into a knowledge graph. 
 | Session 5 | 28,470 mapped triples; 23 integration checks passed for full AAA and 23 for the fixture |
 | Integration CI | New PostgreSQL fixture workflow prepared; no remote run evidence recorded here |
 | Session 6 learning | 21 learning checks and 54 evidence checks passed; predictions retained separately |
+| Session 7 access | 65 local/evidence checks passed; measured Gemini comparison recorded |
 
 The current build excludes daily activity from `studentVle.csv`. An activity question is therefore marked **unavailable**; omitted activity does not mean that students made zero clicks.
 
@@ -331,3 +332,46 @@ The current [project snapshot](provenance-snapshot.json) incorporates new eviden
 The current learning suite is local. This update adds no learning CI workflow and makes no claim that GitHub ran the models. Existing SHACL and integration workflows have their own scope and evidence. No commit or push was performed for Session 6.
 
 The [detailed learning explanation](learning-results-explained.html) records the cohort changes, metrics, failure modes, actual fixes and limitations. The [README](../README.md#14-session-6--learning-and-baseline-comparisons) gives all steps. This is a teaching experiment on one module and one future offering, with date-based availability assumptions and uncalibrated scores, not a deployed student decision system.
+
+## 14. Session 7 access provenance
+
+The access activity **`dd0223f4396343f48a214657557b40aa`** reads `data/processed/oulad.ttl` and `ontology/education.rdfs.ttl`. These are the existing asserted facts and RDFS schema, not the separate OWL inference output or Session 6 predictions. It uses the course Session 7 architecture with OULAD-specific examples, questions, interpretation rules and independent CSV answers. The original course scripts remain unchanged.
+
+This live **record-mode** run started **2026-10-18T12:25:42.707752+00:00** and completed its evaluation loop **2026-10-18T12:28:23.320689+00:00** (UTC), before report/manifest assembly. Model **gemini-3.5-flash-lite**, **39 API requests**, within the user-approved maximum of 45. The existing lab key was read from its configured file without copying it into the project. Credentials and raw provider error bodies are absent from the saved evidence. The project `.env.access` option is ignored by Git.
+
+Input fingerprints cover the asserted graph, schema, six selected CSV tables, examples, held-out questions, domain prompt, access code and verification script. Each run's VoID/schema files describe the actual queried snapshot. Reference SPARQL answers must agree with separate pandas calculations before model generation starts. The ten answerable questions and three refusal cases are distinct from the eight prompt-example questions. Their authored wording is held out, not their entire domain; some related operations occur in both sets.
+
+The cache and `model-calls.json` retain genuine responses, model identity, prompt key, timestamp and provider-reported token usage. Exact prompt keys include the chosen model and prompt text, which includes data/schema fingerprints. `answers.json` links each question/setting to attempted queries, diagnostics, returned rows and its score. The source prompt and deterministic retrieval logic reconstruct prompt context for the corresponding source version. A replay reuses these responses and is explicitly labeled replay; it must not be counted as fresh live model performance. The instructor's Brunel cache was never used as OULAD evidence.
+
+A full replay **`2d48629d7cdb4587a89ec083344283ca`** subsequently completed with **0 API requests**; see its [report](../outputs/access/runs/2d48629d7cdb4587a89ec083344283ca/report.html). The latest-evaluation pointer now identifies that replay. The live run above remains the source of model-performance claims. The 39 live responses are retained individually; the response cache has 26 unique keys because examples and repair share the same initial prompts. For repeated prompt keys the latest recorded response is retained in the cache.
+
+| Setting | Mean row F1 | Exact answers | Correct refusals | Successful repairs |
+|---|---:|---:|---:|---:|
+| schema | 1.000 | 10/10 | 3/3 | 0 |
+| examples | 1.000 | 10/10 | 3/3 | 0 |
+| repair | 1.000 | 10/10 | 3/3 | 0 |
+
+
+All three settings answered all ten questions exactly and refused all three missing-data questions. Examples and repair therefore showed **no measured accuracy improvement on this benchmark**. No live repair was needed; its behavior was verified separately with deliberately faulty, scripted responses. This is a ceiling result on a small, straightforward test, not evidence that every natural-language question will work.
+
+The run has **65 passing local/evidence checks**. Local fault-injection tests establish repair behavior and read-only limits, while the live report establishes model behavior on this question set. Correct missing-data refusals are distinct from invalid queries and provider failures. The row-aware score preserves associations that flattened value sets can lose; both scores are retained. All counts remain historical observations, not causal explanations or newly predicted facts.
+
+[Run report](../outputs/access/runs/dd0223f4396343f48a214657557b40aa/report.html), [summary](../outputs/access/runs/dd0223f4396343f48a214657557b40aa/summary.json), [answer records](../outputs/access/runs/dd0223f4396343f48a214657557b40aa/answers.json), [manifest](../outputs/access/runs/dd0223f4396343f48a214657557b40aa/manifest.json), [PROV-O](../outputs/access/runs/dd0223f4396343f48a214657557b40aa/provenance.ttl), [verification](../outputs/access/verification.json).
+
+The PROV-O activity uses fingerprinted input entities through `prov:used`, and its output entities link back through `prov:wasGeneratedBy`. The manifest fingerprints the generated run files, including the PROV file; it excludes itself to avoid a circular digest. Code hashes and package versions identify the implementation; no claim is made that this is an immutable archival copy of every source version. A later edit requires a fresh run or leaves an older run as dated historical evidence.
+
+The current [project fingerprint snapshot](provenance-snapshot.json) preserves the [previous audit](history/provenance-snapshot-2026-10-17T213713Z.json) and adds the access code, documentation and actual run evidence. Earlier Session 5/6 results retain their dates; they were not rerun for this extension. The local checks ran in **M2ENV** using rdflib 7.6.0, pyoxigraph 0.5.11, requests 2.34.2, pandas 2.3.3, PyYAML 6.0.3. No package installation, new Conda environment, Git commit or push was performed for Session 7. No new Session 7 CI workflow or remote execution is claimed.
+
+See the [Session 7 explanation](access-results-explained.html) for detailed interpretation and challenges, and the [README](../README.md#15-session-7--natural-language-access) for reproduction and browser instructions.
+
+### Interface refresh and coverage audit — 19 October 2026
+
+This update changed the web presentation and added `src/access/ui/index.html`, `style.css` and `app.js`. The server renders those local assets with counters from the observed graph and the existing example questions. The source inventory now includes the UI assets. The data, vocabulary, prompt, question benchmark and model-generation logic were not changed.
+
+The new replay activity **`6316669854314620a77b7fa0baedf9cd`** completed with **zero API requests** and the same recorded-answer scores: 10/10 exact factual answers and 3/3 correct refusals in each setting. See [the replay report](../outputs/access/runs/6316669854314620a77b7fa0baedf9cd/report.html), [manifest](../outputs/access/runs/6316669854314620a77b7fa0baedf9cd/manifest.json) and [PROV-O](../outputs/access/runs/6316669854314620a77b7fa0baedf9cd/provenance.ttl). The current latest-evaluation pointer now identifies this replay, superseding the earlier pointer described above. The first live record remains the evidence for the provider's measured performance; its code fingerprints refer to its historical version, not this UI revision.
+
+All **65 local/evidence checks passed**. Browser checks covered 1440, 768 and 390-pixel layouts, example selection, answer 383/365, tabs, the dataset dialog, unsupported-input recovery and CSV export. These tests used catalog mode, without provider calls. See [the interface verification receipt](../outputs/access/interface-verification.json). The reviewed preview used port 8008 after the original port-8007 page remained stale; this does not change the script's default port.
+
+The [coverage audit](course-coverage-audit.html) compares the actual project with the supplied Session 8 lecture and defense/lab documents. It distinguishes implemented layers from missing entity-resolution evaluation, reproducible deployment, startup validation enforcement and the final report/open-problem requirement. It does not claim that those gaps have been implemented or that the instructor has awarded a grade.
+
+The [previous project snapshot](history/provenance-snapshot-2026-10-18T204947Z.json) is retained; the current inventory is refreshed for this UI revision and its replay. No new packages, API charges, Git commit, push or new CI workflow were introduced.

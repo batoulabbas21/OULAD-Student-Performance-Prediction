@@ -1,0 +1,8 @@
+{
+  "finished_at_utc": "2026-10-19T20:26:19.536607+00:00",
+  "triples": 28470,
+  "duration_seconds": 3.005,
+  "mapping_sha256": "6bca8a6e981c5bdfb4226ce9adba3699785b3704d200d5dc417fbe2e03deaf70",
+  "output_sha256": "17ed624c9dd89a7fa04a05d8a414c88d3790ba5bb15d68946bc8ec985445128f",
+  "inference": "none; asserted mapping output only"
+}

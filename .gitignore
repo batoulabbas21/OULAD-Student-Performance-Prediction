@@ -12,3 +12,6 @@ datasets/
 # Session 5 private connection and downloaded Java runtime
 .env.integration
 .runtime/
+
+# Session 7 credentials
+.env.access

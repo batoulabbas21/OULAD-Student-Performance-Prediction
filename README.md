@@ -9,6 +9,7 @@ For the OWL ontology, terminal reasoner, and results notebook, follow **section 
 For SHACL graph validation, triage, the gate and run provenance, follow **section 12**.
 For PostgreSQL, R2RML mappings, materialization and Ontop virtualization, follow **section 13**.
 For learning, count baselines and detailed model evaluation, follow **section 14**.
+For natural-language questions, query checking and the local interface, follow **section 15**.
 
 **What is AAA?** An anonymized Social Sciences module with two October offerings (2013J and 2014J).
 Our extract has 748 enrollments but 712 distinct student IDs. Read [the AAA explanation](docs/aaa-module.md)
@@ -117,7 +118,7 @@ kr-oulad/
       build_ontology_notebook.py
     validation/                  SHACL validator, examples and provenance query
     learning/                    Session 6 models, leakage checks and evaluation
-    access/                      Later
+    access/                      Session 7 natural-language questions and SPARQL
   run-shacl.ps1                  Complete Session 4 demonstration
   evaluation/verify_shacl.py      Graph fault tests and full CSV warning reconciliation
   evaluation/fixtures/shacl/      Real and deliberately broken samples for CI
@@ -335,7 +336,7 @@ and does not install packages. Use the individual commands for a different selec
 ## What comes next
 
 Session 6 learning is implemented in src/learning/. The src/access/ directory is reserved for a later stage.
-SHACL validation is implemented in section 12; PostgreSQL, R2RML mapping and Ontop integration are implemented in section 13. Session 6 models and evaluation are implemented in section 14; there is no natural-language interface yet.
+SHACL validation is implemented in section 12; PostgreSQL, R2RML mapping and Ontop integration are implemented in section 13. Session 6 models and evaluation are implemented in section 14; Session 7 adds the natural-language interface in section 15.
 Preserve the historical graph. Session 6 builds a separate learning graph constrained to day 60;
 the historical graph includes final outcomes and later events that must stay outside model inputs.
 
@@ -1125,6 +1126,230 @@ python evaluation/verify_learning.py --run-dir outputs/learning/runs/YOUR_RUN_ID
 Expect 54 passing evidence checks for this protocol. Inspect a failed assertion before retraining: a fingerprint mismatch means inputs or outputs changed, while a metric mismatch means the saved tables disagree. Failed training attempts keep their `failure.json` in the displayed run folder. CPU-only PyKEEN/Torch notices can appear without invalidating a completed run; use the final checks and exit status to judge completion.
 
 This experiment does not automatically enter predictions into the original RDF, assign OWL outcome classes, update PostgreSQL, or make student decisions. The temporal test covers only one later offering. Scores are not established calibrated probabilities; link ranks measure reconstruction, not recommendation quality. Existing SHACL and integration CI remain separate; **the Session 6 training/evidence suite is currently local, not a new GitHub workflow**.
+
+
+## 15. Session 7 — natural-language access
+
+This stage turns English questions into SPARQL over the existing AAA RDF and RDFS. Read [the detailed explanation](docs/access-results-explained.html) for the pipeline, measured comparison, interpretation, fault tests and limitations. [Open the evaluated results](outputs/access/access-results.html).
+
+### Step 1 — use the existing environment and check the local implementation
+
+```powershell
+conda activate M2ENV
+Set-Location 'D:\DESKTOP\M2\kr-oulad'
+python evaluation/verify_access.py --local-only
+# Equivalent local runner:
+.\run-access.ps1
+```
+
+This generates `outputs/access/void.ttl`, `schema.txt`, `grounding.json`, `verification.json` and `local-results.html`. It executes the reference queries, reconciles them with CSV calculations, and tests guards, repair with scripted faults, scoring and the HTTP contract. It makes no model API calls. The original `data/interim/*.csv`, `data/processed/oulad.ttl` and `ontology/education.rdfs.ttl` must exist; on a fresh clone run the earlier preparation/RDF steps first. No new Conda environment, database service or package upgrade is needed in the tested M2ENV installation.
+
+### Step 2 — inspect the schema, examples and prompt
+
+```powershell
+python src/access/grounding.py
+python src/access/ask.py --list
+python src/access/ask.py "How many distinct students are represented across AAA?" --show-prompt
+```
+
+Read `config/access/examples.ttl` (8 worked questions), `questions.yaml` (10 held-out answerable questions and 3 refusal questions) and `prompt.txt` (OULAD rules). The reference queries in the test file are used only for scoring; they are not retrieved as prompt examples. VoID reports actual observed data, including the difference between declared and populated classes.
+
+### Step 3 — try a question with no API call
+
+```powershell
+python src/access/ask.py "How many enrollments are there in each offering?"
+```
+
+Default **catalog** mode runs an exact worked example: expect 2013J=383 and 2014J=365. It is a curated question interface, not a language model. Use `--list` to see the accepted wording. New wording needs live/record mode or an exact existing replay recording.
+
+### Step 4 — ask Gemini using the lab key
+
+```powershell
+python src/access/ask.py "How many distinct students are represented across AAA?" --mode record --env-file 'D:\DESKTOP\M2\KRR\demos\.env'
+```
+
+Expected count: **712 distinct students**, not 748 enrollments. `record` calls Gemini and saves the genuine reply. `live` calls without caching. `replay` requires the exact model and prompt already recorded. The default model follows the lab: `gemini-3.5-flash-lite`. Use `--model MODEL_NAME` or `LLM_MODEL` to select another available Gemini model; availability and quota depend on your Google account. An explicit process environment value takes priority over loaded env files.
+
+Alternatively copy `.env.access.example` to `.env.access` and set your own key there. `.env.access` is ignored by Git. Keep the real lab key in its current file; do not paste it into scripts or commit it. If the provider rejects the model/key or reaches quota, the command reports an error without automatically sending more requests. Inspect the saved incomplete run rather than counting the error as a refusal.
+
+### Step 5 — reproduce the three-setting evaluation
+
+```powershell
+# Make fresh paid/free-tier API requests according to your account settings:
+.\run-access.ps1 -Mode record -EnvFile 'D:\DESKTOP\M2\KRR\demos\.env' -MaxRequests 45
+
+# Reuse the exact saved provider replies, making no API calls:
+.\run-access.ps1 -Mode replay
+
+# Audit current inputs, outputs and stored scores without calling Gemini:
+python evaluation/verify_access.py
+```
+
+The evaluator compares **schema**, **examples** and **repair**. Each setting has the same 13 questions; normally 39 initial requests, with any repairs counted inside the 45-request limit. It prechecks all gold answers against the CSV oracle. Each run gets a new folder with `summary.json`, `answers.json`, `gold-answers.json`, `model-calls.json`, `report.html`, `manifest.json` and `provenance.ttl`. `latest-evaluation.json` advances only for a complete evaluation. F1 evaluates answer rows; refusals are counted separately. Read `completed` before interpreting a partial run. A replay is reproducibility evidence, not a new live model benchmark. Source changes can make saved evidence stale; the runner's initial local-only check permits generating a new evaluation, followed by a complete audit.
+
+### Step 6 — open the question interface
+
+```powershell
+# No-key catalog mode:
+python src/access/serve.py
+
+# Or new natural-language questions with Gemini:
+python src/access/serve.py --mode record --env-file 'D:\DESKTOP\M2\KRR\demos\.env'
+```
+
+Open **[http://127.0.0.1:8007](http://127.0.0.1:8007)**. Choose an example, click Ask, and inspect the answer, generated SPARQL and attempts. Keep the terminal open; **Ctrl+C** stops the server. If port 8007 is occupied, use `--port 8008` and open that address. The server binds only to your computer and has a default lifetime limit of 45 model requests. Catalog mode consumes none. The server's replay mode supports only questions/settings previously recorded exactly; ordinary catalog examples may not be in a cache containing only the held-out evaluation.
+
+The lab-style TEXT2SPARQL contract is also available:
+
+```powershell
+$question = [uri]::EscapeDataString('How many enrollments are there in each offering?')
+Invoke-RestMethod "http://127.0.0.1:8007/?question=$question&dataset=https%3A%2F%2Fexample.org%2Foulad%2F"
+Invoke-RestMethod 'http://127.0.0.1:8007/health'
+```
+
+JSON includes `dataset`, `question`, `query`, `status`, `result` and `attempts`. Missing-data refusals have an empty SELECT for contract compatibility, plus an explicit refusal status/reason. That empty query is not evidence that a missing fact has the value zero. Provider failures return HTTP 503. A wrong dataset or empty question returns 400.
+
+Port **8007** is this English-question interface; **3030** is Fuseki, **7474** is Neo4j Browser, **7687** is Neo4j Bolt, and the project PostgreSQL host port remains **5433**. The Session 7 implementation executes the local graph, so starting those services is optional for this stage. It does not add predicted outcomes to the historical RDF.
+
+### Interface refresh — 19 October 2026
+
+The explorer now has a responsive sidebar, dataset counters, an eight-question library, clearer loading/error states and separate **Answer**, **SPARQL** and **Checks** tabs. You can copy the generated query, export returned rows as CSV, use Ctrl+Enter to submit, and open the dataset explanation. The counters come from the loaded graph; the display does not add invented results. The UI files are in `src/access/ui/` and are included in run fingerprints. No fonts, scripts or images are downloaded from external services.
+
+The reviewed preview is available at **http://127.0.0.1:8008/** in no-API catalog mode. Port 8008 was used because the original port-8007 preview kept returning the earlier page during testing. The normal command still defaults to 8007; run `python src/access/serve.py --port 8008` to reproduce the reviewed preview. An older preview process must be restarted to load a changed Python page renderer.
+
+The refresh passed browser checks at 1440, 768 and 390 pixels, including choosing examples, returned counts, all result tabs, the explanation dialog, unsupported-question recovery and CSV export. The complete cached evaluation was replayed with zero API requests, followed by 65 passing local/evidence checks. Historical live responses were retained; the UI refresh is not a new live model benchmark.
+
+For the remaining final-submission requirements, read [the course coverage audit](docs/course-coverage-audit.html). The interface redesign does not replace entity-resolution evaluation, whole-stack deployment or the final report/open-problem work.
+
+### Two questions to test the live page
+
+Use **Gemini · live** or **Gemini · recorded**, rather than the catalog, for these exact questions:
+
+| Copy this question | Expected behavior | Interpretation |
+|---|---|---|
+| How many distinct students are in the dataset? | An answer of **712**, with SPARQL and checks. | Students are distinct people; 748 is the number of enrollments. |
+| What personal reasons caused students to withdraw from AAA? | **Refused**, with an explanation that personal reasons are not recorded. | Withdrawal outcomes exist, but their causes are unavailable. |
+
+Inspect **Answer**, **SPARQL** and **Checks**. An empty result is not automatically a refusal. A refusal has `status=refused` and a reason; an exhausted repair has `status=invalid`; provider/key/quota failures are service errors. Gemini is not guaranteed to interpret every new wording correctly. The current small benchmark is separate from this interactive demonstration.
+
+For a direct Conda launch, run:
+
+```powershell
+conda activate M2ENV
+cd D:\DESKTOP\M2\kr-oulad
+python src/access/serve.py --mode live --port 8009 --env-file 'D:\DESKTOP\M2\KRR\demos\.env' --model gemini-3.5-flash-lite --max-requests 10
+```
+
+Open http://127.0.0.1:8009/. Direct `serve.py` is a low-level command; use the launchers below for mandatory startup SHACL validation. The page displays a result once processing completes, rather than streaming tokens. Opening the page makes no model request. Each submitted question can use up to three requests with repairs; the ten-request cap applies to one server process and resets when it restarts.
+
+### Step 7 — inspect and commit the evidence
+
+Open `outputs/access/access-results.html`, `docs/access-results-explained.html` and the updated provenance/walkthrough. Inspect `git status`; include the access scripts, configuration, examples, tests, run evidence and documentation. The stored benchmark cache contains genuine model replies and no API key. No commit or push is performed by the runner. This stage currently has local verification, not a new GitHub workflow; the earlier SHACL/integration workflows remain separate.
+
+## 16. One launcher for the full project
+
+Use the existing **M2ENV**, Java on PATH, and Docker Desktop with its Linux engine running. The launcher checks these prerequisites without installing packages or creating an environment. It locates the sibling `KRR/demos` folder by default. Existing raw files are verified and reused; missing data may require a download.
+
+```powershell
+conda activate M2ENV
+cd D:\DESKTOP\M2\kr-oulad
+.\run-project.ps1
+```
+
+This performs the following stages, stopping on the first unexpected failure:
+
+1. Download/verify data, profile raw tables, select AAA, profile the subset, build RDF, validate it and check competency questions.
+2. Prepare the OWL ontology, reason over the sample and full graph, verify semantics, and execute/export the ontology notebook.
+3. Run SHACL examples, expected failure cases and verification.
+4. Start the project PostgreSQL service and run mappings, materialization, virtualization and their verification.
+5. Train the Session 6 models and verify their saved evidence.
+6. Start the existing lab Neo4j/Fuseki services and load/verify the OULAD views.
+7. Run a final SHACL gate, regenerate the VoID/schema description, run local access checks, then open the live Gemini page.
+
+The default page port is **8009**. If occupied, the Conda launcher tries the next ten ports and opens the actual selected URL. It never stops another server to obtain a port. Keep the terminal open; **Ctrl+C** stops the newly launched page. Database containers remain running.
+
+For everyday use with already prepared RDF:
+
+```powershell
+.\run-project.ps1 -AccessOnly
+```
+
+This still runs the SHACL gate, updates the schema description and checks access locally. It does not redo preparation, ontology, databases or training and does not need Docker/Java. Validation can take around a minute or longer; the browser opens after it passes.
+
+Useful options:
+
+```powershell
+# Check prerequisites and show the plan, without running it:
+.\run-project.ps1 -CheckOnly
+
+# Use an explicitly located lab key file:
+.\run-project.ps1 -AccessOnly -EnvFile 'D:\DESKTOP\M2\KRR\demos\.env'
+
+# Open the no-API catalog after validation:
+.\run-project.ps1 -AccessOnly -Mode catalog
+
+# Full pipeline without the optional Neo4j/Fuseki views (PostgreSQL still runs):
+.\run-project.ps1 -SkipGraphServices
+
+# Run the full pipeline and exit, useful for verification:
+.\run-project.ps1 -NoServe -NoBrowser
+```
+
+Other options are `-Port`, `-Model`, `-MaxRequests` (default 10), `-LabCompose`, and `-NoBrowser`. Credential lookup is: explicit `-EnvFile`, otherwise project `.env.access`, otherwise sibling `KRR/demos/.env`; existing process environment values take precedence. Credentials are not copied into the repository.
+
+The launcher writes an execution receipt under `outputs/project/runs/<id>/summary.json` and a successful-pipeline pointer in `outputs/project/latest.json`. It records completed/failed stages, interpreter, launcher hash and validated input hashes. Each stage keeps its own reports and PROV records. Full reruns refresh generated outputs and replace the six managed PostgreSQL tables; earlier retained integration/learning run folders remain. No commit or push occurs. The launcher runs local access checks, **not a fresh paid Gemini benchmark**; use Session 7's separate evaluation command when needed.
+
+## 17. Docker container for the live Gemini page
+
+This container serves the existing RDF graph and the access interface. Data preparation, OWL reasoning, model training, PostgreSQL, Neo4j and Fuseki remain in their existing workflows. **M2ENV does not need to be activated for this Docker option.** Gemini still runs through Google's API, so internet access and a valid key are needed for submitted questions.
+
+Open Docker Desktop, wait for its Linux engine, then run:
+
+```powershell
+cd D:\DESKTOP\M2\kr-oulad
+.\start-access-docker.ps1
+```
+
+The helper builds the image, starts the container, waits for SHACL validation and a healthy page, and opens **http://127.0.0.1:8010/**. The first image build needs internet access and can take several minutes. Later builds reuse Docker's cache. The badge should read **Gemini · live**. Port 8010 is separate from the earlier Conda page on 8009 and catalog on 8008. If 8010 is occupied by another application, use `-Port 8011`.
+
+Use the **712-student question** and the **personal-reasons refusal** from section 15. The container starts with a cap of ten Gemini requests, up to three per question including repairs. Opening/checking the page makes no request. A manual container restart resets the cap.
+
+```powershell
+# Explicit key location, another port, and a request cap:
+.\start-access-docker.ps1 -EnvFile 'D:\DESKTOP\M2\KRR\demos\.env' -Port 8010 -MaxRequests 10
+
+# Keep genuine interactive responses for later inspection:
+.\start-access-docker.ps1 -Mode record
+
+# Inspect service status and startup/validation output:
+docker compose -f docker-compose.access.yml ps
+docker compose -f docker-compose.access.yml logs --tail 60 access
+
+# Stop this container; retain host reports and project data:
+.\start-access-docker.ps1 -Stop
+```
+
+The equivalent Compose command with the default sibling lab key location is:
+
+```powershell
+docker compose -f docker-compose.access.yml up --build -d --wait --wait-timeout 300
+Start-Process 'http://127.0.0.1:8010/'
+```
+
+For a different key file, the helper's `-EnvFile` is easiest. Direct Compose accepts `OULAD_GEMINI_ENV_FILE`, `OULAD_ACCESS_PORT`, `OULAD_ACCESS_MODE`, `OULAD_ACCESS_MODEL` and `OULAD_ACCESS_MAX_REQUESTS`. The helper restores prior environment settings after it runs. It prefers `.env.access` when present, otherwise the sibling lab `.env`. Do not put a real key in the Dockerfile or Compose file.
+
+### What Docker validates and saves
+
+- The RDF, RDFS and SHACL files are mounted read-only, then copied into a container-local snapshot. Queries keep using this validated snapshot until the container restarts. Rebuild/restart after changing host inputs or code.
+- The normal SHACL policy applies: violations or missing required targets block startup; warnings remain visible and do not block it. The known snapshot has 0 violations and 5 warnings.
+- The HTTP server binds inside the container, while Docker publishes only on your computer's `127.0.0.1`. The image runs as a non-root user.
+- The API-key file is supplied as a [Docker Compose secret](https://docs.docker.com/compose/how-tos/use-secrets/). The entrypoint reads only the Google key from it. The build context excludes datasets, outputs, Git history and environment files; credentials are not baked into the image.
+- Startup receipts and SHACL report/PROV files appear under `outputs/docker-access/container/runs/<id>/`; `outputs/docker-access/container/latest.json` identifies the last validated startup. The actual HTTP readiness is reported by Docker's health check.
+- The schema/VoID export is under `outputs/docker-access/access/`. In record mode, `access/llm-cache.json` retains genuine replies. Live mode does not persist question/answer histories. Startup receipts count zero requests at startup; they are not a continuously updated usage log or a new benchmark.
+
+The agent still constructs its prompt description with `grounding.describe()`; it exports `void.ttl` but does not parse that export as its prompt input. Query checks establish executable, allowed SPARQL; they do not prove that every generated query correctly interprets a question.
+
+If startup fails, read the container logs and SHACL report. Do not bypass a failed gate. A missing RDF file requires running the preparation pipeline first. Key/quota/provider errors occur when submitting questions and are separate from SHACL validation. The container does not auto-restart repeatedly on failures.
 
 ## Sources and reuse
 

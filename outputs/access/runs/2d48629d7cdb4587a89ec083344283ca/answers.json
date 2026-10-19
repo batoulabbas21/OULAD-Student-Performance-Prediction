@@ -1,0 +1,1766 @@
+[
+  {
+    "setting": "schema",
+    "id": "q01",
+    "question": "How many distinct students are represented across AAA?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(DISTINCT ?student) AS ?count)\nWHERE {\n  ?enrollment edu:hasStudent ?student .\n  ?enrollment edu:inOffering ?offering .\n  ?offering edu:offeringOf ?module .\n  ?module <http://www.w3.org/2000/01/rdf-schema#label> \"AAA\" .\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "712"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(DISTINCT ?student) AS ?count)\nWHERE {\n  ?enrollment edu:hasStudent ?student .\n  ?enrollment edu:inOffering ?offering .\n  ?offering edu:offeringOf ?module .\n  ?module <http://www.w3.org/2000/01/rdf-schema#label> \"AAA\" .\n}",
+          "problems": [],
+          "prompt_sha256": "38295082551f92331348d7a24b85fa28be26185c2c89145dd9b847e4f96aab55"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "712"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "schema",
+    "id": "q02",
+    "question": "What is the total number of enrollments in 2014J?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?enrollment) AS ?totalEnrollments)\nWHERE {\n  ?enrollment a edu:Enrollment ;\n              edu:inOffering ?offering .\n  ?offering edu:presentationCode \"2014J\" .\n}",
+      "result": {
+        "columns": [
+          "totalEnrollments"
+        ],
+        "rows": [
+          {
+            "totalEnrollments": "365"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?enrollment) AS ?totalEnrollments)\nWHERE {\n  ?enrollment a edu:Enrollment ;\n              edu:inOffering ?offering .\n  ?offering edu:presentationCode \"2014J\" .\n}",
+          "problems": [],
+          "prompt_sha256": "3653fe298a26b3a59c6704f2b1e560f2bcd6a588fac045e29c8eee3162023609"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "365"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "schema",
+    "id": "q03",
+    "question": "How many assessments are scheduled in AAA, including exams and tutor-marked assessments?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(DISTINCT ?assessment) AS ?count)\nWHERE {\n  ?offering edu:offeringOf ?module .\n  ?module rdfs:label \"AAA\" .\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  ?assessment edu:assessmentInOffering ?offering .\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "12"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(DISTINCT ?assessment) AS ?count)\nWHERE {\n  ?offering edu:offeringOf ?module .\n  ?module rdfs:label \"AAA\" .\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  ?assessment edu:assessmentInOffering ?offering .\n}",
+          "problems": [],
+          "prompt_sha256": "f8774c672f455a7f78233023daad3e59f512b35a9abb2035b2a3247abb54a07f"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "12"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "schema",
+    "id": "q04",
+    "question": "Give the number of enrollments for every final result in each presentation; show presentation, final result and count in that order.",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT ?presentation ?finalResult (COUNT(?enrollment) AS ?count)\nWHERE {\n  ?enrollment a edu:Enrollment ;\n              edu:finalResult ?finalResult ;\n              edu:inOffering ?offering .\n  ?offering edu:presentationCode ?presentation .\n}\nGROUP BY ?presentation ?finalResult\nORDER BY ?presentation ?finalResult",
+      "result": {
+        "columns": [
+          "presentation",
+          "finalResult",
+          "count"
+        ],
+        "rows": [
+          {
+            "presentation": "2013J",
+            "finalResult": "Distinction",
+            "count": "20"
+          },
+          {
+            "presentation": "2013J",
+            "finalResult": "Fail",
+            "count": "45"
+          },
+          {
+            "presentation": "2013J",
+            "finalResult": "Pass",
+            "count": "258"
+          },
+          {
+            "presentation": "2013J",
+            "finalResult": "Withdrawn",
+            "count": "60"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Distinction",
+            "count": "24"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Fail",
+            "count": "46"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Pass",
+            "count": "229"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Withdrawn",
+            "count": "66"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT ?presentation ?finalResult (COUNT(?enrollment) AS ?count)\nWHERE {\n  ?enrollment a edu:Enrollment ;\n              edu:finalResult ?finalResult ;\n              edu:inOffering ?offering .\n  ?offering edu:presentationCode ?presentation .\n}\nGROUP BY ?presentation ?finalResult\nORDER BY ?presentation ?finalResult",
+          "problems": [],
+          "prompt_sha256": "c56b87773d2aec02e96a716f95231ae1ae124e71a34eb9ea68e23081e66cd4fd"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "presentation",
+        "result",
+        "count"
+      ],
+      "rows": [
+        {
+          "presentation": "2013J",
+          "result": "Distinction",
+          "count": "20"
+        },
+        {
+          "presentation": "2013J",
+          "result": "Fail",
+          "count": "45"
+        },
+        {
+          "presentation": "2013J",
+          "result": "Pass",
+          "count": "258"
+        },
+        {
+          "presentation": "2013J",
+          "result": "Withdrawn",
+          "count": "60"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Distinction",
+          "count": "24"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Fail",
+          "count": "46"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Pass",
+          "count": "229"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Withdrawn",
+          "count": "66"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "schema",
+    "id": "q05",
+    "question": "How many non-banked assessment records were submitted strictly after their known deadline?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?record) AS ?lateCount)\nWHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked false ;\n          edu:submissionDay ?subDay ;\n          edu:forAssessment ?assessment .\n  \n  ?assessment edu:deadlineDay ?deadDay .\n  \n  FILTER(?subDay > ?deadDay)\n}",
+      "result": {
+        "columns": [
+          "lateCount"
+        ],
+        "rows": [
+          {
+            "lateCount": "815"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?record) AS ?lateCount)\nWHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked false ;\n          edu:submissionDay ?subDay ;\n          edu:forAssessment ?assessment .\n  \n  ?assessment edu:deadlineDay ?deadDay .\n  \n  FILTER(?subDay > ?deadDay)\n}",
+          "problems": [],
+          "prompt_sha256": "b9f13be2c1e577037d6ff30c60b4f2c6079ed028c7b137f11d89fbe78e8bd9c9"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "815"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "schema",
+    "id": "q06",
+    "question": "How many assessment records have a known score below 40, including banked records?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?record) AS ?count)\nWHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:score ?score .\n  FILTER(?score < 40)\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "90"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?record) AS ?count)\nWHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:score ?score .\n  FILTER(?score < 40)\n}",
+          "problems": [],
+          "prompt_sha256": "acbc7544f2ac1992af18bc8906333e84508e450c72c13dfc142a93c8bedc717d"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "90"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "schema",
+    "id": "q07",
+    "question": "How many assessment records have no score recorded?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?record) AS ?count)\nWHERE {\n  ?record a edu:AssessmentRecord .\n  FILTER NOT EXISTS { ?record edu:score ?score . }\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "3"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?record) AS ?count)\nWHERE {\n  ?record a edu:AssessmentRecord .\n  FILTER NOT EXISTS { ?record edu:score ?score . }\n}",
+          "problems": [],
+          "prompt_sha256": "9463335f6255629f631d89cdbf005c9e9700b6542ddd9292215625458d9a6647"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "3"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "schema",
+    "id": "q08",
+    "question": "What is the total number of banked assessment records?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT (COUNT(?record) AS ?totalBanked)\nWHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked true .\n}",
+      "result": {
+        "columns": [
+          "totalBanked"
+        ],
+        "rows": [
+          {
+            "totalBanked": "42"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT (COUNT(?record) AS ?totalBanked)\nWHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked true .\n}",
+          "problems": [],
+          "prompt_sha256": "c8e605cfeccef9f92ac19965c851edd269f94c73c3e6291ca2b4089b4b3de718"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "42"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "schema",
+    "id": "q09",
+    "question": "How many enrollments finished successfully, meaning Pass or Distinction?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?enrollment) AS ?successfulEnrollments)\nWHERE {\n  ?enrollment a edu:Enrollment ;\n              edu:finalResult ?result .\n  FILTER(?result IN (\"Pass\", \"Distinction\"))\n}",
+      "result": {
+        "columns": [
+          "successfulEnrollments"
+        ],
+        "rows": [
+          {
+            "successfulEnrollments": "531"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(?enrollment) AS ?successfulEnrollments)\nWHERE {\n  ?enrollment a edu:Enrollment ;\n              edu:finalResult ?result .\n  FILTER(?result IN (\"Pass\", \"Distinction\"))\n}",
+          "problems": [],
+          "prompt_sha256": "2f0236dc5282dd02d8885ad047333ea834f90454af2c10260facc82f97e27c44"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "531"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "schema",
+    "id": "q10",
+    "question": "How many scheduled assessments have an unknown deadline?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(DISTINCT ?assessment) AS ?count)\nWHERE {\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  FILTER NOT EXISTS { ?assessment edu:deadlineDay ?deadline }\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "2"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX edu: <https://example.org/oulad/schema#>\n\nSELECT (COUNT(DISTINCT ?assessment) AS ?count)\nWHERE {\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  FILTER NOT EXISTS { ?assessment edu:deadlineDay ?deadline }\n}",
+          "problems": [],
+          "prompt_sha256": "c8093cfacbbc2e5cad625da44fcb24749847392b899e385b07889027388d2df2"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "2"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "schema",
+    "id": "r01",
+    "question": "What personal reasons caused students to withdraw from AAA?",
+    "expected_refusal": true,
+    "response": {
+      "status": "refused",
+      "reason": "reasons for withdrawal",
+      "query": null,
+      "result": null,
+      "attempts": [
+        {
+          "reply": "REFUSE: reasons for withdrawal",
+          "problems": [],
+          "prompt_sha256": "aab1d890bd598792d717840e4a71148c11b21ce952c7f854bb9de5b0b1971333"
+        }
+      ]
+    },
+    "correct_refusal": true
+  },
+  {
+    "setting": "schema",
+    "id": "r02",
+    "question": "What are the full names of the instructors who taught AAA?",
+    "expected_refusal": true,
+    "response": {
+      "status": "refused",
+      "reason": "instructor names are not present in the dataset.",
+      "query": null,
+      "result": null,
+      "attempts": [
+        {
+          "reply": "REFUSE: instructor names are not present in the dataset.",
+          "problems": [],
+          "prompt_sha256": "4666add594b0fc4e6c3b165618288b97d69a42317c1439d91c69275873c20198"
+        }
+      ]
+    },
+    "correct_refusal": true
+  },
+  {
+    "setting": "schema",
+    "id": "r03",
+    "question": "How many hours did each student spend studying online?",
+    "expected_refusal": true,
+    "response": {
+      "status": "refused",
+      "reason": "Study hours are not measurable from this dataset.",
+      "query": null,
+      "result": null,
+      "attempts": [
+        {
+          "reply": "REFUSE: Study hours are not measurable from this dataset.",
+          "problems": [],
+          "prompt_sha256": "33890076038ba73523dd63312298661d02f0cca5d284da9ca27759ef4b2627e9"
+        }
+      ]
+    },
+    "correct_refusal": true
+  },
+  {
+    "setting": "examples",
+    "id": "q01",
+    "question": "How many distinct students are represented across AAA?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(DISTINCT ?student) AS ?count)\nWHERE {\n  ?enrollment edu:hasStudent ?student .\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "712"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(DISTINCT ?student) AS ?count)\nWHERE {\n  ?enrollment edu:hasStudent ?student .\n}",
+          "problems": [],
+          "prompt_sha256": "f36c50d20d262c54992f429c652116afd1afc68e227adbaf758358160b5f643e"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "712"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "examples",
+    "id": "q02",
+    "question": "What is the total number of enrollments in 2014J?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nSELECT (COUNT(?e) AS ?count) WHERE { ?e a edu:Enrollment; edu:inOffering ?o. ?o edu:presentationCode \"2014J\" }",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "365"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nSELECT (COUNT(?e) AS ?count) WHERE { ?e a edu:Enrollment; edu:inOffering ?o. ?o edu:presentationCode \"2014J\" }",
+          "problems": [],
+          "prompt_sha256": "25e3edcae081b182e6a818eb3a04a5c47a8728c5e2ce2ed496b518c1f87453e0"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "365"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "examples",
+    "id": "q03",
+    "question": "How many assessments are scheduled in AAA, including exams and tutor-marked assessments?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?a) AS ?count) WHERE {\n  ?a a/rdfs:subClassOf* edu:Assessment ;\n     edu:assessmentInOffering ?o .\n  ?o edu:offeringOf ?m .\n  ?m rdfs:label \"AAA\" .\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "12"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?a) AS ?count) WHERE {\n  ?a a/rdfs:subClassOf* edu:Assessment ;\n     edu:assessmentInOffering ?o .\n  ?o edu:offeringOf ?m .\n  ?m rdfs:label \"AAA\" .\n}",
+          "problems": [],
+          "prompt_sha256": "49c53ee2a770c7a80fa82e10b1924d69a95c650920a24b1bd2df0673c8fa8475"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "12"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "examples",
+    "id": "q04",
+    "question": "Give the number of enrollments for every final result in each presentation; show presentation, final result and count in that order.",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?presentation ?finalResult (COUNT(?e) AS ?count)\nWHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?finalResult ;\n     edu:inOffering ?o .\n  ?o edu:presentationCode ?presentation .\n}\nGROUP BY ?presentation ?finalResult\nORDER BY ?presentation ?finalResult",
+      "result": {
+        "columns": [
+          "presentation",
+          "finalResult",
+          "count"
+        ],
+        "rows": [
+          {
+            "presentation": "2013J",
+            "finalResult": "Distinction",
+            "count": "20"
+          },
+          {
+            "presentation": "2013J",
+            "finalResult": "Fail",
+            "count": "45"
+          },
+          {
+            "presentation": "2013J",
+            "finalResult": "Pass",
+            "count": "258"
+          },
+          {
+            "presentation": "2013J",
+            "finalResult": "Withdrawn",
+            "count": "60"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Distinction",
+            "count": "24"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Fail",
+            "count": "46"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Pass",
+            "count": "229"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Withdrawn",
+            "count": "66"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?presentation ?finalResult (COUNT(?e) AS ?count)\nWHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?finalResult ;\n     edu:inOffering ?o .\n  ?o edu:presentationCode ?presentation .\n}\nGROUP BY ?presentation ?finalResult\nORDER BY ?presentation ?finalResult",
+          "problems": [],
+          "prompt_sha256": "c2ca5448ec7328e8872deb9e7a140dd9199c74b98e597c5d9da5dc28f823ab37"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "presentation",
+        "result",
+        "count"
+      ],
+      "rows": [
+        {
+          "presentation": "2013J",
+          "result": "Distinction",
+          "count": "20"
+        },
+        {
+          "presentation": "2013J",
+          "result": "Fail",
+          "count": "45"
+        },
+        {
+          "presentation": "2013J",
+          "result": "Pass",
+          "count": "258"
+        },
+        {
+          "presentation": "2013J",
+          "result": "Withdrawn",
+          "count": "60"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Distinction",
+          "count": "24"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Fail",
+          "count": "46"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Pass",
+          "count": "229"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Withdrawn",
+          "count": "66"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "examples",
+    "id": "q05",
+    "question": "How many non-banked assessment records were submitted strictly after their known deadline?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked false ;\n          edu:submissionDay ?subDay ;\n          edu:forAssessment ?assessment .\n  ?assessment edu:deadlineDay ?deadlineDay .\n  FILTER(?subDay > ?deadlineDay)\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "815"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked false ;\n          edu:submissionDay ?subDay ;\n          edu:forAssessment ?assessment .\n  ?assessment edu:deadlineDay ?deadlineDay .\n  FILTER(?subDay > ?deadlineDay)\n}",
+          "problems": [],
+          "prompt_sha256": "f2c1a8ee18bd1dbc96016ce9c0c1f2ae4d97fa8f5e3e0ee0cd7a7d9231413fb8"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "815"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "examples",
+    "id": "q06",
+    "question": "How many assessment records have a known score below 40, including banked records?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:score ?score .\n  FILTER (?score < 40)\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "90"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:score ?score .\n  FILTER (?score < 40)\n}",
+          "problems": [],
+          "prompt_sha256": "6c9627e0bccca6882862aebea2bec63c5077a2bf58d866118d26fcc9bccdc650"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "90"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "examples",
+    "id": "q07",
+    "question": "How many assessment records have no score recorded?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord .\n  FILTER NOT EXISTS { ?record edu:score ?score }\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "3"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord .\n  FILTER NOT EXISTS { ?record edu:score ?score }\n}",
+          "problems": [],
+          "prompt_sha256": "02feb80728edd6bbfdd0535ee847697326ef4550bb5c5b641dcc8293a9012de6"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "3"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "examples",
+    "id": "q08",
+    "question": "What is the total number of banked assessment records?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:isBanked true .\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "42"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:isBanked true .\n}",
+          "problems": [],
+          "prompt_sha256": "543b0ae6ca151fd8769c8c614cfedec9190bee7313cbf83219d0353c944e0933"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "42"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "examples",
+    "id": "q09",
+    "question": "How many enrollments finished successfully, meaning Pass or Distinction?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?e) AS ?count) WHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?result .\n  FILTER(?result IN (\"Pass\", \"Distinction\"))\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "531"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?e) AS ?count) WHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?result .\n  FILTER(?result IN (\"Pass\", \"Distinction\"))\n}",
+          "problems": [],
+          "prompt_sha256": "209995ed74458ee42391f423a4ff08c05d2611954b98f5a34d8083ca40ee900e"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "531"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "examples",
+    "id": "q10",
+    "question": "How many scheduled assessments have an unknown deadline?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?assessment) AS ?count) WHERE {\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  FILTER NOT EXISTS { ?assessment edu:deadlineDay ?d }\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "2"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?assessment) AS ?count) WHERE {\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  FILTER NOT EXISTS { ?assessment edu:deadlineDay ?d }\n}",
+          "problems": [],
+          "prompt_sha256": "9c563bb990b6d4cc84d44c28e147471af04edc0c3fa266933806bd33b947badb"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "2"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "examples",
+    "id": "r01",
+    "question": "What personal reasons caused students to withdraw from AAA?",
+    "expected_refusal": true,
+    "response": {
+      "status": "refused",
+      "reason": "The graph has regions and age bands, but no exact ages, personal names, instructors, reasons for withdrawal or real module titles.",
+      "query": null,
+      "result": null,
+      "attempts": [
+        {
+          "reply": "REFUSE: The graph has regions and age bands, but no exact ages, personal names, instructors, reasons for withdrawal or real module titles.",
+          "problems": [],
+          "prompt_sha256": "de84466cf4a53a7d04d7b58c63624e88e269ac33fe35a673f33b43da3b2c6d4b"
+        }
+      ]
+    },
+    "correct_refusal": true
+  },
+  {
+    "setting": "examples",
+    "id": "r02",
+    "question": "What are the full names of the instructors who taught AAA?",
+    "expected_refusal": true,
+    "response": {
+      "status": "refused",
+      "reason": "personal names and instructors are missing from the dataset.",
+      "query": null,
+      "result": null,
+      "attempts": [
+        {
+          "reply": "REFUSE: personal names and instructors are missing from the dataset.",
+          "problems": [],
+          "prompt_sha256": "cdbedb21ecd831f5f85ce8245078ec1f505a1bf15a2cd55230c5b32a207bd48b"
+        }
+      ]
+    },
+    "correct_refusal": true
+  },
+  {
+    "setting": "examples",
+    "id": "r03",
+    "question": "How many hours did each student spend studying online?",
+    "expected_refusal": true,
+    "response": {
+      "status": "refused",
+      "reason": "Study hours are not measurable from this dataset.",
+      "query": null,
+      "result": null,
+      "attempts": [
+        {
+          "reply": "REFUSE: Study hours are not measurable from this dataset.",
+          "problems": [],
+          "prompt_sha256": "34e2809fa646a5663feb880fa73ce02fdaa05d0ccc6b33a9d5b2bb8d8d7cfe9c"
+        }
+      ]
+    },
+    "correct_refusal": true
+  },
+  {
+    "setting": "repair",
+    "id": "q01",
+    "question": "How many distinct students are represented across AAA?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(DISTINCT ?student) AS ?count)\nWHERE {\n  ?enrollment edu:hasStudent ?student .\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "712"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(DISTINCT ?student) AS ?count)\nWHERE {\n  ?enrollment edu:hasStudent ?student .\n}",
+          "problems": [],
+          "prompt_sha256": "f36c50d20d262c54992f429c652116afd1afc68e227adbaf758358160b5f643e"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "712"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "repair",
+    "id": "q02",
+    "question": "What is the total number of enrollments in 2014J?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nSELECT (COUNT(?e) AS ?count) WHERE { ?e a edu:Enrollment; edu:inOffering ?o. ?o edu:presentationCode \"2014J\" }",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "365"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nSELECT (COUNT(?e) AS ?count) WHERE { ?e a edu:Enrollment; edu:inOffering ?o. ?o edu:presentationCode \"2014J\" }",
+          "problems": [],
+          "prompt_sha256": "25e3edcae081b182e6a818eb3a04a5c47a8728c5e2ce2ed496b518c1f87453e0"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "365"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "repair",
+    "id": "q03",
+    "question": "How many assessments are scheduled in AAA, including exams and tutor-marked assessments?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?a) AS ?count) WHERE {\n  ?a a/rdfs:subClassOf* edu:Assessment ;\n     edu:assessmentInOffering ?o .\n  ?o edu:offeringOf ?m .\n  ?m rdfs:label \"AAA\" .\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "12"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?a) AS ?count) WHERE {\n  ?a a/rdfs:subClassOf* edu:Assessment ;\n     edu:assessmentInOffering ?o .\n  ?o edu:offeringOf ?m .\n  ?m rdfs:label \"AAA\" .\n}",
+          "problems": [],
+          "prompt_sha256": "49c53ee2a770c7a80fa82e10b1924d69a95c650920a24b1bd2df0673c8fa8475"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "12"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "repair",
+    "id": "q04",
+    "question": "Give the number of enrollments for every final result in each presentation; show presentation, final result and count in that order.",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?presentation ?finalResult (COUNT(?e) AS ?count)\nWHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?finalResult ;\n     edu:inOffering ?o .\n  ?o edu:presentationCode ?presentation .\n}\nGROUP BY ?presentation ?finalResult\nORDER BY ?presentation ?finalResult",
+      "result": {
+        "columns": [
+          "presentation",
+          "finalResult",
+          "count"
+        ],
+        "rows": [
+          {
+            "presentation": "2013J",
+            "finalResult": "Distinction",
+            "count": "20"
+          },
+          {
+            "presentation": "2013J",
+            "finalResult": "Fail",
+            "count": "45"
+          },
+          {
+            "presentation": "2013J",
+            "finalResult": "Pass",
+            "count": "258"
+          },
+          {
+            "presentation": "2013J",
+            "finalResult": "Withdrawn",
+            "count": "60"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Distinction",
+            "count": "24"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Fail",
+            "count": "46"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Pass",
+            "count": "229"
+          },
+          {
+            "presentation": "2014J",
+            "finalResult": "Withdrawn",
+            "count": "66"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT ?presentation ?finalResult (COUNT(?e) AS ?count)\nWHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?finalResult ;\n     edu:inOffering ?o .\n  ?o edu:presentationCode ?presentation .\n}\nGROUP BY ?presentation ?finalResult\nORDER BY ?presentation ?finalResult",
+          "problems": [],
+          "prompt_sha256": "c2ca5448ec7328e8872deb9e7a140dd9199c74b98e597c5d9da5dc28f823ab37"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "presentation",
+        "result",
+        "count"
+      ],
+      "rows": [
+        {
+          "presentation": "2013J",
+          "result": "Distinction",
+          "count": "20"
+        },
+        {
+          "presentation": "2013J",
+          "result": "Fail",
+          "count": "45"
+        },
+        {
+          "presentation": "2013J",
+          "result": "Pass",
+          "count": "258"
+        },
+        {
+          "presentation": "2013J",
+          "result": "Withdrawn",
+          "count": "60"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Distinction",
+          "count": "24"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Fail",
+          "count": "46"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Pass",
+          "count": "229"
+        },
+        {
+          "presentation": "2014J",
+          "result": "Withdrawn",
+          "count": "66"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "repair",
+    "id": "q05",
+    "question": "How many non-banked assessment records were submitted strictly after their known deadline?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked false ;\n          edu:submissionDay ?subDay ;\n          edu:forAssessment ?assessment .\n  ?assessment edu:deadlineDay ?deadlineDay .\n  FILTER(?subDay > ?deadlineDay)\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "815"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord ;\n          edu:isBanked false ;\n          edu:submissionDay ?subDay ;\n          edu:forAssessment ?assessment .\n  ?assessment edu:deadlineDay ?deadlineDay .\n  FILTER(?subDay > ?deadlineDay)\n}",
+          "problems": [],
+          "prompt_sha256": "f2c1a8ee18bd1dbc96016ce9c0c1f2ae4d97fa8f5e3e0ee0cd7a7d9231413fb8"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "815"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "repair",
+    "id": "q06",
+    "question": "How many assessment records have a known score below 40, including banked records?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:score ?score .\n  FILTER (?score < 40)\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "90"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:score ?score .\n  FILTER (?score < 40)\n}",
+          "problems": [],
+          "prompt_sha256": "6c9627e0bccca6882862aebea2bec63c5077a2bf58d866118d26fcc9bccdc650"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "90"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "repair",
+    "id": "q07",
+    "question": "How many assessment records have no score recorded?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord .\n  FILTER NOT EXISTS { ?record edu:score ?score }\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "3"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?record) AS ?count) WHERE {\n  ?record a edu:AssessmentRecord .\n  FILTER NOT EXISTS { ?record edu:score ?score }\n}",
+          "problems": [],
+          "prompt_sha256": "02feb80728edd6bbfdd0535ee847697326ef4550bb5c5b641dcc8293a9012de6"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "3"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "repair",
+    "id": "q08",
+    "question": "What is the total number of banked assessment records?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:isBanked true .\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "42"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?r) AS ?count) WHERE {\n  ?r a edu:AssessmentRecord ;\n     edu:isBanked true .\n}",
+          "problems": [],
+          "prompt_sha256": "543b0ae6ca151fd8769c8c614cfedec9190bee7313cbf83219d0353c944e0933"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "42"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "repair",
+    "id": "q09",
+    "question": "How many enrollments finished successfully, meaning Pass or Distinction?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?e) AS ?count) WHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?result .\n  FILTER(?result IN (\"Pass\", \"Distinction\"))\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "531"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?e) AS ?count) WHERE {\n  ?e a edu:Enrollment ;\n     edu:finalResult ?result .\n  FILTER(?result IN (\"Pass\", \"Distinction\"))\n}",
+          "problems": [],
+          "prompt_sha256": "209995ed74458ee42391f423a4ff08c05d2611954b98f5a34d8083ca40ee900e"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "531"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "repair",
+    "id": "q10",
+    "question": "How many scheduled assessments have an unknown deadline?",
+    "expected_refusal": false,
+    "response": {
+      "status": "answered",
+      "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nPREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?assessment) AS ?count) WHERE {\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  FILTER NOT EXISTS { ?assessment edu:deadlineDay ?d }\n}",
+      "result": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "2"
+          }
+        ]
+      },
+      "attempts": [
+        {
+          "query": "PREFIX edu: <https://example.org/oulad/schema#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n\nSELECT (COUNT(?assessment) AS ?count) WHERE {\n  ?assessment a/rdfs:subClassOf* edu:Assessment .\n  FILTER NOT EXISTS { ?assessment edu:deadlineDay ?d }\n}",
+          "problems": [],
+          "prompt_sha256": "9c563bb990b6d4cc84d44c28e147471af04edc0c3fa266933806bd33b947badb"
+        }
+      ],
+      "reason": null
+    },
+    "expected_result": {
+      "columns": [
+        "count"
+      ],
+      "rows": [
+        {
+          "count": "2"
+        }
+      ]
+    },
+    "score": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact": true
+    },
+    "lab_value_set_f1": 1.0
+  },
+  {
+    "setting": "repair",
+    "id": "r01",
+    "question": "What personal reasons caused students to withdraw from AAA?",
+    "expected_refusal": true,
+    "response": {
+      "status": "refused",
+      "reason": "The graph has regions and age bands, but no exact ages, personal names, instructors, reasons for withdrawal or real module titles.",
+      "query": null,
+      "result": null,
+      "attempts": [
+        {
+          "reply": "REFUSE: The graph has regions and age bands, but no exact ages, personal names, instructors, reasons for withdrawal or real module titles.",
+          "problems": [],
+          "prompt_sha256": "de84466cf4a53a7d04d7b58c63624e88e269ac33fe35a673f33b43da3b2c6d4b"
+        }
+      ]
+    },
+    "correct_refusal": true
+  },
+  {
+    "setting": "repair",
+    "id": "r02",
+    "question": "What are the full names of the instructors who taught AAA?",
+    "expected_refusal": true,
+    "response": {
+      "status": "refused",
+      "reason": "personal names and instructors are missing from the dataset.",
+      "query": null,
+      "result": null,
+      "attempts": [
+        {
+          "reply": "REFUSE: personal names and instructors are missing from the dataset.",
+          "problems": [],
+          "prompt_sha256": "cdbedb21ecd831f5f85ce8245078ec1f505a1bf15a2cd55230c5b32a207bd48b"
+        }
+      ]
+    },
+    "correct_refusal": true
+  },
+  {
+    "setting": "repair",
+    "id": "r03",
+    "question": "How many hours did each student spend studying online?",
+    "expected_refusal": true,
+    "response": {
+      "status": "refused",
+      "reason": "Study hours are not measurable from this dataset.",
+      "query": null,
+      "result": null,
+      "attempts": [
+        {
+          "reply": "REFUSE: Study hours are not measurable from this dataset.",
+          "problems": [],
+          "prompt_sha256": "34e2809fa646a5663feb880fa73ce02fdaa05d0ccc6b33a9d5b2bb8d8d7cfe9c"
+        }
+      ]
+    },
+    "correct_refusal": true
+  }
+]

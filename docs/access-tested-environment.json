@@ -1,0 +1,15 @@
+{
+  "environment": "M2ENV",
+  "python": "3.12.15",
+  "packages": {
+    "rdflib": "7.6.0",
+    "pyoxigraph": "0.5.11",
+    "requests": "2.34.2",
+    "pandas": "2.3.3",
+    "PyYAML": "6.0.3"
+  },
+  "additional_existing_packages": {
+    "python-dotenv": "1.2.3"
+  },
+  "note": "Existing tested installation; no packages installed. This inventory is not an input to the measured run."
+}

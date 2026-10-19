@@ -33,3 +33,18 @@
 - Treat TransE as historical link reconstruction, with identical candidate sets and train-only popularity counts.
 - Report unfiltered and filtered ranks with candidate-set sizes and random-rank references.
 - Keep predictions separate from asserted facts; do not treat scores as calibrated probabilities or causal explanations.
+
+## Session 7 access decisions
+
+- Keep the existing M2ENV and course Gemini approach; read the lab key without copying it.
+- Query the asserted local graph plus RDFS; keep OWL and learned predictions separate.
+- Generate observed VoID partitions including all target types, while distinguishing unavailable schema capabilities.
+- Retrieve three of eight examples by word overlap; score ten answerable and three missing-data questions with distinct wording.
+- Reconcile all gold SPARQL with an independent CSV oracle before spending model requests.
+- Compare schema, examples and repair under the same read-only execution guard.
+- Limit repair to two corrections, execution to 15 seconds and results to 10,000 rows.
+- Preserve tuple associations in primary F1 and retain the lab value-set score as a secondary comparison.
+- Distinguish explicit refusal, invalid query, unsupported catalog wording and provider failure.
+- Record real provider replies; do not present scripted tests or replay as new model measurements.
+- Keep the localhost HTTP interface on port 8007 and expose the course TEXT2SPARQL contract.
+- Keep Session 7 verification local; do not imply it has run in GitHub Actions.

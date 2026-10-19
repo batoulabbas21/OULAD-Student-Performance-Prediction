@@ -123,10 +123,10 @@
       "message": "Deadline is unknown: preserve the absence, including unknown exam dates."
     }
   ],
-  "run_id": "681345c200fb43ddb68212e82e90e10d",
-  "started_at_utc": "2026-10-15T02:51:38.036653+00:00",
-  "finished_at_utc": "2026-10-15T02:51:38.814342+00:00",
-  "duration_seconds": 0.781,
+  "run_id": "cb3b823eec97484bb7761384eda77ad9",
+  "started_at_utc": "2026-10-19T20:24:01.289882+00:00",
+  "finished_at_utc": "2026-10-19T20:24:02.060857+00:00",
+  "duration_seconds": 0.763,
   "data_triples": 299,
   "validation_graph_triples": 404,
   "inference": "none",

@@ -2,53 +2,22 @@
   "consistent": true,
   "unsatisfiable_classes": [],
   "types": {
-    "https://example.org/oulad/id/enrollment/AAA/2013J/106577": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#Enrollment",
-      "https://example.org/oulad/schema#EnrollmentWithLowScore",
-      "https://example.org/oulad/schema#SuccessfulEnrollment"
-    ],
-    "https://example.org/oulad/id/assessment-record/100893/1753": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/enrollment/AAA/2013J/100893": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#Enrollment",
-      "https://example.org/oulad/schema#SuccessfulEnrollment"
-    ],
-    "https://example.org/oulad/id/assessment-record/134143/1752": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/enrollment/AAA/2013J/134143": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#Enrollment",
-      "https://example.org/oulad/schema#SuccessfulEnrollment"
-    ],
-    "https://example.org/oulad/id/offering/AAA/2013J": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#CourseOffering"
-    ],
-    "https://example.org/oulad/id/assessment/1752": [
+    "https://example.org/oulad/id/assessment/1759": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#Assessment",
       "https://example.org/oulad/schema#TutorMarkedAssessment"
     ],
-    "https://example.org/oulad/id/assessment/1755": [
+    "https://example.org/oulad/id/assessment-record/129955/1760": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#BankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/assessment/1760": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#Assessment",
       "https://example.org/oulad/schema#TutorMarkedAssessment"
     ],
-    "https://example.org/oulad/id/assessment-record/106577/1755": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#LowScoreAssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/assessment-record/106247/1753": [
+    "https://example.org/oulad/id/assessment-record/260355/1753": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
       "https://example.org/oulad/schema#NonBankedAssessmentRecord"
@@ -58,113 +27,88 @@
       "https://example.org/oulad/schema#Assessment",
       "https://example.org/oulad/schema#TutorMarkedAssessment"
     ],
-    "https://example.org/oulad/id/assessment-record/1401935/1753": [
+    "https://example.org/oulad/id/offering/AAA/2013J": [
       "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#LowScoreAssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/enrollment/AAA/2013J/1401935": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#Enrollment",
-      "https://example.org/oulad/schema#EnrollmentWithLowScore"
-    ],
-    "https://example.org/oulad/id/assessment-record/106247/1752": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/assessment/1754": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#Assessment",
-      "https://example.org/oulad/schema#TutorMarkedAssessment"
-    ],
-    "https://example.org/oulad/id/assessment-record/134143/1753": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/assessment-record/106577/1754": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+      "https://example.org/oulad/schema#CourseOffering"
     ],
     "https://example.org/oulad/id/assessment-record/134143/1754": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
       "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ],
-    "https://example.org/oulad/id/assessment/1758": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#Assessment",
-      "https://example.org/oulad/schema#TutorMarkedAssessment"
-    ],
-    "https://example.org/oulad/id/assessment-record/260355/1754": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/enrollment/AAA/2013J/260355": [
+    "https://example.org/oulad/id/enrollment/AAA/2013J/100893": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#Enrollment",
-      "https://example.org/oulad/schema#WithdrawnEnrollment"
+      "https://example.org/oulad/schema#SuccessfulEnrollment"
     ],
-    "https://example.org/oulad/id/assessment-record/100893/1755": [
+    "https://example.org/oulad/id/student/106247": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "http://xmlns.com/foaf/0.1/Agent",
+      "http://xmlns.com/foaf/0.1/Person",
+      "https://example.org/oulad/schema#Person",
+      "https://example.org/oulad/schema#Student"
+    ],
+    "https://example.org/oulad/id/assessment-record/106247/1753": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
       "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/assessment-record/134143/1756": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/assessment-record/260355/1752": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/assessment-record/129955/1759": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#BankedAssessmentRecord"
     ],
     "https://example.org/oulad/id/enrollment/AAA/2014J/129955": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#Enrollment",
       "https://example.org/oulad/schema#WithdrawnEnrollment"
     ],
-    "https://example.org/oulad/id/assessment-record/100893/1756": [
+    "https://example.org/oulad/id/enrollment/AAA/2013J/1401935": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#Enrollment",
+      "https://example.org/oulad/schema#EnrollmentWithLowScore"
+    ],
+    "https://example.org/oulad/id/assessment-record/100893/1755": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
       "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ],
-    "https://example.org/oulad/id/assessment/1756": [
+    "https://example.org/oulad/id/assessment-record/106577/1755": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#LowScoreAssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/enrollment/AAA/2013J/106577": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#Enrollment",
+      "https://example.org/oulad/schema#EnrollmentWithLowScore",
+      "https://example.org/oulad/schema#SuccessfulEnrollment"
+    ],
+    "https://example.org/oulad/id/assessment/1754": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#Assessment",
       "https://example.org/oulad/schema#TutorMarkedAssessment"
-    ],
-    "https://example.org/oulad/id/assessment-record/134143/1755": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/assessment-record/106247/1754": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ],
     "https://example.org/oulad/id/enrollment/AAA/2013J/106247": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#Enrollment",
       "https://example.org/oulad/schema#WithdrawnEnrollment"
     ],
-    "https://example.org/oulad/id/assessment-record/1401935/1752": [
+    "https://example.org/oulad/id/assessment-record/100893/1754": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
       "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ],
-    "https://example.org/oulad/id/student/106247": [
+    "https://example.org/oulad/id/offering/AAA/2014J": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#CourseOffering"
+    ],
+    "https://example.org/oulad/id/module/AAA": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#Module"
+    ],
+    "https://example.org/oulad/id/enrollment/AAA/2013J/260355": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#Enrollment",
+      "https://example.org/oulad/schema#WithdrawnEnrollment"
+    ],
+    "https://example.org/oulad/id/student/260355": [
       "http://www.w3.org/2002/07/owl#Thing",
       "http://xmlns.com/foaf/0.1/Agent",
       "http://xmlns.com/foaf/0.1/Person",
@@ -176,47 +120,78 @@
       "https://example.org/oulad/schema#AssessmentRecord",
       "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ],
-    "https://example.org/oulad/id/student/106577": [
+    "https://example.org/oulad/id/assessment-record/260355/1752": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/assessment-record/1401935/1753": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#LowScoreAssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/assessment-record/134143/1756": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/student/100893": [
       "http://www.w3.org/2002/07/owl#Thing",
       "http://xmlns.com/foaf/0.1/Agent",
       "http://xmlns.com/foaf/0.1/Person",
       "https://example.org/oulad/schema#Person",
       "https://example.org/oulad/schema#Student"
     ],
-    "https://example.org/oulad/id/offering/AAA/2014J": [
+    "https://example.org/oulad/id/assessment/1755": [
       "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#CourseOffering"
+      "https://example.org/oulad/schema#Assessment",
+      "https://example.org/oulad/schema#TutorMarkedAssessment"
     ],
-    "https://example.org/oulad/id/assessment-record/100893/1754": [
+    "https://example.org/oulad/id/assessment-record/129955/1759": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#BankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/assessment-record/100893/1756": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
       "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ],
-    "https://example.org/oulad/id/assessment-record/106577/1753": [
+    "https://example.org/oulad/id/assessment/1756": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#Assessment",
+      "https://example.org/oulad/schema#TutorMarkedAssessment"
+    ],
+    "https://example.org/oulad/id/assessment-record/129955/1758": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/student/129955": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "http://xmlns.com/foaf/0.1/Agent",
-      "http://xmlns.com/foaf/0.1/Person",
-      "https://example.org/oulad/schema#Person",
-      "https://example.org/oulad/schema#Student"
+      "https://example.org/oulad/schema#BankedAssessmentRecord"
     ],
     "https://example.org/oulad/id/assessment-record/106577/1752": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
       "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ],
-    "https://example.org/oulad/id/module/AAA": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#Module"
-    ],
-    "https://example.org/oulad/id/assessment-record/129955/1758": [
+    "https://example.org/oulad/id/assessment-record/1401935/1752": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#BankedAssessmentRecord"
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/assessment/1752": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#Assessment",
+      "https://example.org/oulad/schema#TutorMarkedAssessment"
+    ],
+    "https://example.org/oulad/id/assessment-record/106247/1752": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/assessment-record/106247/1754": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ],
     "https://example.org/oulad/id/student/134143": [
       "http://www.w3.org/2002/07/owl#Thing",
@@ -225,6 +200,50 @@
       "https://example.org/oulad/schema#Person",
       "https://example.org/oulad/schema#Student"
     ],
+    "https://example.org/oulad/id/enrollment/AAA/2013J/134143": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#Enrollment",
+      "https://example.org/oulad/schema#SuccessfulEnrollment"
+    ],
+    "https://example.org/oulad/id/student/129955": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "http://xmlns.com/foaf/0.1/Agent",
+      "http://xmlns.com/foaf/0.1/Person",
+      "https://example.org/oulad/schema#Person",
+      "https://example.org/oulad/schema#Student"
+    ],
+    "https://example.org/oulad/id/student/106577": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "http://xmlns.com/foaf/0.1/Agent",
+      "http://xmlns.com/foaf/0.1/Person",
+      "https://example.org/oulad/schema#Person",
+      "https://example.org/oulad/schema#Student"
+    ],
+    "https://example.org/oulad/id/assessment-record/106577/1754": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/assessment-record/100893/1753": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/assessment/1758": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#Assessment",
+      "https://example.org/oulad/schema#TutorMarkedAssessment"
+    ],
+    "https://example.org/oulad/id/assessment-record/106577/1753": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/assessment-record/134143/1755": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
     "https://example.org/oulad/id/student/1401935": [
       "http://www.w3.org/2002/07/owl#Thing",
       "http://xmlns.com/foaf/0.1/Agent",
@@ -232,48 +251,38 @@
       "https://example.org/oulad/schema#Person",
       "https://example.org/oulad/schema#Student"
     ],
-    "https://example.org/oulad/id/assessment-record/260355/1753": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
-    ],
-    "https://example.org/oulad/id/assessment/1760": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#Assessment",
-      "https://example.org/oulad/schema#TutorMarkedAssessment"
-    ],
-    "https://example.org/oulad/id/assessment/1759": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "https://example.org/oulad/schema#Assessment",
-      "https://example.org/oulad/schema#TutorMarkedAssessment"
-    ],
     "https://example.org/oulad/id/assessment-record/100893/1752": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
       "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ],
-    "https://example.org/oulad/id/student/260355": [
-      "http://www.w3.org/2002/07/owl#Thing",
-      "http://xmlns.com/foaf/0.1/Agent",
-      "http://xmlns.com/foaf/0.1/Person",
-      "https://example.org/oulad/schema#Person",
-      "https://example.org/oulad/schema#Student"
-    ],
-    "https://example.org/oulad/id/assessment-record/129955/1760": [
+    "https://example.org/oulad/id/assessment-record/260355/1754": [
       "http://www.w3.org/2002/07/owl#Thing",
       "https://example.org/oulad/schema#AssessmentRecord",
-      "https://example.org/oulad/schema#BankedAssessmentRecord"
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ],
-    "https://example.org/oulad/id/student/100893": [
+    "https://example.org/oulad/id/assessment-record/134143/1752": [
       "http://www.w3.org/2002/07/owl#Thing",
-      "http://xmlns.com/foaf/0.1/Agent",
-      "http://xmlns.com/foaf/0.1/Person",
-      "https://example.org/oulad/schema#Person",
-      "https://example.org/oulad/schema#Student"
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
+    ],
+    "https://example.org/oulad/id/assessment-record/134143/1753": [
+      "http://www.w3.org/2002/07/owl#Thing",
+      "https://example.org/oulad/schema#AssessmentRecord",
+      "https://example.org/oulad/schema#NonBankedAssessmentRecord"
     ]
   },
   "class_parents": {
+    "https://example.org/oulad/schema#ComputerMarkedAssessment": [
+      "https://example.org/oulad/schema#Assessment"
+    ],
+    "https://example.org/oulad/schema#LowScoreAssessmentRecord": [
+      "https://example.org/oulad/schema#AssessmentRecord"
+    ],
     "https://example.org/oulad/schema#CourseOffering": [
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "https://example.org/oulad/schema#Enrollment": [
       "http://www.w3.org/2002/07/owl#Thing"
     ],
     "https://example.org/oulad/schema#TutorMarkedAssessment": [
@@ -282,11 +291,20 @@
     "https://example.org/oulad/schema#DailyInteraction": [
       "http://www.w3.org/2002/07/owl#Thing"
     ],
+    "https://example.org/oulad/schema#AssessmentRecord": [
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
+    "https://example.org/oulad/schema#LearningResource": [
+      "http://www.w3.org/2002/07/owl#Thing"
+    ],
     "https://example.org/oulad/schema#Student": [
       "https://example.org/oulad/schema#Person"
     ],
-    "https://example.org/oulad/schema#LowScoreAssessmentRecord": [
-      "https://example.org/oulad/schema#AssessmentRecord"
+    "https://example.org/oulad/schema#Person": [
+      "http://xmlns.com/foaf/0.1/Person"
+    ],
+    "https://example.org/oulad/schema#WithdrawnEnrollment": [
+      "https://example.org/oulad/schema#Enrollment"
     ],
     "https://example.org/oulad/schema#Module": [
       "http://www.w3.org/2002/07/owl#Thing"
@@ -294,42 +312,24 @@
     "https://example.org/oulad/schema#NonBankedAssessmentRecord": [
       "https://example.org/oulad/schema#AssessmentRecord"
     ],
-    "https://example.org/oulad/schema#AssessmentRecord": [
-      "http://www.w3.org/2002/07/owl#Thing"
-    ],
-    "https://example.org/oulad/schema#Enrollment": [
-      "http://www.w3.org/2002/07/owl#Thing"
-    ],
-    "https://example.org/oulad/schema#Assessment": [
-      "http://www.w3.org/2002/07/owl#Thing"
+    "https://example.org/oulad/schema#Exam": [
+      "https://example.org/oulad/schema#Assessment"
     ],
     "https://example.org/oulad/schema#SuccessfulEnrollment": [
       "https://example.org/oulad/schema#Enrollment"
     ],
-    "https://example.org/oulad/schema#Person": [
-      "http://xmlns.com/foaf/0.1/Person"
+    "https://example.org/oulad/schema#Assessment": [
+      "http://www.w3.org/2002/07/owl#Thing"
     ],
     "https://example.org/oulad/schema#BankedAssessmentRecord": [
       "https://example.org/oulad/schema#AssessmentRecord"
-    ],
-    "https://example.org/oulad/schema#ComputerMarkedAssessment": [
-      "https://example.org/oulad/schema#Assessment"
-    ],
-    "https://example.org/oulad/schema#WithdrawnEnrollment": [
-      "https://example.org/oulad/schema#Enrollment"
-    ],
-    "https://example.org/oulad/schema#LearningResource": [
-      "http://www.w3.org/2002/07/owl#Thing"
-    ],
-    "https://example.org/oulad/schema#Exam": [
-      "https://example.org/oulad/schema#Assessment"
     ],
     "https://example.org/oulad/schema#EnrollmentWithLowScore": [
       "https://example.org/oulad/schema#Enrollment"
     ]
   },
   "scope": "sample-enrollments",
-  "verified_at_utc": "2026-10-13T10:01:39.947678+00:00",
+  "verified_at_utc": "2026-10-19T20:10:44.178761+00:00",
   "source_sha256": {
     "data/processed/oulad.ttl": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5",
     "ontology/education.owl.ttl": "54c2ec0e79cc1f138859dfdced499e1ccc3939819c15928f6f1a8d3b40788a29",

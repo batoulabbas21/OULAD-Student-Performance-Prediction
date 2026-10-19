@@ -1,0 +1,20 @@
+# Explicit allowlist: data and credentials enter at runtime, never in an image.
+**
+!docker/
+!docker/access/
+!docker/access/Dockerfile
+!docker/access/requirements.txt
+!src/
+!src/access/
+!src/access/*.py
+!src/access/ui/
+!src/access/ui/*
+!src/validation/
+!src/validation/validate.py
+!src/project/
+!src/project/serve_container.py
+!config/
+!config/access/
+!config/access/*.ttl
+!config/access/*.txt
+!config/access/*.yaml

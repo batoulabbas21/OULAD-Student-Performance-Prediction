@@ -2,7 +2,7 @@
 
 **What we built, what the results mean, and how we handled challenges and errors.**
 
-Prepared on **14 October 2026**, updated through Session 6 on **18 October 2026**. This guide explains the saved earlier stages and the newly executed PostgreSQL integration. Section 16 covers mappings and virtualization; section 17 explains the learning methods, original counts, model results, leakage checks and limitations.
+Prepared on **14 October 2026**, updated through Session 7 on **18 October 2026**. This guide explains the saved earlier stages and the newly executed PostgreSQL integration. Section 16 covers mappings and virtualization; section 17 explains learning; section 18 covers natural-language access, the measured comparison and interpretation.
 
 > **The main result:** we have a traceable education knowledge graph, an ontology that derives useful classifications, and a validation gate that catches structural errors while retaining documented missing values. The current full SHACL report has **0 violations and 5 warnings**, and **37 verification checks pass**.
 
@@ -628,6 +628,68 @@ Start-Process '.\outputs\learning\learning-results.html'
 The HTML report needs no running database. Model checkpoints (`.pt`) and runtime caches are ignored by Git; regenerate them after cloning before using the complete evidence verifier. Predictions and their interpretation remain separate from source facts and OWL inferences. Read [README section 14](../README.md#14-session-6--learning-and-baseline-comparisons) for the execution order and file roles, and [project provenance](project-provenance.html#13-session-6-learning-provenance) for the exact source graph and recorded software.
 
 Course reference: [Session 6 lab](../../KRR/demos/session-06-learning/README.md). Method references: [scikit-learn leakage guidance](https://scikit-learn.org/stable/common_pitfalls.html), [average precision](https://scikit-learn.org/1.7/modules/generated/sklearn.metrics.average_precision_score.html), [GraphSAGE layer](https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.conv.SAGEConv.html), [PyKEEN TransE](https://pykeen.readthedocs.io/en/stable/api/pykeen.models.TransE.html), and [filtered ranking evaluation](https://pykeen.readthedocs.io/en/stable/tutorial/understanding_evaluation.html).
+
+## 18. Session 7: questions, checked queries and grounded answers
+
+We added an English-question interface over the existing 28,470 asserted RDF facts plus the 105-triple RDFS schema. It generates a VoID summary of actual data, retrieves three of eight worked examples, asks Gemini for SPARQL, checks the candidate and allows at most two repairs. It displays the query and answer rows in a browser on **port 8007**. The exact local execution uses the stored graph; PostgreSQL, Ontop and Fuseki are not prerequisites for this interface.
+
+The test set has ten answerable questions and three missing-data questions. Every reference query is reconciled with independent calculations from the selected CSV tables before a provider call. This protects the distinction between 748 enrollments and 712 students, the count of 12 subtype assessments, 815 late nonbanked records, 90 known low scores, 3 unknown scores, 42 banked records, 531 successful outcomes and 2 unknown deadlines.
+
+| Setting | Mean row F1 | Exact answers | Correct refusals | Successful repairs |
+|---|---:|---:|---:|---:|
+| schema | 1.000 | 10/10 | 3/3 | 0 |
+| examples | 1.000 | 10/10 | 3/3 | 0 |
+| repair | 1.000 | 10/10 | 3/3 | 0 |
+
+
+All three settings answered all ten questions exactly and refused all three missing-data questions. Examples and repair therefore showed **no measured accuracy improvement on this benchmark**. No live repair was needed; its behavior was verified separately with deliberately faulty, scripted responses. This is a ceiling result on a small, straightforward test, not evidence that every natural-language question will work.
+
+These are measured **record-mode** results from `gemini-3.5-flash-lite`, **39 API requests**, run `dd0223f4396343f48a214657557b40aa`. See [every attempted query and answer](../outputs/access/runs/dd0223f4396343f48a214657557b40aa/report.html). The primary F1 preserves row associations; the lab's flattened-value score is retained only as a comparison. Correct refusals are scored separately. The prompt examples and held-out questions have different wording, but share the same small domain and some operations; schema class counts also make several questions easy.
+
+The **65 passing access checks** cover reference-answer reconciliation, examples, invented and unavailable vocabulary, aliased/full IRIs, read-only restrictions, empty/boolean answers, association-sensitive scoring, scripted repair, bounded attempts, a real worker timeout, the HTTP contract and recorded-run fingerprints/scores. Scripted failures are deliberate fault tests, not fabricated Gemini results. Repairs exhausted without a valid query are labeled invalid, not accepted as missing-data refusals.
+
+The full [Session 7 explanation](access-results-explained.html) records the pipeline, challenges, fixes, results and limits. The [README](../README.md#15-session-7--natural-language-access) gives every command. Run `python src/access/serve.py` for the no-key catalog, then open http://127.0.0.1:8007. Catalog mode supports eight exact examples; record/live mode supports new wording using your lab key. The provider's credentials remain outside committed files. There is no new Session 7 GitHub workflow in this update.
+
+### Interface refresh and defense-readiness review — 19 October 2026
+
+The Session 7 page now presents dataset counters, a question library and separate Answer/SPARQL/Checks views. It includes keyboard submission, query copying, CSV export and responsive layouts verified at desktop, tablet and mobile widths. The query/model logic is unchanged. The working review preview is on **http://127.0.0.1:8008/**; the default server command remains on port 8007. During testing the earlier port-8007 preview continued to return the old page, so browser validation used a separate port rather than assuming that a file change updated a running server.
+
+The current complete replay is [`6316669854314620a77b7fa0baedf9cd`](../outputs/access/runs/6316669854314620a77b7fa0baedf9cd/report.html), using zero API requests. Each of the three settings still has 10/10 exact factual answers and 3/3 correct refusals from saved provider responses. All 65 local/evidence checks passed. New UI assets are fingerprinted. The original live experiment retains its own source-version hashes and is historical evidence.
+
+The [course coverage audit](course-coverage-audit.html) identifies real remaining rubric gaps: an entity-resolution experiment with precision/recall, reproducible whole-stack startup with validation before service exposure, and a final report with one open problem supported by three sources. Defense rehearsal and verification of the submitted revision remain. Session 8 itself adds no new algorithm; it is the defense of the handed-in system.
+
+## 19. Start the full project or open the live agent
+
+We added two launchers to make the existing work easier to repeat. The Conda launcher orchestrates the already implemented course stages; the Docker launcher packages the live access page using existing project data.
+
+| What you want | Command from the project folder | What happens |
+|---|---|---|
+| Repeat the complete project | `conda activate M2ENV`, then `.\run-project.ps1` | Runs preparation, RDF, OWL, SHACL, mappings/PostgreSQL, learning and Neo4j/Fuseki views, then opens Gemini. |
+| Open Gemini using existing RDF | `.\run-project.ps1 -AccessOnly` | Validates the graph and checks access before opening the page; uses M2ENV. |
+| Run only the access page in Docker | `.\start-access-docker.ps1` | Builds/starts the access container, validates its copied snapshot, then opens port 8010. No Conda activation needed. |
+
+The full launcher needs Java, the existing lab packages and running Docker Desktop. The Docker page needs existing RDF/RDFS/shapes, Docker Desktop and the configured Gemini key. Both live options require internet access for questions. They do not retrain a local Gemini model. See [README sections 16–17](../README.md#16-one-launcher-for-the-full-project) for all commands, options, stop instructions and troubleshooting.
+
+### A successful answer and a justified refusal
+
+1. Ask **“How many distinct students are in the dataset?”** Expected answer: **712**, with the executed SPARQL and query checks. The 748 enrollments include people enrolled in more than one offering.
+2. Ask **“What personal reasons caused students to withdraw from AAA?”** Expected behavior: a refusal explaining that personal reasons are not in the graph. A recorded withdrawal outcome does not establish its cause.
+
+On a live page, Gemini generates a query or a refusal. An allowed query is executed against the local RDF; its rows supply the factual answer. The **Answer**, **SPARQL** and **Checks** tabs let you inspect this chain. Refusal, invalid-query exhaustion and provider errors are separate outcomes. A loading indicator is shown while processing; the final result appears when it finishes.
+
+### What startup adds to our validation story
+
+The launchers require a passing SHACL gate before starting a new access server. The Docker container also freezes a copy of its mounted inputs, so changing the host graph cannot silently change that running session. Restart to validate and use new data. Direct `serve.py` remains a low-level command without this startup gate; the documented launchers are the preferred entry points.
+
+The known graph has five warnings and zero violations. Warnings describe existing unknown values and remain in the report. They do not become fabricated values and do not block this project's gate. Any violation or missing required target stops the launcher/container before the page is served.
+
+The Conda launcher defaults to port 8009 and chooses the next available port if needed. Docker defaults to 8010; choose `-Port 8011` if another application occupies it. Each new live server has a ten-request default cap; repairs can consume more than one request per question. Opening the page makes no provider call. These launcher checks and startup receipts do not replace the separate Session 7 benchmark.
+
+### Evidence and limits
+
+Full/local execution receipts are under `outputs/project/runs/`; Docker startup, SHACL and PROV records are under `outputs/docker-access/container/runs/`. The [provenance document](project-provenance.html) records what was actually tested for this update. Earlier dated reports remain historical evidence and must not be relabeled as new live Gemini runs.
+
+This Docker scope is the access page using prepared data, as requested. It does not implement a clean-checkout Docker rebuild of every course layer, an entity-resolution evaluation, or the final defense report. The existing VoID export is still produced by the same function that constructs the prompt description; the runtime does not read `void.ttl` back as its schema input.
 
 ## Appendix: all SHACL verification checks
 

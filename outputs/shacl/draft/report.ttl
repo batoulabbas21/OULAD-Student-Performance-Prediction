@@ -6,6 +6,13 @@
 [] a sh:ValidationReport ;
     sh:conforms false ;
     sh:result [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/oulad/id/assessment/1763> ;
+            sh:resultMessage "Deadline is unknown: preserve the absence, including unknown exam dates." ;
+            sh:resultPath edu:deadlineDay ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape shape:DeadlinePresence ],
+        [ a sh:ValidationResult ;
             sh:focusNode <https://example.org/oulad/id/assessment/1757> ;
             sh:resultMessage "Deadline is unknown: preserve the absence, including unknown exam dates." ;
             sh:resultPath edu:deadlineDay ;
@@ -18,12 +25,5 @@
             sh:resultPath edu:score ;
             sh:resultSeverity sh:Violation ;
             sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
-            sh:sourceShape shape:ScorePresence ],
-        [ a sh:ValidationResult ;
-            sh:focusNode <https://example.org/oulad/id/assessment/1763> ;
-            sh:resultMessage "Deadline is unknown: preserve the absence, including unknown exam dates." ;
-            sh:resultPath edu:deadlineDay ;
-            sh:resultSeverity sh:Violation ;
-            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
-            sh:sourceShape shape:DeadlinePresence ] .
+            sh:sourceShape shape:ScorePresence ] .
 

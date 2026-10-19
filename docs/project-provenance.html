@@ -2,7 +2,7 @@
 
 <html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>OULAD project provenance | Origins, transformations and evidence</title>
-<meta content="OULAD through Session 6: observed counts, logistic regression, GraphSAGE, TransE, leakage controls, measured results and provenance." name="description"/>
+<meta content="OULAD through Session 7: natural-language questions, VoID, checked SPARQL, measured results and provenance." name="description"/>
 <style>
 :root { color-scheme: light; --ink:#172e35; --muted:#516970; --line:#dce6e5; --accent:#087064; --paper:#fff; --wash:#f3f7f5; }
 * { box-sizing:border-box; }
@@ -51,16 +51,16 @@ pre code { background:none; color:inherit; padding:0; font-size:inherit; }
 
 nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{max-height:none;overflow:visible;}}</style></head><body>
 <header class="top"><span class="brand">KRR / OULAD · Project record</span><div class="actions"><a href="project-provenance.md">Editable version</a><button onclick="window.print()" type="button">Print / save PDF</button></div></header>
-<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-the-project-in-one-minute">1. The project in one minute</a><a href="#2-original-sources-and-credit">2. Original sources and credit</a><a href="#3-the-journey-from-csvs-to-answers">3. The journey from CSVs to answers</a><a href="#4-choices-that-affect-the-meaning">4. Choices that affect the meaning</a><a href="#5-a-real-result-traced-all-the-way-back">5. A real result, traced all the way back</a><a href="#6-four-kinds-of-information-to-keep-separate">6. Four kinds of information to keep separate</a><a href="#7-what-the-saved-checks-establish">7. What the saved checks establish</a><a href="#8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</a><a href="#9-dates-fingerprints-and-reproducibility">9. Dates, fingerprints and reproducibility</a><a href="#10-connection-to-the-course-provenance-lesson">10. Connection to the course provenance lesson</a><a href="#11-what-this-record-cannot-establish">11. What this record cannot establish</a><a href="#12-session-5-integration-provenance">12. Session 5 integration provenance</a><a href="#13-session-6-learning-provenance">13. Session 6 learning provenance</a></div><div class="scope"><b>Through Session 6</b>Updated 18 October 2026<br/>21 learning checks passed<br/>54 evidence checks passed<br/><a href="../outputs/learning/learning-results.html">Open learning results</a></div></nav>
+<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-the-project-in-one-minute">1. The project in one minute</a><a href="#2-original-sources-and-credit">2. Original sources and credit</a><a href="#3-the-journey-from-csvs-to-answers">3. The journey from CSVs to answers</a><a href="#4-choices-that-affect-the-meaning">4. Choices that affect the meaning</a><a href="#5-a-real-result-traced-all-the-way-back">5. A real result, traced all the way back</a><a href="#6-four-kinds-of-information-to-keep-separate">6. Four kinds of information to keep separate</a><a href="#7-what-the-saved-checks-establish">7. What the saved checks establish</a><a href="#8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</a><a href="#9-dates-fingerprints-and-reproducibility">9. Dates, fingerprints and reproducibility</a><a href="#10-connection-to-the-course-provenance-lesson">10. Connection to the course provenance lesson</a><a href="#11-what-this-record-cannot-establish">11. What this record cannot establish</a><a href="#12-session-5-integration-provenance">12. Session 5 integration provenance</a><a href="#13-session-6-learning-provenance">13. Session 6 learning provenance</a><a href="#14-session-7-access-provenance">14. Session 7 access provenance</a></div><div class="scope"><b>Through Session 7</b>Reviewed 19 October 2026<br/>65 access checks passed<br/><a href="course-coverage-audit.html">Remaining course requirements</a></div></nav>
 <main><h1>OULAD project provenance</h1>
 <p><strong>Where the data came from, what we changed, and why the results can be traced.</strong></p>
-<p>Prepared on <strong>13 October 2026</strong>, updated through Session 6 on <strong>18 October 2026</strong> for the <code>kr-oulad</code> project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the <a href="../README.md">README</a> for commands. Jump to <a href="#session-4-validation-evidence">SHACL evidence</a>, <a href="#shacl-and-ci-what-is-implemented-and-what-has-run">SHACL and CI</a>, or <a href="#10-connection-to-the-course-provenance-lesson">validation-run provenance</a>.</p>
+<p>Prepared on <strong>13 October 2026</strong>, updated through Session 7 on <strong>18 October 2026</strong> for the <code>kr-oulad</code> project. This guide describes the current AAA build and links to its evidence. Start here for the project's origins; use the <a href="../README.md">README</a> for commands. Jump to <a href="#session-4-validation-evidence">SHACL evidence</a>, <a href="#shacl-and-ci-what-is-implemented-and-what-has-run">SHACL and CI</a>, or <a href="#10-connection-to-the-course-provenance-lesson">validation-run provenance</a>.</p>
 <blockquote>
 <p><strong>Provenance means the history behind a result.</strong> For this project, it connects an original CSV row to its RDF representation, the ontology definition applied to it, and the resulting answer.</p>
 </blockquote>
 <h2 id="1-the-project-in-one-minute">1. The project in one minute</h2>
 <p>The project turns a small, understandable part of OULAD into a knowledge graph. It keeps student identity separate from enrollment in a particular offering, answers questions with SPARQL, uses OWL reasoning to classify records, and applies SHACL rules to validate the supplied graph.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Current scope</th>
@@ -116,6 +116,10 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <td>Session 6 learning</td>
 <td>21 learning checks and 54 evidence checks passed; predictions retained separately</td>
 </tr>
+<tr>
+<td>Session 7 access</td>
+<td>65 local/evidence checks passed; measured Gemini comparison recorded</td>
+</tr>
 </tbody>
 </table></div>
 <p>The current build excludes daily activity from <code>studentVle.csv</code>. An activity question is therefore marked <strong>unavailable</strong>; omitted activity does not mean that students made zero clicks.</p>
@@ -134,7 +138,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <p>The OULAD model, scripts and explanations were developed for this project with Codex assistance. The education classes and rules are project modeling choices; the source dataset does not supply this ontology. A project-wide code license has not been established. The dataset and FOAF licenses apply to their respective material.</p>
 <h2 id="3-the-journey-from-csvs-to-answers">3. The journey from CSVs to answers</h2>
 <p><strong>Download → select AAA → profile → create RDF → validate with SHACL → query and reason → inspect and verify.</strong></p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Stage</th>
@@ -192,7 +196,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 </table></div>
 <p>The preparation and conversion entry scripts share logic in <a href="../src/common/pipeline.py">src/common/pipeline.py</a>. Their folder names follow this project's structure while preserving the lab workflow.</p>
 <h3 id="which-table-contributes-what">Which table contributes what?</h3>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Original table</th>
@@ -266,7 +270,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 </code></pre>
 <p>The successful type is absent from the asserted RDF and present in the inferred file. This is a classification of a recorded outcome, not a prediction of future performance. The <a href="provenance-snapshot.json">provenance snapshot</a> records this trace and the source fingerprints checked for it.</p>
 <h2 id="6-four-kinds-of-information-to-keep-separate">6. Four kinds of information to keep separate</h2>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Kind</th>
@@ -300,7 +304,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <p>The small ontology sample selects seven real enrollments and their related facts. Synthetic error demonstrations use the separate <code>https://example.org/oulad/teaching#</code> namespace. They are not evidence about OULAD students and are not loaded as real data into the project databases.</p>
 <h2 id="7-what-the-saved-checks-establish">7. What the saved checks establish</h2>
 <p>The core verification records <strong>14 passed checks</strong>, including source-versus-graph counts, outcome answers, late-record identities and preservation of unknown scores. The ontology verification records <strong>17 passed checks</strong>, including consistency, inferred identities, sample fidelity and controlled examples of OWL semantics.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Inferred class</th>
@@ -350,7 +354,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <p>Read the <a href="shacl-triage.md">rule coverage and triage decisions</a>, <a href="../outputs/shacl/full/report.html">full results</a> and <a href="../outputs/shacl/verification.json">SHACL verification</a>. The following section distinguishes those saved local results from the prepared CI workflow.</p>
 <h3 id="shacl-and-ci-what-is-implemented-and-what-has-run">SHACL and CI: what is implemented and what has run</h3>
 <p><strong>Yes: SHACL verification includes a CI workflow.</strong> CI means continuous integration: a remote runner automatically checks relevant code changes. SHACL defines the validation rules; CI decides when to execute the validator and tests. Running the scripts on your computer is local verification, not a GitHub Actions run.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Execution path</th>
@@ -385,7 +389,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <p>The current workflow does not upload downloadable report artifacts or capture a GitHub run URL in the project provenance. The successful SHACL screenshot is identified separately from local run records. The new integration workflow is configured to upload its own reports when it runs.</p>
 <h2 id="8-how-neo4j-fuseki-and-the-notebook-relate">8. How Neo4j, Fuseki and the notebook relate</h2>
 <p>All three views ultimately use the project data; they do not introduce another original dataset.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>View</th>
@@ -413,7 +417,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 </table></div>
 <p>The OWL type export is separate; it is not automatically loaded into Neo4j or Fuseki. These import reports document saved checks. This provenance audit did not contact either server or establish whether it is currently running.</p>
 <h2 id="9-dates-fingerprints-and-reproducibility">9. Dates, fingerprints and reproducibility</h2>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Recorded event</th>
@@ -487,7 +491,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <p>After changing data, mappings or axioms, regenerate their dependent outputs and verification reports before updating this guide. Reordered Turtle serialization can change a file's fingerprint even when its RDF meaning is unchanged.</p>
 <h2 id="10-connection-to-the-course-provenance-lesson">10. Connection to the course provenance lesson</h2>
 <p>The <a href="https://www.w3.org/TR/prov-o/">W3C PROV-O model</a> describes provenance using entities, activities and agents. Here is how those ideas fit this project:</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>PROV idea</th>
@@ -534,7 +538,7 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <h2 id="12-session-5-integration-provenance">12. Session 5 integration provenance</h2>
 <p><strong>What changed:</strong> the existing selected AAA CSVs were loaded into PostgreSQL; a shared R2RML mapping was executed by Morph-KGC and queried by Ontop. The original raw CSVs, reference RDF, RDFS/OWL vocabulary and SHACL shapes remain the source of comparison. This adds a relational access path and a reusable declarative mapping, not a new original dataset.</p>
 <p>The design adapts the course's <a href="../../KRR/demos/session-05-integration/README.md">Session 5 lab</a>: database loading, mapping materialization, comparison with Session 2, Ontop querying and SQL inspection. OULAD's composite enrollment identity, joins and missing-value rules replace the lab's supply-chain model. Entity-resolution exercises are outside this extension: the supplied OULAD IDs already determine the modeled joins.</p>
-<div aria-label="Scrollable data table" class="table-wrap" role="region" tabindex="0"><table>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
 <thead>
 <tr>
 <th>Evidence</th>
@@ -621,4 +625,56 @@ nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{m
 <p>The current <a href="provenance-snapshot.json">project snapshot</a> incorporates new evidence and refreshes listed file hashes. The <a href="history/provenance-snapshot-2026-10-16T103610Z.json">previous snapshot</a> is preserved. Older audits and preliminary run folders retain their own dates and hashes; current code need not match every historical prototype. This is run/file provenance, not per-prediction causal explanation or a complete immutable code archive.</p>
 <p>The current learning suite is local. This update adds no learning CI workflow and makes no claim that GitHub ran the models. Existing SHACL and integration workflows have their own scope and evidence. No commit or push was performed for Session 6.</p>
 <p>The <a href="learning-results-explained.html">detailed learning explanation</a> records the cohort changes, metrics, failure modes, actual fixes and limitations. The <a href="../README.md#14-session-6--learning-and-baseline-comparisons">README</a> gives all steps. This is a teaching experiment on one module and one future offering, with date-based availability assumptions and uncalibrated scores, not a deployed student decision system.</p>
+<h2 id="14-session-7-access-provenance">14. Session 7 access provenance</h2>
+<p>The access activity <strong><code>dd0223f4396343f48a214657557b40aa</code></strong> reads <code>data/processed/oulad.ttl</code> and <code>ontology/education.rdfs.ttl</code>. These are the existing asserted facts and RDFS schema, not the separate OWL inference output or Session 6 predictions. It uses the course Session 7 architecture with OULAD-specific examples, questions, interpretation rules and independent CSV answers. The original course scripts remain unchanged.</p>
+<p>This live <strong>record-mode</strong> run started <strong>2026-10-18T12:25:42.707752+00:00</strong> and completed its evaluation loop <strong>2026-10-18T12:28:23.320689+00:00</strong> (UTC), before report/manifest assembly. Model <strong>gemini-3.5-flash-lite</strong>, <strong>39 API requests</strong>, within the user-approved maximum of 45. The existing lab key was read from its configured file without copying it into the project. Credentials and raw provider error bodies are absent from the saved evidence. The project <code>.env.access</code> option is ignored by Git.</p>
+<p>Input fingerprints cover the asserted graph, schema, six selected CSV tables, examples, held-out questions, domain prompt, access code and verification script. Each run's VoID/schema files describe the actual queried snapshot. Reference SPARQL answers must agree with separate pandas calculations before model generation starts. The ten answerable questions and three refusal cases are distinct from the eight prompt-example questions. Their authored wording is held out, not their entire domain; some related operations occur in both sets.</p>
+<p>The cache and <code>model-calls.json</code> retain genuine responses, model identity, prompt key, timestamp and provider-reported token usage. Exact prompt keys include the chosen model and prompt text, which includes data/schema fingerprints. <code>answers.json</code> links each question/setting to attempted queries, diagnostics, returned rows and its score. The source prompt and deterministic retrieval logic reconstruct prompt context for the corresponding source version. A replay reuses these responses and is explicitly labeled replay; it must not be counted as fresh live model performance. The instructor's Brunel cache was never used as OULAD evidence.</p>
+<p>A full replay <strong><code>2d48629d7cdb4587a89ec083344283ca</code></strong> subsequently completed with <strong>0 API requests</strong>; see its <a href="../outputs/access/runs/2d48629d7cdb4587a89ec083344283ca/report.html">report</a>. The latest-evaluation pointer now identifies that replay. The live run above remains the source of model-performance claims. The 39 live responses are retained individually; the response cache has 26 unique keys because examples and repair share the same initial prompts. For repeated prompt keys the latest recorded response is retained in the cache.</p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th style="text-align:right">Mean row F1</th>
+<th style="text-align:right">Exact answers</th>
+<th style="text-align:right">Correct refusals</th>
+<th style="text-align:right">Successful repairs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schema</td>
+<td style="text-align:right">1.000</td>
+<td style="text-align:right">10/10</td>
+<td style="text-align:right">3/3</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>examples</td>
+<td style="text-align:right">1.000</td>
+<td style="text-align:right">10/10</td>
+<td style="text-align:right">3/3</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>repair</td>
+<td style="text-align:right">1.000</td>
+<td style="text-align:right">10/10</td>
+<td style="text-align:right">3/3</td>
+<td style="text-align:right">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>All three settings answered all ten questions exactly and refused all three missing-data questions. Examples and repair therefore showed <strong>no measured accuracy improvement on this benchmark</strong>. No live repair was needed; its behavior was verified separately with deliberately faulty, scripted responses. This is a ceiling result on a small, straightforward test, not evidence that every natural-language question will work.</p>
+<p>The run has <strong>65 passing local/evidence checks</strong>. Local fault-injection tests establish repair behavior and read-only limits, while the live report establishes model behavior on this question set. Correct missing-data refusals are distinct from invalid queries and provider failures. The row-aware score preserves associations that flattened value sets can lose; both scores are retained. All counts remain historical observations, not causal explanations or newly predicted facts.</p>
+<p><a href="../outputs/access/runs/dd0223f4396343f48a214657557b40aa/report.html">Run report</a>, <a href="../outputs/access/runs/dd0223f4396343f48a214657557b40aa/summary.json">summary</a>, <a href="../outputs/access/runs/dd0223f4396343f48a214657557b40aa/answers.json">answer records</a>, <a href="../outputs/access/runs/dd0223f4396343f48a214657557b40aa/manifest.json">manifest</a>, <a href="../outputs/access/runs/dd0223f4396343f48a214657557b40aa/provenance.ttl">PROV-O</a>, <a href="../outputs/access/verification.json">verification</a>.</p>
+<p>The PROV-O activity uses fingerprinted input entities through <code>prov:used</code>, and its output entities link back through <code>prov:wasGeneratedBy</code>. The manifest fingerprints the generated run files, including the PROV file; it excludes itself to avoid a circular digest. Code hashes and package versions identify the implementation; no claim is made that this is an immutable archival copy of every source version. A later edit requires a fresh run or leaves an older run as dated historical evidence.</p>
+<p>The current <a href="provenance-snapshot.json">project fingerprint snapshot</a> preserves the <a href="history/provenance-snapshot-2026-10-17T213713Z.json">previous audit</a> and adds the access code, documentation and actual run evidence. Earlier Session 5/6 results retain their dates; they were not rerun for this extension. The local checks ran in <strong>M2ENV</strong> using rdflib 7.6.0, pyoxigraph 0.5.11, requests 2.34.2, pandas 2.3.3, PyYAML 6.0.3. No package installation, new Conda environment, Git commit or push was performed for Session 7. No new Session 7 CI workflow or remote execution is claimed.</p>
+<p>See the <a href="access-results-explained.html">Session 7 explanation</a> for detailed interpretation and challenges, and the <a href="../README.md#15-session-7--natural-language-access">README</a> for reproduction and browser instructions.</p>
+<h3 id="interface-refresh-and-coverage-audit-19-october-2026">Interface refresh and coverage audit — 19 October 2026</h3>
+<p>This update changed the web presentation and added <code>src/access/ui/index.html</code>, <code>style.css</code> and <code>app.js</code>. The server renders those local assets with counters from the observed graph and the existing example questions. The source inventory now includes the UI assets. The data, vocabulary, prompt, question benchmark and model-generation logic were not changed.</p>
+<p>The new replay activity <strong><code>6316669854314620a77b7fa0baedf9cd</code></strong> completed with <strong>zero API requests</strong> and the same recorded-answer scores: 10/10 exact factual answers and 3/3 correct refusals in each setting. See <a href="../outputs/access/runs/6316669854314620a77b7fa0baedf9cd/report.html">the replay report</a>, <a href="../outputs/access/runs/6316669854314620a77b7fa0baedf9cd/manifest.json">manifest</a> and <a href="../outputs/access/runs/6316669854314620a77b7fa0baedf9cd/provenance.ttl">PROV-O</a>. The current latest-evaluation pointer now identifies this replay, superseding the earlier pointer described above. The first live record remains the evidence for the provider's measured performance; its code fingerprints refer to its historical version, not this UI revision.</p>
+<p>All <strong>65 local/evidence checks passed</strong>. Browser checks covered 1440, 768 and 390-pixel layouts, example selection, answer 383/365, tabs, the dataset dialog, unsupported-input recovery and CSV export. These tests used catalog mode, without provider calls. See <a href="../outputs/access/interface-verification.json">the interface verification receipt</a>. The reviewed preview used port 8008 after the original port-8007 page remained stale; this does not change the script's default port.</p>
+<p>The <a href="course-coverage-audit.html">coverage audit</a> compares the actual project with the supplied Session 8 lecture and defense/lab documents. It distinguishes implemented layers from missing entity-resolution evaluation, reproducible deployment, startup validation enforcement and the final report/open-problem requirement. It does not claim that those gaps have been implemented or that the instructor has awarded a grade.</p>
+<p>The <a href="history/provenance-snapshot-2026-10-18T204947Z.json">previous project snapshot</a> is retained; the current inventory is refreshed for this UI revision and its replay. No new packages, API charges, Git commit, push or new CI workflow were introduced.</p>
 </main></div></body></html>

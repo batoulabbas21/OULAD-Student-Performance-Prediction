@@ -1,0 +1,144 @@
+@prefix ex: <https://example.org/oulad/provenance#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/output/answers.json> prov:wasGeneratedBy <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca> ;
+    ex:sha256 "65741a194ee90bf9c202815ab5e4edea66fe384d0547abc9847265c794d56e64" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/output/gold-answers.json> prov:wasGeneratedBy <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca> ;
+    ex:sha256 "0bac943bad14ee12d386dda3cbf407268235f132cfd73691db20b3fce2b6e06d" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/output/grounding.json> prov:wasGeneratedBy <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca> ;
+    ex:sha256 "5950fbe87f7a5072cc6b4d329fc792853213dcbce391e8f8d2c0b50884de57ea" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/output/model-calls.json> prov:wasGeneratedBy <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca> ;
+    ex:sha256 "46efca4ad5e3808eda69a20508adf38b8d5515efab4a28e4b71bc1adb97df8b8" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/output/report.html> prov:wasGeneratedBy <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca> ;
+    ex:sha256 "44623bfea3a5a86b50265ebb3f27d7d68890e9f6bbc696ae01119ab15d5e88a9" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/output/schema.txt> prov:wasGeneratedBy <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca> ;
+    ex:sha256 "8055b17733eccfdd1092abffcc79370a4875957361cddcb28f77cc7ee063eac5" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/output/summary.json> prov:wasGeneratedBy <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca> ;
+    ex:sha256 "2142d86ffbf94200959cd4caff76173de0737d2d3871f2cfeec93685ab4dba72" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/output/void.ttl> prov:wasGeneratedBy <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca> ;
+    ex:sha256 "edd6eff5acac7c1ce3bb878b5be0d8b84e727e2dd568842240a2b0c7fd414148" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/config/access/examples.ttl> a prov:Entity ;
+    ex:path "config/access/examples.ttl" ;
+    ex:sha256 "59ea37713042a38c75e50ecdae76c9c85982b3ab2db7fefdcf64e4d73c49cd43" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/config/access/prompt.txt> a prov:Entity ;
+    ex:path "config/access/prompt.txt" ;
+    ex:sha256 "ff873e24c09836ba0cb5152febd33ccb6109bedb2ed9df8f668816575848d842" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/config/access/questions.yaml> a prov:Entity ;
+    ex:path "config/access/questions.yaml" ;
+    ex:sha256 "6051c3afe4e1fe54714a7a3f6fd56b6dbc52b64b732b43e43d980a002555bec3" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/assessments.csv> a prov:Entity ;
+    ex:path "data/interim/assessments.csv" ;
+    ex:sha256 "c331b9eb8cbddb982d97f47ff4e07760bfa648025214b089ac70d40c13fa4896" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/courses.csv> a prov:Entity ;
+    ex:path "data/interim/courses.csv" ;
+    ex:sha256 "f52e7042dffa402110e0fb1086da3ba7569a6de76c496e09ffaf7d1dcd49e4eb" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/studentAssessment.csv> a prov:Entity ;
+    ex:path "data/interim/studentAssessment.csv" ;
+    ex:sha256 "e2bde03c12ff7e7b51da0ba32a476422c3fb6bb65e5dfd3f86b298c593dfbcd9" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/studentInfo.csv> a prov:Entity ;
+    ex:path "data/interim/studentInfo.csv" ;
+    ex:sha256 "c4fc15dbe643c29f710e815c8d523a34828f3b434317e6854898552884327d75" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/studentRegistration.csv> a prov:Entity ;
+    ex:path "data/interim/studentRegistration.csv" ;
+    ex:sha256 "8933cc554f26e5345f991a55f522f8c3ef212c9c8cf25609ad8ee54a511edfb0" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/vle.csv> a prov:Entity ;
+    ex:path "data/interim/vle.csv" ;
+    ex:sha256 "cc29dc5adf8457cab0f57c0411402c264aad43650d74a6db0511d42d012d9678" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/processed/oulad.ttl> a prov:Entity ;
+    ex:path "data/processed/oulad.ttl" ;
+    ex:sha256 "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/evaluation/verify_access.py> a prov:Entity ;
+    ex:path "evaluation/verify_access.py" ;
+    ex:sha256 "41df85455115d4c9973b70411a67104f032286d4689c62fb659560a913f413c3" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/ontology/education.rdfs.ttl> a prov:Entity ;
+    ex:path "ontology/education.rdfs.ttl" ;
+    ex:sha256 "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/access_layer.py> a prov:Entity ;
+    ex:path "src/access/access_layer.py" ;
+    ex:sha256 "ff55afe65a5b3feb94cc290aac85e178f74c024f1000b2c54dc1343d2adc88f1" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/ask.py> a prov:Entity ;
+    ex:path "src/access/ask.py" ;
+    ex:sha256 "723165adf73ce42a804355ec12ddc8ec282480fde00540df13e99f239f92f9f8" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/common.py> a prov:Entity ;
+    ex:path "src/access/common.py" ;
+    ex:sha256 "72fc362cdbc9f604cdcc174948f36b84726e97d04f761a22fcdcd0ff66535d66" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/evaluate.py> a prov:Entity ;
+    ex:path "src/access/evaluate.py" ;
+    ex:sha256 "6d2720ecba22d24bb67ea0c3b9f2f6a262fbdf9928381173b24c801d5dafbcfe" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/grounding.py> a prov:Entity ;
+    ex:path "src/access/grounding.py" ;
+    ex:sha256 "9719c2a7cbb482d73ca1fa18017bbb935f32d9db3942bb5f30d92320d5408bde" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/oracle.py> a prov:Entity ;
+    ex:path "src/access/oracle.py" ;
+    ex:sha256 "612d1da844862775b9ee29b975b1aacc66901b3cfe8876ca8cedabb6a4a72e75" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/query_engine.py> a prov:Entity ;
+    ex:path "src/access/query_engine.py" ;
+    ex:sha256 "80dbe962254b211625a400f5f352daae6f7aae515d845d6f7cafa3b8e301c865" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/report.py> a prov:Entity ;
+    ex:path "src/access/report.py" ;
+    ex:sha256 "ae5d6b46f49c48ad3e2f327c419822030edc74410b98a5aee8bd43cc2e925032" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/scoring.py> a prov:Entity ;
+    ex:path "src/access/scoring.py" ;
+    ex:sha256 "e2295c629695b555ee57a128675ea1a71bc0eaef0c41c3960fa2ce7d556b01ca" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/serve.py> a prov:Entity ;
+    ex:path "src/access/serve.py" ;
+    ex:sha256 "553c9af5b861f42e9b750567e74be70186bc56ee52361d6f763d393071e5d051" .
+
+<https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca> a prov:Activity ;
+    prov:endedAtTime "2026-10-18T20:48:22.671225+00:00"^^xsd:dateTime ;
+    prov:startedAtTime "2026-10-18T20:47:53.995907+00:00"^^xsd:dateTime ;
+    prov:used <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/config/access/examples.ttl>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/config/access/prompt.txt>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/config/access/questions.yaml>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/assessments.csv>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/courses.csv>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/studentAssessment.csv>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/studentInfo.csv>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/studentRegistration.csv>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/interim/vle.csv>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/data/processed/oulad.ttl>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/evaluation/verify_access.py>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/ontology/education.rdfs.ttl>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/access_layer.py>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/ask.py>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/common.py>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/evaluate.py>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/grounding.py>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/oracle.py>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/query_engine.py>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/report.py>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/scoring.py>,
+        <https://example.org/oulad/run/access/2d48629d7cdb4587a89ec083344283ca/input/src/access/serve.py> ;
+    ex:mode "replay" ;
+    ex:model "gemini-3.5-flash-lite" .
+

@@ -1,0 +1,62 @@
+[
+  {
+    "check": "All 748 RDF enrollment labels match independent CSV outcomes",
+    "passed": true
+  },
+  {
+    "check": "Original successful and unsuccessful counts are 531 and 217",
+    "passed": true
+  },
+  {
+    "check": "Day-60 eligibility matches registration CSVs",
+    "passed": true
+  },
+  {
+    "check": "Previous-attempt and registration features match CSVs",
+    "passed": true
+  },
+  {
+    "check": "Early submission counts match independent CSV joins",
+    "passed": true
+  },
+  {
+    "check": "Early late counts and last days match independent CSV joins",
+    "passed": true
+  },
+  {
+    "check": "Link target contains exactly 3107 unique nonbanked pairs",
+    "passed": true
+  },
+  {
+    "check": "Every classifier edge is nonbanked and on or before cutoff",
+    "passed": true
+  },
+  {
+    "check": "Learning RDF excludes labels, scores, withdrawal dates and inferred outcome types",
+    "passed": true
+  },
+  {
+    "check": "Every graph feature and edge uses the explicit allowlist",
+    "passed": true
+  },
+  {
+    "check": "Changing final labels and grades cannot change classifier features",
+    "passed": true
+  },
+  {
+    "check": "Removing later assessment records cannot change classifier inputs",
+    "passed": true
+  },
+  {
+    "check": "Day 60 is included at the cutoff boundary",
+    "passed": true
+  },
+  {
+    "check": "Day 61 is excluded at the cutoff boundary",
+    "passed": true
+  },
+  {
+    "check": "Banked records cannot masquerade as new early submissions",
+    "passed": true
+  }
+]

@@ -1,0 +1,6 @@
+rdflib==7.6.0
+pyshacl==0.40.1
+owlrl==7.6.2
+requests==2.34.2
+python-dotenv==1.2.3
+pyoxigraph==0.5.11

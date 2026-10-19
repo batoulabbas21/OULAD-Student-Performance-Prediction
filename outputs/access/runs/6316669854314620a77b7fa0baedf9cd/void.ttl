@@ -1,0 +1,230 @@
+@prefix edu: <https://example.org/oulad/schema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vext: <http://ldf.fi/void-ext#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/oulad/void> a void:Dataset ;
+    void:classPartition <https://example.org/oulad/schema#AssessmentRecord/partition>,
+        <https://example.org/oulad/schema#CourseOffering/partition>,
+        <https://example.org/oulad/schema#Enrollment/partition>,
+        <https://example.org/oulad/schema#Exam/partition>,
+        <https://example.org/oulad/schema#LearningResource/partition>,
+        <https://example.org/oulad/schema#Module/partition>,
+        <https://example.org/oulad/schema#Student/partition>,
+        <https://example.org/oulad/schema#TutorMarkedAssessment/partition> ;
+    void:triples 28470 .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition> void:class edu:AssessmentRecord ;
+    void:entities 3149 ;
+    void:propertyPartition <https://example.org/oulad/schema#AssessmentRecord/partition/forAssessment>,
+        <https://example.org/oulad/schema#AssessmentRecord/partition/isBanked>,
+        <https://example.org/oulad/schema#AssessmentRecord/partition/recordForEnrollment>,
+        <https://example.org/oulad/schema#AssessmentRecord/partition/score>,
+        <https://example.org/oulad/schema#AssessmentRecord/partition/submissionDay> .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition/forAssessment> void:classPartition <https://example.org/oulad/schema#AssessmentRecord/partition/forAssessment/0> ;
+    void:property edu:forAssessment ;
+    void:triples 3149 .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition/forAssessment/0> void:class edu:TutorMarkedAssessment .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition/isBanked> vext:datatypePartition <https://example.org/oulad/schema#AssessmentRecord/partition/isBanked/0> ;
+    void:property edu:isBanked ;
+    void:triples 3149 .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition/isBanked/0> vext:datatype xsd:boolean .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition/recordForEnrollment> void:classPartition <https://example.org/oulad/schema#AssessmentRecord/partition/recordForEnrollment/0> ;
+    void:property edu:recordForEnrollment ;
+    void:triples 3149 .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition/recordForEnrollment/0> void:class edu:Enrollment .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition/score> vext:datatypePartition <https://example.org/oulad/schema#AssessmentRecord/partition/score/0> ;
+    void:property edu:score ;
+    void:triples 3146 .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition/score/0> vext:datatype xsd:decimal .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition/submissionDay> vext:datatypePartition <https://example.org/oulad/schema#AssessmentRecord/partition/submissionDay/0> ;
+    void:property edu:submissionDay ;
+    void:triples 3149 .
+
+<https://example.org/oulad/schema#AssessmentRecord/partition/submissionDay/0> vext:datatype xsd:integer .
+
+<https://example.org/oulad/schema#CourseOffering/partition> void:class edu:CourseOffering ;
+    void:entities 2 ;
+    void:propertyPartition <https://example.org/oulad/schema#CourseOffering/partition/label>,
+        <https://example.org/oulad/schema#CourseOffering/partition/lengthDays>,
+        <https://example.org/oulad/schema#CourseOffering/partition/offeringOf>,
+        <https://example.org/oulad/schema#CourseOffering/partition/presentationCode> .
+
+<https://example.org/oulad/schema#CourseOffering/partition/label> vext:datatypePartition <https://example.org/oulad/schema#CourseOffering/partition/label/0> ;
+    void:property rdfs:label ;
+    void:triples 2 .
+
+<https://example.org/oulad/schema#CourseOffering/partition/label/0> vext:datatype xsd:string .
+
+<https://example.org/oulad/schema#CourseOffering/partition/lengthDays> vext:datatypePartition <https://example.org/oulad/schema#CourseOffering/partition/lengthDays/0> ;
+    void:property edu:lengthDays ;
+    void:triples 2 .
+
+<https://example.org/oulad/schema#CourseOffering/partition/lengthDays/0> vext:datatype xsd:integer .
+
+<https://example.org/oulad/schema#CourseOffering/partition/offeringOf> void:classPartition <https://example.org/oulad/schema#CourseOffering/partition/offeringOf/0> ;
+    void:property edu:offeringOf ;
+    void:triples 2 .
+
+<https://example.org/oulad/schema#CourseOffering/partition/offeringOf/0> void:class edu:Module .
+
+<https://example.org/oulad/schema#CourseOffering/partition/presentationCode> vext:datatypePartition <https://example.org/oulad/schema#CourseOffering/partition/presentationCode/0> ;
+    void:property edu:presentationCode ;
+    void:triples 2 .
+
+<https://example.org/oulad/schema#CourseOffering/partition/presentationCode/0> vext:datatype xsd:string .
+
+<https://example.org/oulad/schema#Enrollment/partition> void:class edu:Enrollment ;
+    void:entities 748 ;
+    void:propertyPartition <https://example.org/oulad/schema#Enrollment/partition/ageBand>,
+        <https://example.org/oulad/schema#Enrollment/partition/finalResult>,
+        <https://example.org/oulad/schema#Enrollment/partition/hasStudent>,
+        <https://example.org/oulad/schema#Enrollment/partition/highestEducation>,
+        <https://example.org/oulad/schema#Enrollment/partition/inOffering>,
+        <https://example.org/oulad/schema#Enrollment/partition/previousAttempts>,
+        <https://example.org/oulad/schema#Enrollment/partition/region>,
+        <https://example.org/oulad/schema#Enrollment/partition/registrationDay>,
+        <https://example.org/oulad/schema#Enrollment/partition/unregistrationDay> .
+
+<https://example.org/oulad/schema#Enrollment/partition/ageBand> vext:datatypePartition <https://example.org/oulad/schema#Enrollment/partition/ageBand/0> ;
+    void:property edu:ageBand ;
+    void:triples 748 .
+
+<https://example.org/oulad/schema#Enrollment/partition/ageBand/0> vext:datatype xsd:string .
+
+<https://example.org/oulad/schema#Enrollment/partition/finalResult> vext:datatypePartition <https://example.org/oulad/schema#Enrollment/partition/finalResult/0> ;
+    void:property edu:finalResult ;
+    void:triples 748 .
+
+<https://example.org/oulad/schema#Enrollment/partition/finalResult/0> vext:datatype xsd:string .
+
+<https://example.org/oulad/schema#Enrollment/partition/hasStudent> void:classPartition <https://example.org/oulad/schema#Enrollment/partition/hasStudent/0> ;
+    void:property edu:hasStudent ;
+    void:triples 748 .
+
+<https://example.org/oulad/schema#Enrollment/partition/hasStudent/0> void:class edu:Student .
+
+<https://example.org/oulad/schema#Enrollment/partition/highestEducation> vext:datatypePartition <https://example.org/oulad/schema#Enrollment/partition/highestEducation/0> ;
+    void:property edu:highestEducation ;
+    void:triples 748 .
+
+<https://example.org/oulad/schema#Enrollment/partition/highestEducation/0> vext:datatype xsd:string .
+
+<https://example.org/oulad/schema#Enrollment/partition/inOffering> void:classPartition <https://example.org/oulad/schema#Enrollment/partition/inOffering/0> ;
+    void:property edu:inOffering ;
+    void:triples 748 .
+
+<https://example.org/oulad/schema#Enrollment/partition/inOffering/0> void:class edu:CourseOffering .
+
+<https://example.org/oulad/schema#Enrollment/partition/previousAttempts> vext:datatypePartition <https://example.org/oulad/schema#Enrollment/partition/previousAttempts/0> ;
+    void:property edu:previousAttempts ;
+    void:triples 748 .
+
+<https://example.org/oulad/schema#Enrollment/partition/previousAttempts/0> vext:datatype xsd:integer .
+
+<https://example.org/oulad/schema#Enrollment/partition/region> vext:datatypePartition <https://example.org/oulad/schema#Enrollment/partition/region/0> ;
+    void:property edu:region ;
+    void:triples 748 .
+
+<https://example.org/oulad/schema#Enrollment/partition/region/0> vext:datatype xsd:string .
+
+<https://example.org/oulad/schema#Enrollment/partition/registrationDay> vext:datatypePartition <https://example.org/oulad/schema#Enrollment/partition/registrationDay/0> ;
+    void:property edu:registrationDay ;
+    void:triples 748 .
+
+<https://example.org/oulad/schema#Enrollment/partition/registrationDay/0> vext:datatype xsd:integer .
+
+<https://example.org/oulad/schema#Enrollment/partition/unregistrationDay> vext:datatypePartition <https://example.org/oulad/schema#Enrollment/partition/unregistrationDay/0> ;
+    void:property edu:unregistrationDay ;
+    void:triples 126 .
+
+<https://example.org/oulad/schema#Enrollment/partition/unregistrationDay/0> vext:datatype xsd:integer .
+
+<https://example.org/oulad/schema#Exam/partition> void:class edu:Exam ;
+    void:entities 2 ;
+    void:propertyPartition <https://example.org/oulad/schema#Exam/partition/assessmentInOffering>,
+        <https://example.org/oulad/schema#Exam/partition/weightPercent> .
+
+<https://example.org/oulad/schema#Exam/partition/assessmentInOffering> void:classPartition <https://example.org/oulad/schema#Exam/partition/assessmentInOffering/0> ;
+    void:property edu:assessmentInOffering ;
+    void:triples 2 .
+
+<https://example.org/oulad/schema#Exam/partition/assessmentInOffering/0> void:class edu:CourseOffering .
+
+<https://example.org/oulad/schema#Exam/partition/weightPercent> vext:datatypePartition <https://example.org/oulad/schema#Exam/partition/weightPercent/0> ;
+    void:property edu:weightPercent ;
+    void:triples 2 .
+
+<https://example.org/oulad/schema#Exam/partition/weightPercent/0> vext:datatype xsd:decimal .
+
+<https://example.org/oulad/schema#LearningResource/partition> void:class edu:LearningResource ;
+    void:entities 413 ;
+    void:propertyPartition <https://example.org/oulad/schema#LearningResource/partition/activityType>,
+        <https://example.org/oulad/schema#LearningResource/partition/resourceInOffering> .
+
+<https://example.org/oulad/schema#LearningResource/partition/activityType> vext:datatypePartition <https://example.org/oulad/schema#LearningResource/partition/activityType/0> ;
+    void:property edu:activityType ;
+    void:triples 413 .
+
+<https://example.org/oulad/schema#LearningResource/partition/activityType/0> vext:datatype xsd:string .
+
+<https://example.org/oulad/schema#LearningResource/partition/resourceInOffering> void:classPartition <https://example.org/oulad/schema#LearningResource/partition/resourceInOffering/0> ;
+    void:property edu:resourceInOffering ;
+    void:triples 413 .
+
+<https://example.org/oulad/schema#LearningResource/partition/resourceInOffering/0> void:class edu:CourseOffering .
+
+<https://example.org/oulad/schema#Module/partition> void:class edu:Module ;
+    void:entities 1 ;
+    void:propertyPartition <https://example.org/oulad/schema#Module/partition/label> .
+
+<https://example.org/oulad/schema#Module/partition/label> vext:datatypePartition <https://example.org/oulad/schema#Module/partition/label/0> ;
+    void:property rdfs:label ;
+    void:triples 1 .
+
+<https://example.org/oulad/schema#Module/partition/label/0> vext:datatype xsd:string .
+
+<https://example.org/oulad/schema#Student/partition> void:class edu:Student ;
+    void:entities 712 ;
+    void:propertyPartition <https://example.org/oulad/schema#Student/partition/studentId> .
+
+<https://example.org/oulad/schema#Student/partition/studentId> vext:datatypePartition <https://example.org/oulad/schema#Student/partition/studentId/0> ;
+    void:property edu:studentId ;
+    void:triples 712 .
+
+<https://example.org/oulad/schema#Student/partition/studentId/0> vext:datatype xsd:string .
+
+<https://example.org/oulad/schema#TutorMarkedAssessment/partition> void:class edu:TutorMarkedAssessment ;
+    void:entities 10 ;
+    void:propertyPartition <https://example.org/oulad/schema#TutorMarkedAssessment/partition/assessmentInOffering>,
+        <https://example.org/oulad/schema#TutorMarkedAssessment/partition/deadlineDay>,
+        <https://example.org/oulad/schema#TutorMarkedAssessment/partition/weightPercent> .
+
+<https://example.org/oulad/schema#TutorMarkedAssessment/partition/assessmentInOffering> void:classPartition <https://example.org/oulad/schema#TutorMarkedAssessment/partition/assessmentInOffering/0> ;
+    void:property edu:assessmentInOffering ;
+    void:triples 10 .
+
+<https://example.org/oulad/schema#TutorMarkedAssessment/partition/assessmentInOffering/0> void:class edu:CourseOffering .
+
+<https://example.org/oulad/schema#TutorMarkedAssessment/partition/deadlineDay> vext:datatypePartition <https://example.org/oulad/schema#TutorMarkedAssessment/partition/deadlineDay/0> ;
+    void:property edu:deadlineDay ;
+    void:triples 10 .
+
+<https://example.org/oulad/schema#TutorMarkedAssessment/partition/deadlineDay/0> vext:datatype xsd:integer .
+
+<https://example.org/oulad/schema#TutorMarkedAssessment/partition/weightPercent> vext:datatypePartition <https://example.org/oulad/schema#TutorMarkedAssessment/partition/weightPercent/0> ;
+    void:property edu:weightPercent ;
+    void:triples 10 .
+
+<https://example.org/oulad/schema#TutorMarkedAssessment/partition/weightPercent/0> vext:datatype xsd:decimal .
+

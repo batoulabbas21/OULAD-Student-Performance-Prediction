@@ -1,5 +1,5 @@
 {
-  "verified_at_utc": "2026-10-15T02:51:53.178880+00:00",
+  "verified_at_utc": "2026-10-19T20:24:20.367521+00:00",
   "sample_only": false,
   "passed": true,
   "checks": [
@@ -207,6 +207,6 @@
     "evaluation/fixtures/shacl/broken.ttl": "058732cedbbb45d50f91e8e7060ff1a6b0e0741d521168f1a627422197552178",
     "src/validation/validate.py": "c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d",
     "evaluation/verify_shacl.py": "238c4cf042e54d0c213b976eacd3c16cdc69883987746428a159eec705b7b7b0",
-    "outputs/shacl/full/summary.json": "d372166586ef94a714f6ad267e1ad7854c88b714f3df2a6ba8e57ad2e777570f"
+    "outputs/shacl/full/summary.json": "6b34984cc758109cfb35f31906f1758f9c5f37ffeda4eb757bdb93154687467e"
   }
 }

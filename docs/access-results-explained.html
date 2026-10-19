@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>OULAD Session 7 | Questions and results explained</title>
+<meta content="OULAD through Session 7: natural-language questions, VoID, checked SPARQL, measured results and provenance." name="description"/>
+<style>
+:root { color-scheme: light; --ink:#172e35; --muted:#516970; --line:#dce6e5; --accent:#087064; --paper:#fff; --wash:#f3f7f5; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:24px; }
+body { margin:0; background:var(--wash); color:var(--ink); font:16px/1.7 "Segoe UI",Arial,sans-serif; }
+a { color:var(--accent); text-underline-offset:3px; overflow-wrap:anywhere; }
+a:hover { color:#034b43; }
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible { outline:3px solid #cf9143; outline-offset:4px; }
+.top { background:var(--ink); color:white; padding:18px max(24px,calc((100vw - 1260px)/2)); display:flex; justify-content:space-between; align-items:center; gap:16px; }
+.brand { font-size:12px; letter-spacing:.15em; text-transform:uppercase; font-weight:700; }
+.actions { display:flex; align-items:center; gap:22px; font-size:13px; }
+.actions a { color:white; }
+button { background:transparent; border:1px solid #98b4b9; border-radius:5px; color:white; font:inherit; padding:6px 12px; cursor:pointer; }
+.layout { max-width:1308px; padding:42px 24px 70px; margin:auto; display:grid; grid-template-columns:244px minmax(0,1fr); gap:34px; align-items:start; }
+nav { position:sticky; top:24px; font-size:13px; line-height:1.5; }
+nav strong { display:block; color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.12em; margin:0 0 13px 12px; }
+nav a { display:block; padding:8px 12px; border-left:2px solid #ccddda; color:var(--muted); text-decoration:none; }
+nav a:hover { background:#e8f0ed; border-left-color:var(--accent); }
+.scope { margin-top:24px; padding:15px; border:1px solid var(--line); border-radius:7px; font-size:12px; color:var(--muted); }
+.scope b { display:block; color:var(--ink); margin-bottom:4px; }
+main { min-width:0; background:var(--paper); padding:44px 48px; border:1px solid var(--line); border-radius:10px; box-shadow:0 8px 28px #172e3505; }
+h1 { font-size:40px; line-height:1.13; letter-spacing:-.035em; font-weight:650; margin:0 0 18px; }
+h1 + p { color:var(--muted); font-size:19px; line-height:1.5; }
+h1 + p strong { font-weight:400; }
+h2 { font-size:23px; line-height:1.3; letter-spacing:-.02em; margin:48px 0 18px; padding-top:27px; border-top:1px solid var(--line); }
+h3 { font-size:17px; line-height:1.4; margin:27px 0 10px; }
+p { margin:0 0 17px; }
+blockquote { margin:26px 0; padding:19px 22px; border-left:4px solid var(--accent); background:#eef7f3; border-radius:0 7px 7px 0; }
+blockquote p { margin:0; }
+ul,ol { padding-left:25px; margin:16px 0 22px; }
+li { padding-left:4px; margin:0 0 11px; }
+.table-wrap { overflow-x:auto; margin:21px 0 24px; border:1px solid var(--line); border-radius:7px; }
+table { border-collapse:collapse; width:100%; font-size:14px; line-height:1.6; }
+th { padding:12px 14px; background:#edf4f1; text-align:left; font-weight:650; vertical-align:top; }
+td { padding:12px 14px; vertical-align:top; border-top:1px solid var(--line); }
+tr:nth-child(even) td { background:#fafcfb; }
+td:first-child { font-weight:550; }
+code { font: .87em/1.5 Consolas,"Courier New",monospace; background:#eff3f2; border-radius:4px; padding:2px 4px; overflow-wrap:anywhere; }
+pre { background:#18373d; color:#edf8f2; padding:22px; border-radius:7px; white-space:pre-wrap; overflow-wrap:anywhere; font-size:13px; line-height:1.65; }
+pre code { background:none; color:inherit; padding:0; font-size:inherit; }
+.footer { border-top:1px solid var(--line); padding-top:22px; margin-top:40px; font-size:12px; color:var(--muted); }
+@media(max-width:1040px) { .layout { grid-template-columns:200px minmax(0,1fr); gap:22px; } main { padding:35px 30px; } }
+@media(max-width:800px) { .layout { display:block; padding:20px 14px 40px; } nav { position:static; margin:0 0 24px; } nav .toc { display:grid; grid-template-columns:1fr 1fr; } .scope { display:none; } main { padding:30px 24px; } h1 { font-size:33px; } }
+@media(max-width:500px) { nav .toc { display:block; } .top { padding:15px; align-items:flex-start; } .actions { gap:12px; flex-wrap:wrap; justify-content:flex-end; } main { padding:26px 18px; } h1 { font-size:30px; } th,td { padding:10px; } }
+@media print { @page { size:A4; margin:15mm; } body { background:white; font-size:10pt; line-height:1.5; } .top,nav { display:none; } .layout { display:block; padding:0; max-width:none; } main { border:0; padding:0; box-shadow:none; } h1 { font-size:26pt; } h2 { font-size:15pt; margin-top:24px; padding-top:15px; } h3 { font-size:12pt; } h1,h2,h3 { break-after:avoid; } p,li { orphans:3; widows:3; } table { font-size:9pt; } tr { break-inside:avoid; } .table-wrap { overflow:visible; } pre { background:#f4f7f5; color:#172e35; font-size:8pt; break-inside:avoid; } a { color:#174e47; } }
+
+nav{max-height:calc(100vh - 48px);overflow-y:auto;}@media(max-width:800px){nav{max-height:none;overflow:visible;}}</style></head><body>
+<header class="top"><span class="brand">KRR / OULAD · Project walkthrough</span><div class="actions"><a href="access-results-explained.md">Editable version</a><button onclick="window.print()" type="button">Print / save PDF</button></div></header>
+<div class="layout"><nav aria-label="Guide contents"><strong>In this guide</strong><div class="toc"><a href="#1-how-session-7-connects-to-sessions-1-6">1. How Session 7 connects to Sessions 1–6</a><a href="#2-the-pipeline-step-by-step">2. The pipeline, step by step</a><a href="#3-what-checks-and-repairs-actually-do">3. What checks and repairs actually do</a><a href="#4-what-questions-we-tested">4. What questions we tested</a><a href="#5-the-measured-three-setting-comparison">5. The measured three-setting comparison</a><a href="#6-how-to-interpret-precision-recall-and-f1">6. How to interpret precision, recall and F1</a><a href="#7-challenges-errors-and-how-they-were-addressed">7. Challenges, errors and how they were addressed</a><a href="#8-files-evidence-and-viewing-the-result">8. Files, evidence and viewing the result</a><a href="#9-sources-and-course-relationship">9. Sources and course relationship</a></div><div class="scope"><b>Through Session 7</b>Updated 18 October 2026<br/>65 access checks passed<br/><a href="../outputs/access/access-results.html">Open access results</a></div></nav>
+<main><h1>Session 7: asking the OULAD graph in English</h1>
+<p><strong>What we added, how it works, the measured results, and what those results establish.</strong> Updated 18 October 2026.</p>
+<p>The new interface converts a question into SPARQL, checks the query, executes it against the existing OULAD facts and displays the returned rows. It keeps the generated query visible so you can inspect how the answer was obtained. The live experiment used <strong>gemini-3.5-flash-lite</strong> through the same Gemini API approach as the course lab, within the existing <strong>M2ENV</strong> Conda environment.</p>
+<p><a href="../outputs/access/runs/dd0223f4396343f48a214657557b40aa/report.html">Open the measured run report</a> · <a href="../README.md#15-session-7--natural-language-access">Read the run instructions</a> · <a href="project-provenance.html#14-session-7-access-provenance">Read project provenance</a></p>
+<h2 id="1-how-session-7-connects-to-sessions-1-6">1. How Session 7 connects to Sessions 1–6</h2>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Existing work</th>
+<th>What Session 7 uses or adds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CSV profiling</td>
+<td>Independently calculates reference answers from the selected tables</td>
+</tr>
+<tr>
+<td>RDF and RDFS</td>
+<td>Queries 28,470 asserted facts plus 105 schema triples</td>
+</tr>
+<tr>
+<td>OWL</td>
+<td>Retains the distinction between asserted facts and separate inferred memberships</td>
+</tr>
+<tr>
+<td>SHACL</td>
+<td>Graph validation remains a separate stage; Session 7 checks generated queries</td>
+</tr>
+<tr>
+<td>PostgreSQL, mappings and virtualization</td>
+<td>The established vocabulary remains the same; this first interface executes the local RDF snapshot</td>
+</tr>
+<tr>
+<td>Learning</td>
+<td>Predictions remain in their experimental outputs; they are not presented as historical graph facts</td>
+</tr>
+<tr>
+<td>Natural-language access</td>
+<td>Adds questions → SPARQL → checked execution → answer rows and provenance</td>
+</tr>
+</tbody>
+</table></div>
+<p>No database service is required for this local interface. It does not connect to PostgreSQL or Ontop on every question. Session 5 remains the place to compare SQL, materialized RDF and virtual SPARQL. Refreshing the RDF snapshot changes the source fingerprint and requires a new evaluation. Fuseki's SPARQL service and this English-question server serve different purposes.</p>
+<h2 id="2-the-pipeline-step-by-step">2. The pipeline, step by step</h2>
+<pre><code class="language-text">Existing oulad.ttl + education.rdfs.ttl
+        ↓ describe observed classes, properties and targets
+VoID + readable schema summary
+        ↓ combine rules, schema and three closest examples
+Question → Gemini → candidate SPARQL
+                       ↓ parse and check vocabulary
+                 error → feedback → at most two repairs
+                       ↓
+           local read-only execution → returned rows
+                       ↓
+       compare with reference SPARQL and independent CSV answers
+                       ↓
+         readable report + response cache + run provenance
+</code></pre>
+<p><strong>VoID</strong> is a vocabulary for describing datasets. <code>outputs/access/void.ttl</code> describes the observed graph: direct class counts, property usage and all observed target classes or datatypes. <code>schema.txt</code> makes the same information readable. This is not another ontology and does not invent data. For example, the RDFS schema declares <code>DailyInteraction</code>, but this extract contains no interaction instances; the interface explicitly marks that capability unavailable. <code>Assessment</code> is a superclass: its instances are found through subtype paths even when no record is directly typed <code>Assessment</code>.</p>
+<p>The eight worked examples in <code>config/access/examples.ttl</code> use <code>sh:SPARQLExecutable</code>, <code>rdfs:comment</code> and <code>sh:select</code>, following the course convention. Their use of the SHACL vocabulary does <strong>not</strong> make them graph-validation shapes. Each example is a question paired with a query. A simple word-overlap function selects the nearest three; there is no embedding service or extra model call for retrieval.</p>
+<p>The prompt supplies the meaning of enrollment, student, banked record, late submission, missing score and successful outcome. The user question is kept separate from these rules. Gemini receives the question, schema summary and worked queries; it does not receive entire CSV files or individual answer rows. Generated answers are executed locally; there is no second LLM call paraphrasing the rows.</p>
+<h2 id="3-what-checks-and-repairs-actually-do">3. What checks and repairs actually do</h2>
+<p>The repair setting parses the candidate into SPARQL algebra and checks resolved predicate/class IRIs, including aliases and full IRIs. An invented <code>edu:grade</code> is rejected because the data uses <code>edu:score</code>. It also rejects declared activity terms when the corresponding facts are absent. It supplies the failed query and diagnostic feedback to the model, for at most <strong>three total attempts</strong>: initial generation plus two repairs.</p>
+<p>Every setting allows only SELECT/ASK over the local default graph and rejects remote SERVICE calls, FROM clauses, named GRAPH access and updates. Queries run in an isolated worker with a 15-second execution limit and a 10,000-row output limit. Those checks also apply when comparing the schema-only and examples settings; those two settings omit the extra vocabulary feedback loop. This is a local teaching interface, not a public service with accounts or production concurrency controls.</p>
+<p>A valid query can still be wrong. Counting enrollments instead of distinct students is legal SPARQL with real vocabulary. Only comparison with the intended answer reveals the semantic error. The validator is an aid, not a correctness proof.</p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>answered</td>
+<td>A permitted query ran; inspect its query and returned values</td>
+</tr>
+<tr>
+<td>refused</td>
+<td>The model explicitly identified missing kinds of facts</td>
+</tr>
+<tr>
+<td>invalid</td>
+<td>Attempts were exhausted without an executable query; this is not a justified refusal</td>
+</tr>
+<tr>
+<td>unsupported</td>
+<td>Catalog mode was given a question outside its eight exact examples</td>
+</tr>
+<tr>
+<td>HTTP 503 / command error</td>
+<td>Provider, quota, request-budget or execution infrastructure failed; an incomplete evaluation must not be treated as a successful refusal</td>
+</tr>
+</tbody>
+</table></div>
+<p>A genuine empty result or ASK false is an answer. It is not a missing-data refusal. The HTTP contract supplies a harmless empty SELECT for refusals so the lab-style client receives syntactically valid SPARQL; the separate <code>status</code> and <code>reason</code> fields preserve the distinction.</p>
+<h2 id="4-what-questions-we-tested">4. What questions we tested</h2>
+<p>The held-out file has <strong>10 answerable questions and 3 missing-data questions</strong>. Its question wording is disjoint from the eight worked examples. It tests different aggregations and combinations within the same AAA vocabulary; it is not a new dataset or a statistically independent research benchmark. Some test operations are similar to the examples. The schema summary includes class counts, so some counting tasks are deliberately easy.</p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Question</th>
+<th>CSV and reference SPARQL answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How many distinct students are represented across AAA?</td>
+<td>712</td>
+</tr>
+<tr>
+<td>What is the total number of enrollments in 2014J?</td>
+<td>365</td>
+</tr>
+<tr>
+<td>How many assessments are scheduled in AAA, including exams and tutor-marked assessments?</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Give the number of enrollments for every final result in each presentation; show presentation, final result and count in that order.</td>
+<td>8 presentation/outcome groups; detailed rows in the report</td>
+</tr>
+<tr>
+<td>How many non-banked assessment records were submitted strictly after their known deadline?</td>
+<td>815</td>
+</tr>
+<tr>
+<td>How many assessment records have a known score below 40, including banked records?</td>
+<td>90</td>
+</tr>
+<tr>
+<td>How many assessment records have no score recorded?</td>
+<td>3</td>
+</tr>
+<tr>
+<td>What is the total number of banked assessment records?</td>
+<td>42</td>
+</tr>
+<tr>
+<td>How many enrollments finished successfully, meaning Pass or Distinction?</td>
+<td>531</td>
+</tr>
+<tr>
+<td>How many scheduled assessments have an unknown deadline?</td>
+<td>2</td>
+</tr>
+</tbody>
+</table></div>
+<p>The three correct refusal cases are personal reasons for withdrawal, instructor full names and hours spent studying online. Outcomes do not identify personal causes. Resource descriptions do not establish visits or study duration. Regions and age bands do exist, so the interface should not indiscriminately refuse every demographic question.</p>
+<p>The oracle calculates these answers directly with pandas over <code>studentInfo.csv</code>, <code>studentAssessment.csv</code> and <code>assessments.csv</code>. It joins the assessment records to deadlines for lateness, excludes banked records in that count and checks strictly greater than the deadline. It counts missing values as missing, not zero. Before any API call, the evaluator confirms that each hand-authored reference SPARQL query agrees with its independent CSV calculation.</p>
+<h2 id="5-the-measured-three-setting-comparison">5. The measured three-setting comparison</h2>
+<p>Run <strong><code>dd0223f4396343f48a214657557b40aa</code></strong>, started <strong>2026-10-18T12:25:42.707752+00:00</strong>, evaluation loop finished <strong>2026-10-18T12:28:23.320689+00:00</strong> (UTC). Mode <strong>record</strong>, model <strong>gemini-3.5-flash-lite</strong>, <strong>39 actual API requests</strong> within the approved maximum of 45. The cache contains genuine provider responses for these exact prompts and model.</p>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Setting</th>
+<th style="text-align:right">Mean row F1</th>
+<th style="text-align:right">Exact answers</th>
+<th style="text-align:right">Correct refusals</th>
+<th style="text-align:right">Successful repairs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schema</td>
+<td style="text-align:right">1.000</td>
+<td style="text-align:right">10/10</td>
+<td style="text-align:right">3/3</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>examples</td>
+<td style="text-align:right">1.000</td>
+<td style="text-align:right">10/10</td>
+<td style="text-align:right">3/3</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>repair</td>
+<td style="text-align:right">1.000</td>
+<td style="text-align:right">10/10</td>
+<td style="text-align:right">3/3</td>
+<td style="text-align:right">0</td>
+</tr>
+</tbody>
+</table></div>
+<p>All three settings answered all ten questions exactly and refused all three missing-data questions. Examples and repair therefore showed <strong>no measured accuracy improvement on this benchmark</strong>. No live repair was needed; its behavior was verified separately with deliberately faulty, scripted responses. This is a ceiling result on a small, straightforward test, not evidence that every natural-language question will work.</p>
+<p>The report exposes every generated query, attempt, check, returned row and expected answer. It also records wrong refusals and invalid attempts. The results are one execution of one model on one small authored question set; provider output may vary on a later live run even at temperature zero. Replay repeats the recorded responses; it is not a fresh measurement of the provider.</p>
+<p>The complete replay was also tested: <a href="../outputs/access/runs/2d48629d7cdb4587a89ec083344283ca/report.html">replay report</a>, run <code>2d48629d7cdb4587a89ec083344283ca</code>, with <strong>0 API requests</strong>. There are 26 distinct prompt/model keys for 39 live calls: examples and repair have identical initial prompts when no repair is needed. The cache retains the latest genuine reply per key; the live run's <code>model-calls.json</code> retains all 39 responses. Replay therefore verifies execution from that cache, not byte-for-byte reproduction of every repeated live generation.</p>
+<h2 id="6-how-to-interpret-precision-recall-and-f1">6. How to interpret precision, recall and F1</h2>
+<p>Precision asks what fraction of returned rows are correct. Recall asks what fraction of expected rows were returned. F1 combines them: <code>2 × precision × recall / (precision + recall)</code>. The primary score preserves complete rows and duplicate multiplicity, comparing columns by projected position while tolerating renamed variables and equivalent numeric spellings. For multi-column questions the question specifies the requested column order. Both valid empty answers score 1; failed execution scores 0. ASK is scored as a boolean answer.</p>
+<p>For a single count, such as 712 distinct students, a correct count gives F1=1 and a different count gives F1=0. For grouped outcomes, partial matching rows can give a score between 0 and 1. Mean answer F1 averages the ten answerable questions equally. Refusal correctness is reported separately over the three unanswerable questions.</p>
+<p>The course's flattened value-set F1 is also retained for comparison. Its limitation is demonstrated by swapping presentation counts: <code>(2013J,383),(2014J,365)</code> versus <code>(2013J,365),(2014J,383)</code>. The same four isolated values appear in both answers, so the flat score is 1, but every row association is wrong, so our row-aware score is 0. Neither metric replaces reviewing whether the benchmark itself asks a useful question.</p>
+<h2 id="7-challenges-errors-and-how-they-were-addressed">7. Challenges, errors and how they were addressed</h2>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Challenge or deliberately injected error</th>
+<th>Treatment and evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The lab is about Brunel logistics</td>
+<td>Replaced domain rules, IRIs, examples, tests and oracle with OULAD meanings; never reused the Brunel response cache as an OULAD result</td>
+</tr>
+<tr>
+<td>748 enrollments versus 712 distinct students</td>
+<td>Explicit prompt rule plus independent distinct-person test</td>
+</tr>
+<tr>
+<td>Assessments use subtype classes</td>
+<td>Included RDFS in the execution graph and used <code>a/rdfs:subClassOf* edu:Assessment</code>; reference count is 12</td>
+</tr>
+<tr>
+<td>Activity schema exists but activity data is absent</td>
+<td>VoID describes observed facts; availability check excludes unloaded interaction vocabulary</td>
+</tr>
+<tr>
+<td>Missing score/deadline could be treated as zero</td>
+<td>Used absent-predicate queries and CSV missingness checks; counts are 3 scores and 2 deadlines</td>
+</tr>
+<tr>
+<td>A model can invent a plausible predicate</td>
+<td>Scripted <code>edu:grade</code> failure is checked and repaired to a valid score query; feedback includes the bad query</td>
+</tr>
+<tr>
+<td>Repair exhaustion could look like a valid refusal</td>
+<td>Separate invalid status; only explicit missing-data refusal counts as correct on refusal tests</td>
+</tr>
+<tr>
+<td>Flat answer sets hide mismatched associations</td>
+<td>Added the row-aware score and a swapped-count regression test</td>
+</tr>
+<tr>
+<td>A query could run indefinitely or access another endpoint</td>
+<td>Read-only algebra guard, isolated worker timeout and row bound; tested locally</td>
+</tr>
+<tr>
+<td>A cache could silently provide unrelated examples</td>
+<td>Exact model/prompt key; prompt includes data/schema fingerprints; a cache miss is an explicit error</td>
+</tr>
+<tr>
+<td>Credentials could enter Git or logs</td>
+<td>Read the existing lab key without copying it; <code>.env.access</code> is ignored; provider bodies and keys are excluded from logs</td>
+</tr>
+<tr>
+<td>Model performance could be overstated</td>
+<td>Distinguish live measurements, replay, exact catalog questions and scripted repair fault tests</td>
+</tr>
+</tbody>
+</table></div>
+<p>These fault injections are controlled tests, not a claim that Gemini made each mistake during the measured run. The live record above establishes which errors actually occurred. No dependency installation or Conda environment replacement was needed.</p>
+<h2 id="8-files-evidence-and-viewing-the-result">8. Files, evidence and viewing the result</h2>
+<div aria-label="Scrollable table" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>File or folder</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/access/</code></td>
+<td>Grounding, prompt/retrieval, API/cache, query execution, scoring, CLI, server and reports</td>
+</tr>
+<tr>
+<td><code>config/access/examples.ttl</code></td>
+<td>Eight worked example questions</td>
+</tr>
+<tr>
+<td><code>config/access/questions.yaml</code></td>
+<td>Ten answerable tests and three refusal tests; reference queries are not fed to the model</td>
+</tr>
+<tr>
+<td><code>config/access/prompt.txt</code></td>
+<td>OULAD interpretation and refusal rules</td>
+</tr>
+<tr>
+<td><code>evaluation/verify_access.py</code></td>
+<td>CSV reconciliation, validation, repair, scoring, timeout and HTTP tests; saved-run audit</td>
+</tr>
+<tr>
+<td><code>outputs/access/verification.json</code></td>
+<td><strong>65 passing local/evidence checks</strong></td>
+</tr>
+<tr>
+<td><code>outputs/access/llm-cache.json</code></td>
+<td>Real recorded replies, model, prompt hashes, times and reported token usage</td>
+</tr>
+<tr>
+<td><code>outputs/access/runs/&lt;run-id&gt;/</code></td>
+<td>Immutable-by-convention run folder: answers, summaries, report, manifest and PROV-O</td>
+</tr>
+<tr>
+<td><code>outputs/access/latest-evaluation.json</code></td>
+<td>Pointer to the latest complete evaluation</td>
+</tr>
+<tr>
+<td><code>outputs/access/local-results.html</code></td>
+<td>Readable local test report</td>
+</tr>
+<tr>
+<td><code>outputs/access/access-results.html</code></td>
+<td>Link to the most recently generated evaluation report; inspect completion status</td>
+</tr>
+</tbody>
+</table></div>
+<p>Open the <a href="../outputs/access/runs/dd0223f4396343f48a214657557b40aa/report.html">detailed evaluation</a>. For the interactive page run <code>python src/access/serve.py</code> from the project after activating M2ENV, then open <strong>http://127.0.0.1:8007</strong>. Default catalog mode needs no API call and supports the eight displayed examples exactly. To ask new wording, start the server with <code>--mode record --env-file D:\DESKTOP\M2\KRR\demos\.env</code>. Each live user question can consume up to three requests; the default server lifetime budget is 45 requests. Ctrl+C stops it.</p>
+<p>This work adds a local verification suite; it does not add or claim a new GitHub Actions run. Existing SHACL and integration CI keep their previous scope. Run the local tests before committing. Raw data are still ignored by Git, so a fresh clone must recreate the selected RDF before running Session 7. The README lists every command.</p>
+<h2 id="9-sources-and-course-relationship">9. Sources and course relationship</h2>
+<p>The implementation adapts the local course's <code>demos/session-07-access-layer</code>: <code>access_layer.py</code>, <code>make_void.py</code>, <code>evaluate.py</code>, <code>score_utils.py</code>, <code>serve.py</code>, examples and question-set pattern. OULAD domain rules, independent CSV oracle, process limits, row scoring, interface and provenance were written for this project; the original lab files were not changed.</p>
+<ul>
+<li><a href="https://www.w3.org/TR/void/">W3C VoID guide</a> explains dataset class/property partitions and statistics.</li>
+<li><a href="https://ai.google.dev/gemini-api/docs/openai">Google's Gemini compatibility documentation</a> describes the chat-completions endpoint used by the lab and this project.</li>
+<li><a href="https://pyoxigraph.readthedocs.io/en/stable/store.html">PyOxigraph store documentation</a> documents the local SPARQL engine.</li>
+</ul>
+<p>The tested environment retained Python 3.12.15; package versions for this run are rdflib 7.6.0, pyoxigraph 0.5.11, requests 2.34.2, pandas 2.3.3, PyYAML 6.0.3. The inventory records the tested installation; it is not a complete dependency lockfile.</p>
+</main></div></body></html>

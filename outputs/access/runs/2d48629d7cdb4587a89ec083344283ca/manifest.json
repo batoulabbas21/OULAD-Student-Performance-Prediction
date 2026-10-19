@@ -1,0 +1,14 @@
+{
+  "run_id": "2d48629d7cdb4587a89ec083344283ca",
+  "files": {
+    "answers.json": "65741a194ee90bf9c202815ab5e4edea66fe384d0547abc9847265c794d56e64",
+    "gold-answers.json": "0bac943bad14ee12d386dda3cbf407268235f132cfd73691db20b3fce2b6e06d",
+    "grounding.json": "5950fbe87f7a5072cc6b4d329fc792853213dcbce391e8f8d2c0b50884de57ea",
+    "model-calls.json": "46efca4ad5e3808eda69a20508adf38b8d5515efab4a28e4b71bc1adb97df8b8",
+    "provenance.ttl": "ec3087a0e7d035fd46fff92de1df5bb6056e1fec90e968c99dae1382c4991750",
+    "report.html": "44623bfea3a5a86b50265ebb3f27d7d68890e9f6bbc696ae01119ab15d5e88a9",
+    "schema.txt": "8055b17733eccfdd1092abffcc79370a4875957361cddcb28f77cc7ee063eac5",
+    "summary.json": "2142d86ffbf94200959cd4caff76173de0737d2d3871f2cfeec93685ab4dba72",
+    "void.ttl": "edd6eff5acac7c1ce3bb878b5be0d8b84e727e2dd568842240a2b0c7fd414148"
+  }
+}

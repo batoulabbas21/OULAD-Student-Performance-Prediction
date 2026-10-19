@@ -1,0 +1,25 @@
+{
+  "checked_at_utc": "2026-10-19T02:43:50.841488+00:00",
+  "review_date_local": "2026-10-19",
+  "passed": true,
+  "mode": "catalog",
+  "preview_url": "http://127.0.0.1:8008/",
+  "viewport_widths": [
+    1440,
+    768,
+    390
+  ],
+  "checks": [
+    "No horizontal page overflow",
+    "Eight example questions render",
+    "Observed student count is 712",
+    "Enrollment answer is 2013J=383 and 2014J=365",
+    "Answer/SPARQL/Checks tabs work",
+    "Dataset dialog opens/closes",
+    "Unsupported catalog wording is explicit and recoverable",
+    "CSV export contains original 383/365 values"
+  ],
+  "api_requests": 0,
+  "replay_run_id": "6316669854314620a77b7fa0baedf9cd",
+  "local_and_evidence_checks_passed": 65
+}

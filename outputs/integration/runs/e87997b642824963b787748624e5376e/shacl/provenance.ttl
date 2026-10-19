@@ -1,0 +1,63 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<urn:sha256:62e74ecd7e5467c3bf31f0db0c7892d545017211c7a8267bbd82ebd4bc802823> a prov:Entity ;
+    rdfs:label "results.csv" ;
+    dcterms:identifier "sha256:62e74ecd7e5467c3bf31f0db0c7892d545017211c7a8267bbd82ebd4bc802823" ;
+    prov:generatedAtTime "2026-10-19T20:26:08.599102+00:00"^^xsd:dateTime ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/shacl/9a5faa5ddb194cb78a8e4054c7c25f45> .
+
+<urn:sha256:a0dd3d5795b234f7bf3c41da42243d305f9a34aa1bcccbbc032812790beb6287> a prov:Entity ;
+    rdfs:label "report.ttl" ;
+    dcterms:identifier "sha256:a0dd3d5795b234f7bf3c41da42243d305f9a34aa1bcccbbc032812790beb6287" ;
+    prov:generatedAtTime "2026-10-19T20:26:08.599102+00:00"^^xsd:dateTime ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/shacl/9a5faa5ddb194cb78a8e4054c7c25f45> .
+
+<urn:sha256:a338fb71db86945f0c422333860f0703153f4468b7e247e81cc936acc9ad8225> a prov:Entity ;
+    rdfs:label "report.txt" ;
+    dcterms:identifier "sha256:a338fb71db86945f0c422333860f0703153f4468b7e247e81cc936acc9ad8225" ;
+    prov:generatedAtTime "2026-10-19T20:26:08.599102+00:00"^^xsd:dateTime ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/shacl/9a5faa5ddb194cb78a8e4054c7c25f45> .
+
+<urn:sha256:c944091ac1749e8676e63772cc9e1820b6426c93fac2b34a354c573d53eea68f> a prov:Entity ;
+    rdfs:label "report.html" ;
+    dcterms:identifier "sha256:c944091ac1749e8676e63772cc9e1820b6426c93fac2b34a354c573d53eea68f" ;
+    prov:generatedAtTime "2026-10-19T20:26:08.599102+00:00"^^xsd:dateTime ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/shacl/9a5faa5ddb194cb78a8e4054c7c25f45> .
+
+<urn:sha256:fedd499a1e7f13b79dfef9e7a525bfaf49869c73a88411afbbf03946811aa946> a prov:Entity ;
+    rdfs:label "summary.json" ;
+    dcterms:identifier "sha256:fedd499a1e7f13b79dfef9e7a525bfaf49869c73a88411afbbf03946811aa946" ;
+    prov:generatedAtTime "2026-10-19T20:26:08.599102+00:00"^^xsd:dateTime ;
+    prov:wasGeneratedBy <https://example.org/oulad/run/shacl/9a5faa5ddb194cb78a8e4054c7c25f45> .
+
+<urn:oulad:validator:sha256:c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d> a prov:SoftwareAgent ;
+    rdfs:label "OULAD validate.py with pySHACL 0.40.1" ;
+    dcterms:identifier "sha256:c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d" .
+
+<urn:sha256:76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0> a prov:Entity ;
+    rdfs:label "shapes: oulad-shapes.ttl" ;
+    dcterms:identifier "sha256:76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0" ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/shapes/oulad-shapes.ttl> .
+
+<urn:sha256:cdad7f97304e1d784ee5f86ac4d743446ab826e0f121a3c41b34820743ef547b> a prov:Entity ;
+    rdfs:label "data: oulad-mapped.nt" ;
+    dcterms:identifier "sha256:cdad7f97304e1d784ee5f86ac4d743446ab826e0f121a3c41b34820743ef547b" ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/outputs/integration/runs/e87997b642824963b787748624e5376e/oulad-mapped.nt> .
+
+<urn:sha256:f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766> a prov:Entity ;
+    rdfs:label "schema: education.rdfs.ttl" ;
+    dcterms:identifier "sha256:f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766" ;
+    prov:atLocation <file:///D:/DESKTOP/M2/kr-oulad/ontology/education.rdfs.ttl> .
+
+<https://example.org/oulad/run/shacl/9a5faa5ddb194cb78a8e4054c7c25f45> a prov:Activity ;
+    rdfs:label "SHACL validation of the specified OULAD graph" ;
+    prov:endedAtTime "2026-10-19T20:26:08.599102+00:00"^^xsd:dateTime ;
+    prov:startedAtTime "2026-10-19T20:25:02.466624+00:00"^^xsd:dateTime ;
+    prov:used <urn:sha256:76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0>,
+        <urn:sha256:cdad7f97304e1d784ee5f86ac4d743446ab826e0f121a3c41b34820743ef547b>,
+        <urn:sha256:f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766> ;
+    prov:wasAssociatedWith <urn:oulad:validator:sha256:c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d> .
+

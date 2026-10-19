@@ -119,3 +119,7 @@ Source pages describe the data. The questions, IRIs, schema, warnings policy, an
 - How much of a high filtered MRR is explained by having only about two candidate assessments?
 
 Measured answers and limits: [Session 6 results explained](learning-results-explained.html). Learning outputs remain separate from the historical RDF and OWL inferences.
+
+## Session 7 question-access rules
+
+The English interface uses the same historical meanings: distinct Student versus Enrollment, strict late nonbanked submissions, missing values preserved, and subtype-inclusive assessment counts. It must refuse missing personal causes, instructor identities and study hours. It must not represent Session 6 predictions as asserted facts. See [the tested questions and results](access-results-explained.html). The eight prompt examples and thirteen evaluation questions live in `config/access/`; exact catalog questions work without an API key.

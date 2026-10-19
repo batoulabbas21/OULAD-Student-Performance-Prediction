@@ -1,0 +1,118 @@
+- id: q01
+  question: How many distinct students are represented across AAA?
+  refuse: false
+  gold: 'PREFIX edu: <https://example.org/oulad/schema#>
+
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT (COUNT(DISTINCT ?s) AS ?count) WHERE { ?e a edu:Enrollment; edu:hasStudent
+    ?s }'
+  oracle: students
+- id: q02
+  question: What is the total number of enrollments in 2014J?
+  refuse: false
+  gold: 'PREFIX edu: <https://example.org/oulad/schema#>
+
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT (COUNT(?e) AS ?count) WHERE { ?e a edu:Enrollment; edu:inOffering ?o. ?o
+    edu:presentationCode "2014J" }'
+  oracle: enrollments_2014
+- id: q03
+  question: How many assessments are scheduled in AAA, including exams and tutor-marked
+    assessments?
+  refuse: false
+  gold: 'PREFIX edu: <https://example.org/oulad/schema#>
+
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT (COUNT(DISTINCT ?a) AS ?count) WHERE { ?a a/rdfs:subClassOf* edu:Assessment
+    }'
+  oracle: assessments
+- id: q04
+  question: Give the number of enrollments for every final result in each presentation;
+    show presentation, final result and count in that order.
+  refuse: false
+  gold: 'PREFIX edu: <https://example.org/oulad/schema#>
+
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT ?presentation ?result (COUNT(?e) AS ?count) WHERE { ?e edu:inOffering ?o;
+    edu:finalResult ?result. ?o edu:presentationCode ?presentation } GROUP BY ?presentation
+    ?result ORDER BY ?presentation ?result'
+  oracle: outcomes
+- id: q05
+  question: How many non-banked assessment records were submitted strictly after their
+    known deadline?
+  refuse: false
+  gold: 'PREFIX edu: <https://example.org/oulad/schema#>
+
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT (COUNT(?r) AS ?count) WHERE { ?r edu:isBanked false; edu:submissionDay
+    ?d; edu:forAssessment ?a. ?a edu:deadlineDay ?due. FILTER(?d > ?due) }'
+  oracle: late
+- id: q06
+  question: How many assessment records have a known score below 40, including banked
+    records?
+  refuse: false
+  gold: 'PREFIX edu: <https://example.org/oulad/schema#>
+
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT (COUNT(?r) AS ?count) WHERE { ?r a edu:AssessmentRecord; edu:score ?s.
+    FILTER(?s < 40) }'
+  oracle: low
+- id: q07
+  question: How many assessment records have no score recorded?
+  refuse: false
+  gold: 'PREFIX edu: <https://example.org/oulad/schema#>
+
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT (COUNT(?r) AS ?count) WHERE { ?r a edu:AssessmentRecord. FILTER NOT EXISTS
+    {?r edu:score ?s} }'
+  oracle: unknown
+- id: q08
+  question: What is the total number of banked assessment records?
+  refuse: false
+  gold: 'PREFIX edu: <https://example.org/oulad/schema#>
+
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT (COUNT(?r) AS ?count) WHERE { ?r a edu:AssessmentRecord; edu:isBanked true
+    }'
+  oracle: banked
+- id: q09
+  question: How many enrollments finished successfully, meaning Pass or Distinction?
+  refuse: false
+  gold: 'PREFIX edu: <https://example.org/oulad/schema#>
+
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT (COUNT(?e) AS ?count) WHERE { ?e a edu:Enrollment; edu:finalResult ?result.
+    FILTER(?result IN ("Pass","Distinction")) }'
+  oracle: success
+- id: q10
+  question: How many scheduled assessments have an unknown deadline?
+  refuse: false
+  gold: 'PREFIX edu: <https://example.org/oulad/schema#>
+
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT (COUNT(DISTINCT ?a) AS ?count) WHERE { ?a a/rdfs:subClassOf* edu:Assessment.
+    FILTER NOT EXISTS {?a edu:deadlineDay ?d} }'
+  oracle: unknown_deadline
+- id: r01
+  question: What personal reasons caused students to withdraw from AAA?
+  refuse: true
+  reason: Withdrawal outcomes exist; personal causes do not.
+- id: r02
+  question: What are the full names of the instructors who taught AAA?
+  refuse: true
+  reason: Instructor identities are not in this graph.
+- id: r03
+  question: How many hours did each student spend studying online?
+  refuse: true
+  reason: Study duration is not recorded; activity rows are also absent from this
+    extract.

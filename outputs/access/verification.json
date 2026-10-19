@@ -1,0 +1,491 @@
+{
+  "checked_at_utc": "2026-10-19T20:13:29.487948+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "name": "Example and held-out question wording are disjoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Graph contains the complete AAA asserted extract",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Available classes include Assessment via subclasses",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unloaded interaction data is not advertised",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q01 gold passes query validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q01 RDF agrees with independent CSV answer",
+      "passed": true,
+      "detail": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "712"
+          }
+        ]
+      }
+    },
+    {
+      "name": "q02 gold passes query validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q02 RDF agrees with independent CSV answer",
+      "passed": true,
+      "detail": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "365"
+          }
+        ]
+      }
+    },
+    {
+      "name": "q03 gold passes query validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q03 RDF agrees with independent CSV answer",
+      "passed": true,
+      "detail": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "12"
+          }
+        ]
+      }
+    },
+    {
+      "name": "q04 gold passes query validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q04 RDF agrees with independent CSV answer",
+      "passed": true,
+      "detail": {
+        "columns": [
+          "presentation",
+          "result",
+          "count"
+        ],
+        "rows": [
+          {
+            "presentation": "2013J",
+            "result": "Distinction",
+            "count": "20"
+          },
+          {
+            "presentation": "2013J",
+            "result": "Fail",
+            "count": "45"
+          },
+          {
+            "presentation": "2013J",
+            "result": "Pass",
+            "count": "258"
+          },
+          {
+            "presentation": "2013J",
+            "result": "Withdrawn",
+            "count": "60"
+          },
+          {
+            "presentation": "2014J",
+            "result": "Distinction",
+            "count": "24"
+          },
+          {
+            "presentation": "2014J",
+            "result": "Fail",
+            "count": "46"
+          },
+          {
+            "presentation": "2014J",
+            "result": "Pass",
+            "count": "229"
+          },
+          {
+            "presentation": "2014J",
+            "result": "Withdrawn",
+            "count": "66"
+          }
+        ]
+      }
+    },
+    {
+      "name": "q05 gold passes query validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q05 RDF agrees with independent CSV answer",
+      "passed": true,
+      "detail": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "815"
+          }
+        ]
+      }
+    },
+    {
+      "name": "q06 gold passes query validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q06 RDF agrees with independent CSV answer",
+      "passed": true,
+      "detail": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "90"
+          }
+        ]
+      }
+    },
+    {
+      "name": "q07 gold passes query validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q07 RDF agrees with independent CSV answer",
+      "passed": true,
+      "detail": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "3"
+          }
+        ]
+      }
+    },
+    {
+      "name": "q08 gold passes query validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q08 RDF agrees with independent CSV answer",
+      "passed": true,
+      "detail": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "42"
+          }
+        ]
+      }
+    },
+    {
+      "name": "q09 gold passes query validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q09 RDF agrees with independent CSV answer",
+      "passed": true,
+      "detail": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "531"
+          }
+        ]
+      }
+    },
+    {
+      "name": "q10 gold passes query validation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "q10 RDF agrees with independent CSV answer",
+      "passed": true,
+      "detail": {
+        "columns": [
+          "count"
+        ],
+        "rows": [
+          {
+            "count": "2"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Catalog 01-enrollments executes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Catalog 02-students executes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Catalog 03-types executes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Catalog 04-banked executes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Catalog 05-unknown executes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Catalog 06-submissions executes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Catalog 07-resources executes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Catalog 08-pass executes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Reject syntax",
+      "passed": true,
+      "detail": [
+        "Invalid SPARQL: Expected SelectQuery, found 'WHERE'  (at char 7), (line:1, col:8)"
+      ]
+    },
+    {
+      "name": "Reject invented predicate",
+      "passed": true,
+      "detail": [
+        "Unknown or unavailable predicate: https://example.org/oulad/schema#grade",
+        "Unknown or unavailable vocabulary term: https://example.org/oulad/schema#grade"
+      ]
+    },
+    {
+      "name": "Reject alias predicate",
+      "passed": true,
+      "detail": [
+        "Unknown or unavailable predicate: https://example.org/oulad/schema#grade",
+        "Unknown or unavailable vocabulary term: https://example.org/oulad/schema#grade"
+      ]
+    },
+    {
+      "name": "Reject invented class",
+      "passed": true,
+      "detail": [
+        "Unknown or unavailable class: https://example.org/oulad/schema#Teacher",
+        "Unknown or unavailable vocabulary term: https://example.org/oulad/schema#Teacher"
+      ]
+    },
+    {
+      "name": "Reject unavailable class",
+      "passed": true,
+      "detail": [
+        "Unknown or unavailable class: https://example.org/oulad/schema#DailyInteraction",
+        "Unknown or unavailable vocabulary term: https://example.org/oulad/schema#DailyInteraction"
+      ]
+    },
+    {
+      "name": "Reject unknown full IRI",
+      "passed": true,
+      "detail": [
+        "Unknown or unavailable predicate: https://example.org/oulad/schema#grade",
+        "Unknown or unavailable vocabulary term: https://example.org/oulad/schema#grade"
+      ]
+    },
+    {
+      "name": "Reject foreign predicate",
+      "passed": true,
+      "detail": [
+        "Unknown or unavailable predicate: https://unknown.test/p"
+      ]
+    },
+    {
+      "name": "Reject SERVICE",
+      "passed": true,
+      "detail": [
+        "SERVICE, GRAPH and FROM are outside this local default graph interface."
+      ]
+    },
+    {
+      "name": "Reject FROM",
+      "passed": true,
+      "detail": [
+        "SERVICE, GRAPH and FROM are outside this local default graph interface."
+      ]
+    },
+    {
+      "name": "Reject named GRAPH",
+      "passed": true,
+      "detail": [
+        "SERVICE, GRAPH and FROM are outside this local default graph interface."
+      ]
+    },
+    {
+      "name": "Reject update",
+      "passed": true,
+      "detail": [
+        "Invalid SPARQL: Expected {SelectQuery | ConstructQuery | DescribeQuery | AskQuery}, found 'DELETE'  (at char 0), (line:1, col:1)"
+      ]
+    },
+    {
+      "name": "Reject construct",
+      "passed": true,
+      "detail": [
+        "Only SELECT and ASK are supported."
+      ]
+    },
+    {
+      "name": "Literal text is not mistaken for a predicate or operation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Empty result equals empty gold",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Failed execution is not a correct empty answer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ASK false is a valid false answer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Row scorer detects swapped presentation counts that the lab set misses",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Scripted invalid predicate is repaired using feedback",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Repair prompt includes previous query and diagnostics",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Three failed attempts are invalid, not grounded refusal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Explicit model refusal is distinguishable",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Semantically wrong but legal queries need answer evaluation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "A slow worker can be terminated",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP browser page is available",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "HTTP health reports catalog mode",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "TEXT2SPARQL contract returns dataset, question, query and evidence",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Unsupported catalog question is explicit, not an AI refusal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Wrong dataset returns HTTP 400",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Latest path remains within access runs",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Saved evaluation completed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Saved evaluation inputs match current files",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Saved evaluation outputs match fingerprints",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Stored answer scores independently recompute",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "count": 65,
+  "scope": "Local implementation tests; scripted model responses are fault injections, never an LLM benchmark."
+}
