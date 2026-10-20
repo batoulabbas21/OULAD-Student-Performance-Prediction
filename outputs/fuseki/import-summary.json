@@ -1,8 +1,8 @@
 {
-  "verified_at_utc": "2026-10-12T06:38:19.696093+00:00",
+  "verified_at_utc": "2026-10-20T03:34:03.191591+00:00",
   "dataset": "http://localhost:3030/oulad",
   "query_endpoint": "http://localhost:3030/oulad/sparql",
-  "mode": "check-only",
+  "mode": "unchanged",
   "source_triples": {
     "data/processed/oulad.ttl": 28470,
     "ontology/education.rdfs.ttl": 105

@@ -21,7 +21,7 @@
     "OFFERING_OF": 2,
     "RESOURCE_IN_OFFERING": 413
   },
-  "source": "C:\\Users\\user\\OneDrive\\Desktop\\M2\\kr-oulad\\data\\processed\\oulad.ttl",
+  "source": "D:\\DESKTOP\\M2\\kr-oulad\\data\\processed\\oulad.ttl",
   "status": "loaded-and-verified",
   "cypher_late_records": 815,
   "neo4j_nodes": 5037,

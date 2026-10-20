@@ -129,6 +129,7 @@ def plan(a):
         script('Learning experiments and evidence verification', 'run-learning.ps1')
         if not a.skip_graph_services:
             steps.append(('Start the existing lab Neo4j service', ['docker', 'compose', '-f', str(a.lab_compose), 'up', '-d', '--wait', '--wait-timeout', '120', 'neo4j']))
+            py('Wait for authenticated Neo4j readiness', 'src/project/wait_neo4j.py')
             py('Load and verify the OULAD Neo4j projection', 'src/graph/neo4j_comparison.py')
             script('Start Fuseki with its OULAD dataset', 'start-fuseki.ps1', '-LabCompose', str(a.lab_compose))
             py('Load and verify the OULAD Fuseki graph', 'src/graph/load_fuseki.py')

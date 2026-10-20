@@ -3,16 +3,77 @@ import importlib.util
 import json
 from pathlib import Path
 import tempfile
+import threading
 import unittest
+import urllib.request
+import sys
 from unittest.mock import Mock, patch
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('project_runner', ROOT / 'src/project/run.py')
 runner = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(runner)
+ready_spec = importlib.util.spec_from_file_location('neo4j_ready', ROOT / 'src/project/wait_neo4j.py')
+ready = importlib.util.module_from_spec(ready_spec)
+ready_spec.loader.exec_module(ready)
 
 
 class LauncherChecks(unittest.TestCase):
+    def test_launcher_opens_actual_live_page_without_calling_model(self):
+        sys.path.insert(0, str(ROOT / 'src/access'))
+        import serve
+        original_factory = serve.create_server
+        received = []
+        failures = []
+        clients = []
+        def server_factory(layer, mode, port):
+            server = original_factory(layer, mode, port)
+            server.timeout = 5
+            # Serve two real HTTP requests, then return and close normally.
+            server.serve_forever = lambda: [server.handle_request() for _ in range(2)]
+            return server
+        def browser(url, new):
+            def request():
+                try:
+                    with urllib.request.urlopen(url+'health', timeout=5) as response:
+                        received.append(json.load(response))
+                    with urllib.request.urlopen(url, timeout=5) as response:
+                        received.append(response.read().decode())
+                except Exception as exc:
+                    failures.append(str(exc))
+            client = threading.Thread(target=request, daemon=True)
+            clients.append(client);client.start()
+            return True
+        a = runner.parse_args(['--access-only', '--port', '8020'])
+        with tempfile.TemporaryDirectory() as folder, patch.object(serve, 'create_server', side_effect=server_factory), patch.object(runner.webbrowser, 'open', side_effect=browser) as opened:
+            receipt = {}
+            runner.launch(a, receipt, Path(folder)/'summary.json')
+            for client in clients:client.join(timeout=10)
+            opened.assert_called_once()
+            self.assertEqual(failures, [])
+            self.assertEqual(received[0]['mode'], 'live')
+            self.assertIn('"students": 712', received[1])
+            self.assertEqual(receipt['status'], 'stopped')
+            self.assertEqual(receipt['api_requests'], 0)
+
+    def test_neo4j_waits_until_the_protocol_accepts_connections(self):
+        probe = Mock(side_effect=[ready.ServiceUnavailable('starting'), None])
+        pause = Mock()
+        ready.wait_ready(probe, clock=Mock(return_value=0), pause=pause)
+        self.assertEqual(probe.call_count, 2)
+        pause.assert_called_once()
+
+    def test_neo4j_auth_errors_are_not_retried(self):
+        probe = Mock(side_effect=ready.AuthError('rejected'))
+        with self.assertRaisesRegex(RuntimeError, 'credentials'):
+            ready.wait_ready(probe)
+        self.assertEqual(probe.call_count, 1)
+
+    def test_neo4j_wait_has_a_deadline(self):
+        probe = Mock(side_effect=ready.ServiceUnavailable('unavailable'))
+        with self.assertRaisesRegex(RuntimeError, 'timeout'):
+            ready.wait_ready(probe, timeout=1, clock=Mock(side_effect=[0, 2]), pause=Mock())
+
     def test_failed_stage_stops_before_following_stages(self):
         with tempfile.TemporaryDirectory() as folder, patch.object(runner.subprocess, 'run', return_value=Mock(returncode=1)) as call:
             receipt = {'stages': []}

@@ -670,6 +670,8 @@ We added two launchers to make the existing work easier to repeat. The Conda lau
 
 The full launcher needs Java, the existing lab packages and running Docker Desktop. The Docker page needs existing RDF/RDFS/shapes, Docker Desktop and the configured Gemini key. Both live options require internet access for questions. They do not retrain a local Gemini model. See [README sections 16–17](../README.md#16-one-launcher-for-the-full-project) for all commands, options, stop instructions and troubleshooting.
 
+During verification, the first full run passed the data, ontology, SHACL, integration and learning stages but reached Neo4j before it accepted connections. We added an authenticated readiness check, then verified the remaining stages. The initial failed receipt is retained. The full OWL calculation took about 12 minutes; use the access-only or Docker launcher for daily question testing.
+
 ### A successful answer and a justified refusal
 
 1. Ask **“How many distinct students are in the dataset?”** Expected answer: **712**, with the executed SPARQL and query checks. The 748 enrollments include people enrolled in more than one offering.

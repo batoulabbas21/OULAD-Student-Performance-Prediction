@@ -1,0 +1,33 @@
+{
+  "checked_at_utc": "2026-10-20T03:34:02.641371+00:00",
+  "passed": true,
+  "api_requests": 0,
+  "image_id": "sha256:272e5f54914c57b5278672c268ef0945a731a874f11b24520975ba4226f1f8b2",
+  "container_id": "3efb58e1b80541cc402e9577c939e03286da2a2676cbfb47c0658860cf8e128e",
+  "url": "http://127.0.0.1:8010/",
+  "startup_run": {
+    "run_id": "03a4efc167d64d29a867e82c0e54b449",
+    "directory": "container/runs/03a4efc167d64d29a867e82c0e54b449"
+  },
+  "versions": {
+    "python": "3.12.15",
+    "packages": {
+      "rdflib": "7.6.0",
+      "pyshacl": "0.40.1",
+      "owlrl": "7.6.2",
+      "requests": "2.34.2",
+      "python-dotenv": "1.2.3",
+      "pyoxigraph": "0.5.11"
+    }
+  },
+  "checks": [
+    "Healthy live-mode HTTP page",
+    "Localhost-only published port",
+    "Google key absent from container configuration environment",
+    "Expected 712-student SPARQL count inside container",
+    "Validated snapshot hashes match host inputs",
+    "SHACL gate passes with zero violations and five warnings",
+    "Broken fixture exits 1 before serving, without network access"
+  ],
+  "note": "No new Gemini generation was requested. Direct SPARQL and startup/refusal-of-invalid-data were tested; use the separate recorded benchmark for model performance."
+}

@@ -1,0 +1,122 @@
+{
+  "run_id": "2021ac3a5be04dd39cd712a268390702",
+  "started_at_utc": "2026-10-20T03:33:40.205781+00:00",
+  "status": "pipeline-tail-passed",
+  "profile": "full-continuation-verification",
+  "mode": "no-server",
+  "api_requests": 0,
+  "previous_run": "9ae15733b9544997aa30351625c272ad",
+  "previous_receipt_sha256": "945ae98f14391f08c3b580d97e11d5867968fc18b0cdbfef6a0761267d8edd86",
+  "earlier_passed_stages": 9,
+  "launcher_sha256": "6ac452a7b2bdf7d32ac3f6f9eb37bfdb52f3fc977db1a8acfaa2c16d7109e908",
+  "stages": [
+    {
+      "stage": "Start the existing lab Neo4j service",
+      "command": [
+        "docker",
+        "compose",
+        "-f",
+        "D:\\DESKTOP\\M2\\KRR\\demos\\docker-compose.yml",
+        "up",
+        "-d",
+        "--wait",
+        "--wait-timeout",
+        "120",
+        "neo4j"
+      ],
+      "started_at_utc": "2026-10-20T03:33:40.205781+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-20T03:33:41.046190+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Wait for authenticated Neo4j readiness",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "src/project/wait_neo4j.py"
+      ],
+      "started_at_utc": "2026-10-20T03:33:41.049552+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-20T03:33:44.267761+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Load and verify the OULAD Neo4j projection",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "src/graph/neo4j_comparison.py"
+      ],
+      "started_at_utc": "2026-10-20T03:33:44.267761+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-20T03:33:53.603515+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Start Fuseki with its OULAD dataset",
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.EXE",
+        "-NoProfile",
+        "-File",
+        "D:\\DESKTOP\\M2\\kr-oulad\\start-fuseki.ps1",
+        "-LabCompose",
+        "D:\\DESKTOP\\M2\\KRR\\demos\\docker-compose.yml"
+      ],
+      "started_at_utc": "2026-10-20T03:33:53.603515+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-20T03:33:56.646364+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Load and verify the OULAD Fuseki graph",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "src/graph/load_fuseki.py"
+      ],
+      "started_at_utc": "2026-10-20T03:33:56.646897+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-20T03:34:03.317780+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Final SHACL gate before opening access",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "src/validation/validate.py"
+      ],
+      "started_at_utc": "2026-10-20T03:34:03.317780+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-20T03:35:09.629110+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Generate current VoID and schema description",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "src/access/grounding.py"
+      ],
+      "started_at_utc": "2026-10-20T03:35:09.629110+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-20T03:35:10.766720+00:00",
+      "exit_code": 0
+    },
+    {
+      "stage": "Verify access locally without provider calls",
+      "command": [
+        "C:\\Users\\user\\.conda\\envs\\M2ENV\\python.exe",
+        "evaluation/verify_access.py",
+        "--local-only"
+      ],
+      "started_at_utc": "2026-10-20T03:35:10.766720+00:00",
+      "status": "passed",
+      "finished_at_utc": "2026-10-20T03:35:23.056045+00:00",
+      "exit_code": 0
+    }
+  ],
+  "note": "Targeted rerun after adding Neo4j readiness. Earlier preparation/ontology/integration/learning stages retain their original execution receipt, including the initial failure.",
+  "finished_at_utc": "2026-10-20T03:35:23.056045+00:00",
+  "validated_snapshot": {
+    "data/processed/oulad.ttl": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5",
+    "ontology/education.rdfs.ttl": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+    "shapes/oulad-shapes.ttl": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0"
+  }
+}

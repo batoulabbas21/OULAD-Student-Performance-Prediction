@@ -1268,6 +1268,8 @@ This performs the following stages, stopping on the first unexpected failure:
 
 The default page port is **8009**. If occupied, the Conda launcher tries the next ten ports and opens the actual selected URL. It never stops another server to obtain a port. Keep the terminal open; **Ctrl+C** stops the newly launched page. Database containers remain running.
 
+Full OWL reasoning took about 12 minutes in the verified run and can be quiet while it computes. Neo4j startup includes a separate authenticated connection check: a running container alone does not establish database readiness.
+
 For everyday use with already prepared RDF:
 
 ```powershell

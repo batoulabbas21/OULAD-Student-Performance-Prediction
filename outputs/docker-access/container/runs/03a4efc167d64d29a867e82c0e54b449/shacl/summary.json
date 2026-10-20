@@ -1,0 +1,174 @@
+{
+  "conforms_shacl": false,
+  "gate_passed": true,
+  "severity_counts": {
+    "Violation": 0,
+    "Warning": 5,
+    "Info": 0
+  },
+  "empty_required_targets": [],
+  "unknown_severities": [],
+  "focus_counts": [
+    {
+      "shape": "https://example.org/oulad/shapes#AssessmentShape",
+      "label": "Assessment structure and subtype",
+      "focus_nodes": 12,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#DeadlinePresenceShape",
+      "label": "Review unknown deadlines",
+      "focus_nodes": 12,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#EnrollmentShape",
+      "label": "Enrollment structure and key",
+      "focus_nodes": 748,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#InteractionShape",
+      "label": "Optional daily activity",
+      "focus_nodes": 0,
+      "optional_target": true
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#ModuleShape",
+      "label": "Module identity",
+      "focus_nodes": 1,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#OfferingShape",
+      "label": "Offering structure and key",
+      "focus_nodes": 2,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#RecordOfferingShape",
+      "label": "Record and enrollment use the same offering",
+      "focus_nodes": 3149,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#RecordShape",
+      "label": "Assessment record structure, score and key",
+      "focus_nodes": 3149,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#RegistrationReviewShape",
+      "label": "Review registration dates",
+      "focus_nodes": 748,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#ResourceShape",
+      "label": "Learning resource structure",
+      "focus_nodes": 413,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#ScorePresenceShape",
+      "label": "Review unknown scores",
+      "focus_nodes": 3149,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#StudentShape",
+      "label": "Student identity",
+      "focus_nodes": 712,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#SubmissionPresenceShape",
+      "label": "Review unknown submission days",
+      "focus_nodes": 3149,
+      "optional_target": false
+    },
+    {
+      "shape": "https://example.org/oulad/shapes#WithdrawalReviewShape",
+      "label": "Review withdrawal status versus date",
+      "focus_nodes": 748,
+      "optional_target": false
+    }
+  ],
+  "results": [
+    {
+      "severity": "Warning",
+      "focus_node": "https://example.org/oulad/id/assessment-record/260355/1754",
+      "path": "https://example.org/oulad/schema#score",
+      "value": "",
+      "source_shape": "https://example.org/oulad/shapes#ScorePresence",
+      "constraint": "MinCountConstraintComponent",
+      "message": "Score is unknown: retain the record and review source completeness; do not replace with zero."
+    },
+    {
+      "severity": "Warning",
+      "focus_node": "https://example.org/oulad/id/assessment-record/2606802/1760",
+      "path": "https://example.org/oulad/schema#score",
+      "value": "",
+      "source_shape": "https://example.org/oulad/shapes#ScorePresence",
+      "constraint": "MinCountConstraintComponent",
+      "message": "Score is unknown: retain the record and review source completeness; do not replace with zero."
+    },
+    {
+      "severity": "Warning",
+      "focus_node": "https://example.org/oulad/id/assessment-record/721259/1752",
+      "path": "https://example.org/oulad/schema#score",
+      "value": "",
+      "source_shape": "https://example.org/oulad/shapes#ScorePresence",
+      "constraint": "MinCountConstraintComponent",
+      "message": "Score is unknown: retain the record and review source completeness; do not replace with zero."
+    },
+    {
+      "severity": "Warning",
+      "focus_node": "https://example.org/oulad/id/assessment/1757",
+      "path": "https://example.org/oulad/schema#deadlineDay",
+      "value": "",
+      "source_shape": "https://example.org/oulad/shapes#DeadlinePresence",
+      "constraint": "MinCountConstraintComponent",
+      "message": "Deadline is unknown: preserve the absence, including unknown exam dates."
+    },
+    {
+      "severity": "Warning",
+      "focus_node": "https://example.org/oulad/id/assessment/1763",
+      "path": "https://example.org/oulad/schema#deadlineDay",
+      "value": "",
+      "source_shape": "https://example.org/oulad/shapes#DeadlinePresence",
+      "constraint": "MinCountConstraintComponent",
+      "message": "Deadline is unknown: preserve the absence, including unknown exam dates."
+    }
+  ],
+  "run_id": "5c4020feb1d746359c228b114fcfa2c1",
+  "started_at_utc": "2026-10-20T03:32:42.353700+00:00",
+  "finished_at_utc": "2026-10-20T03:33:38.710812+00:00",
+  "duration_seconds": 56.359,
+  "data_triples": 28470,
+  "validation_graph_triples": 28575,
+  "inference": "none",
+  "inputs": [
+    {
+      "role": "data",
+      "path": "/app/data/processed/oulad.ttl",
+      "sha256": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5"
+    },
+    {
+      "role": "schema",
+      "path": "/app/ontology/education.rdfs.ttl",
+      "sha256": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766"
+    },
+    {
+      "role": "shapes",
+      "path": "/app/shapes/oulad-shapes.ttl",
+      "sha256": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0"
+    }
+  ],
+  "validator_sha256": "c8baf7472366d335b9e84f89c354e37a9d1f3d7ddcceca64b360f6c5a34fb51d",
+  "versions": {
+    "python": "3.12.15",
+    "pyshacl": "0.40.1",
+    "rdflib": "7.6.0"
+  }
+}

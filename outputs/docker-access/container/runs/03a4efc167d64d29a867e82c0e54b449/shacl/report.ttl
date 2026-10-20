@@ -1,0 +1,43 @@
+@prefix edu: <https://example.org/oulad/schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix shape: <https://example.org/oulad/shapes#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/oulad/id/assessment/1757> ;
+            sh:resultMessage "Deadline is unknown: preserve the absence, including unknown exam dates." ;
+            sh:resultPath edu:deadlineDay ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape shape:DeadlinePresence ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/oulad/id/assessment-record/260355/1754> ;
+            sh:resultMessage "Score is unknown: retain the record and review source completeness; do not replace with zero." ;
+            sh:resultPath edu:score ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape shape:ScorePresence ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/oulad/id/assessment-record/721259/1752> ;
+            sh:resultMessage "Score is unknown: retain the record and review source completeness; do not replace with zero." ;
+            sh:resultPath edu:score ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape shape:ScorePresence ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/oulad/id/assessment-record/2606802/1760> ;
+            sh:resultMessage "Score is unknown: retain the record and review source completeness; do not replace with zero." ;
+            sh:resultPath edu:score ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape shape:ScorePresence ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://example.org/oulad/id/assessment/1763> ;
+            sh:resultMessage "Deadline is unknown: preserve the absence, including unknown exam dates." ;
+            sh:resultPath edu:deadlineDay ;
+            sh:resultSeverity sh:Warning ;
+            sh:sourceConstraintComponent sh:MinCountConstraintComponent ;
+            sh:sourceShape shape:DeadlinePresence ] .
+

@@ -1,0 +1,16 @@
+{
+  "run_id": "03a4efc167d64d29a867e82c0e54b449",
+  "started_at_utc": "2026-10-20T03:32:41.889271+00:00",
+  "mode": "live",
+  "model": "gemini-3.5-flash-lite",
+  "max_requests": 10,
+  "snapshot_sha256": {
+    "data/processed/oulad.ttl": "9a3687041409dc1886f8f934e1eb89b6b3477e52afe3381c40f156c017ab2bf5",
+    "ontology/education.rdfs.ttl": "f7ad475c0f2fbfd3442569ff4b113d8683a2e32202c5e0ca16cbd021f0cba766",
+    "shapes/oulad-shapes.ttl": "76954de83da7cb8b7a1b23b8e00cd1f611da69c9e84132a003c66352689a2be0"
+  },
+  "entrypoint_sha256": "0ada656c6fdff8eaaef16f144a83e13ff0184e9222c9943b384995cc302ecbf9",
+  "status": "validated-server-starting",
+  "api_requests_at_startup": 0,
+  "validated_at_utc": "2026-10-20T03:33:40.047062+00:00"
+}
